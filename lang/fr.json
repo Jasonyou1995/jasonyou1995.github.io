@@ -1,0 +1,44 @@
+{
+  "navbar": {
+      "home": "Accueil",
+      "about": "À Propos",
+      "services": "Services",
+      "contact": "Contactez-nous"
+  },
+  "header": {
+      "title": "Consulting en Systèmes de Confiance et Intégration IA",
+      "subtitle": "Des solutions fiables et efficaces pour votre entreprise."
+  },
+  "footer": {
+      "copyright": "&copy; 2024 Consulting en Systèmes de Confiance et Intégration IA"
+  },
+  "about": {
+      "title": "À Propos",
+      "content": "Nous sommes spécialisés dans la construction de systèmes de confiance et l'intégration de systèmes autonomes d'IA dans les plateformes logicielles et de commerce électronique. Notre objectif est de fournir des solutions fiables et sans interruption pour améliorer vos opérations commerciales."
+  },
+  "services": {
+      "title": "Nos Services",
+      "service1": {
+          "title": "Évaluation de la Fiabilité du Système",
+          "description": "Nous évaluons la fiabilité de vos systèmes existants et fournissons des recommandations pour améliorer la fiabilité et la sécurité."
+      },
+      "service2": {
+          "title": "Intégration IA",
+          "description": "Nous intégrons des systèmes autonomes d'IA dans votre logiciel et vos plateformes de commerce électronique pour améliorer la fonctionnalité et l'expérience utilisateur."
+      },
+      "service3": {
+          "title": "Solutions Logicielles Personnalisées",
+          "description": "Nous développons des solutions logicielles personnalisées adaptées aux besoins de votre entreprise, assurant leur robustesse et leur évolutivité."
+      }
+  },
+  "contact": {
+      "title": "Contactez-nous",
+      "content": "Si vous êtes intéressé par nos services ou avez des questions, veuillez nous contacter en utilisant le formulaire ci-dessous :",
+      "form": {
+          "name": "Nom",
+          "email": "Email",
+          "message": "Message",
+          "submit": "Envoyer"
+      }
+  }
+}

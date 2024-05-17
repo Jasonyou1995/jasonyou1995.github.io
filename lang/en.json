@@ -1,0 +1,44 @@
+{
+  "navbar": {
+      "home": "Home",
+      "about": "About Us",
+      "services": "Services",
+      "contact": "Contact Us"
+  },
+  "header": {
+      "title": "Trustworthy Systems & AI Integration Consulting",
+      "subtitle": "Building reliable and efficient solutions for your business."
+  },
+  "footer": {
+      "copyright": "&copy; 2024 Trustworthy Systems & AI Integration Consulting"
+  },
+  "about": {
+      "title": "About Us",
+      "content": "We specialize in building trustworthy systems and integrating Autonomous AI systems into software and e-commerce platforms. Our goal is to provide seamless and reliable solutions to enhance your business operations."
+  },
+  "services": {
+      "title": "Our Services",
+      "service1": {
+          "title": "System Trustworthiness Assessment",
+          "description": "We assess the trustworthiness of your existing systems and provide recommendations for improvement to ensure reliability and security."
+      },
+      "service2": {
+          "title": "AI Integration",
+          "description": "We integrate Autonomous AI systems into your software and e-commerce platforms to enhance functionality and user experience."
+      },
+      "service3": {
+          "title": "Custom Software Solutions",
+          "description": "We develop custom software solutions tailored to your business needs, ensuring they are robust and scalable."
+      }
+  },
+  "contact": {
+      "title": "Contact Us",
+      "content": "If you are interested in our services or have any questions, please contact us using the form below:",
+      "form": {
+          "name": "Name",
+          "email": "Email",
+          "message": "Message",
+          "submit": "Send"
+      }
+  }
+}

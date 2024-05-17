@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulting Services</title>
+    <title>Contact Us - Consulting Services</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 </head>
@@ -31,19 +31,26 @@
         </div>
     </nav>
 
-    <!-- Header -->
-    <header class="text-center py-5 bg-light">
-        <div class="container">
-            <h1 class="display-4" data-i18n="header.title"></h1>
-            <p class="lead" data-i18n="header.subtitle"></p>
-        </div>
-    </header>
-
     <!-- Content -->
     <div class="container my-5">
         <section>
-            <h2 data-i18n="about.title"></h2>
-            <p data-i18n="about.content"></p>
+            <h2 data-i18n="contact.title"></h2>
+            <p data-i18n="contact.content"></p>
+            <form action="https://formspree.io/f/{your_form_id}" method="POST">
+                <div class="form-group">
+                    <label for="name" data-i18n="contact.form.name"></label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" data-i18n="contact.form.email"></label>
+                    <input type="email" class="form-control" id="email" name="_replyto" required>
+                </div>
+                <div class="form-group">
+                    <label for="message" data-i18n="contact.form.message"></label>
+                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" data-i18n="contact.form.submit"></button>
+            </form>
         </section>
     </div>
 

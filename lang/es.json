@@ -1,0 +1,44 @@
+{
+  "navbar": {
+      "home": "Inicio",
+      "about": "Sobre Nosotros",
+      "services": "Servicios",
+      "contact": "Contáctenos"
+  },
+  "header": {
+      "title": "Consultoría de Sistemas Confiables e Integración de IA",
+      "subtitle": "Construyendo soluciones fiables y eficientes para su negocio."
+  },
+  "footer": {
+      "copyright": "&copy; 2024 Consultoría de Sistemas Confiables e Integración de IA"
+  },
+  "about": {
+      "title": "Sobre Nosotros",
+      "content": "Nos especializamos en construir sistemas confiables e integrar sistemas autónomos de IA en plataformas de software y comercio electrónico. Nuestro objetivo es proporcionar soluciones fiables y sin interrupciones para mejorar sus operaciones comerciales."
+  },
+  "services": {
+      "title": "Nuestros Servicios",
+      "service1": {
+          "title": "Evaluación de Confiabilidad del Sistema",
+          "description": "Evaluamos la confiabilidad de sus sistemas existentes y proporcionamos recomendaciones para mejorar la fiabilidad y la seguridad."
+      },
+      "service2": {
+          "title": "Integración de IA",
+          "description": "Integramos sistemas autónomos de IA en su software y plataformas de comercio electrónico para mejorar la funcionalidad y la experiencia del usuario."
+      },
+      "service3": {
+          "title": "Soluciones de Software Personalizadas",
+          "description": "Desarrollamos soluciones de software personalizadas adaptadas a las necesidades de su negocio, asegurando que sean robustas y escalables."
+      }
+  },
+  "contact": {
+      "title": "Contáctenos",
+      "content": "Si está interesado en nuestros servicios o tiene alguna pregunta, contáctenos utilizando el siguiente formulario:",
+      "form": {
+          "name": "Nombre",
+          "email": "Correo Electrónico",
+          "message": "Mensaje",
+          "submit": "Enviar"
+      }
+  }
+}
