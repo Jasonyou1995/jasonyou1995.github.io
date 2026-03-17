@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shengwei You | AI Agent Security & Web3 Research</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #0a0a0f;
@@ -56,15 +59,22 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: 
+            background:
                 radial-gradient(circle at 20% 80%, var(--accent-dim) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
             animation: bgFloat 20s ease-in-out infinite;
         }
 
         @keyframes bgFloat {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-2%, 2%) rotate(1deg); }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-2%, 2%) rotate(1deg);
+            }
         }
 
         /* Navigation */
@@ -160,6 +170,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -303,8 +314,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .floating-card h4 {
@@ -708,6 +726,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="bg-animation"></div>
 
@@ -730,10 +749,20 @@
                 <span class="hero-tag">Available for Research Collaboration</span>
                 <h1>Shengwei <span>You</span></h1>
                 <p class="hero-subtitle">AI Agent Security & Web3 Architecture Researcher</p>
-                <p class="hero-description">
-                    Specializing in securing stablecoin systems with AI agents. 
-                    Exploring the intersection of autonomous AI systems and decentralized 
-                    finance security.
+                <p class="hero-description"
+                    style="font-size: 1.05rem; text-align: justify; max-width: 550px; line-height: 1.7;">
+                    Driven by a deep fascination with blockchain technology and artificial intelligence, Shengwei You
+                    dedicates their time to exploring the possibilities at the intersection of decentralized finance
+                    (DeFi), cross-chain interoperability, applied cryptography, and generative AI. Working alongside
+                    talented teams and community members, they focus on developing solutions that make financial systems
+                    more accessible and transparent for everyone. Their current work involves designing decentralized
+                    exchange platforms, researching cross-chain compatibility solutions, and creating trust frameworks
+                    for AI systems. While tackling these technical challenges, they're particularly passionate about
+                    ensuring that these technologies remain aligned with human values and ethical principles. This
+                    commitment extends to studying various languages and cultures, helping them better understand the
+                    diverse perspectives of the global tech community. Through ongoing research and collaboration, they
+                    hope to contribute to a future where decentralized systems and AI work together to create more
+                    equitable opportunities for individuals and businesses worldwide.
                 </p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Get in Touch</a>
@@ -770,8 +799,8 @@
                     <div class="research-icon">🛡️</div>
                     <h3>AI Agent Security</h3>
                     <p>
-                        Developing frameworks for securing autonomous AI agents in financial systems. 
-                        Focus on prompt injection prevention, tool misuse detection, and secure 
+                        Developing frameworks for securing autonomous AI agents in financial systems.
+                        Focus on prompt injection prevention, tool misuse detection, and secure
                         multi-agent communication protocols.
                     </p>
                 </div>
@@ -779,8 +808,8 @@
                     <div class="research-icon">💰</div>
                     <h3>Stablecoin Security</h3>
                     <p>
-                        Analyzing depegging risks and security vulnerabilities in stablecoin protocols. 
-                        Building ML models for predictive risk assessment and automated threat detection 
+                        Analyzing depegging risks and security vulnerabilities in stablecoin protocols.
+                        Building ML models for predictive risk assessment and automated threat detection
                         in DeFi ecosystems.
                     </p>
                 </div>
@@ -788,8 +817,8 @@
                     <div class="research-icon">🔗</div>
                     <h3>Web3 Architecture</h3>
                     <p>
-                        Designing secure and scalable architectures for decentralized applications. 
-                        Research on zero-knowledge proofs, smart contract security, and cross-chain 
+                        Designing secure and scalable architectures for decentralized applications.
+                        Research on zero-knowledge proofs, smart contract security, and cross-chain
                         interoperability solutions.
                     </p>
                 </div>
@@ -797,11 +826,39 @@
                     <div class="research-icon">🤖</div>
                     <h3>Autonomous Systems</h3>
                     <p>
-                        Exploring the integration of AI agents with blockchain technology. 
-                        Developing methods for secure autonomous decision-making in financial 
+                        Exploring the integration of AI agents with blockchain technology.
+                        Developing methods for secure autonomous decision-making in financial
                         and governance contexts.
                     </p>
                 </div>
+            </div>
+
+            <div class="section-header fade-in" style="margin-top: 6rem; margin-bottom: 2rem;">
+                <span class="section-tag">Current Work</span>
+                <h3 class="section-title" style="font-size: 2.5rem;">MVF-Composer</h3>
+            </div>
+            <div class="research-card fade-in" style="padding: 3rem;">
+                <p style="color: var(--text-dim); font-size: 1.05rem; line-height: 1.8; text-align: justify;">
+                    <strong>Abstract—</strong>Algorithmic stablecoin reserve controllers can be vulnerable to
+                    regime-blind optimization when they calibrate on fair-weather data while ignoring tail events. The
+                    March 2020 BLACK THURSDAY collapse ($8.3M losses, 15% peg deviation) expose a vulnerability: models
+                    such as the Stable Aggregate Stablecoin (SAS) [1] systematically omit extreme volatility from
+                    covariance estimates, producing allocations optimal in expectation but catastrophic under stress. To
+                    address the gap, we present MVF-Composer, a trust-weighted Mean-Variance Frontier controller
+                    incorporating a Stress Harness for risk-state estimation. The Stress Harness supports multi-agent
+                    simulations to serve as adversarial stress-testers, where heterogeneous agents can execute protocol
+                    actions under crisis scenarios, exposing vulnerabilities before they manifest on-chain. We describe
+                    a trust-scoring mechanism that down-weights manipulative agents, ensuring robustness to adversarial
+                    influence.
+                    <br><br>
+                    Across 1,200 scenarios with Black-Swan shocks, MVF-Composer can reduce peak peg deviation by 57% and
+                    recovery time by 3.1&times; versus SAS. The trust layer accounts for 23% of stability gains. Our
+                    system runs on commodity hardware and provides a reproducible framework for stress-testing DeFi
+                    reserves against tail risks.
+                    <br><br>
+                    <em>Index Terms—Algorithmic Stablecoins, Decentralized Finance, Agent-Based Simulation, Stress
+                        Testing, Risk Management, Mean-Variance Optimization</em>
+                </p>
             </div>
         </div>
     </section>
@@ -819,31 +876,53 @@
                 <div class="pub-item fade-in">
                     <span class="pub-year">2026</span>
                     <div class="pub-content">
-                        <h3>Securing Stablecoin Systems with AI Agents: A Framework Approach</h3>
-                        <p>Research on integrating AI-powered security monitoring into stablecoin protocols</p>
-                    </div>
-                    <div class="pub-links">
-                        <a href="#">Read More →</a>
-                    </div>
-                </div>
-                <div class="pub-item fade-in">
-                    <span class="pub-year">2025</span>
-                    <div class="pub-content">
-                        <h3>OWASP Top 10 for Agentic Applications: Implementation Guide</h3>
-                        <p>Practical security guidelines for deploying autonomous AI agents in production</p>
-                    </div>
-                    <div class="pub-links">
-                        <a href="#">Read More →</a>
+                        <h3 style="margin-bottom: 0.8rem; line-height: 1.4;">Hybrid Stabilization Protocol for
+                            Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven Arbitrage</h3>
+                        <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">Book chapter &nbsp;|&nbsp; DOI: <a
+                                href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank"
+                                style="color: var(--accent); text-decoration: none;">10.1007/978-3-032-00495-6_8</a></p>
+                        <p style="font-size: 0.9rem; color: var(--text);">Contributors: Shengwei You; Andrey Kuehlkamp;
+                            Jarek Nabrzyski</p>
                     </div>
                 </div>
                 <div class="pub-item fade-in">
-                    <span class="pub-year">2025</span>
+                    <span class="pub-year">2024</span>
                     <div class="pub-content">
-                        <h3>Machine Learning Approaches to Stablecoin Depegging Prediction</h3>
-                        <p>XGBoost and neural network models for early warning systems in DeFi</p>
+                        <h3 style="margin-bottom: 0.8rem; line-height: 1.4;">Persona preserving reputation protocol
+                            (P2RP) for enhanced security, privacy, and trust in blockchain oracles</h3>
+                        <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">Cluster Computing, Journal article
+                            &nbsp;|&nbsp; DOI: <a href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank"
+                                style="color: var(--accent); text-decoration: none;">10.1007/s10586-023-04222-4</a></p>
+                        <p style="font-size: 0.9rem; color: var(--text);">Contributors: Shengwei You; Kristina
+                            Radivojevic; Jarek Nabrzyski; Paul Brenner</p>
                     </div>
-                    <div class="pub-links">
-                        <a href="#">Read More →</a>
+                </div>
+                <div class="pub-item fade-in">
+                    <span class="pub-year">2023</span>
+                    <div class="pub-content">
+                        <h3 style="margin-bottom: 0.8rem; line-height: 1.4;">Mining User Behavior in Decentralized
+                            Applications for Blockchain Trust and Security Analytics</h3>
+                        <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">2023 Fifth International Conference on
+                            Blockchain Computing and Applications (BCCA) &nbsp;|&nbsp; DOI: <a
+                                href="https://doi.org/10.1109/bcca58897.2023.10338860" target="_blank"
+                                style="color: var(--accent); text-decoration: none;">10.1109/bcca58897.2023.10338860</a>
+                        </p>
+                        <p style="font-size: 0.9rem; color: var(--text);">Contributors: Shengwei You; Aditya Joshi;
+                            Andrey Kuehlkamp; Jarek Nabrzyski</p>
+                    </div>
+                </div>
+                <div class="pub-item fade-in">
+                    <span class="pub-year">2022</span>
+                    <div class="pub-content">
+                        <h3 style="margin-bottom: 0.8rem; line-height: 1.4;">Trust in the Context of Blockchain
+                            Applications</h3>
+                        <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">2022 Fourth International Conference on
+                            Blockchain Computing and Applications (BCCA) &nbsp;|&nbsp; DOI: <a
+                                href="https://doi.org/10.1109/bcca55292.2022.9922068" target="_blank"
+                                style="color: var(--accent); text-decoration: none;">10.1109/bcca55292.2022.9922068</a>
+                        </p>
+                        <p style="font-size: 0.9rem; color: var(--text);">Contributors: Shengwei You; Kristina
+                            Radivojevic; Jarek Nabrzyski; Paul Brenner</p>
                     </div>
                 </div>
             </div>
@@ -866,7 +945,7 @@
                         <h3>Security Researcher</h3>
                         <p class="company">Independent Research</p>
                         <p>
-                            Leading research on AI agent security for stablecoin systems. 
+                            Leading research on AI agent security for stablecoin systems.
                             Developing frameworks for autonomous security monitoring in DeFi protocols.
                         </p>
                     </div>
@@ -877,7 +956,7 @@
                         <h3>Web3 Security Analyst</h3>
                         <p class="company">Blockchain Security Research</p>
                         <p>
-                            Analyzed smart contract vulnerabilities and developed security best practices 
+                            Analyzed smart contract vulnerabilities and developed security best practices
                             for DeFi protocols. Focus on automated security testing and formal verification.
                         </p>
                     </div>
@@ -888,7 +967,7 @@
                         <h3>AI Research Engineer</h3>
                         <p class="company">Machine Learning & Systems</p>
                         <p>
-                            Built and deployed machine learning systems for financial risk assessment. 
+                            Built and deployed machine learning systems for financial risk assessment.
                             Developed predictive models for market analysis and anomaly detection.
                         </p>
                     </div>
@@ -961,7 +1040,7 @@
                 <span class="section-tag">Contact</span>
                 <h2>Let's Collaborate</h2>
                 <p>
-                    Interested in research collaboration, security consulting, or speaking opportunities? 
+                    Interested in research collaboration, security consulting, or speaking opportunities?
                     I'd love to hear from you.
                 </p>
                 <div class="contact-links">
@@ -971,7 +1050,7 @@
                     <a href="https://linkedin.com/in/shengwei-you" target="_blank" class="contact-link">
                         <span>💼</span> LinkedIn
                     </a>
-                    <a href="#" class="contact-link">
+                    <a href="https://twitter.com/Jason_you1995" class="contact-link">
                         <span>🐦</span> Twitter/X
                     </a>
                 </div>
@@ -1011,4 +1090,5 @@
         });
     </script>
 </body>
+
 </html>
