@@ -724,6 +724,12 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .task-card:hover {
+            border-color: var(--accent) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
@@ -735,6 +741,7 @@
             <div class="logo">SY.</div>
             <ul>
                 <li><a href="#about">About</a></li>
+                <li><a href="#mission">Mission</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#experience">Experience</a></li>
@@ -780,6 +787,180 @@
                 <div class="floating-card card-2">
                     <h4>Research Area</h4>
                     <p>AI Agent Safety</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mission"
+        style="padding: 4rem 2rem; background: var(--secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="container" style="max-width: 1000px;">
+            <div class="mission-dashboard fade-in"
+                style="background: var(--primary); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+
+                <!-- Decorative gradient -->
+                <div
+                    style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 50% 0%, var(--accent-dim) 0%, transparent 40%); pointer-events: none; z-index: 0;">
+                </div>
+
+                <div style="position: relative; z-index: 1;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; margin-bottom: 3rem;">
+                        <div>
+                            <span class="section-tag" style="margin-bottom: 0.5rem;">Daily Focus</span>
+                            <h2
+                                style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 0.5rem;">
+                                Today's Mission</h2>
+                            <p style="color: var(--text-dim); font-size: 1.1rem; max-width: 400px;">
+                                One-Person Company: Helping others succeed & personal growth.
+                            </p>
+                        </div>
+                        <div
+                            style="display: flex; gap: 1.5rem; background: rgba(18,18,26,0.5); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--border);">
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.8rem; font-weight: 700; color: var(--accent);">3.5</div>
+                                <div
+                                    style="color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
+                                    Hours Focus</div>
+                            </div>
+                            <div style="width: 1px; background: var(--border);"></div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.8rem; font-weight: 700; color: var(--text);">0</div>
+                                <div
+                                    style="color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
+                                    Tasks Done</div>
+                            </div>
+                            <div style="width: 1px; background: var(--border);"></div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.8rem; font-weight: 700; color: var(--text);">0%</div>
+                                <div
+                                    style="color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">
+                                    Progress</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+
+                        <!-- Core Tasks -->
+                        <div style="background: var(--secondary); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s;"
+                            class="task-card fade-in">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                                <h3 style="font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <span style="color: var(--accent);">🎯</span> Core Tasks
+                                </h3>
+                                <span
+                                    style="font-size: 0.8rem; color: var(--text-dim); padding: 0.25rem 0.75rem; background: var(--primary); border-radius: 50px; border: 1px solid var(--border);">80%
+                                    Time</span>
+                            </div>
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 1.25rem;">
+                                <li>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                        <span style="font-weight: 600; font-size: 0.95rem;">DeFi Sandbox Infra</span>
+                                        <span
+                                            style="font-size: 0.8rem; color: #ff6b6b; background: rgba(255,107,107,0.1); padding: 0.1rem 0.5rem; border-radius: 4px;">P0
+                                            • 90m</span>
+                                    </div>
+                                    <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.5;">Directories
+                                        → AlayaDB setup → API proxy → Backtesting script</p>
+                                </li>
+                                <li>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                        <span style="font-weight: 600; font-size: 0.95rem;">Academic Automation</span>
+                                        <span
+                                            style="font-size: 0.8rem; color: #ff6b6b; background: rgba(255,107,107,0.1); padding: 0.1rem 0.5rem; border-radius: 4px;">P0
+                                            • 60m</span>
+                                    </div>
+                                    <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.5;">ArXiv
+                                        scraping → AI summarization → Daily report generation</p>
+                                </li>
+                                <li>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                        <span style="font-weight: 600; font-size: 0.95rem;">Deploy Homepage</span>
+                                        <span
+                                            style="font-size: 0.8rem; color: #ff6b6b; background: rgba(255,107,107,0.1); padding: 0.1rem 0.5rem; border-radius: 4px;">P0
+                                            • 30m</span>
+                                    </div>
+                                    <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.5;">Select
+                                        template → Fill info → Publish to GitHub Pages</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Side Tasks -->
+                        <div style="display: flex; flex-direction: column; gap: 2rem;">
+                            <!-- High Value -->
+                            <div style="background: var(--secondary); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; flex: 1; transition: all 0.3s;"
+                                class="task-card fade-in">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                                    <h3 style="font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                        <span style="color: var(--gradient-2);">💡</span> High-Value
+                                    </h3>
+                                    <span
+                                        style="font-size: 0.8rem; color: var(--text-dim); padding: 0.25rem 0.75rem; background: var(--primary); border-radius: 50px; border: 1px solid var(--border);">15%
+                                        Time</span>
+                                </div>
+                                <ul style="list-style: none;">
+                                    <li>
+                                        <div
+                                            style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                            <span style="font-weight: 600; font-size: 0.95rem;">Content Creation</span>
+                                            <span
+                                                style="font-size: 0.8rem; color: #feca57; background: rgba(254,202,87,0.1); padding: 0.1rem 0.5rem; border-radius: 4px;">P1
+                                                • 30m</span>
+                                        </div>
+                                        <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.5;">1
+                                            Twitter/X post on learning + Bilibili/Xiaohongshu script</p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Exploration -->
+                            <div style="background: var(--secondary); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; flex: 1; transition: all 0.3s;"
+                                class="task-card fade-in">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                                    <h3 style="font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+                                        <span style="color: #a55eea;">🔭</span> Exploration
+                                    </h3>
+                                    <span
+                                        style="font-size: 0.8rem; color: var(--text-dim); padding: 0.25rem 0.75rem; background: var(--primary); border-radius: 50px; border: 1px solid var(--border);">5%
+                                        Time</span>
+                                </div>
+                                <ul style="list-style: none;">
+                                    <li>
+                                        <div
+                                            style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                            <span style="font-weight: 600; font-size: 0.95rem;">Market Research</span>
+                                            <span
+                                                style="font-size: 0.8rem; color: #48dbfb; background: rgba(72,219,251,0.1); padding: 0.1rem 0.5rem; border-radius: 4px;">P2
+                                                • 15m</span>
+                                        </div>
+                                        <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.5;">Browse
+                                            3 DeFi influencers' updates + Record 1 testable strategy</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quote -->
+                    <div style="text-align: center; border-top: 1px solid var(--border); padding-top: 2rem;"
+                        class="fade-in">
+                        <p
+                            style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: var(--text); margin-bottom: 0.5rem;">
+                            "Finish what you start, try doing things first. Disconnect to analyze, then read bit by
+                            bit."
+                        </p>
+                        <p
+                            style="color: var(--accent); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+                            — Today's Motto
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
