@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shengwei You | AI Agent Security & Web3 Research</title>
+    <title>Shengwei You | DeFi × AI Researcher & Data Scientist</title>
+    <meta name="description"
+        content="Ph.D. Candidate & Data Scientist specializing in DeFi and AI. Expertise in autonomous AI agents, on-chain quantitative research, and protocol-level risk management.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -142,753 +144,783 @@
             width: 100%;
         }
 
-        /* Loading Overlay */
-        #translation-loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 10, 15, 0.9);
-            z-index: 2000;
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
+            padding: 8rem 2rem 4rem;
+            position: relative;
         }
 
-        #translation-loading.active {
-            opacity: 1;
-            visibility: visible;
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--border);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--accent-dim);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
             margin-bottom: 1rem;
         }
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent), var(--gradient-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: #00b894;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Hero Image */
+        .hero-image {
+            position: relative;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .image-frame {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+        }
+
+        .image-frame::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            background: linear-gradient(135deg, var(--accent), var(--gradient-2));
+            border-radius: 20px;
+            opacity: 0.3;
+            filter: blur(20px);
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            backdrop-filter: blur(10px);
+            z-index: 2;
+        }
+
+        .card-1 {
+            top: 10%;
+            right: -20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .card-2 {
+            bottom: 15%;
+            left: -30px;
+            animation: float 6s ease-in-out infinite 1s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
             }
         }
-    </style>
-
-    /* Hero Section */
-    .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8rem 2rem 4rem;
-    position: relative;
-    }
-
-    .hero-container {
-    max-width: 1200px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    }
-
-    .hero-content {
-    animation: fadeInUp 1s ease;
-    }
-
-    @keyframes fadeInUp {
-    from {
-    opacity: 0;
-    transform: translateY(30px);
-    }
-
-    to {
-    opacity: 1;
-    transform: translateY(0);
-    }
-    }
-
-    .hero-tag {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: var(--accent-dim);
-    border: 1px solid var(--accent);
-    border-radius: 50px;
-    font-size: 0.8rem;
-    color: var(--accent);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1.5rem;
-    }
-
-    .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-    }
-
-    .hero h1 span {
-    background: linear-gradient(135deg, var(--accent), var(--gradient-2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    }
-
-    .hero-subtitle {
-    font-size: 1.25rem;
-    color: var(--text-dim);
-    margin-bottom: 1.5rem;
-    }
-
-    .hero-description {
-    font-size: 1.1rem;
-    color: var(--text-dim);
-    margin-bottom: 2.5rem;
-    max-width: 500px;
-    }
-
-    .hero-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    }
-
-    .btn {
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    }
-
-    .btn-primary {
-    background: var(--accent);
-    color: var(--primary);
-    }
-
-    .btn-primary:hover {
-    background: #00b894;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
-    }
-
-    .btn-secondary {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    }
-
-    /* Hero Image */
-    .hero-image {
-    position: relative;
-    animation: fadeInUp 1s ease 0.2s backwards;
-    }
-
-    .image-frame {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    aspect-ratio: 1;
-    margin: 0 auto;
-    }
-
-    .image-frame::before {
-    content: '';
-    position: absolute;
-    inset: -10px;
-    background: linear-gradient(135deg, var(--accent), var(--gradient-2));
-    border-radius: 20px;
-    opacity: 0.3;
-    filter: blur(20px);
-    }
-
-    .image-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 16px;
-    position: relative;
-    z-index: 1;
-    }
-
-    .floating-card {
-    position: absolute;
-    background: var(--secondary);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1rem 1.5rem;
-    backdrop-filter: blur(10px);
-    z-index: 2;
-    }
-
-    .card-1 {
-    top: 10%;
-    right: -20px;
-    animation: float 6s ease-in-out infinite;
-    }
-
-    .card-2 {
-    bottom: 15%;
-    left: -30px;
-    animation: float 6s ease-in-out infinite 1s;
-    }
-
-    @keyframes float {
-
-    0%,
-    100% {
-    transform: translateY(0);
-    }
-
-    50% {
-    transform: translateY(-10px);
-    }
-    }
-
-    .floating-card h4 {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.25rem;
-    }
-
-    .floating-card p {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--accent);
-    }
-
-    /* Sections */
-    section {
-    padding: 6rem 2rem;
-    position: relative;
-    }
-
-    .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    }
-
-    .section-header {
-    text-align: center;
-    margin-bottom: 4rem;
-    }
-
-    .section-tag {
-    display: inline-block;
-    font-size: 0.8rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-    }
-
-    .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    }
-
-    .section-subtitle {
-    color: var(--text-dim);
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin: 0 auto;
-    }
-
-    /* Research Focus */
-    .research-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    }
-
-    .research-card {
-    background: var(--secondary);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2.5rem;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-    }
-
-    .research-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--gradient-2));
-    transform: scaleX(0);
-    transition: transform 0.3s;
-    }
-
-    .research-card:hover::before {
-    transform: scaleX(1);
-    }
-
-    .research-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-5px);
-    }
-
-    .research-icon {
-    width: 60px;
-    height: 60px;
-    background: var(--accent-dim);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    }
-
-    .research-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    }
-
-    .research-card p {
-    color: var(--text-dim);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    }
-
-    /* Publications */
-    .publications {
-    background: var(--secondary);
-    }
-
-    .pub-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    }
-
-    .pub-item {
-    background: var(--primary);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2rem;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 2rem;
-    align-items: center;
-    transition: all 0.3s;
-    }
-
-    .pub-item:hover {
-    border-color: var(--accent);
-    }
-
-    .pub-year {
-    font-size: 0.8rem;
-    color: var(--accent);
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    background: var(--accent-dim);
-    border-radius: 50px;
-    }
-
-    .pub-content h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    }
-
-    .pub-content p {
-    color: var(--text-dim);
-    font-size: 0.9rem;
-    }
-
-    .pub-links {
-    display: flex;
-    gap: 1rem;
-    }
-
-    .pub-links a {
-    color: var(--text-dim);
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.3s;
-    }
-
-    .pub-links a:hover {
-    color: var(--accent);
-    }
-
-    /* Experience Timeline */
-    .timeline {
-    position: relative;
-    padding-left: 3rem;
-    }
-
-    .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, var(--accent), var(--gradient-2));
-    }
-
-    .timeline-item {
-    position: relative;
-    padding-bottom: 3rem;
-    }
-
-    .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -3rem;
-    top: 0;
-    width: 12px;
-    height: 12px;
-    background: var(--accent);
-    border-radius: 50%;
-    margin-left: -5px;
-    box-shadow: 0 0 20px var(--accent);
-    }
-
-    .timeline-content {
-    background: var(--secondary);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2rem;
-    }
-
-    .timeline-date {
-    font-size: 0.85rem;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    }
-
-    .timeline-content h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    }
-
-    .timeline-content .company {
-    color: var(--text-dim);
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-    }
-
-    .timeline-content p {
-    color: var(--text-dim);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    }
-
-    /* Skills */
-    .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    }
-
-    .skill-category {
-    background: var(--secondary);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2rem;
-    }
-
-    .skill-category h3 {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    }
-
-    .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    }
-
-    .skill-tag {
-    padding: 0.5rem 1rem;
-    background: var(--primary);
-    border: 1px solid var(--border);
-    border-radius: 50px;
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    transition: all 0.3s;
-    }
-
-    .skill-tag:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    }
-
-    /* Contact */
-    .contact {
-    text-align: center;
-    }
-
-    .contact-box {
-    background: var(--secondary);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 4rem;
-    max-width: 800px;
-    margin: 0 auto;
-    }
-
-    .contact h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    }
-
-    .contact p {
-    color: var(--text-dim);
-    margin-bottom: 2rem;
-    }
-
-    .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    }
-
-    .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: var(--text);
-    text-decoration: none;
-    padding: 1rem 2rem;
-    background: var(--primary);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    transition: all 0.3s;
-    }
-
-    .contact-link:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    }
-
-    /* Footer */
-    footer {
-    text-align: center;
-    padding: 3rem 2rem;
-    border-top: 1px solid var(--border);
-    color: var(--text-dim);
-    font-size: 0.9rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 968px) {
-    .hero-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-    }
-
-    .hero h1 {
-    font-size: 3rem;
-    }
-
-    .hero-description {
-    margin: 0 auto 2.5rem;
-    }
-
-    .hero-buttons {
-    justify-content: center;
-    }
-
-    .hero-image {
-    order: -1;
-    }
-
-    .image-frame {
-    max-width: 280px;
-    }
-
-    .floating-card {
-    display: none;
-    }
-
-    nav ul {
-    display: none;
-    }
-
-    .section-title {
-    font-size: 2.5rem;
-    }
-
-    .pub-item {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    }
-    }
-
-    /* Scroll animations */
-    .fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease;
-    }
-
-    .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-    }
-
-    .task-card:hover {
-    border-color: var(--accent) !important;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Language Toggle */
-    .lang-menu-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    }
-
-    .lang-btn {
-    background: var(--accent-dim);
-    border: 1px solid var(--accent);
-    color: var(--text);
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    }
-
-    .lang-btn:hover {
-    background: var(--accent);
-    color: var(--primary);
-    }
-
-    .lang-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-top: 1rem;
-    background: var(--secondary);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    min-width: 150px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    }
-
-    .lang-menu-wrapper:hover .lang-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    }
-
-    .lang-dropdown button {
-    background: transparent;
-    border: none;
-    color: var(--text-dim);
-    padding: 0.5rem 1rem;
-    text-align: left;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    transition: all 0.3s;
-    font-family: 'Inter', sans-serif;
-    }
-
-    .lang-dropdown button:hover {
-    background: var(--primary);
-    color: var(--accent);
-    }
-
-    /* Translation Loading Spinner */
-    #translation-loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-
-    #translation-loading.active {
-    opacity: 1;
-    visibility: visible;
-    }
-
-    .spinner {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid var(--accent);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    margin-bottom: 1rem;
-    }
-
-    @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-    }
+
+        .floating-card h4 {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .floating-card p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Research Focus */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gradient-2));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .research-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .research-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .research-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-dim);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .research-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .research-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Publications */
+        .publications {
+            background: var(--secondary);
+        }
+
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .pub-item {
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 2rem;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .pub-item:hover {
+            border-color: var(--accent);
+        }
+
+        .pub-year {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            background: var(--accent-dim);
+            border-radius: 50px;
+        }
+
+        .pub-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-content p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .pub-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .pub-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), var(--gradient-2));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-left: -5px;
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        .timeline-content {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .company {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .edu-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .edu-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .edu-card .degree {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .edu-card .school {
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-card .edu-date {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .edu-card .edu-detail {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Pillar cards for mission section */
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .pillar-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gradient-2));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .pillar-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pillar-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .pillar-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .pillar-card p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-description {
+                margin: 0 auto 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .image-frame {
+                max-width: 280px;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .pub-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Language Toggle */
+        .lang-menu-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: var(--accent-dim);
+            border: 1px solid var(--accent);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 1rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .lang-menu-wrapper:hover .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-dropdown button {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            padding: 0.5rem 1rem;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .lang-dropdown button:hover {
+            background: var(--primary);
+            color: var(--accent);
+        }
+
+        /* Hide Google Translate Overlays */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        body {
+            top: 0px !important;
+        }
+
+        #goog-gt-tt {
+            display: none !important;
+        }
+
+        .goog-text-highlight {
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
     </style>
 </head>
 
 <body>
-    <div id="translation-loading">
-        <div class="spinner"></div>
-        <p style="color: var(--accent);">Translating using AI... this may take a moment.</p>
-    </div>
-
     <div class="bg-animation"></div>
 
     <nav>
@@ -897,10 +929,11 @@
             <div style="display: flex; align-items: center; gap: 2rem;">
                 <ul>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#vision">Vision</a></li>
                     <li><a href="#research">Research</a></li>
                     <li><a href="#publications">Publications</a></li>
                     <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="lang-menu-wrapper">
@@ -924,16 +957,16 @@
     <section class="hero" id="about">
         <div class="hero-container">
             <div class="hero-content">
-                <span class="hero-tag">Available for Research Collaboration</span>
+                <span class="hero-tag">Open to Collaboration & Opportunities</span>
                 <h1>Shengwei <span>You</span></h1>
-                <p class="hero-subtitle">AI Agent Security & Web3 Architecture Researcher</p>
+                <p class="hero-subtitle">Ph.D. Candidate & Data Scientist — DeFi × AI</p>
                 <p class="hero-description"
-                    style="font-size: 1.1rem; text-align: justify; max-width: 600px; line-height: 1.6; color: var(--text);">
-                    <strong style="color: var(--accent);">Ph.D. Candidate & Data Scientist</strong> specializing in the
-                    intersection of Decentralized Finance (DeFi) and Artificial Intelligence. <br><br>
-                    Expertise in architecting autonomous AI agents for on-chain quantitative research and protocol-level
-                    risk management. Proven ability to bridge advanced academic theory with practical application
-                    (Lecturer in Financial Computing, Python, ML) to solve complex DeFi challenges.
+                    style="font-size: 1.05rem; text-align: justify; max-width: 550px; line-height: 1.8;">
+                    I build autonomous AI agents that make decentralized finance safer and smarter. My work sits at the
+                    intersection of on-chain quantitative research and protocol-level risk management — turning advanced
+                    academic theory into systems that detect threats, stress-test reserves, and protect real capital.
+                    As a lecturer in Financial Computing, I also teach the next generation how to bridge
+                    Python, ML, and blockchain into practical tools for the future of finance.
                 </p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Get in Touch</a>
@@ -945,147 +978,70 @@
                     <img src="photo.jpg" alt="Shengwei You">
                 </div>
                 <div class="floating-card card-1">
-                    <h4>Current Focus</h4>
-                    <p>Stablecoin Security</p>
+                    <h4>Current Role</h4>
+                    <p>FinTech Lecturer, HKBU</p>
                 </div>
                 <div class="floating-card card-2">
-                    <h4>Research Area</h4>
-                    <p>AI Agent Safety</p>
+                    <h4>Focus</h4>
+                    <p>DeFi Risk & AI Agents</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="mission"
-        style="padding: 4rem 2rem; background: var(--secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-        <div class="container" style="max-width: 1200px;">
-            <div class="mission-dashboard fade-in"
-                style="background: var(--primary); border: 1px solid var(--border); border-radius: 24px; padding: 3rem; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+    <!-- What Drives Me — replaces the old todo-list mission section -->
+    <section id="vision"
+        style="padding: 5rem 2rem; background: var(--secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="container" style="max-width: 1100px;">
+            <div class="section-header fade-in" style="margin-bottom: 3rem;">
+                <span class="section-tag">Philosophy</span>
+                <h2 class="section-title">What Drives Me</h2>
+                <p class="section-subtitle">
+                    Every line of code I write is in service of one idea: decentralized systems and AI can — and should
+                    — make finance fairer for everyone.
+                </p>
+            </div>
 
-                <!-- Decorative gradient -->
-                <div
-                    style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle at 50% 0%, var(--accent-dim) 0%, transparent 40%); pointer-events: none; z-index: 0;">
+            <div class="pillar-grid">
+                <div class="pillar-card fade-in">
+                    <div class="pillar-icon">🛡️</div>
+                    <h3>Build for Resilience</h3>
+                    <p>Financial protocols should survive their worst day, not just their best. I design stress-testing
+                        frameworks and multi-agent simulations that expose vulnerabilities before markets do.</p>
                 </div>
-
-                <div style="position: relative; z-index: 1;">
-                    <div style="text-align: center; margin-bottom: 3.5rem;">
-                        <span class="section-tag" style="margin-bottom: 0.5rem;">Active Endeavors</span>
-                        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 1rem;">
-                            Current Projects
-                        </h2>
-                        <p style="color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
-                            Bridging the gap between bleeding-edge academic theory and real-world utility. Here's what
-                            I'm currently building to make autonomous finance safer and more accessible.
-                        </p>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-
-                        <!-- Project 1 -->
-                        <div style="background: var(--secondary); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; transition: all 0.3s;"
-                            class="task-card fade-in">
-                            <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
-                                <div
-                                    style="font-size: 2.5rem; background: var(--primary); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
-                                    🛡️</div>
-                                <div>
-                                    <h3 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Autonomous Stablecoin Risk
-                                        Simulator</h3>
-                                    <span
-                                        style="font-size: 0.8rem; color: var(--accent); background: var(--accent-dim); padding: 0.2rem 0.6rem; border-radius: 4px;">Dissertation
-                                        & Beyond</span>
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 1.5rem;">
-                                <h4
-                                    style="color: var(--text); font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                                    🎯 The Goal</h4>
-                                <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.6;">Build a
-                                    multi-agent framework capable of stress-testing stablecoins by simulating extreme
-                                    market panic and predicting cascading de-pegging events.</p>
-                            </div>
-                            <div>
-                                <h4
-                                    style="color: var(--text); font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                                    🌍 The Impact</h4>
-                                <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.6;">Prevents
-                                    catastrophic protocol collapses before they happen, effectively securing billions of
-                                    dollars in everyday user deposits and keeping decentralized finance a safe haven,
-                                    not a wild west.</p>
-                            </div>
-                        </div>
-
-                        <!-- Project 2 -->
-                        <div style="background: var(--secondary); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; transition: all 0.3s;"
-                            class="task-card fade-in">
-                            <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
-                                <div
-                                    style="font-size: 2.5rem; background: var(--primary); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
-                                    🔮</div>
-                                <div>
-                                    <h3 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Predictive On-Chain
-                                        Intelligence</h3>
-                                    <span
-                                        style="font-size: 0.8rem; color: #a55eea; background: rgba(165,94,234,0.1); padding: 0.2rem 0.6rem; border-radius: 4px;">Protocol
-                                        Consulting</span>
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 1.5rem;">
-                                <h4
-                                    style="color: var(--text); font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                                    🎯 The Goal</h4>
-                                <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.6;">Design
-                                    predictive machine learning pipelines (using Python, scikit-learn, and on-chain
-                                    datasets) to spot hidden systemic risks and malicious behavior in real-time.</p>
-                            </div>
-                            <div>
-                                <h4
-                                    style="color: var(--text); font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                                    🌍 The Impact</h4>
-                                <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.6;">Turns an ocean
-                                    of complex, noisy blockchain data into an early warning radar. It empowers
-                                    communities and liquidity providers to sleep well knowing algorithmic watchdogs are
-                                    on duty 24/7.</p>
-                            </div>
-                        </div>
-
-                        <!-- Project 3 -->
-                        <div style="background: var(--secondary); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; transition: all 0.3s;"
-                            class="task-card fade-in">
-                            <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;">
-                                <div
-                                    style="font-size: 2.5rem; background: var(--primary); padding: 1rem; border-radius: 12px; border: 1px solid var(--border);">
-                                    🎓</div>
-                                <div>
-                                    <h3 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Next-Gen FinTech Education
-                                    </h3>
-                                    <span
-                                        style="font-size: 0.8rem; color: #feca57; background: rgba(254,202,87,0.1); padding: 0.2rem 0.6rem; border-radius: 4px;">HKBU
-                                        Lectures</span>
-                                </div>
-                            </div>
-                            <div style="margin-bottom: 1.5rem;">
-                                <h4
-                                    style="color: var(--text); font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                                    🎯 The Goal</h4>
-                                <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.6;">Develop and
-                                    deliver a hands-on graduate curriculum focused on building and backtesting
-                                    quantitative trading models using cutting-edge deep learning and NLP.</p>
-                            </div>
-                            <div>
-                                <h4
-                                    style="color: var(--text); font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
-                                    🌍 The Impact</h4>
-                                <p style="color: var(--text-dim); font-size: 0.9rem; line-height: 1.6;">Democratizing
-                                    "quant-level" knowledge. I'm equipping the next wave of finance students and
-                                    builders with the exact tools needed to navigate and innovate the future of
-                                    autonomous finance.</p>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="pillar-card fade-in">
+                    <div class="pillar-icon">🔬</div>
+                    <h3>Bridge Theory & Practice</h3>
+                    <p>Academic insights are only valuable when they ship. I turn dissertation-level research into
+                        open-source tools, backtesting pipelines, and production-grade risk models.</p>
+                </div>
+                <div class="pillar-card fade-in">
+                    <div class="pillar-icon">🌍</div>
+                    <h3>Teach & Empower</h3>
+                    <p>From graduate lectures at HKBU to hackathon mentorship, I'm committed to making AI and blockchain
+                        knowledge accessible — helping others build with confidence and clarity.</p>
+                </div>
+                <div class="pillar-card fade-in">
+                    <div class="pillar-icon">🚀</div>
+                    <h3>Ship, Then Iterate</h3>
+                    <p>Perfectionism kills momentum. I believe in launching early, learning fast, and treating every
+                        failure as data. The best systems are forged through relentless iteration.</p>
                 </div>
             </div>
+
+            <!-- Inspiring quote -->
+            <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);"
+                class="fade-in">
+                <p
+                    style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: var(--text); margin-bottom: 0.5rem;">
+                    "The best time to plant a tree was twenty years ago. The second best time is now."
+                </p>
+                <p
+                    style="color: var(--accent); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+                    — Chinese Proverb
+                </p>
+            </div>
+
         </div>
     </section>
 
@@ -1100,39 +1056,39 @@
             </div>
             <div class="research-grid">
                 <div class="research-card fade-in">
-                    <div class="research-icon">🛡️</div>
-                    <h3>AI Agent Security</h3>
+                    <div class="research-icon">🤖</div>
+                    <h3>LLMs & Agentic AI</h3>
                     <p>
-                        Developing frameworks for securing autonomous AI agents in financial systems.
-                        Focus on prompt injection prevention, tool misuse detection, and secure
-                        multi-agent communication protocols.
+                        Autonomous Multi-Agent Systems for DeFi risk scoring. Retrieval-Augmented Generation (RAG),
+                        prompt engineering, and agent-driven trading simulators built on transformer architectures
+                        and time-series foundation models.
                     </p>
                 </div>
                 <div class="research-card fade-in">
                     <div class="research-icon">💰</div>
-                    <h3>Stablecoin Security</h3>
+                    <h3>Quantitative DeFi & Risk</h3>
                     <p>
-                        Analyzing depegging risks and security vulnerabilities in stablecoin protocols.
-                        Building ML models for predictive risk assessment and automated threat detection
-                        in DeFi ecosystems.
+                        Algorithmic trading strategies, AMM liquidity & slippage simulation,
+                        stablecoin economic/risk modeling, and on-chain data analysis & backtesting.
+                        Building ML models for predictive risk assessment in DeFi ecosystems.
                     </p>
                 </div>
                 <div class="research-card fade-in">
                     <div class="research-icon">🔗</div>
-                    <h3>Web3 Architecture</h3>
+                    <h3>DeFi Protocol Engineering</h3>
                     <p>
-                        Designing secure and scalable architectures for decentralized applications.
-                        Research on zero-knowledge proofs, smart contract security, and cross-chain
-                        interoperability solutions.
+                        Smart contract development & security review (Solidity / EVM).
+                        Protocol-level design, oracle & price-feed mechanics,
+                        cross-chain interoperability, bridge/router design, ZKP, and AMM architecture.
                     </p>
                 </div>
                 <div class="research-card fade-in">
-                    <div class="research-icon">🤖</div>
-                    <h3>Autonomous Systems</h3>
+                    <div class="research-icon">📊</div>
+                    <h3>Data Engineering & ML</h3>
                     <p>
-                        Exploring the integration of AI agents with blockchain technology.
-                        Developing methods for secure autonomous decision-making in financial
-                        and governance contexts.
+                        End-to-end data pipelines & ETL, web scraping, and API integration.
+                        Supervised & unsupervised learning, deep learning, NLP, time-series forecasting,
+                        and production-oriented analytics workflows.
                     </p>
                 </div>
             </div>
@@ -1239,17 +1195,17 @@
                 <span class="section-tag">Experience</span>
                 <h2 class="section-title">Professional Journey</h2>
                 <p class="section-subtitle">
-                    Research and industry experience in AI and blockchain security
+                    From open-source contributions at The Linux Foundation to lecturing FinTech at HKBU
                 </p>
             </div>
             <div class="timeline">
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
-                        <span class="timeline-date">Sept 2025 - Present</span>
+                        <span class="timeline-date">Sept 2025 – Present</span>
                         <h3>FinTech Lecturer</h3>
-                        <p class="company">School of Business, HKBU | Hong Kong</p>
+                        <p class="company">School of Business, Hong Kong Baptist University · Hong Kong</p>
                         <p>
-                            Developed and delivered graduate-level curriculum for Financial Computing. Instructing
+                            Developed and delivered graduate-level curriculum for Financial Computing, instructing
                             students on building and backtesting quantitative trading models using Python (NumPy,
                             Pandas, StatsModels) and machine learning (scikit-learn).
                         </p>
@@ -1257,39 +1213,80 @@
                 </div>
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
-                        <span class="timeline-date">Aug 2021 - Present</span>
+                        <span class="timeline-date">Aug 2021 – Present</span>
                         <h3>AI DeFi Protocol Consultant & AR Project Lead</h3>
-                        <p class="company">US / Hong Kong</p>
+                        <p class="company">Independent · US / Hong Kong</p>
                         <p>
                             Developing a multi-agent framework to simulate and enhance the resilience of stablecoin
-                            protocols. Designed predictive models to identify high-risk on-chain behaviors before they
-                            can be exploited. Prototyping AR solutions for an interior design industry leader.
+                            protocols, directly applying dissertation research. Designed and backtested predictive
+                            models using Python (scikit-learn) to identify high-risk on-chain behaviors and protocol
+                            vulnerabilities. Prototyping AR solutions for an interior design industry leader.
                         </p>
                     </div>
                 </div>
                 <div class="timeline-item fade-in">
                     <div class="timeline-content">
-                        <span class="timeline-date">Aug 2018 - Dec 2019</span>
-                        <h3>Graduate Student Researcher</h3>
-                        <p class="company">Purdue University, CSE | West Lafayette, IN</p>
-                        <p>
-                            Developed a secure Hierarchical-Deterministic (HD) wallet in Go, open-sourcing the project.
-                            Engineered an adversarial ML attack and presented findings to educate researchers on
-                            emerging CNN vulnerabilities.
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <span class="timeline-date">May 2019 - Aug 2019</span>
+                        <span class="timeline-date">May 2019 – Aug 2019</span>
                         <h3>Blockchain Full-Stack Engineer</h3>
-                        <p class="company">The Linux Foundation | San Francisco, CA</p>
+                        <p class="company">The Linux Foundation · San Francisco, CA</p>
                         <p>
-                            Empowered the Hyperledger community by leading the development of a real-time performance
-                            visualization dashboard for Fabric networks using the MERN stack. Authored comprehensive
-                            technical documentation for Caliper-CLI, drastically reducing developer onboarding time.
+                            Led development of a real-time performance visualization dashboard for Hyperledger Fabric
+                            networks using the MERN stack. Authored comprehensive technical documentation for
+                            Caliper-CLI, reducing developer onboarding time by ~30%. Presented at
+                            <a href="https://www.youtube.com/watch?v=MK7x87mUQOk" target="_blank"
+                                style="color: var(--accent); text-decoration: none;">Hyperledger Global Forum 2020</a>.
                         </p>
                     </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Aug 2018 – Dec 2019</span>
+                        <h3>Graduate Student Researcher</h3>
+                        <p class="company">Purdue University, CSE · West Lafayette, IN</p>
+                        <p>
+                            Developed a secure Hierarchical-Deterministic (HD) wallet in Go, open-sourcing the
+                            project for the developer community. Engineered an adversarial ML attack and presented
+                            findings to the university's cybersecurity community on emerging CNN vulnerabilities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" style="background: var(--secondary);">
+        <div class="container">
+            <div class="section-header fade-in">
+                <span class="section-tag">Education</span>
+                <h2 class="section-title">Academic Background</h2>
+            </div>
+            <div class="education-grid">
+                <div class="edu-card fade-in">
+                    <p class="degree">Ph.D., Computer Science</p>
+                    <p class="school">University of Notre Dame</p>
+                    <p class="edu-date">Est. Graduation: 2026 · South Bend, IN</p>
+                    <p class="edu-detail">
+                        Advisor: Jarek Nabrzyski. Dissertation: Modeled and simulated the economic risks and
+                        systemic trust failures in stablecoin protocols, designing novel mechanisms for
+                        trust-minimized interoperability. Architected a proof-of-concept multi-agent system for
+                        real-time stablecoin de-pegging risk scoring.
+                    </p>
+                </div>
+                <div class="edu-card fade-in">
+                    <p class="degree">M.S., Computer Science (InfoSec)</p>
+                    <p class="school">Purdue University</p>
+                    <p class="edu-date">2018 – 2019 · West Lafayette, IN</p>
+                    <p class="edu-detail">
+                        Focus on information security, cryptography, and adversarial machine learning.
+                    </p>
+                </div>
+                <div class="edu-card fade-in">
+                    <p class="degree">B.A., Mathematics (Applied ML, NLP)</p>
+                    <p class="school">University of Washington</p>
+                    <p class="edu-date">2014 – 2018 · Seattle, WA</p>
+                    <p class="edu-detail">
+                        Applied mathematics with a focus on machine learning and natural language processing.
+                    </p>
                 </div>
             </div>
         </div>
@@ -1300,52 +1297,65 @@
             <div class="section-header fade-in">
                 <span class="section-tag">Expertise</span>
                 <h2 class="section-title">Technical Skills</h2>
-                <p class="section-subtitle">
-                    Tools and technologies I work with
-                </p>
             </div>
             <div class="skills-grid">
                 <div class="skill-category fade-in">
+                    <h3>💻 Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Go</span>
+                        <span class="skill-tag">Rust</span>
+                        <span class="skill-tag">TypeScript / JS</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">Solidity</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category fade-in">
                     <h3>🤖 AI / ML & Data Science</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">PyTorch & TensorFlow</span>
-                        <span class="skill-tag">Scikit-learn</span>
-                        <span class="skill-tag">Pandas & NumPy</span>
-                        <span class="skill-tag">NLP</span>
-                        <span class="skill-tag">Time-Series Forecasting</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">scikit-learn</span>
+                        <span class="skill-tag">Pandas / NumPy</span>
                         <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">Time-Series</span>
+                        <span class="skill-tag">Feature Engineering</span>
                     </div>
                 </div>
                 <div class="skill-category fade-in">
                     <h3>🧠 LLMs & Agentic AI</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Transformer Models</span>
-                        <span class="skill-tag">Autonomous Multi-Agent Systems</span>
-                        <span class="skill-tag">RAG Pipelines</span>
                         <span class="skill-tag">Prompt Engineering</span>
-                        <span class="skill-tag">Agent-driven Simulators</span>
+                        <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">Multi-Agent Systems</span>
+                        <span class="skill-tag">Foundation Models</span>
+                        <span class="skill-tag">LLM Fine-tuning</span>
                     </div>
                 </div>
                 <div class="skill-category fade-in">
-                    <h3>� DeFi Engineering & Analytics</h3>
+                    <h3>🔗 DeFi & Web3</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Solidity & EVM</span>
-                        <span class="skill-tag">Smart Contract Security</span>
-                        <span class="skill-tag">Algorithmic Trading Strategies</span>
-                        <span class="skill-tag">AMM Liquidity Simulation</span>
-                        <span class="skill-tag">Cross-Chain & ZKP</span>
+                        <span class="skill-tag">Smart Contracts</span>
+                        <span class="skill-tag">EVM / Solidity</span>
+                        <span class="skill-tag">AMM Design</span>
                         <span class="skill-tag">Oracle Mechanics</span>
+                        <span class="skill-tag">ZKP</span>
+                        <span class="skill-tag">Cross-Chain</span>
+                        <span class="skill-tag">On-Chain Analytics</span>
                     </div>
                 </div>
                 <div class="skill-category fade-in">
-                    <h3>💻 Programming & Architecture</h3>
+                    <h3>⚙️ Data Engineering</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Python & TypeScript</span>
-                        <span class="skill-tag">Go & Rust</span>
-                        <span class="skill-tag">Java & C</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Data Pipelines & ETL</span>
+                        <span class="skill-tag">ETL Pipelines</span>
+                        <span class="skill-tag">Web Scraping</span>
                         <span class="skill-tag">API Integration</span>
+                        <span class="skill-tag">Backtesting</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">AR / VR</span>
                     </div>
                 </div>
             </div>
@@ -1358,18 +1368,21 @@
                 <span class="section-tag">Contact</span>
                 <h2>Let's Collaborate</h2>
                 <p>
-                    Interested in research collaboration, security consulting, or speaking opportunities?
+                    Interested in research collaboration, DeFi consulting, teaching, or speaking opportunities?
                     I'd love to hear from you.
                 </p>
                 <div class="contact-links">
                     <a href="mailto:shengwei.you@gmail.com" class="contact-link">
-                        <span>📧</span> Email
+                        <span>📧</span> shengwei.you@gmail.com
                     </a>
-                    <a href="https://linkedin.com/in/shengwei-you" target="_blank" class="contact-link">
+                    <a href="https://www.linkedin.com/in/shengwei-you/" target="_blank" class="contact-link">
                         <span>💼</span> LinkedIn
                     </a>
-                    <a href="https://twitter.com/Jason_you1995" class="contact-link">
-                        <span>🐦</span> Twitter/X
+                    <a href="https://github.com/Jasonyou1995" target="_blank" class="contact-link">
+                        <span>🐙</span> GitHub
+                    </a>
+                    <a href="tel:+85269542049" class="contact-link">
+                        <span>📱</span> (852) 6954-2049
                     </a>
                 </div>
             </div>
@@ -1381,123 +1394,43 @@
     </footer>
 
     <!-- Translation Engine & Logic -->
+    <div id="google_translate_element" style="display:none;"></div>
     <script type="text/javascript">
-        // Free translation API (MyMemory). Rate limits apply, hence local storage.
-        const API_URL = "https://api.mymemory.translated.net/get";
-
-        const langLabels = {
-            'en': 'EN', 'zh-CN': '简中', 'zh-TW': '繁中',
-            'es': 'ES', 'fr': 'FR', 'pt': 'PT', 'ru': 'RU'
-        };
-
-        const IGNORE_TAGS = new Set(['SCRIPT', 'STYLE', 'CODE', 'PRE']);
-
-        let targetLanguage = localStorage.getItem('site_language') || 'en';
-        let originalTexts = []; // Store references to original strings
-
         function updateLangBtn(lang) {
+            const labels = {
+                'en': 'EN', 'zh-CN': '简中', 'zh-TW': '繁中',
+                'es': 'ES', 'fr': 'FR', 'pt': 'PT', 'ru': 'RU'
+            };
             const btnText = document.querySelector('.lang-btn span');
-            if (btnText && langLabels[lang]) {
-                btnText.innerHTML = `🌐 ${langLabels[lang]}`;
+            if (btnText && labels[lang]) {
+                btnText.innerHTML = `🌐 ${labels[lang]}`;
             }
         }
 
-        // 1. Walk exactly through text nodes on page load to back up original HTML
-        function walkTextNodes(node, callback) {
-            let child, next;
-            switch (node.nodeType) {
-                case 1:  // Element
-                case 9:  // Document
-                case 11: // Document fragment
-                    if (IGNORE_TAGS.has(node.tagName)) break;
-                    child = node.firstChild;
-                    while (child) {
-                        next = child.nextSibling;
-                        walkTextNodes(child, callback);
-                        child = next;
-                    }
-                    break;
-                case 3: // Text node
-                    const text = node.nodeValue.trim();
-                    if (text && text.length > 1) { // Ignore empty or single-character strings
-                        callback(node);
-                    }
-                    break;
-            }
-        }
-
-        // Call immediately to store the english original strings
-        walkTextNodes(document.body, (node) => {
-            originalTexts.push({
-                node: node,
-                originalText: node.nodeValue
-            });
-        });
-
-        // Fetch translation from API and update local cache
-        async function fetchTranslation(text, targetLang) {
-            const cacheKey = `trans_${targetLang}_${text}`;
-            const cached = localStorage.getItem(cacheKey);
-
-            if (cached) return cached;
-            if (targetLang === 'en') return text;
-
-            try {
-                // Free API formatting
-                const res = await fetch(`${API_URL}?q=${encodeURIComponent(text)}&langpair=en|${targetLang}`);
-                const data = await res.json();
-
-                if (data.responseData && data.responseData.translatedText) {
-                    const translated = data.responseData.translatedText;
-                    // Dont cache error messages from api limit
-                    if (!translated.includes("MYMEMORY WARNING")) {
-                        localStorage.setItem(cacheKey, translated);
-                    }
-                    return translated;
-                }
-            } catch (err) {
-                console.error("Translation failed:", err);
-            }
-            return text; // Fallback to original
-        }
-
-        async function switchLang(langCode) {
-            if (langCode === targetLanguage) return;
-
-            targetLanguage = langCode;
-            localStorage.setItem('site_language', langCode);
-            updateLangBtn(langCode);
-
+        function switchLang(langCode) {
             if (langCode === 'en') {
-                // Restore original English texts instantly
-                originalTexts.forEach(item => {
-                    item.node.nodeValue = item.originalText;
-                });
-                return;
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.${location.hostname}; path=/;`;
+            } else {
+                document.cookie = `googtrans=/en/${langCode}; path=/`;
+                document.cookie = `googtrans=/en/${langCode}; domain=.${location.hostname}; path=/`;
             }
-
-            const loader = document.getElementById('translation-loading');
-            loader.classList.add('active');
-
-            // Batch translate everything on the page concurrently to save loading time
-            const promises = originalTexts.map(async (item) => {
-                const translated = await fetchTranslation(item.originalText, langCode);
-                item.node.nodeValue = translated;
-            });
-
-            await Promise.allSettled(promises);
-            loader.classList.remove('active');
+            window.location.reload();
         }
 
-        // On page load, if a language is selected, translate it
         window.addEventListener('DOMContentLoaded', () => {
-            updateLangBtn(targetLanguage);
-            if (targetLanguage !== 'en') {
-                // Use setTimeout to allow browser to draw English first, then translate over
-                setTimeout(() => switchLang(targetLanguage), 100);
+            const match = document.cookie.match(/googtrans=\/en\/([^;]+)/);
+            if (match) {
+                updateLangBtn(match[1]);
             }
         });
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: false }, 'google_translate_element');
+        }
     </script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         // Scroll animations
