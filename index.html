@@ -730,6 +730,96 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
+
+        /* Language Toggle */
+        .lang-menu-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: var(--accent-dim);
+            border: 1px solid var(--accent);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 1rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .lang-menu-wrapper:hover .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-dropdown button {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            padding: 0.5rem 1rem;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .lang-dropdown button:hover {
+            background: var(--primary);
+            color: var(--accent);
+        }
+
+        /* Hide Google Translate Overlays */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        body {
+            top: 0px !important;
+        }
+
+        #goog-gt-tt {
+            display: none !important;
+        }
+
+        .goog-text-highlight {
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
     </style>
 </head>
 
@@ -739,14 +829,30 @@
     <nav>
         <div class="container">
             <div class="logo">SY.</div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#mission">Mission</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="lang-menu-wrapper">
+                    <button class="lang-btn">
+                        <span>🌐 EN</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <button onclick="switchLang('en')">English</button>
+                        <button onclick="switchLang('zh-CN')">简体中文</button>
+                        <button onclick="switchLang('zh-TW')">繁體中文</button>
+                        <button onclick="switchLang('es')">Español</button>
+                        <button onclick="switchLang('fr')">Français</button>
+                        <button onclick="switchLang('pt')">Português</button>
+                        <button onclick="switchLang('ru')">Русский</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -1242,6 +1348,45 @@
     <footer>
         <p>© 2026 Shengwei You. All rights reserved.</p>
     </footer>
+
+    <!-- Translation Engine & Logic -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function updateLangBtn(lang) {
+            const labels = {
+                'en': 'EN', 'zh-CN': '简中', 'zh-TW': '繁中',
+                'es': 'ES', 'fr': 'FR', 'pt': 'PT', 'ru': 'RU'
+            };
+            const btnText = document.querySelector('.lang-btn span');
+            if (btnText && labels[lang]) {
+                btnText.innerHTML = `🌐 ${labels[lang]}`;
+            }
+        }
+
+        function switchLang(langCode) {
+            if (langCode === 'en') {
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.${location.hostname}; path=/;`;
+            } else {
+                document.cookie = `googtrans=/en/${langCode}; path=/`;
+                document.cookie = `googtrans=/en/${langCode}; domain=.${location.hostname}; path=/`;
+            }
+            window.location.reload();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const match = document.cookie.match(/googtrans=\/en\/([^;]+)/);
+            if (match) {
+                updateLangBtn(match[1]);
+            }
+        });
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', autoDisplay: false }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         // Scroll animations
