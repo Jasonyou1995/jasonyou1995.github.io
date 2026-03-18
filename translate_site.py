@@ -21,11 +21,21 @@ except ImportError:
 
 DEFAULT_LANGUAGES = ["zh-CN", "zh-TW", "es", "fr", "pt", "ru"]
 DEFAULT_SOURCE_FILE = "index.html"
+DEFAULT_NAMES_FILE = "names.txt"
 ENV_FILE = ".env"
 LANG_MAP_JS_TOKEN = "const LANG_PAGE_MAP = {"
 SKIP_PARENTS = {"script", "style", "noscript"}
 MAX_RETRIES = 3
 REQUEST_TIMEOUT_SECONDS = 60
+PROTECTED_TOKEN_PREFIX = "__PROTECTED_TERM_"
+DEFAULT_PROTECTED_TERMS = [
+    "Shengwei You",
+    "Andrey Kuehlkamp",
+    "Jarek Nabrzyski",
+    "Kristina Radivojevic",
+    "Paul Brenner",
+    "Aditya Joshi",
+]
 
 
 @dataclass
@@ -53,6 +63,11 @@ def parse_args() -> argparse.Namespace:
         "--languages",
         default=",".join(DEFAULT_LANGUAGES),
         help="Comma-separated language codes (e.g. zh-CN,es,fr).",
+    )
+    parser.add_argument(
+        "--names-file",
+        default=DEFAULT_NAMES_FILE,
+        help="Optional newline-delimited protected terms file (default: names.txt).",
     )
     parser.add_argument(
         "--deepseek-model",
@@ -88,6 +103,47 @@ def load_env(env_path: Path) -> None:
 
 def normalize_whitespace(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
+
+
+def load_protected_terms(file_path: Path) -> List[str]:
+    terms = list(DEFAULT_PROTECTED_TERMS)
+    if file_path.exists():
+        for raw_line in file_path.read_text(encoding="utf-8").splitlines():
+            candidate = raw_line.strip()
+            if not candidate or candidate.startswith("#"):
+                continue
+            terms.append(candidate)
+
+    unique_terms = []
+    seen = set()
+    for term in terms:
+        if term in seen:
+            continue
+        seen.add(term)
+        unique_terms.append(term)
+
+    return sorted(unique_terms, key=len, reverse=True)
+
+
+def protect_terms(text: str, protected_terms: List[str]) -> tuple[str, Dict[str, str]]:
+    protected_text = text
+    token_map: Dict[str, str] = {}
+    token_index = 0
+    for term in protected_terms:
+        if term not in protected_text:
+            continue
+        token = f"{PROTECTED_TOKEN_PREFIX}{token_index}__"
+        protected_text = protected_text.replace(term, token)
+        token_map[token] = term
+        token_index += 1
+    return protected_text, token_map
+
+
+def restore_terms(text: str, token_map: Dict[str, str]) -> str:
+    restored_text = text
+    for token, term in token_map.items():
+        restored_text = restored_text.replace(token, term)
+    return restored_text
 
 
 def should_translate(text: str) -> bool:
@@ -317,6 +373,7 @@ def main() -> None:
 
     source_html = source_path.read_text(encoding="utf-8")
     source_html = inject_lang_map(source_html, language_codes)
+    protected_terms = load_protected_terms(root_dir / args.names_file)
     if BeautifulSoup is None:
         raise ImportError("Missing dependency: beautifulsoup4. Install with `pip install -r requirements.txt`.")
     soup = BeautifulSoup(source_html, "html.parser")
@@ -328,6 +385,14 @@ def main() -> None:
         return
 
     unique_texts = sorted({item.value for item in items})
+    protected_inputs: Dict[str, str] = {}
+    token_maps: Dict[str, Dict[str, str]] = {}
+    for text in unique_texts:
+        normalized_text = normalize_whitespace(text)
+        protected_text, token_map = protect_terms(normalized_text, protected_terms)
+        protected_inputs[text] = protected_text
+        token_maps[text] = token_map
+    unique_protected_texts = sorted({value for value in protected_inputs.values()})
     print(f"Found {len(items)} translatable nodes ({len(unique_texts)} unique).")
 
     for lang_code in language_codes:
@@ -337,14 +402,22 @@ def main() -> None:
             continue
 
         if args.provider == "google_free":
-            translation_cache = translate_with_google_free(unique_texts, lang_code)
+            protected_translation_cache = translate_with_google_free(unique_protected_texts, lang_code)
         elif args.provider == "deepseek":
-            translation_cache = translate_with_llm(
-                unique_texts, lang_code, provider="deepseek", model=args.deepseek_model
+            protected_translation_cache = translate_with_llm(
+                unique_protected_texts, lang_code, provider="deepseek", model=args.deepseek_model
             )
         else:
-            translation_cache = translate_with_llm(
-                unique_texts, lang_code, provider="anthropic", model=args.anthropic_model
+            protected_translation_cache = translate_with_llm(
+                unique_protected_texts, lang_code, provider="anthropic", model=args.anthropic_model
+            )
+
+        translation_cache: Dict[str, str] = {}
+        for source_text in unique_texts:
+            protected_source = protected_inputs[source_text]
+            translated_protected = protected_translation_cache[protected_source]
+            translation_cache[source_text] = restore_terms(
+                translated_protected, token_maps[source_text]
             )
 
         translated_map = {item.key: translation_cache[item.value] for item in items}

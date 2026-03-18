@@ -1,0 +1,26 @@
+Shengwei You
+Andrey Kuehlkamp
+Jarek Nabrzyski
+Kristina Radivojevic
+Paul Brenner
+Aditya Joshi
+Hong Kong Baptist University
+University of Notre Dame
+Purdue University
+University of Washington
+The Linux Foundation
+Hyperledger Fabric
+Hyperledger Global Forum
+LangChain
+n8n
+Kimi OpenClaw
+OpenClaw
+Web3.py
+Web3.js
+Brownie
+MVF-Composer
+OPC
+DeFi
+MERN
+Caliper-CLI
+HKBU

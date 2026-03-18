@@ -43,3 +43,14 @@ python3 translate_site.py --provider google_free --languages zh-CN,zh-TW,es,fr,p
 ```
 
 The script outputs static files like `index.zh-CN.html`, `index.es.html`, etc.
+
+## 4) Preserve names and proper nouns
+
+Add one protected term per line in `names.txt` (for example: personal names, institutions, tools).
+These terms are preserved during translation. If `names.txt` is missing or lines are omitted, built-in defaults are used.
+
+Use a custom file if needed:
+
+```bash
+python3 translate_site.py --provider google_free --names-file names.txt
+```
