@@ -25,8 +25,8 @@ DEFAULT_NAMES_FILE = "names.txt"
 ENV_FILE = ".env"
 LANG_MAP_JS_TOKEN = "const LANG_PAGE_MAP = {"
 SKIP_PARENTS = {"script", "style", "noscript"}
-MAX_RETRIES = 3
-REQUEST_TIMEOUT_SECONDS = 60
+MAX_RETRIES = 2
+REQUEST_TIMEOUT_SECONDS = 15
 PROTECTED_TOKEN_PREFIX = "__PROTECTED_TERM_"
 DEFAULT_PROTECTED_TERMS = [
     "Shengwei You",
@@ -321,18 +321,44 @@ def translate_with_llm(
 
 
 def translate_with_google_free(unique_texts: List[str], lang_code: str) -> Dict[str, str]:
-    try:
-        from deep_translator import GoogleTranslator
-    except ImportError as exc:
-        raise ImportError(
-            "Missing dependency: deep-translator. Install with `pip install -r requirements.txt`."
-        ) from exc
+    if requests is None:
+        raise ImportError("Missing dependency: requests. Install with `pip install -r requirements.txt`.")
 
-    translator = GoogleTranslator(source="en", target=lang_code)
+    def translate_single_with_timeout(text: str) -> str:
+        endpoint = "https://translate.googleapis.com/translate_a/single"
+        params = {
+            "client": "gtx",
+            "sl": "en",
+            "tl": lang_code,
+            "dt": "t",
+            "q": text,
+        }
+        for attempt in range(1, MAX_RETRIES + 1):
+            try:
+                response = requests.get(
+                    endpoint,
+                    params=params,
+                    timeout=REQUEST_TIMEOUT_SECONDS,
+                )
+                response.raise_for_status()
+                payload = response.json()
+                chunks = payload[0] if isinstance(payload, list) and payload else []
+                translated_parts = [
+                    str(chunk[0]) for chunk in chunks if isinstance(chunk, list) and chunk
+                ]
+                translated_text = "".join(translated_parts).strip()
+                if translated_text:
+                    return translated_text
+            except Exception:
+                if attempt == MAX_RETRIES:
+                    return text
+                time.sleep(attempt * 1.5)
+        return text
+
     translated: Dict[str, str] = {}
     for text in unique_texts:
         cleaned = normalize_whitespace(text)
-        translated_value = translator.translate(cleaned)
+        translated_value = translate_single_with_timeout(cleaned)
         translated[text] = translated_value
     return translated
 
