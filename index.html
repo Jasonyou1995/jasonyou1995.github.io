@@ -882,20 +882,21 @@
             transform: translateY(0);
         }
 
-        .lang-dropdown button {
+        .lang-dropdown a.lang-link {
+            display: block;
             background: transparent;
             border: none;
             color: var(--text-dim);
             padding: 0.5rem 1rem;
             text-align: left;
-            cursor: pointer;
+            text-decoration: none;
             border-radius: 8px;
             font-size: 0.9rem;
             transition: all 0.3s;
             font-family: 'Inter', sans-serif;
         }
 
-        .lang-dropdown button:hover {
+        .lang-dropdown a.lang-link:hover {
             background: var(--primary);
             color: var(--accent);
         }
@@ -941,13 +942,13 @@
                         <span>🌐 EN</span>
                     </button>
                     <div class="lang-dropdown">
-                        <button onclick="switchLang('en')">English</button>
-                        <button onclick="switchLang('zh-CN')">简体中文</button>
-                        <button onclick="switchLang('zh-TW')">繁體中文</button>
-                        <button onclick="switchLang('es')">Español</button>
-                        <button onclick="switchLang('fr')">Français</button>
-                        <button onclick="switchLang('pt')">Português</button>
-                        <button onclick="switchLang('ru')">Русский</button>
+                        <a href="index.html" class="lang-link">English</a>
+                        <a href="index.zh-CN.html" class="lang-link">简体中文</a>
+                        <a href="index.zh-TW.html" class="lang-link">繁體中文</a>
+                        <a href="index.es.html" class="lang-link">Español</a>
+                        <a href="index.fr.html" class="lang-link">Français</a>
+                        <a href="index.pt.html" class="lang-link">Português</a>
+                        <a href="index.ru.html" class="lang-link">Русский</a>
                     </div>
                 </div>
             </div>
