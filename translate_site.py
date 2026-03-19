@@ -25,8 +25,8 @@ DEFAULT_NAMES_FILE = "names.txt"
 ENV_FILE = ".env"
 LANG_MAP_JS_TOKEN = "const LANG_PAGE_MAP = {"
 SKIP_PARENTS = {"script", "style", "noscript"}
-MAX_RETRIES = 2
-REQUEST_TIMEOUT_SECONDS = 15
+MAX_RETRIES = 1
+REQUEST_TIMEOUT_SECONDS = 3
 PROTECTED_TOKEN_PREFIX = "__PROTECTED_TERM_"
 DEFAULT_PROTECTED_TERMS = [
     "Shengwei You",
@@ -153,6 +153,18 @@ def should_translate(text: str) -> bool:
     return bool(re.search(r"[A-Za-z]", candidate))
 
 
+def has_non_translatable_ancestor(node) -> bool:
+    parent = node.parent
+    while parent is not None:
+        parent_classes = parent.get("class", []) if hasattr(parent, "get") else []
+        if "notranslate" in parent_classes:
+            return True
+        if hasattr(parent, "get") and parent.get("translate") == "no":
+            return True
+        parent = parent.parent
+    return False
+
+
 def collect_translatable_items(soup: BeautifulSoup) -> List[TranslationItem]:
     items: List[TranslationItem] = []
     node_index = 0
@@ -160,6 +172,8 @@ def collect_translatable_items(soup: BeautifulSoup) -> List[TranslationItem]:
     for node in soup.find_all(string=True):
         parent = node.parent
         if parent and parent.name in SKIP_PARENTS:
+            continue
+        if has_non_translatable_ancestor(node):
             continue
         raw_text = str(node)
         if not should_translate(raw_text):

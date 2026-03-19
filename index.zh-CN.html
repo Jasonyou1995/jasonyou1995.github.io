@@ -1,0 +1,1308 @@
+html
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shengwei You | AI 代理和 Web3 架构</title>
+<meta content="首席 AI 系统和定量 DeFi 架构师。拥有代理编排、高频跨链套利、确定性风险管理和 Web3 基础设施方面的专业知识。" name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --primary: #0a0a0f;
+            --secondary: #12121a;
+            --accent: #00d4aa;
+            --accent-dim: #00d4aa20;
+            --text: #e2e2e8;
+            --text-dim: #6b6b7b;
+            --border: #1e1e2e;
+            --gradient-1: #00d4aa;
+            --gradient-2: #3b82f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 20% 80%, var(--accent-dim) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes bgFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-2%, 2%) rotate(1deg);
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 3rem;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--accent), var(--gradient-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--text);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--accent-dim);
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 .surname {
+            background: linear-gradient(135deg, var(--accent), var(--gradient-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            background: #00b894;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Hero Image */
+        .hero-image {
+            position: relative;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .image-frame {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            margin: 0 auto;
+        }
+
+        .image-frame::before {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            background: linear-gradient(135deg, var(--accent), var(--gradient-2));
+            border-radius: 20px;
+            opacity: 0.3;
+            filter: blur(20px);
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            backdrop-filter: blur(10px);
+            z-index: 2;
+        }
+
+        .card-1 {
+            top: 10%;
+            right: -20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .card-2 {
+            bottom: 15%;
+            left: -30px;
+            animation: float 6s ease-in-out infinite 1s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating-card h4 {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.25rem;
+        }
+
+        .floating-card p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Research Focus */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .research-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gradient-2));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .research-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .research-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .research-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-dim);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .research-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .research-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Publications */
+        .publications {
+            background: var(--secondary);
+        }
+
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .pub-item {
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 2rem;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .pub-item:hover {
+            border-color: var(--accent);
+        }
+
+        .pub-year {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            background: var(--accent-dim);
+            border-radius: 50px;
+        }
+
+        .pub-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-content p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .pub-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .pub-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent), var(--gradient-2));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-left: -5px;
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        .timeline-content {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content .company {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Education */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .edu-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .edu-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .edu-card .degree {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .edu-card .school {
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-card .edu-date {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .edu-card .edu-detail {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            background: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Pillar cards for mission section */
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .pillar-card {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--gradient-2));
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .pillar-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pillar-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .pillar-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .pillar-card p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-description {
+                margin: 0 auto 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .image-frame {
+                max-width: 280px;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .pub-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Language Toggle */
+        .lang-menu-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: var(--accent-dim);
+            border: 1px solid var(--accent);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .lang-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 1rem;
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .lang-menu-wrapper:hover .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-dropdown button {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            padding: 0.5rem 1rem;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .lang-dropdown button:hover {
+            background: var(--primary);
+            color: var(--accent);
+        }
+
+        /* Hide Google Translate Overlays */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        body {
+            top: 0px !important;
+        }
+
+        #goog-gt-tt {
+            display: none !important;
+        }
+
+        .goog-text-highlight {
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+<body>
+<div class="bg-animation"></div>
+<nav>
+<div class="container">
+<div class="logo">SY。</div>
+<div style="display: flex; align-items: center; gap: 2rem;">
+<ul>
+<li><a href="#about">关于</a></li>
+<li><a href="#vision">想象</a></li>
+<li><a href="#research">能力</a></li>
+<li><a href="#publications">刊物</a></li>
+<li><a href="#experience">经验</a></li>
+<li><a href="#education">教育</a></li>
+<li><a href="#contact">接触</a></li>
+</ul>
+<div class="lang-menu-wrapper">
+<button class="lang-btn">
+<span>🌐 CN</span>
+</button>
+<div class="lang-dropdown">
+<button onclick="switchLang('en')">英语</button>
+<button onclick="switchLang('zh-CN')">简体中文</button>
+<button onclick="switchLang('zh-TW')">繁體中文</button>
+<button onclick="switchLang('es')">西班牙语</button>
+<button onclick="switchLang('fr')">法国人</button>
+<button onclick="switchLang('pt')">葡萄牙语</button>
+<button onclick="switchLang('ru')">Русский</button>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<section class="hero" id="about">
+<div class="hero-container">
+<div class="hero-content">
+<span class="hero-tag">开放合作和机会</span>
+<h1><span class="notranslate">Shengwei <span class="surname">You</span> · 游盛巍</span></h1>
+<p class="hero-subtitle">首席 AI 系统和定量 DeFi 架构师</p>
+<p class="hero-description" style="font-size: 1.05rem; text-align: justify; max-width: 550px; line-height: 1.8;">我构建了自主人工智能代理和零人工管道，从去中心化市场中提取价值，从高频跨链套利引擎到无需人工干预的确定性风险执行。作为金融科技讲师和博士。作为候选人，我将尖端研究与交付的生产级系统联系起来。</p>
+<div class="hero-buttons">
+<a class="btn btn-primary" href="#contact">联系我们</a>
+<a class="btn btn-secondary" href="#publications">查看出版物</a>
+</div>
+</div>
+<div class="hero-image">
+<div class="image-frame">
+<img alt="Shengwei You (游盛巍)" src="photo.png"/>
+</div>
+<div class="floating-card card-1">
+<h4>目前的角色</h4>
+<p>AI DeFi 建筑师，OPC</p>
+</div>
+<div class="floating-card card-2">
+<h4>重点</h4>
+<p>代理 AI × 定量 DeFi</p>
+</div>
+</div>
+</div>
+</section>
+What Drives Me — 取代了旧的待办事项列表任务部分
+<section id="vision" style="padding: 5rem 2rem; background: var(--secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<div class="container" style="max-width: 1100px;">
+<div class="section-header fade-in" style="margin-bottom: 3rem;">
+<span class="section-tag">哲学</span>
+<h2 class="section-title">是什么驱使我</h2>
+<p class="section-subtitle">我编写的每一行代码都服务于一个想法：去中心化系统和人工智能可以而且应该让金融对每个人都更加公平。</p>
+</div>
+<div class="pillar-grid">
+<div class="pillar-card fade-in">
+<div class="pillar-icon">⚡</div>
+<h3>一切自动化</h3>
+<p>零人力管道是最终目标。我构建的系统可以摄取链上数据、执行策略并强制执行风险——所有这些都不需要任何手动步骤。</p>
+</div>
+<div class="pillar-card fade-in">
+<div class="pillar-icon">🔬</div>
+<h3>研究成果</h3>
+<p>学术见解只有在投入生产时才有价值。我将论文级别的研究转化为开源工具、回测引擎和实时交易系统。</p>
+</div>
+<div class="pillar-card fade-in">
+<div class="pillar-icon">🌍</div>
+<h3>教学与赋能</h3>
+<p>从 HKBU 的研究生讲座到领先的黑客马拉松（2025 年香港共识获胜者），我让人工智能和区块链知识变得易于理解且可操作。</p>
+</div>
+<div class="pillar-card fade-in">
+<div class="pillar-icon">🚀</div>
+<h3>交付，然后迭代</h3>
+<p>完美主义会扼杀动力。尽早启动，快速学习，将每次失败视为数据。最好的系统是通过不懈的迭代打造出来的。</p>
+</div>
+</div>
+鼓舞人心的名言
+<div class="fade-in" style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+<p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: var(--text); margin-bottom: 0.5rem;">“种一棵树最好的时机是二十年前，其次是现在。”</p>
+<p style="color: var(--accent); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">——中国谚语</p>
+</div>
+</div>
+</section>
+<section id="research">
+<div class="container">
+<div class="section-header fade-in">
+<span class="section-tag">核心能力</span>
+<h2 class="section-title">AI 代理和 Web3 架构</h2>
+<p class="section-subtitle">构建自主、零人的系统，在去中心化市场中提取价值并加强风险</p>
+</div>
+<div class="research-grid">
+<div class="research-card fade-in">
+<div class="research-icon">🤖</div>
+<h3>代理编排</h3>
+<p>LangChain、n8n、Kimi OpenClaw、自治多代理系统 (MAS) 和执行即服务 (EaaS) 架构，可自主审查智能合约、运行模拟并强制链上执行。</p>
+</div>
+<div class="research-card fade-in">
+<div class="research-icon">📈</div>
+<h3>量化与算法交易</h3>
+<p>Python（Web3.py / Brownie）、Web3.js、高频跨链套利引擎、资金费率套利、AMM滑点模拟、链上数据分析和回测。</p>
+</div>
+<div class="research-card fade-in">
+<div class="research-icon">🛡️</div>
+<h3>确定性风险</h3>
+<p>由 OpenClaw 确定性逻辑强制执行自动化风险管理。算法阈值执行、实时回撤保护和零人为覆盖执行协议。</p>
+</div>
+<div class="research-card fade-in">
+<div class="research-icon">⛓️</div>
+<h3>Web3 基础设施</h3>
+<p>协议级设计、智能合约托管（Solidity / Rust）、加密身份安全、零人自动化管道和跨链互操作架构。</p>
+</div>
+</div>
+<div class="section-header fade-in" style="margin-top: 6rem; margin-bottom: 2rem;">
+<span class="section-tag">目前的工作</span>
+<h3 class="section-title" style="font-size: 2.5rem;">MVF-Composer</h3>
+</div>
+<div class="research-card fade-in" style="padding: 3rem;">
+<p style="color: var(--text-dim); font-size: 1.05rem; line-height: 1.8; text-align: justify;">
+<strong>抽象的 -</strong>当算法稳定币储备控制器在忽略尾部事件的同时根据晴天数据进行校准时，很容易受到机制盲目优化的影响。 2020 年 3 月的“黑色星期四”崩盘（损失 830 万美元，挂钩偏差 15%）暴露了一个关键漏洞：稳定聚合稳定币 (SAS) 等模型系统性地忽略了协方差估计中的极端波动性，产生的配置在预期中是最优的，但在压力下却是灾难性的。为了解决这一差距，我们提出了MVF-Composer，一种信任加权均值方差前沿控制器，结合了用于风险状态估计的压力线束。压力线束驱动多代理模拟，充当对抗性压力测试器：异构代理在危机场景下执行协议操作，在漏洞在链上显现之前将其暴露出来。互补的信任评分机制减轻了操纵主体的权重，确保抵御对抗性影响的稳健性。<br/><br/>在 1,200 种黑天鹅冲击场景中，与 SAS 相比，MVF-Composer 将峰值挂钩偏差减少了 57%，恢复时间缩短了 3.1 倍。信任层占稳定性收益的 23%。该系统在商用硬件上运行，并提供可重复的框架，用于对尾部风险的DeFi 储备进行压力测试。<br/><br/>
+<em>索引术语——算法稳定币、去中心化金融、基于代理的模拟、压力测试、风险管理、均值方差优化</em>
+</p>
+</div>
+</div>
+</section>
+<section class="publications" id="publications">
+<div class="container">
+<div class="section-header fade-in">
+<span class="section-tag">刊物</span>
+<h2 class="section-title">最近的工作</h2>
+<p class="section-subtitle">选定的出版物和研究成果</p>
+</div>
+<div class="pub-list">
+<div class="pub-item fade-in">
+<span class="pub-year">2026</span>
+<div class="pub-content">
+<h3 style="margin-bottom: 0.8rem; line-height: 1.4;">使用适配器签名和人工智能驱动的套利的跨链数字资产混合稳定协议</h3>
+<p style="margin-bottom: 0.5rem; font-size: 0.95rem;">本书章节|数字编号：<a href="https://doi.org/10.1007/978-3-032-00495-6_8" style="color: var(--accent); text-decoration: none;" target="_blank">10.1007/978-3-032-00495-6_8</a></p>
+<p style="font-size: 0.9rem; color: var(--text);">贡献者：Shengwei You； Andrey Kuehlkamp； Jarek Nabrzyski</p>
+<p style="font-size: 0.85rem; color: var(--text-dim);">引用关键词：<code>you2026_hybrid_stabilization</code></p>
+</div>
+</div>
+<div class="pub-item fade-in">
+<span class="pub-year">2024</span>
+<div class="pub-content">
+<h3 style="margin-bottom: 0.8rem; line-height: 1.4;">Persona 保留声誉协议 (P2RP)，用于增强区块链预言机的安全性、隐私性和信任度</h3>
+<p style="margin-bottom: 0.5rem; font-size: 0.95rem;">集群计算，期刊文章 |数字编号：<a href="https://doi.org/10.1007/s10586-023-04222-4" style="color: var(--accent); text-decoration: none;" target="_blank">10.1007/s10586-023-04222-4</a></p>
+<p style="font-size: 0.9rem; color: var(--text);">贡献者：Shengwei You； Kristina Radivojevic； Jarek Nabrzyski； Paul Brenner</p>
+<p style="font-size: 0.85rem; color: var(--text-dim);">引用关键词：<code>you2024_p2rp</code></p>
+</div>
+</div>
+<div class="pub-item fade-in">
+<span class="pub-year">2023</span>
+<div class="pub-content">
+<h3 style="margin-bottom: 0.8rem; line-height: 1.4;">挖掘去中心化应用程序中的用户行为以进行区块链信任和安全分析</h3>
+<p style="margin-bottom: 0.5rem; font-size: 0.95rem;">2023第五届区块链计算与应用国际会议（BCCA）|数字编号：<a href="https://doi.org/10.1109/bcca58897.2023.10338860" style="color: var(--accent); text-decoration: none;" target="_blank">10.1109/bcca58897.2023.10338860</a>
+</p>
+<p style="font-size: 0.9rem; color: var(--text);">贡献者：Shengwei You； Aditya Joshi； Andrey Kuehlkamp； Jarek Nabrzyski</p>
+<p style="font-size: 0.85rem; color: var(--text-dim);">引用关键词：<code>you2023_mining_user_behavior</code></p>
+</div>
+</div>
+<div class="pub-item fade-in">
+<span class="pub-year">2022</span>
+<div class="pub-content">
+<h3 style="margin-bottom: 0.8rem; line-height: 1.4;">区块链应用背景下的信任</h3>
+<p style="margin-bottom: 0.5rem; font-size: 0.95rem;">2022年第四届区块链计算与应用国际会议（BCCA）|数字编号：<a href="https://doi.org/10.1109/bcca55292.2022.9922068" style="color: var(--accent); text-decoration: none;" target="_blank">10.1109/bcca55292.2022.9922068</a>
+</p>
+<p style="font-size: 0.9rem; color: var(--text);">贡献者：Shengwei You； Kristina Radivojevic； Jarek Nabrzyski； Paul Brenner</p>
+<p style="font-size: 0.85rem; color: var(--text-dim);">引用关键词：<code>you2022_trust_context_blockchain</code></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="experience">
+<div class="container">
+<div class="section-header fade-in">
+<span class="section-tag">经验</span>
+<h2 class="section-title">专业之旅</h2>
+<p class="section-subtitle">从 The Linux Foundation 的开源贡献到构建零人类 DeFi 系统</p>
+</div>
+<div class="timeline">
+<div class="timeline-item fade-in">
+<div class="timeline-content">
+<span class="timeline-date">2024 年 8 月 – 至今</span>
+<h3>首席 AI 系统和定量 DeFi 架构师</h3>
+<p class="company">独立OPC · 香港</p>
+<p>利用 n8n + LangChain MAS 设计了一个人工智能执行的 DeFi 动作模拟器，以自主执行智能合约代码审查、滑点模拟和链上交易。使用Python（Web3.py）和Web3.js构建了高频跨链套利引擎。通过 OpenClaw 逻辑构建确定性风险协议，以零人为干预执行最大每日回撤限制。设计端到端数据管道，用于实时链上分析和策略优化。</p>
+</div>
+</div>
+<div class="timeline-item fade-in">
+<div class="timeline-content">
+<span class="timeline-date">2025 年 9 月 – 至今</span>
+<h3>金融科技讲师</h3>
+<p class="company">商学院，Hong Kong Baptist University · 香港</p>
+<p>开发并提供研​​究生水平的金融计算课程，指导学生使用 Python（NumPy、pandas、StatsModels）和机器学习 (scikit-learn) 构建和回测量化交易模型。</p>
+</div>
+</div>
+<div class="timeline-item fade-in">
+<div class="timeline-content">
+<span class="timeline-date">2019 年 5 月 – 2019 年 8 月</span>
+<h3>区块链全栈工程师</h3>
+<p class="company">The Linux Foundation · 加利福尼亚州旧金山</p>
+<p>使用 MERN 堆栈领导为 Hyperledger Fabric 网络开发实时性能可视化仪表板。为 Caliper-CLI 撰写了全面的技术文档，将开发人员的入职时间减少了约 30%。发表于<a href="https://www.youtube.com/watch?v=MK7x87mUQOk" style="color: var(--accent); text-decoration: none;" target="_blank">Hyperledger Global Forum 2020 年</a>.
+                        </p>
+</div>
+</div>
+<div class="timeline-item fade-in">
+<div class="timeline-content">
+<span class="timeline-date">2018 年 8 月 – 2019 年 12 月</span>
+<h3>研究生研究员</h3>
+<p class="company">Purdue University，CSE · 印第安纳州西拉斐特</p>
+<p>使用 Go 开发了安全的分层确定性 (HD) 钱包，并为开发者社区开源了该项目。设计了针对 CNN 的对抗性机器学习攻击，并向大学网络安全社区展示了研究结果。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="education" style="background: var(--secondary);">
+<div class="container">
+<div class="section-header fade-in">
+<span class="section-tag">教育</span>
+<h2 class="section-title">学术背景</h2>
+</div>
+<div class="education-grid">
+<div class="edu-card fade-in">
+<p class="degree">博士候选人，计算机科学</p>
+<p class="school">University of Notre Dame</p>
+<p class="edu-date">2020 年 – 至今 · 印第安纳州南本德</p>
+<p class="edu-detail">顾问：Jarek Nabrzyski。论文：对稳定币协议中的经济风险和系统性信任失败进行建模和模拟，设计新的信任最小化互操作性机制。构建了一个概念验证多代理系统，用于实时稳定币脱钩风险评分。</p>
+</div>
+<div class="edu-card fade-in">
+<p class="degree">计算机科学硕士（信息安全）</p>
+<p class="school">Purdue University</p>
+<p class="edu-date">2018 – 2019 · 印第安纳州西拉斐特</p>
+<p class="edu-detail">专注于信息安全、密码学和对抗性机器学习。</p>
+</div>
+<div class="edu-card fade-in">
+<p class="degree">学士，数学（应用机器学习、NLP）</p>
+<p class="school">University of Washington</p>
+<p class="edu-date">2014 – 2018 · 华盛顿州西雅图</p>
+<p class="edu-detail">应用数学，重点关注机器学习和自然语言处理。</p>
+</div>
+</div>
+</div>
+</section>
+<section id="skills">
+<div class="container">
+<div class="section-header fade-in">
+<span class="section-tag">技术堆栈</span>
+<h2 class="section-title">工具与技术</h2>
+</div>
+<div class="skills-grid">
+<div class="skill-category fade-in">
+<h3>🤖 代理与人工智能</h3>
+<div class="skill-tags">
+<span class="skill-tag">LangChain</span>
+<span class="skill-tag">n8n</span>
+<span class="skill-tag">Kimi OpenClaw</span>
+<span class="skill-tag">多代理系统</span>
+<span class="skill-tag">光标</span>
+<span class="skill-tag">雷普利特</span>
+</div>
+</div>
+<div class="skill-category fade-in">
+<h3>📈 量化与交易</h3>
+<div class="skill-tags">
+<span class="skill-tag">Web3.py / Brownie</span>
+<span class="skill-tag">Web3.js</span>
+<span class="skill-tag">跨链套利</span>
+<span class="skill-tag">资金费率套利</span>
+<span class="skill-tag">回测</span>
+<span class="skill-tag">链上分析</span>
+</div>
+</div>
+<div class="skill-category fade-in">
+<h3>🔗 Web3 和合约</h3>
+<div class="skill-tags">
+<span class="skill-tag">坚固性</span>
+<span class="skill-tag">锈</span>
+<span class="skill-tag">评估值</span>
+<span class="skill-tag">智能合约托管</span>
+<span class="skill-tag">加密身份</span>
+<span class="skill-tag">零知识普</span>
+</div>
+</div>
+<div class="skill-category fade-in">
+<h3>💻 语言和基础设施</h3>
+<div class="skill-tags">
+<span class="skill-tag">Python</span>
+<span class="skill-tag">去</span>
+<span class="skill-tag">打字稿 / JS</span>
+<span class="skill-tag">爪哇</span>
+<span class="skill-tag">C</span>
+<span class="skill-tag">SQL</span>
+<span class="skill-tag">封口API</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="contact" id="contact">
+<div class="container">
+<div class="contact-box fade-in">
+<span class="section-tag">接触</span>
+<h2>让我们合作吧</h2>
+<p>对研究合作、DeFi 咨询、教学或演讲机会感兴趣？我很想听听你的消息。</p>
+<div class="contact-links">
+<a class="contact-link" href="mailto:shengwei.you@gmail.com">
+<span>📧</span>shengwei.you@gmail.com</a>
+<a class="contact-link" href="https://www.linkedin.com/in/shengwei-you/" target="_blank">
+<span>💼</span>领英</a>
+<a class="contact-link" href="https://github.com/Jasonyou1995" target="_blank">
+<span>🐙</span>GitHub</a>
+</div>
+</div>
+</div>
+</section>
+<footer>
+<p>© 2026 Shengwei You。版权所有。</p>
+</footer>
+<script>
+        const LANG_PAGE_MAP = {
+            'en': 'index.html',
+            'zh-CN': 'index.zh-CN.html',
+        };
+
+        function updateLangBtn(lang) {
+            const labels = {
+                'en': 'EN', 'zh-CN': '简中', 'zh-TW': '繁中',
+                'es': 'ES', 'fr': 'FR', 'pt': 'PT', 'ru': 'RU'
+            };
+            const btnText = document.querySelector('.lang-btn span');
+            if (btnText && labels[lang]) {
+                btnText.innerHTML = `🌐 ${labels[lang]}`;
+            }
+        }
+
+        function switchLang(langCode) {
+            const nextPage = LANG_PAGE_MAP[langCode];
+            if (nextPage) {
+                window.location.href = nextPage;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const currentLang = document.documentElement.lang || 'en';
+            updateLangBtn(currentLang);
+        });
+    </script>
+<script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
