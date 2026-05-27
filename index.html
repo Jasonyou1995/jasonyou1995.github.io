@@ -1,1448 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shengwei You | AI Agent & Web3 Architecture</title>
-    <meta name="description"
-        content="Lead AI Systems & Quantitative DeFi Architect. Expertise in agentic orchestration, high-frequency cross-chain arbitrage, deterministic risk management, and Web3 infrastructure.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0a0a0f;
-            --secondary: #12121a;
-            --accent: #00d4aa;
-            --accent-dim: #00d4aa20;
-            --text: #e2e2e8;
-            --text-dim: #6b6b7b;
-            --border: #1e1e2e;
-            --gradient-1: #00d4aa;
-            --gradient-2: #3b82f6;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--primary);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background:
-                radial-gradient(circle at 20% 80%, var(--accent-dim) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
-            animation: bgFloat 20s ease-in-out infinite;
-        }
-
-        @keyframes bgFloat {
-
-            0%,
-            100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-
-            50% {
-                transform: translate(-2%, 2%) rotate(1deg);
-            }
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1.5rem 3rem;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        nav .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, var(--accent), var(--gradient-2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        nav ul {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        nav a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--text);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 2rem 4rem;
-            position: relative;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .hero-content {
-            animation: fadeInUp 1s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-tag {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background: var(--accent-dim);
-            border: 1px solid var(--accent);
-            border-radius: 50px;
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 .surname {
-            background: linear-gradient(135deg, var(--accent), var(--gradient-2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-dim);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            margin-bottom: 2.5rem;
-            max-width: 500px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        .btn-primary:hover {
-            background: #00b894;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 212, 170, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* Hero Image */
-        .hero-image {
-            position: relative;
-            animation: fadeInUp 1s ease 0.2s backwards;
-        }
-
-        .image-frame {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            aspect-ratio: 1;
-            margin: 0 auto;
-        }
-
-        .image-frame::before {
-            content: '';
-            position: absolute;
-            inset: -10px;
-            background: linear-gradient(135deg, var(--accent), var(--gradient-2));
-            border-radius: 20px;
-            opacity: 0.3;
-            filter: blur(20px);
-        }
-
-        .image-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 16px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .floating-card {
-            position: absolute;
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            backdrop-filter: blur(10px);
-            z-index: 2;
-        }
-
-        .card-1 {
-            top: 10%;
-            right: -20px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .card-2 {
-            bottom: 15%;
-            left: -30px;
-            animation: float 6s ease-in-out infinite 1s;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .floating-card h4 {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.25rem;
-        }
-
-        .floating-card p {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        /* Sections */
-        section {
-            padding: 6rem 2rem;
-            position: relative;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-tag {
-            display: inline-block;
-            font-size: 0.8rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            color: var(--text-dim);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Research Focus */
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .research-card {
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .research-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--gradient-2));
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        .research-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .research-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .research-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--accent-dim);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .research-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-
-        .research-card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Publications */
-        .publications {
-            background: var(--secondary);
-        }
-
-        .pub-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .pub-item {
-            background: var(--primary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 2rem;
-            align-items: center;
-            transition: all 0.3s;
-        }
-
-        .pub-item:hover {
-            border-color: var(--accent);
-        }
-
-        .pub-year {
-            font-size: 0.8rem;
-            color: var(--accent);
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            background: var(--accent-dim);
-            border-radius: 50px;
-        }
-
-        .pub-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .pub-content p {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        .pub-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .pub-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.3s;
-        }
-
-        .pub-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Experience Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 3rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--accent), var(--gradient-2));
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 3rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -3rem;
-            top: 0;
-            width: 12px;
-            height: 12px;
-            background: var(--accent);
-            border-radius: 50%;
-            margin-left: -5px;
-            box-shadow: 0 0 20px var(--accent);
-        }
-
-        .timeline-content {
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-        }
-
-        .timeline-date {
-            font-size: 0.85rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-content h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-content .company {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-content p {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-        }
-
-        .skill-category h3 {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .skill-tag {
-            padding: 0.5rem 1rem;
-            background: var(--primary);
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            transition: all 0.3s;
-        }
-
-        .skill-tag:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* Education */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .edu-card {
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.3s;
-        }
-
-        .edu-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .edu-card .degree {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 0.4rem;
-        }
-
-        .edu-card .school {
-            color: var(--accent);
-            font-weight: 500;
-            font-size: 1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .edu-card .edu-date {
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
-
-        .edu-card .edu-detail {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        /* Contact */
-        .contact {
-            text-align: center;
-        }
-
-        .contact-box {
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 4rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact p {
-            color: var(--text-dim);
-            margin-bottom: 2rem;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--text);
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            background: var(--primary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: all 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .contact-link:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            border-top: 1px solid var(--border);
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        /* Pillar cards for mission section */
-        .pillar-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .pillar-card {
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pillar-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--gradient-2));
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        .pillar-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .pillar-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .pillar-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .pillar-card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .pillar-card p {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .hero-description {
-                margin: 0 auto 2.5rem;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-image {
-                order: -1;
-            }
-
-            .image-frame {
-                max-width: 280px;
-            }
-
-            .floating-card {
-                display: none;
-            }
-
-            nav ul {
-                display: none;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-
-            .pub-item {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Language Toggle */
-        .lang-menu-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .lang-btn {
-            background: var(--accent-dim);
-            border: 1px solid var(--accent);
-            color: var(--text);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .lang-btn:hover {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        .lang-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            margin-top: 1rem;
-            background: var(--secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 0.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-            min-width: 150px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-
-        .lang-menu-wrapper:hover .lang-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .lang-dropdown a.lang-link {
-            display: block;
-            background: transparent;
-            border: none;
-            color: var(--text-dim);
-            padding: 0.5rem 1rem;
-            text-align: left;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .lang-dropdown a.lang-link:hover {
-            background: var(--primary);
-            color: var(--accent);
-        }
-
-        /* Hide Google Translate Overlays */
-        .goog-te-banner-frame {
-            display: none !important;
-        }
-
-        body {
-            top: 0px !important;
-        }
-
-        #goog-gt-tt {
-            display: none !important;
-        }
-
-        .goog-text-highlight {
-            background-color: transparent !important;
-            box-shadow: none !important;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shengwei You — AI Deployment Architect</title>
+<meta name="description" content="Shengwei You (Penguin) — AI Deployment Architect. I help companies put AI agents into production. LangGraph, FastAPI, Cloud Run. PhD candidate researching multi-agent trust & safety.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Spline+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f0e0c; --bg2:#161310; --paper:#f7f3ea;
+    --ink:#15130f; --accent:#e0612f; --accent-2:#d9a441;
+    --text:#ece7dc; --text-dim:#9a9384; --border:#2a2620;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Spline Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;}
+  ::selection{background:var(--accent);color:#fff;}
+
+  .bg-grain{position:fixed;inset:0;z-index:-1;background:
+     radial-gradient(circle at 15% 15%, rgba(224,97,47,.10), transparent 45%),
+     radial-gradient(circle at 85% 85%, rgba(217,164,65,.07), transparent 45%),var(--bg);}
+
+  /* nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 2.5rem;
+      background:rgba(15,14,12,.72);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);}
+  nav .wrap{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-family:'Fraunces',serif;font-weight:900;font-size:1.25rem;letter-spacing:-.01em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:2rem;list-style:none;}
+  nav a{color:var(--text-dim);text-decoration:none;font-size:.88rem;font-weight:500;transition:.25s;position:relative;}
+  nav a:hover{color:var(--text);}
+  nav a::after{content:"";position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--accent);transition:.25s;}
+  nav a:hover::after{width:100%;}
+  .lang{font-size:.8rem;color:var(--text-dim);border:1px solid var(--border);border-radius:30px;padding:4px 12px;position:relative;cursor:default;}
+  .lang .dd{position:absolute;top:130%;right:0;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:6px;min-width:140px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:.25s;box-shadow:0 12px 30px rgba(0,0,0,.5);}
+  .lang:hover .dd{opacity:1;visibility:visible;transform:translateY(0);}
+  .lang .dd a{display:block;padding:6px 12px;color:var(--text-dim);text-decoration:none;border-radius:6px;font-size:.85rem;}
+  .lang .dd a:hover{background:var(--bg);color:var(--accent);}
+
+  .container{max-width:1160px;margin:0 auto;padding:0 2.5rem;}
+  section{padding:6rem 0;position:relative;}
+
+  /* hero */
+  .hero{min-height:100vh;display:flex;align-items:center;padding-top:6rem;}
+  .hero-grid{display:grid;grid-template-columns:1.4fr .9fr;gap:4rem;align-items:center;width:100%;}
+  .tag{display:inline-block;padding:.45rem 1rem;border:1px solid var(--accent);color:var(--accent);
+       border-radius:40px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.18em;margin-bottom:1.6rem;}
+  .hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:3.6rem;line-height:1.05;letter-spacing:-.02em;margin-bottom:.6rem;}
+  .hero h1 .sur{color:var(--accent);font-weight:900;}
+  .hero h1 .cn{display:block;font-size:1.5rem;font-weight:400;color:var(--text-dim);margin-top:.4rem;letter-spacing:0;}
+  .hero .sub{font-size:1.25rem;color:var(--accent-2);font-weight:500;margin-bottom:1.4rem;}
+  .hero .lead{font-size:1.06rem;color:var(--text-dim);max-width:540px;margin-bottom:2.2rem;}
+  .hero .lead b{color:var(--text);font-weight:600;}
+  .btns{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn{padding:.9rem 1.7rem;border-radius:8px;font-weight:600;text-decoration:none;transition:.25s;font-size:.95rem;}
+  .btn-1{background:var(--accent);color:#fff;}
+  .btn-1:hover{background:#c9501f;transform:translateY(-2px);box-shadow:0 12px 30px rgba(224,97,47,.3);}
+  .btn-2{border:1px solid var(--border);color:var(--text);}
+  .btn-2:hover{border-color:var(--accent);color:var(--accent);}
+
+  .portrait{position:relative;max-width:330px;margin:0 auto;}
+  .portrait::before{content:"";position:absolute;inset:-12px;border-radius:20px;
+       background:linear-gradient(135deg,var(--accent),var(--accent-2));opacity:.25;filter:blur(22px);}
+  .portrait img{width:100%;border-radius:16px;position:relative;z-index:1;display:block;}
+  .fcard{position:absolute;z-index:2;background:var(--bg2);border:1px solid var(--border);
+       border-radius:12px;padding:.8rem 1.1rem;box-shadow:0 10px 30px rgba(0,0,0,.4);}
+  .fcard h4{font-size:.66rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.2rem;}
+  .fcard p{font-size:.95rem;font-weight:600;color:var(--accent);}
+  .fc1{top:12%;right:-26px;animation:float 6s ease-in-out infinite;}
+  .fc2{bottom:14%;left:-30px;animation:float 6s ease-in-out infinite 1.5s;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-9px);}}
+
+  /* section headers */
+  .sh{margin-bottom:3rem;max-width:640px;}
+  .st{font-size:.74rem;color:var(--accent);text-transform:uppercase;letter-spacing:.2em;font-weight:600;display:block;margin-bottom:.8rem;}
+  .stitle{font-family:'Fraunces',serif;font-weight:600;font-size:2.5rem;line-height:1.1;letter-spacing:-.015em;}
+  .ssub{color:var(--text-dim);font-size:1.05rem;margin-top:.8rem;}
+
+  /* offer / what I do */
+  .offer{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}
+  .pcard{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:1.8rem;transition:.3s;position:relative;overflow:hidden;}
+  .pcard::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+       background:linear-gradient(90deg,var(--accent),var(--accent-2));transform:scaleX(0);transition:.3s;}
+  .pcard:hover::before{transform:scaleX(1);}
+  .pcard:hover{border-color:var(--accent);transform:translateY(-4px);}
+  .pcard .ic{font-family:'Fraunces',serif;font-weight:900;font-size:1.4rem;color:var(--accent);margin-bottom:.7rem;}
+  .pcard h3{font-size:1.1rem;margin-bottom:.6rem;}
+  .pcard p{color:var(--text-dim);font-size:.92rem;}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;counter-reset:s;}
+  .step{position:relative;padding:1.8rem;border:1px solid var(--border);border-radius:14px;background:var(--bg2);counter-increment:s;}
+  .step::before{content:counter(s);font-family:'Fraunces',serif;font-weight:900;font-size:2.4rem;
+       color:var(--accent);opacity:.35;position:absolute;top:1rem;right:1.3rem;}
+  .step .when{font-size:.74rem;color:var(--accent-2);text-transform:uppercase;letter-spacing:.12em;font-weight:600;margin-bottom:.5rem;}
+  .step h3{font-size:1.1rem;margin-bottom:.5rem;}
+  .step p{color:var(--text-dim);font-size:.9rem;}
+
+  /* metrics strip */
+  .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:3rem;}
+  .strip .m{padding:1.8rem;text-align:center;}
+  .strip .m:not(:last-child){border-right:1px solid var(--border);}
+  .strip .num{font-family:'Fraunces',serif;font-weight:900;font-size:2.3rem;color:var(--text);}
+  .strip .num em{color:var(--accent);font-style:normal;font-size:1.4rem;}
+  .strip .lab{color:var(--text-dim);font-size:.82rem;margin-top:.4rem;}
+
+  /* research */
+  .rcard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2.4rem;}
+  .rcard h3{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;margin-bottom:1rem;}
+  .rcard p{color:var(--text-dim);font-size:1rem;text-align:justify;}
+  .rcard p em{color:var(--text-dim);}
+
+  /* publications */
+  .pub{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.6rem 1.8rem;display:grid;
+       grid-template-columns:auto 1fr;gap:1.5rem;align-items:start;margin-bottom:1.1rem;transition:.25s;}
+  .pub:hover{border-color:var(--accent);}
+  .yr{font-size:.78rem;color:var(--accent);font-weight:600;background:rgba(224,97,47,.12);padding:.4rem .9rem;border-radius:30px;white-space:nowrap;}
+  .pub h3{font-size:1.02rem;line-height:1.4;margin-bottom:.4rem;}
+  .pub .meta{color:var(--text-dim);font-size:.85rem;}
+  .pub .meta a{color:var(--accent);text-decoration:none;}
+
+  /* timeline */
+  .tl{position:relative;padding-left:2.4rem;}
+  .tl::before{content:"";position:absolute;left:0;top:.5rem;bottom:.5rem;width:2px;background:linear-gradient(180deg,var(--accent),var(--accent-2));}
+  .ti{position:relative;padding-bottom:2.4rem;}
+  .ti::before{content:"";position:absolute;left:-2.4rem;top:.4rem;width:11px;height:11px;border-radius:50%;
+       background:var(--accent);margin-left:-4.5px;box-shadow:0 0 16px var(--accent);}
+  .ti .when{font-size:.82rem;color:var(--accent);font-weight:600;}
+  .ti h3{font-size:1.15rem;margin:.3rem 0 .2rem;}
+  .ti .org{color:var(--text-dim);font-size:.92rem;margin-bottom:.7rem;}
+  .ti p{color:var(--text-dim);font-size:.92rem;}
+  .ti p a{color:var(--accent);text-decoration:none;}
+
+  /* skills + edu grids */
+  .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem;}
+  .scat{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.6rem;}
+  .scat h3{font-size:1rem;margin-bottom:1.1rem;}
+  .chips{display:flex;flex-wrap:wrap;gap:.6rem;}
+  .chip{padding:.4rem .9rem;background:var(--bg);border:1px solid var(--border);border-radius:30px;font-size:.82rem;color:var(--text-dim);transition:.25s;}
+  .chip:hover{border-color:var(--accent);color:var(--accent);}
+  .edu{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.8rem;transition:.3s;}
+  .edu:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .edu .deg{font-size:1.05rem;font-weight:600;margin-bottom:.3rem;}
+  .edu .sch{color:var(--accent);font-weight:500;margin-bottom:.2rem;}
+  .edu .when{color:var(--text-dim);font-size:.82rem;margin-bottom:.8rem;}
+  .edu .det{color:var(--text-dim);font-size:.88rem;}
+
+  /* contact */
+  .cbox{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:3.5rem;text-align:center;max-width:760px;margin:0 auto;}
+  .cbox h2{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:600;margin-bottom:.8rem;}
+  .cbox p{color:var(--text-dim);margin-bottom:2rem;}
+  .clinks{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+  .clink{display:flex;align-items:center;gap:.6rem;color:var(--text);text-decoration:none;padding:.85rem 1.4rem;
+       background:var(--bg);border:1px solid var(--border);border-radius:8px;transition:.25s;font-size:.92rem;}
+  .clink:hover{border-color:var(--accent);color:var(--accent);}
+
+  footer{text-align:center;padding:2.5rem;border-top:1px solid var(--border);color:var(--text-dim);font-size:.85rem;}
+
+  .fade{opacity:0;transform:translateY(26px);transition:all .6s ease;}
+  .fade.vis{opacity:1;transform:translateY(0);}
+
+  @media(max-width:900px){
+    nav ul{display:none;}
+    .hero-grid{grid-template-columns:1fr;text-align:center;}
+    .hero h1{font-size:2.7rem;}
+    .hero .lead{margin:0 auto 2.2rem;}
+    .btns{justify-content:center;}
+    .portrait{order:-1;max-width:240px;}
+    .fcard{display:none;}
+    .steps{grid-template-columns:1fr;}
+    .strip{grid-template-columns:1fr;}
+    .strip .m:not(:last-child){border-right:none;border-bottom:1px solid var(--border);}
+    .stitle{font-size:2rem;}
+    .container{padding:0 1.4rem;}
+    nav{padding:1rem 1.4rem;}
+    .pub{grid-template-columns:1fr;gap:.7rem;}
+  }
+</style>
 </head>
-
 <body>
-    <div class="bg-animation"></div>
+<div class="bg-grain"></div>
 
-    <nav>
-        <div class="container">
-            <div class="logo">SY.</div>
-            <div style="display: flex; align-items: center; gap: 2rem;">
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#vision">Vision</a></li>
-                    <li><a href="#research">Competencies</a></li>
-                    <li><a href="#publications">Publications</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="lang-menu-wrapper">
-                    <button class="lang-btn">
-                        <span>🌐 EN</span>
-                    </button>
-                    <div class="lang-dropdown">
-                        <a href="index.html" class="lang-link">English</a>
-                        <a href="index.zh-CN.html" class="lang-link">简体中文</a>
-                        <a href="index.zh-TW.html" class="lang-link">繁體中文</a>
-                        <a href="index.es.html" class="lang-link">Español</a>
-                        <a href="index.fr.html" class="lang-link">Français</a>
-                        <a href="index.pt.html" class="lang-link">Português</a>
-                        <a href="index.ru.html" class="lang-link">Русский</a>
-                    </div>
-                </div>
-            </div>
+<nav>
+  <div class="wrap">
+    <div class="logo">Shengwei <span>You</span></div>
+    <div style="display:flex;align-items:center;gap:1.8rem;">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">What I Do</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="lang"><span>&#127760; EN</span>
+        <div class="dd">
+          <a href="index.html">English</a>
+          <a href="index.zh-CN.html">&#31616;&#20307;&#20013;&#25991;</a>
+          <a href="index.zh-TW.html">&#32321;&#39636;&#20013;&#25991;</a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </div>
+</nav>
 
-    <section class="hero" id="about">
-        <div class="hero-container">
-            <div class="hero-content">
-                <span class="hero-tag">Open to Collaboration & Opportunities</span>
-                <h1><span class="notranslate">Shengwei <span class="surname">You</span> · 游盛巍</span></h1>
-                <p class="hero-subtitle">Lead AI Systems & Quantitative DeFi Architect</p>
-                <p class="hero-description"
-                    style="font-size: 1.05rem; text-align: justify; max-width: 550px; line-height: 1.8;">
-                    I architect autonomous AI agents and zero-human pipelines that extract value from
-                    decentralized markets, from high-frequency cross-chain arbitrage engines to
-                    deterministic risk enforcement with no human override. As a FinTech lecturer and
-                    Ph.D. candidate, I bridge cutting-edge research with production-grade systems that ship.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
-                    <a href="#publications" class="btn btn-secondary">View Publications</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="image-frame">
-                    <img src="photo.png" alt="Shengwei You (游盛巍)">
-                </div>
-                <div class="floating-card card-1">
-                    <h4>Current Role</h4>
-                    <p>AI DeFi Architect, OPC</p>
-                </div>
-                <div class="floating-card card-2">
-                    <h4>Focus</h4>
-                    <p>Agentic AI × Quant DeFi</p>
-                </div>
-            </div>
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="fade">
+        <span class="tag">Open to Consulting &amp; FDE Opportunities</span>
+        <h1><span class="notranslate">Shengwei <span class="sur">You</span><span class="cn">&#28216;&#30427;&#24039; &middot; &ldquo;Penguin&rdquo;</span></span></h1>
+        <p class="sub">AI Deployment Architect</p>
+        <p class="lead">I help companies put <b>AI agents into production</b> &mdash; not demos, not slideware. I take one high-value workflow from scoped problem to a live, monitored, owned system, typically in <b>90 days</b>. PhD candidate researching multi-agent trust &amp; safety; I build what I publish.</p>
+        <div class="btns">
+          <a href="#contact" class="btn btn-1">Work With Me</a>
+          <a href="#research" class="btn btn-2">See the Research</a>
         </div>
-    </section>
-
-    <!-- What Drives Me — replaces the old todo-list mission section -->
-    <section id="vision"
-        style="padding: 5rem 2rem; background: var(--secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-        <div class="container" style="max-width: 1100px;">
-            <div class="section-header fade-in" style="margin-bottom: 3rem;">
-                <span class="section-tag">Philosophy</span>
-                <h2 class="section-title">What Drives Me</h2>
-                <p class="section-subtitle">
-                    Every line of code I write serves one idea: decentralized systems and AI can — and should — make finance fairer for everyone.
-                </p>
-            </div>
-
-            <div class="pillar-grid">
-                <div class="pillar-card fade-in">
-                    <div class="pillar-icon">⚡</div>
-                    <h3>Automate Everything</h3>
-                    <p>Zero-human pipelines are the endgame. I build systems that ingest on-chain data, execute
-                        strategies, and enforce risk — all without a single manual step.</p>
-                </div>
-                <div class="pillar-card fade-in">
-                    <div class="pillar-icon">🔬</div>
-                    <h3>Research That Ships</h3>
-                    <p>Academic insights are only valuable when they hit production. I turn dissertation-level
-                        research into open-source tools, backtesting engines, and live trading systems.</p>
-                </div>
-                <div class="pillar-card fade-in">
-                    <div class="pillar-icon">🌍</div>
-                    <h3>Teach & Empower</h3>
-                    <p>From graduate lectures at HKBU to leading hackathons (H.K. Consensus 2025 winner),
-                        I make AI and blockchain knowledge accessible — and actionable.</p>
-                </div>
-                <div class="pillar-card fade-in">
-                    <div class="pillar-icon">🚀</div>
-                    <h3>Ship, Then Iterate</h3>
-                    <p>Perfectionism kills momentum. Launch early, learn fast, treat every failure as data.
-                        The best systems are forged through relentless iteration.</p>
-                </div>
-            </div>
-
-            <!-- Inspiring quote -->
-            <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border);"
-                class="fade-in">
-                <p
-                    style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: var(--text); margin-bottom: 0.5rem;">
-                    "The best time to plant a tree was twenty years ago. The second best time is now."
-                </p>
-                <p
-                    style="color: var(--accent); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
-                    — Chinese Proverb
-                </p>
-            </div>
-
+      </div>
+      <div class="fade">
+        <div class="portrait">
+          <img src="photo.png" alt="Shengwei You (&#28216;&#30427;&#24039;)">
+          <div class="fcard fc1"><h4>Focus</h4><p>Agents in Production</p></div>
+          <div class="fcard fc2"><h4>Stack</h4><p>LangGraph &middot; FastAPI</p></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="research">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-tag">Core Competencies</span>
-                <h2 class="section-title">AI Agent & Web3 Architecture</h2>
-                <p class="section-subtitle">
-                    Building autonomous, zero-human systems that extract value and enforce risk in decentralized markets
-                </p>
-            </div>
-            <div class="research-grid">
-                <div class="research-card fade-in">
-                    <div class="research-icon">🤖</div>
-                    <h3>Agentic Orchestration</h3>
-                    <p>
-                        LangChain, n8n, Kimi OpenClaw, Autonomous Multi-Agent Systems (MAS),
-                        and Execution-as-a-Service (EaaS) architectures that autonomously
-                        review smart contracts, run simulations, and mandate on-chain execution.
-                    </p>
-                </div>
-                <div class="research-card fade-in">
-                    <div class="research-icon">📈</div>
-                    <h3>Quant & Algorithmic Trading</h3>
-                    <p>
-                        Python (Web3.py / Brownie), Web3.js, high-frequency cross-chain
-                        arbitrage engines, funding rate arbitrage, AMM slippage simulation,
-                        and on-chain data analysis & backtesting.
-                    </p>
-                </div>
-                <div class="research-card fade-in">
-                    <div class="research-icon">🛡️</div>
-                    <h3>Deterministic Risk</h3>
-                    <p>
-                        Automated risk management enforced by OpenClaw deterministic logic.
-                        Algorithmic threshold enforcement, real-time drawdown protection,
-                        and zero-human-override execution protocols.
-                    </p>
-                </div>
-                <div class="research-card fade-in">
-                    <div class="research-icon">⛓️</div>
-                    <h3>Web3 Infrastructure</h3>
-                    <p>
-                        Protocol-level design, smart contract escrow (Solidity / Rust),
-                        cryptographic identity security, zero-human automated pipelines,
-                        and cross-chain interoperability architectures.
-                    </p>
-                </div>
-            </div>
+<!-- WHAT I DO -->
+<section class="offer" id="work">
+  <div class="container">
+    <div class="sh fade">
+      <span class="st">What I Do</span>
+      <h2 class="stitle">Production AI, not proofs-of-concept</h2>
+      <p class="ssub">Most AI projects die between the demo and the deploy. I specialize in that gap: shipping agents that do real operational work and that your team can own and run after I leave.</p>
+    </div>
+    <div class="pillars">
+      <div class="pcard fade"><div class="ic">01</div><h3>Agent Design &amp; Orchestration</h3><p>Multi-step agentic workflows built on LangGraph and n8n &mdash; scoped to one real business process, with human-in-the-loop checkpoints where they matter.</p></div>
+      <div class="pcard fade"><div class="ic">02</div><h3>Production Engineering</h3><p>FastAPI services on Cloud Run with proper error handling, observability, and alerting. Auditable components, no black boxes.</p></div>
+      <div class="pcard fade"><div class="ic">03</div><h3>Trust &amp; Safety Architecture</h3><p>Proposer / challenger / judge review patterns from my research, applied so agent outputs are checked before they act &mdash; not blindly executed.</p></div>
+      <div class="pcard fade"><div class="ic">04</div><h3>Handover &amp; Enablement</h3><p>Full source code, a runbook, and a working session so your team owns the system. No lock-in, no dependency on me.</p></div>
+    </div>
+  </div>
+</section>
 
-            <div class="section-header fade-in" style="margin-top: 6rem; margin-bottom: 2rem;">
-                <span class="section-tag">Current Work</span>
-                <h3 class="section-title" style="font-size: 2.5rem;">MVF-Composer</h3>
-            </div>
-            <div class="research-card fade-in" style="padding: 3rem;">
-                <p style="color: var(--text-dim); font-size: 1.05rem; line-height: 1.8; text-align: justify;">
-                    <strong>Abstract —</strong> Algorithmic stablecoin reserve controllers are vulnerable to
-                    regime-blind optimization when they calibrate on fair-weather data while ignoring tail events. The
-                    March 2020 BLACK THURSDAY collapse ($8.3 M in losses, 15 % peg deviation) exposed a key vulnerability: models
-                    such as the Stable Aggregate Stablecoin (SAS) systematically omit extreme volatility from
-                    covariance estimates, producing allocations that are optimal in expectation but catastrophic under stress. To
-                    address this gap, we present MVF-Composer, a trust-weighted Mean-Variance Frontier controller
-                    incorporating a Stress Harness for risk-state estimation. The Stress Harness drives multi-agent
-                    simulations that serve as adversarial stress-testers: heterogeneous agents execute protocol
-                    actions under crisis scenarios, exposing vulnerabilities before they manifest on-chain. A complementary
-                    trust-scoring mechanism down-weights manipulative agents, ensuring robustness against adversarial
-                    influence.
-                    <br><br>
-                    Across 1,200 scenarios with black-swan shocks, MVF-Composer reduces peak peg deviation by 57 % and
-                    recovery time by 3.1&times; versus SAS. The trust layer accounts for 23 % of stability gains. The
-                    system runs on commodity hardware and provides a reproducible framework for stress-testing DeFi
-                    reserves against tail risks.
-                    <br><br>
-                    <em>Index Terms—Algorithmic Stablecoins, Decentralized Finance, Agent-Based Simulation, Stress
-                        Testing, Risk Management, Mean-Variance Optimization</em>
-                </p>
-            </div>
-        </div>
-    </section>
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="sh fade">
+      <span class="st">The 90-Day Path</span>
+      <h2 class="stitle">From scoped problem to owned system</h2>
+      <p class="ssub">A fixed timeline with three checkpoints, not an open-ended retainer.</p>
+    </div>
+    <div class="steps">
+      <div class="step fade"><div class="when">Days 1&ndash;30 &middot; MVP</div><h3>Ship something real</h3><p>Scope one workflow, build a working agent, prove operational impact early instead of perfecting in the dark.</p></div>
+      <div class="step fade"><div class="when">Days 31&ndash;60 &middot; Production</div><h3>Harden it</h3><p>Error handling, observability, human-in-the-loop checkpoints, and the monitoring you need to trust it in the wild.</p></div>
+      <div class="step fade"><div class="when">Days 61&ndash;90 &middot; Battle-tested</div><h3>Hand it over</h3><p>Load-tested, documented, and transferred with a runbook your team runs &mdash; the system is yours.</p></div>
+    </div>
+    <div class="strip fade">
+      <div class="m"><div class="num"><em>90</em> days</div><div class="lab">Scoped problem to live, monitored agent</div></div>
+      <div class="m"><div class="num">3<em>-stage</em></div><div class="lab">MVP &rarr; production &rarr; battle-tested</div></div>
+      <div class="m"><div class="num">&lt;200<em> loc</em></div><div class="lab">Per-component ceiling &mdash; auditable, ownable</div></div>
+    </div>
+  </div>
+</section>
 
-    <section class="publications" id="publications">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-tag">Publications</span>
-                <h2 class="section-title">Recent Work</h2>
-                <p class="section-subtitle">
-                    Selected publications and research outputs
-                </p>
-            </div>
-            <div class="pub-list">
-                <div class="pub-item fade-in">
-                    <span class="pub-year">2026</span>
-                    <div class="pub-content">
-                        <h3 style="margin-bottom: 0.8rem; line-height: 1.4;">Hybrid Stabilization Protocol for
-                            Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven Arbitrage</h3>
-                        <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">Book chapter &nbsp;|&nbsp; DOI: <a
-                                href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank"
-                                style="color: var(--accent); text-decoration: none;">10.1007/978-3-032-00495-6_8</a></p>
-                        <p style="font-size: 0.9rem; color: var(--text);">Contributors: Shengwei You; Andrey Kuehlkamp;
-                            Jarek Nabrzyski</p>
-                        <p style="font-size: 0.85rem; color: var(--text-dim);">Citation key: <code>you2026_hybrid_stabilization</code></p>
-                    </div>
-                </div>
-                <div class="pub-item fade-in">
-                    <span class="pub-year">2024</span>
-                    <div class="pub-content">
-                        <h3 style="margin-bottom: 0.8rem; line-height: 1.4;">Persona preserving reputation protocol
-                            (P2RP) for enhanced security, privacy, and trust in blockchain oracles</h3>
-                        <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">Cluster Computing, Journal article
-                            &nbsp;|&nbsp; DOI: <a href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank"
-                                style="color: var(--accent); text-decoration: none;">10.1007/s10586-023-04222-4</a></p>
-                        <p style="font-size: 0.9rem; color: var(--text);">Contributors: Shengwei You; Kristina
-                            Radivojevic; Jarek Nabrzyski; Paul Brenner</p>
-                        <p style="font-size: 0.85rem; color: var(--text-dim);">Citation key: <code>you2024_p2rp</code></p>
-                    </div>
-                </div>
-                <div class="pub-item fade-in">
-                    <span class="pub-year">2023</span>
-                    <div class="pub-content">
-                        <h3 style="margin-bottom: 0.8rem; line-height: 1.4;">Mining User Behavior in Decentralized
-                            Applications for Blockchain Trust and Security Analytics</h3>
-                        <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">2023 Fifth International Conference on
-                            Blockchain Computing and Applications (BCCA) &nbsp;|&nbsp; DOI: <a
-                                href="https://doi.org/10.1109/bcca58897.2023.10338860" target="_blank"
-                                style="color: var(--accent); text-decoration: none;">10.1109/bcca58897.2023.10338860</a>
-                        </p>
-                        <p style="font-size: 0.9rem; color: var(--text);">Contributors: Shengwei You; Aditya Joshi;
-                            Andrey Kuehlkamp; Jarek Nabrzyski</p>
-                        <p style="font-size: 0.85rem; color: var(--text-dim);">Citation key: <code>you2023_mining_user_behavior</code></p>
-                    </div>
-                </div>
-                <div class="pub-item fade-in">
-                    <span class="pub-year">2022</span>
-                    <div class="pub-content">
-                        <h3 style="margin-bottom: 0.8rem; line-height: 1.4;">Trust in the Context of Blockchain
-                            Applications</h3>
-                        <p style="margin-bottom: 0.5rem; font-size: 0.95rem;">2022 Fourth International Conference on
-                            Blockchain Computing and Applications (BCCA) &nbsp;|&nbsp; DOI: <a
-                                href="https://doi.org/10.1109/bcca55292.2022.9922068" target="_blank"
-                                style="color: var(--accent); text-decoration: none;">10.1109/bcca55292.2022.9922068</a>
-                        </p>
-                        <p style="font-size: 0.9rem; color: var(--text);">Contributors: Shengwei You; Kristina
-                            Radivojevic; Jarek Nabrzyski; Paul Brenner</p>
-                        <p style="font-size: 0.85rem; color: var(--text-dim);">Citation key: <code>you2022_trust_context_blockchain</code></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- RESEARCH -->
+<section id="research" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="sh fade">
+      <span class="st">Research</span>
+      <h2 class="stitle">Multi-agent trust &amp; safety</h2>
+      <p class="ssub">My PhD work sits at the intersection of autonomous agents, consensus design, and safety. The engineering and the research feed each other.</p>
+    </div>
+    <div class="rcard fade">
+      <h3>Calibrated multi-agent decision systems</h3>
+      <p>How do you trust the output of an autonomous agent? My research develops a <strong>proposer / challenger / judge</strong> architecture &mdash; where independent agents argue and adjudicate before a decision is acted on &mdash; as a path to calibrated, defensible automation. The same chassis I study academically is the safety layer I deploy in client systems: outputs are challenged and judged, not blindly executed.
+      <br><br>
+      <em>Themes: multi-agent systems, consensus &amp; trust, calibrated forecasting, blockchain &amp; decentralized-system safety.</em></p>
+    </div>
 
-    <section id="experience">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-tag">Experience</span>
-                <h2 class="section-title">Professional Journey</h2>
-                <p class="section-subtitle">
-                    From open-source contributions at The Linux Foundation to building zero-human DeFi systems
-                </p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <span class="timeline-date">Aug 2024 – Present</span>
-                        <h3>Lead AI Systems & Quantitative DeFi Architect</h3>
-                        <p class="company">Independent OPC · Hong Kong</p>
-                        <p>
-                            Engineered an AI-enforced DeFi Action Simulator leveraging n8n + LangChain MAS to
-                            autonomously execute smart-contract code reviews, slippage simulations, and on-chain
-                            transactions. Built a high-frequency cross-chain arbitrage engine with Python (Web3.py)
-                            and Web3.js. Architected deterministic risk protocols via OpenClaw logic, enforcing max
-                            daily drawdown limits with zero human override. Designed end-to-end data pipelines for
-                            real-time on-chain analytics and strategy optimization.
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <span class="timeline-date">Sept 2025 – Present</span>
-                        <h3>FinTech Lecturer</h3>
-                        <p class="company">School of Business, Hong Kong Baptist University · Hong Kong</p>
-                        <p>
-                            Developed and delivered a graduate-level Financial Computing curriculum, guiding
-                            students through building and backtesting quantitative trading models with Python (NumPy,
-                            pandas, StatsModels) and machine learning (scikit-learn).
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <span class="timeline-date">May 2019 – Aug 2019</span>
-                        <h3>Blockchain Full-Stack Engineer</h3>
-                        <p class="company">The Linux Foundation · San Francisco, CA</p>
-                        <p>
-                            Led development of a real-time performance-visualization dashboard for Hyperledger Fabric
-                            networks using the MERN stack. Authored comprehensive technical documentation for
-                            Caliper-CLI, reducing developer onboarding time by ~30 %. Presented at
-                            <a href="https://www.youtube.com/watch?v=MK7x87mUQOk" target="_blank"
-                                style="color: var(--accent); text-decoration: none;">Hyperledger Global Forum 2020</a>.
-                        </p>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <span class="timeline-date">Aug 2018 – Dec 2019</span>
-                        <h3>Graduate Student Researcher</h3>
-                        <p class="company">Purdue University, CSE · West Lafayette, IN</p>
-                        <p>
-                            Developed a secure Hierarchical-Deterministic (HD) wallet in Go and open-sourced the
-                            project for the developer community. Engineered an adversarial ML attack on CNNs and
-                            presented findings to the university's cybersecurity community.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="sh fade" style="margin-top:4rem;">
+      <span class="st">Selected Publications</span>
+      <h2 class="stitle" style="font-size:1.9rem;">Peer-reviewed work</h2>
+    </div>
+    <div class="fade">
+      <div class="pub">
+        <span class="yr">2026</span>
+        <div><h3>Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven Coordination</h3>
+        <p class="meta">Book chapter &middot; You, Kuehlkamp, Nabrzyski &middot; DOI: <a href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank">10.1007/978-3-032-00495-6_8</a></p></div>
+      </div>
+      <div class="pub">
+        <span class="yr">2024</span>
+        <div><h3>Persona-Preserving Reputation Protocol (P2RP) for Enhanced Security, Privacy, and Trust in Blockchain Oracles</h3>
+        <p class="meta">Cluster Computing (journal) &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank">10.1007/s10586-023-04222-4</a></p></div>
+      </div>
+      <div class="pub">
+        <span class="yr">2023</span>
+        <div><h3>Mining User Behavior in Decentralized Applications for Blockchain Trust and Security Analytics</h3>
+        <p class="meta">IEEE BCCA 2023 &middot; You, Joshi, Kuehlkamp, Nabrzyski &middot; DOI: <a href="https://doi.org/10.1109/bcca58897.2023.10338860" target="_blank">10.1109/bcca58897.2023.10338860</a></p></div>
+      </div>
+      <div class="pub">
+        <span class="yr">2022</span>
+        <div><h3>Trust in the Context of Blockchain Applications</h3>
+        <p class="meta">IEEE BCCA 2022 &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a href="https://doi.org/10.1109/bcca55292.2022.9922068" target="_blank">10.1109/bcca55292.2022.9922068</a></p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="education" style="background: var(--secondary);">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-tag">Education</span>
-                <h2 class="section-title">Academic Background</h2>
-            </div>
-            <div class="education-grid">
-                <div class="edu-card fade-in">
-                    <p class="degree">Ph.D. Candidate, Computer Science</p>
-                    <p class="school">University of Notre Dame</p>
-                    <p class="edu-date">2020 – Present · South Bend, IN</p>
-                    <p class="edu-detail">
-                        Advisor: Jarek Nabrzyski. Dissertation: Modeled and simulated economic risks and
-                        systemic trust failures in stablecoin protocols, designing novel mechanisms for
-                        trust-minimized interoperability. Architected a proof-of-concept multi-agent system for
-                        real-time stablecoin de-peg risk scoring.
-                    </p>
-                </div>
-                <div class="edu-card fade-in">
-                    <p class="degree">M.S., Computer Science (InfoSec)</p>
-                    <p class="school">Purdue University</p>
-                    <p class="edu-date">2018 – 2019 · West Lafayette, IN</p>
-                    <p class="edu-detail">
-                        Focus on information security, cryptography, and adversarial machine learning.
-                    </p>
-                </div>
-                <div class="edu-card fade-in">
-                    <p class="degree">B.A., Mathematics (Applied ML, NLP)</p>
-                    <p class="school">University of Washington</p>
-                    <p class="edu-date">2014 – 2018 · Seattle, WA</p>
-                    <p class="edu-detail">
-                        Applied mathematics with a focus on machine learning and natural language processing.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="sh fade">
+      <span class="st">Experience</span>
+      <h2 class="stitle">Track record</h2>
+      <p class="ssub">From open-source infrastructure at The Linux Foundation to shipping production AI systems today.</p>
+    </div>
+    <div class="tl">
+      <div class="ti fade">
+        <div class="when">2024 &ndash; Present</div>
+        <h3>AI Deployment Architect &mdash; Independent</h3>
+        <p class="org">Lion Protocol &middot; Hong Kong</p>
+        <p>Design and ship production AI agents for businesses: agentic workflows on LangGraph and n8n, served via FastAPI on Cloud Run, with observability and human-in-the-loop safety built in. Operate as a one-person delivery practice &mdash; scope, build, harden, and hand over systems clients own outright.</p>
+      </div>
+      <div class="ti fade">
+        <div class="when">2025 &ndash; Present</div>
+        <h3>Graduate Teaching &mdash; Financial Computing</h3>
+        <p class="org">School of Business, Hong Kong Baptist University</p>
+        <p>Contributed to a graduate-level financial-computing curriculum, guiding students through building and backtesting quantitative models in Python (NumPy, pandas, scikit-learn).</p>
+      </div>
+      <div class="ti fade">
+        <div class="when">2019</div>
+        <h3>Blockchain Full-Stack Engineer (Internship)</h3>
+        <p class="org">The Linux Foundation &middot; San Francisco, CA</p>
+        <p>Built a real-time performance dashboard for Hyperledger Fabric using the MERN stack and authored Caliper-CLI documentation that cut developer onboarding time. Work presented at <a href="https://www.youtube.com/watch?v=MK7x87mUQOk" target="_blank">Hyperledger Global Forum 2020</a>.</p>
+      </div>
+      <div class="ti fade">
+        <div class="when">2018 &ndash; 2019</div>
+        <h3>Graduate Student Researcher</h3>
+        <p class="org">Purdue University, CSE &middot; West Lafayette, IN</p>
+        <p>Built a secure Hierarchical-Deterministic (HD) wallet in Go and open-sourced it. Implemented an adversarial ML attack on CNNs and presented findings to the university security community.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="skills">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-tag">Tech Stack</span>
-                <h2 class="section-title">Tools & Technologies</h2>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-category fade-in">
-                    <h3>🤖 Agentic & AI</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">LangChain</span>
-                        <span class="skill-tag">n8n</span>
-                        <span class="skill-tag">Kimi OpenClaw</span>
-                        <span class="skill-tag">Multi-Agent Systems</span>
-                        <span class="skill-tag">Cursor</span>
-                        <span class="skill-tag">Replit</span>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <h3>📈 Quant & Trading</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Web3.py / Brownie</span>
-                        <span class="skill-tag">Web3.js</span>
-                        <span class="skill-tag">Cross-Chain Arb</span>
-                        <span class="skill-tag">Funding Rate Arb</span>
-                        <span class="skill-tag">Backtesting</span>
-                        <span class="skill-tag">On-Chain Analytics</span>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <h3>🔗 Web3 & Contracts</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Solidity</span>
-                        <span class="skill-tag">Rust</span>
-                        <span class="skill-tag">EVM</span>
-                        <span class="skill-tag">Smart Contract Escrow</span>
-                        <span class="skill-tag">Crypto Identity</span>
-                        <span class="skill-tag">ZKP</span>
-                    </div>
-                </div>
-                <div class="skill-category fade-in">
-                    <h3>💻 Languages & Infra</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Go</span>
-                        <span class="skill-tag">TypeScript / JS</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">C</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">CapCut API</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- EDUCATION -->
+<section style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="sh fade"><span class="st">Education</span><h2 class="stitle">Academic background</h2></div>
+    <div class="grid3">
+      <div class="edu fade">
+        <p class="deg">PhD Candidate, Computer Science</p>
+        <p class="sch">University of Notre Dame</p>
+        <p class="when">Advisor: Jarek Nabrzyski</p>
+        <p class="det">Dissertation on trust and systemic risk in decentralized systems, and multi-agent architectures for calibrated, safety-aware automation.</p>
+      </div>
+      <div class="edu fade">
+        <p class="deg">M.S., Computer Science (Information Security)</p>
+        <p class="sch">Purdue University</p>
+        <p class="when">2018 &ndash; 2019</p>
+        <p class="det">Information security, cryptography, and adversarial machine learning.</p>
+      </div>
+      <div class="edu fade">
+        <p class="deg">B.A., Mathematics</p>
+        <p class="sch">University of Washington</p>
+        <p class="when">2014 &ndash; 2018</p>
+        <p class="det">Applied mathematics with a focus on machine learning and NLP.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-box fade-in">
-                <span class="section-tag">Contact</span>
-                <h2>Let's Collaborate</h2>
-                <p>
-                    Interested in research collaboration, DeFi consulting, teaching, or speaking opportunities?
-                    I'd love to hear from you.
-                </p>
-                <div class="contact-links">
-                    <a href="mailto:shengwei.you@gmail.com" class="contact-link">
-                        <span>📧</span> shengwei.you@gmail.com
-                    </a>
-                    <a href="https://www.linkedin.com/in/shengwei-you/" target="_blank" class="contact-link">
-                        <span>💼</span> LinkedIn
-                    </a>
-                    <a href="https://github.com/Jasonyou1995" target="_blank" class="contact-link">
-                        <span>🐙</span> GitHub
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="sh fade"><span class="st">Tech Stack</span><h2 class="stitle">Tools I build with</h2></div>
+    <div class="grid3">
+      <div class="scat fade"><h3>Agents &amp; AI</h3><div class="chips">
+        <span class="chip">LangGraph</span><span class="chip">n8n</span><span class="chip">Multi-Agent Systems</span><span class="chip">Prompt Engineering</span><span class="chip">RAG</span></div></div>
+      <div class="scat fade"><h3>Backend &amp; Infra</h3><div class="chips">
+        <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Cloud Run</span><span class="chip">Docker</span><span class="chip">REST APIs</span></div></div>
+      <div class="scat fade"><h3>Data &amp; ML</h3><div class="chips">
+        <span class="chip">pandas / NumPy</span><span class="chip">scikit-learn</span><span class="chip">Backtesting</span><span class="chip">SQL</span></div></div>
+      <div class="scat fade"><h3>Systems &amp; Web3</h3><div class="chips">
+        <span class="chip">Go</span><span class="chip">TypeScript</span><span class="chip">Solidity</span><span class="chip">Smart Contracts</span></div></div>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <p>© 2026 Shengwei You. All rights reserved.</p>
-    </footer>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="cbox fade">
+      <span class="st">Contact</span>
+      <h2>Let&rsquo;s build something that ships</h2>
+      <p>Open to AI deployment consulting, FDE / solutions-engineering roles, and research collaboration. I read every message.</p>
+      <div class="clinks">
+        <a class="clink" href="mailto:shengwei.you@gmail.com"><span>&#9993;</span> shengwei.you@gmail.com</a>
+        <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank"><span>&#128188;</span> LinkedIn</a>
+        <a class="clink" href="https://github.com/Jasonyou1995" target="_blank"><span>&#128025;</span> GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        const LANG_PAGE_MAP = {
-            'en': 'index.html',
-            'zh-CN': 'index.zh-CN.html',
-            'zh-TW': 'index.zh-TW.html',
-            'es': 'index.es.html',
-            'fr': 'index.fr.html',
-            'pt': 'index.pt.html',
-            'ru': 'index.ru.html'
-        };
+<footer><p>&copy; 2026 Shengwei You &middot; Lion Protocol</p></footer>
 
-        function updateLangBtn(lang) {
-            const labels = {
-                'en': 'EN', 'zh-CN': '简中', 'zh-TW': '繁中',
-                'es': 'ES', 'fr': 'FR', 'pt': 'PT', 'ru': 'RU'
-            };
-            const btnText = document.querySelector('.lang-btn span');
-            if (btnText && labels[lang]) {
-                btnText.innerHTML = `🌐 ${labels[lang]}`;
-            }
-        }
-
-        function switchLang(langCode) {
-            const nextPage = LANG_PAGE_MAP[langCode];
-            if (nextPage) {
-                window.location.href = nextPage;
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const currentLang = document.documentElement.lang || 'en';
-            updateLangBtn(currentLang);
-        });
-    </script>
-
-    <script>
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        // Smooth scroll for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+<script>
+  const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});});});
+</script>
 </body>
-
 </html>
