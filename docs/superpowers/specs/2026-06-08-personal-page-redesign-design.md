@@ -97,11 +97,11 @@ A 2x2 grid on desktop, stacked on mobile. Each card: project name, one-line subt
    - Measured: about 0.04 USD per update on L2 (about 21x cheaper than incumbent committee oracles), 100% Byzantine detection up to a 37.5% adversary fraction, 76 passing tests (unit, adversarial, 100-epoch scenario, 256-run fuzz, gas benchmarks).
    - Verifiable: public test suite.
 
-Links: repo links where public, otherwise "view the artifact" or a request-access note. Per the spec privacy checklist, repos are public-but-anonymized where double-blind rules apply.
+Links: each project card reads "Code available on request". No public repo links on the cards, per owner decision (double-blind anonymization rules).
 
 ### 6. Research and publications
 Dissertation theme paragraph (trust and systemic risk in decentralized systems, multi-agent architectures for calibrated safety-aware automation), then the four peer-reviewed papers, each linking to its public DOI only:
-- 2026, book chapter, Hybrid Stabilization Protocol for Cross-Chain Digital Assets, You, Kuehlkamp, Nabrzyski, DOI 10.1007/978-3-032-00495-6_8.
+- 2026, book chapter, Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven Arbitrage, You, Kuehlkamp, Nabrzyski, DOI 10.1007/978-3-032-00495-6_8.
 - 2024, Cluster Computing, Persona-Preserving Reputation Protocol (P2RP), You, Radivojevic, Nabrzyski, Brenner, DOI 10.1007/s10586-023-04222-4.
 - 2023, IEEE BCCA, Mining User Behavior in Decentralized Applications, You, Joshi, Kuehlkamp, Nabrzyski, DOI 10.1109/BCCA58897.2023.10338860.
 - 2022, IEEE BCCA, Trust in the Context of Blockchain Applications, You, Radivojevic, Nabrzyski, Brenner, DOI 10.1109/BCCA55292.2022.9922068.
@@ -174,7 +174,7 @@ Author the EN page first. Then re-author index.zh-CN.html and index.zh-TW.html w
 - zh-CN and zh-TW match the EN content.
 - Privacy checklist satisfied.
 
-## Open questions to confirm at review
+## Open questions (resolved 2026-06-08)
 
-1. The 2026 book chapter title differs between sources: the live site says "AI-Driven Coordination", my_researchs.bib says "AI-Driven Arbitrage". Plan is to use the .bib version. Confirm which is correct.
-2. Repo links: which of the four projects have public repos to link, and which should read "view the artifact" or "available on request"?
+1. 2026 book chapter title: use "Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven Arbitrage" (the .bib version). The live site's "Coordination" is wrong and gets fixed.
+2. Repo links: all four project cards read "Code available on request". No public repo links.
