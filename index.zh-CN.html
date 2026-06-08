@@ -4,9 +4,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>游盛巍 — AI 部署架构师</title>
+  <title>游盛巍（Jason You）· AI 部署工程师 / FDE</title>
   <meta name="description"
-    content="游盛巍（Jason You）—— AI 部署架构师。帮助企业将 AI Agent 投入生产。LangGraph、FastAPI、Cloud Run。博士研究生，研究方向为多智能体可信性与安全。">
+    content="游盛巍（Jason You）。AI 部署工程师与前线部署工程师（FDE）。香港在读博士。四个已交付、可验证的 AI 智能体系统：TLA+ 形式化验证的安全机制、链上多智能体辩论、IEEE ICBC 2026 稳定币控制器，以及一个 SNARK 预言机。">
+  <link rel="canonical" href="https://jasonyou1995.github.io/index.zh-CN.html">
+  <link rel="alternate" hreflang="en" href="https://jasonyou1995.github.io/index.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://jasonyou1995.github.io/index.zh-CN.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://jasonyou1995.github.io/index.zh-TW.html">
+  <link rel="alternate" hreflang="x-default" href="https://jasonyou1995.github.io/index.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="游盛巍 · AI 部署工程师 / FDE">
+  <meta property="og:description" content="四个已交付、可验证的 AI 智能体系统。香港在读博士。开放 AI 部署 / FDE 机会。">
+  <meta property="og:url" content="https://jasonyou1995.github.io/index.zh-CN.html">
+  <meta property="og:image" content="https://jasonyou1995.github.io/photo.jpg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="游盛巍 · AI 部署工程师 / FDE">
+  <meta name="twitter:description" content="四个已交付、可验证的 AI 智能体系统。香港在读博士。">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shengwei You",
+    "alternateName": ["游盛巍", "Jason You"],
+    "jobTitle": "AI Deployment Engineer / Forward Deployed Engineer",
+    "email": "mailto:shengwei.you@gmail.com",
+    "url": "https://jasonyou1995.github.io/",
+    "homeLocation": {"@type": "Place", "name": "Hong Kong"},
+    "knowsLanguage": ["en", "zh-Hans", "zh-Hant"],
+    "sameAs": [
+      "https://www.linkedin.com/in/shengwei-you/",
+      "https://github.com/Jasonyou1995"
+    ],
+    "alumniOf": [
+      {"@type": "CollegeOrUniversity", "name": "University of Notre Dame"},
+      {"@type": "CollegeOrUniversity", "name": "Purdue University"},
+      {"@type": "CollegeOrUniversity", "name": "University of Washington"}
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -46,6 +83,13 @@
     ::selection {
       background: var(--accent);
       color: #fff;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
     }
 
     .bg-grain {
@@ -149,7 +193,8 @@
       box-shadow: 0 12px 30px rgba(0, 0, 0, .5);
     }
 
-    .lang:hover .dd {
+    .lang:hover .dd,
+    .lang:focus-within .dd {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
@@ -204,8 +249,7 @@
       border-radius: 40px;
       font-size: .72rem;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .18em;
+      letter-spacing: .12em;
       margin-bottom: 1.6rem;
     }
 
@@ -306,6 +350,7 @@
 
     .portrait img {
       width: 100%;
+      height: auto;
       border-radius: 16px;
       position: relative;
       z-index: 1;
@@ -325,7 +370,6 @@
     .fcard h4 {
       font-size: .66rem;
       color: var(--text-dim);
-      text-transform: uppercase;
       letter-spacing: .12em;
       margin-bottom: .2rem;
     }
@@ -369,7 +413,6 @@
     .st {
       font-size: .74rem;
       color: var(--accent);
-      text-transform: uppercase;
       letter-spacing: .2em;
       font-weight: 600;
       display: block;
@@ -390,7 +433,7 @@
       margin-top: .8rem;
     }
 
-    /* offer / what I do */
+    /* offer / how I engineer */
     .offer {
       background: var(--bg2);
       border-top: 1px solid var(--border);
@@ -452,91 +495,122 @@
       font-size: .92rem;
     }
 
-    /* process */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      counter-reset: s;
-    }
-
-    .step {
-      position: relative;
-      padding: 1.8rem;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--bg2);
-      counter-increment: s;
-    }
-
-    .step::before {
-      content: counter(s);
-      font-family: 'Fraunces', 'Noto Serif SC', serif;
-      font-weight: 900;
-      font-size: 2.4rem;
-      color: var(--accent);
-      opacity: .35;
-      position: absolute;
-      top: 1rem;
-      right: 1.3rem;
-    }
-
-    .step .when {
-      font-size: .74rem;
-      color: var(--accent-2);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 600;
-      margin-bottom: .5rem;
-    }
-
-    .step h3 {
-      font-size: 1.1rem;
-      margin-bottom: .5rem;
-    }
-
-    .step p {
+    .delivery {
+      margin-top: 2rem;
       color: var(--text-dim);
-      font-size: .9rem;
+      font-size: .95rem;
     }
 
-    /* metrics strip */
-    .strip {
+    .delivery b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* numbers strip */
+    .nums {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 0;
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
-      margin-top: 3rem;
     }
 
-    .strip .m {
-      padding: 1.8rem;
+    .nums a {
+      padding: 2rem 1.2rem;
       text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: .25s;
     }
 
-    .strip .m:not(:last-child) {
+    .nums a:not(:last-child) {
       border-right: 1px solid var(--border);
     }
 
-    .strip .num {
+    .nums a:hover {
+      background: var(--bg2);
+    }
+
+    .nums .big {
       font-family: 'Fraunces', 'Noto Serif SC', serif;
       font-weight: 900;
-      font-size: 2.3rem;
-      color: var(--text);
-    }
-
-    .strip .num em {
+      font-size: 2.6rem;
       color: var(--accent);
-      font-style: normal;
-      font-size: 1.4rem;
+      line-height: 1;
     }
 
-    .strip .lab {
+    .nums .lab {
       color: var(--text-dim);
+      font-size: .8rem;
+      margin-top: .6rem;
+    }
+
+    /* projects */
+    .projs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .proj {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: .3s;
+    }
+
+    .proj:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .proj h3 {
+      font-family: 'Fraunces', 'Noto Serif SC', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: .2rem;
+    }
+
+    .proj .tagline {
+      color: var(--accent-2);
+      font-size: .92rem;
+      margin-bottom: 1rem;
+    }
+
+    .proj ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .proj li {
+      color: var(--text-dim);
+      font-size: .9rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .proj li::before {
+      content: "\25B9";
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+    }
+
+    .proj li b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .proj .note {
       font-size: .82rem;
-      margin-top: .4rem;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      padding-top: .8rem;
     }
 
     /* research */
@@ -688,6 +762,11 @@
       margin-bottom: 1.1rem;
     }
 
+    .scat p {
+      color: var(--text-dim);
+      font-size: .9rem;
+    }
+
     .chips {
       display: flex;
       flex-wrap: wrap;
@@ -802,6 +881,10 @@
       font-size: .85rem;
     }
 
+    footer p {
+      margin: .25rem 0;
+    }
+
     .fade {
       opacity: 0;
       transform: translateY(26px);
@@ -844,17 +927,21 @@
         display: none;
       }
 
-      .steps {
-        grid-template-columns: 1fr;
+      .nums {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .strip {
-        grid-template-columns: 1fr;
-      }
-
-      .strip .m:not(:last-child) {
+      .nums a:nth-child(2) {
         border-right: none;
+      }
+
+      .nums a:nth-child(1),
+      .nums a:nth-child(2) {
         border-bottom: 1px solid var(--border);
+      }
+
+      .projs {
+        grid-template-columns: 1fr;
       }
 
       .stitle {
@@ -874,6 +961,23 @@
         gap: .7rem;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .fade {
+        transition: none;
+        opacity: 1;
+        transform: none;
+      }
+
+      .fc1,
+      .fc2 {
+        animation: none;
+      }
+    }
   </style>
 </head>
 
@@ -886,13 +990,13 @@
       <div style="display:flex;align-items:center;gap:1.8rem;">
         <ul>
           <li><a href="#about">关于</a></li>
-          <li><a href="#work">业务</a></li>
-          <li><a href="#process">流程</a></li>
+          <li><a href="#numbers">数据</a></li>
+          <li><a href="#work">工作</a></li>
           <li><a href="#research">研究</a></li>
           <li><a href="#experience">经历</a></li>
           <li><a href="#contact">联系</a></li>
         </ul>
-        <div class="lang"><span>&#127760; 简中</span>
+        <div class="lang" tabindex="0" aria-label="语言"><span>&#127760; 简中</span>
           <div class="dd">
             <a href="index.html">English</a>
             <a href="index.zh-CN.html">&#31616;&#20307;&#20013;&#25991;</a>
@@ -908,27 +1012,26 @@
     <div class="container">
       <div class="hero-grid">
         <div class="fade">
-          <span class="tag">开放咨询与 FDE 合作机会</span>
+          <span class="tag">开放 AI 部署 / FDE 机会</span>
           <h1><span class="notranslate">Shengwei <span class="sur">You</span><span class="cn">游盛巍
-                &middot; "Shengwei You"</span></span></h1>
-          <p class="sub">AI 部署架构师</p>
-          <p class="lead">我帮助企业将 <b>AI Agent 投入生产</b>。不是演示 Demo 或 PPT 概念。我选定一个高价值业务场景，从需求定义到上线运维，通常在 <b>90 天</b>
-            内交付可监控、可交接的生产系统。博士研究生在读，研究方向为多智能体可信性与安全；我构建的，正是我发表的。</p>
+                &middot; Jason</span></span></h1>
+          <p class="sub">AI 部署工程师 / FDE</p>
+          <p class="lead">我为前沿大模型调用构建完整的可靠性层：多模型编排、检索接地、链上执行，以及<b>可证明的安全门控</b>。我用种子、日志和回执验证每一个结论，并以审稿人的怀疑态度审视自己的结果。</p>
           <div class="btns">
-            <a href="#contact" class="btn btn-1">合作咨询</a>
-            <a href="#research" class="btn btn-2">查看研究</a>
+            <a href="#numbers" class="btn btn-1">查看作品</a>
+            <a href="#contact" class="btn btn-2">联系我</a>
           </div>
         </div>
         <div class="fade">
           <div class="portrait">
-            <img src="photo.png" alt="游盛巍 (Shengwei You)">
+            <img src="photo.jpg" width="660" height="660" alt="游盛巍 Shengwei You">
             <div class="fcard fc1">
-              <h4>专注领域</h4>
-              <p>生产级 Agent 部署</p>
+              <h4>方向</h4>
+              <p>智能体安全与部署</p>
             </div>
             <div class="fcard fc2">
-              <h4>技术栈</h4>
-              <p>LangGraph &middot; FastAPI</p>
+              <h4>开放</h4>
+              <p>FDE 与 AI 岗位</p>
             </div>
           </div>
         </div>
@@ -936,76 +1039,117 @@
     </div>
   </section>
 
-  <!-- WHAT I DO -->
-  <section class="offer" id="work">
+  <!-- NUMBERS -->
+  <section id="numbers">
     <div class="container">
       <div class="sh fade">
-        <span class="st">业务范围</span>
-        <h2 class="stitle">落地级 AI，而非概念验证</h2>
-        <p class="ssub">大多数 AI 项目死在 Demo 和上线之间。我专注于弥合这一鸿沟：交付能够承担真实业务任务的 Agent 系统，并在离开后让你的团队能够独立运维。</p>
+        <span class="st">关键数据</span>
+        <h2 class="stitle">可验证，而非空谈</h2>
+        <p class="ssub">每一个数字都可追溯到种子、日志和结果文件。点击数字可跳转到产出它的系统。</p>
       </div>
-      <div class="pillars">
-        <div class="pcard fade">
-          <div class="ic">01</div>
-          <h3>Agent 设计与编排</h3>
-          <p>基于 LangGraph 与 n8n 的多步骤智能体工作流，聚焦一个真实业务流程，在关键环节设置人机协同检查点。</p>
-        </div>
-        <div class="pcard fade">
-          <div class="ic">02</div>
-          <h3>生产工程化</h3>
-          <p>基于 Cloud Run 的 FastAPI 服务，具备完善的错误处理、可观测性与告警机制。组件可审计，拒绝黑箱。</p>
-        </div>
-        <div class="pcard fade">
-          <div class="ic">03</div>
-          <h3>可信与安全架构</h3>
-          <p>将研究中的提案者 / 挑战者 / 裁决者审查模式落地应用，确保 Agent 输出在执行前经过校验，而不是盲目执行。</p>
-        </div>
-        <div class="pcard fade">
-          <div class="ic">04</div>
-          <h3>移交与赋能</h3>
-          <p>交付完整源码、运维手册与培训 session，确保你的团队真正掌握系统。无锁定，无依赖。</p>
-        </div>
+      <div class="nums fade">
+        <a href="#p-oc1">
+          <div class="big" data-count="18400" data-decimals="0" data-suffix="+">0</div>
+          <div class="lab">行生产级 Python，独立交付</div>
+        </a>
+        <a href="#p-oc1">
+          <div class="big" data-count="5.8" data-decimals="1" data-suffix="M">0</div>
+          <div class="lab">个 TLA+ 状态已模型检验，0 违规</div>
+        </a>
+        <a href="#p-mvf">
+          <div class="big" data-count="62" data-decimals="0" data-suffix="%">0</div>
+          <div class="lab">峰值脱锚偏差降低，IEEE ICBC 2026</div>
+        </a>
+        <a href="#p-noc">
+          <div class="big" data-count="21" data-decimals="0" data-suffix="x">0</div>
+          <div class="lab">预言机成本低于委员会基线（倍）</div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section id="process">
+  <!-- HOW I ENGINEER -->
+  <section class="offer" id="work">
     <div class="container">
       <div class="sh fade">
-        <span class="st">90 天交付路径</span>
-        <h2 class="stitle">从明确问题到可自主运维的系统</h2>
-        <p class="ssub">固定时间线，三个验收节点，非开放式长期外包。</p>
+        <span class="st">我如何做工程</span>
+        <h2 class="stitle">可验证的生产级 AI，而非概念演示</h2>
+        <p class="ssub">大多数 AI 项目死在演示与上线之间。我专注于演示之后的部分：能做真实工作、在压力下安全失败、并且可以证明的系统。</p>
       </div>
-      <div class="steps">
-        <div class="step fade">
-          <div class="when">第 1–30 天 &middot; MVP</div>
-          <h3>交付真实可用的产品</h3>
-          <p>锁定一个工作流，构建可运行的 Agent，尽早验证业务价值，而不是在黑暗中追求完美。</p>
+      <div class="pillars">
+        <div class="pcard fade">
+          <div class="ic">01</div>
+          <h3>围绕前沿模型的可靠性层</h3>
+          <p>多模型编排（OpenAI、Anthropic、本地）带自动故障切换、内容哈希缓存，以及每次调用的成本、延迟与 token 遥测。</p>
         </div>
-        <div class="step fade">
-          <div class="when">第 31–60 天 &middot; 生产级</div>
-          <h3>系统加固</h3>
-          <p>完善错误处理、可观测性、人机协同检查点，以及生产环境所需的监控告警能力。</p>
+        <div class="pcard fade">
+          <div class="ic">02</div>
+          <h3>形式化验证</h3>
+          <p>用 TLA+ 规范并模型检验安全状态机，让熔断电路是被证明安全的，而不是寄希望于安全。</p>
         </div>
-        <div class="step fade">
-          <div class="when">第 61–90 天 &middot; 实战检验</div>
-          <h3>完整移交</h3>
-          <p>经过压力测试、文档化，并附带运维手册移交团队。系统真正属于你们。</p>
+        <div class="pcard fade">
+          <div class="ic">03</div>
+          <h3>对抗性红队</h3>
+          <p>用 Q-learning 对手攻击我自己的系统，并诚实记录失败模式，而不是把它们藏起来。</p>
+        </div>
+        <div class="pcard fade">
+          <div class="ic">04</div>
+          <h3>可复现性</h3>
+          <p>每一个报告的数字都可追溯到一个种子、一段大模型轨迹和一个结果文件。一条命令即可重跑全部。我会写明自己证据的局限。</p>
         </div>
       </div>
-      <div class="strip fade">
-        <div class="m">
-          <div class="num"><em>90</em> 天</div>
-          <div class="lab">从明确问题到上线监控的 Agent 系统</div>
+      <p class="delivery fade">也可通过 <b>Lion Protocol</b> 承接 AI 部署交付：把一个明确界定的工作流从问题做到上线、可监控、客户完全拥有的系统，通常约 90 天。</p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="sh fade">
+        <span class="st">精选作品</span>
+        <h2 class="stitle">四个已交付的系统</h2>
+        <p class="ssub">独立从头到尾构建。每一个都附带测量结果与复现方法。</p>
+      </div>
+      <div class="projs">
+        <div class="proj fade" id="p-oc1">
+          <h3>OC1：智能体安全控制系统</h3>
+          <p class="tagline">带形式化验证安全机制的多模型智能体栈。</p>
+          <ul>
+            <li><b>构建：</b>多模型 LLM 编排（自动故障切换）、TLA+ 安全状态机、提示注入检测、EVM 执行层，以及 RAG 策略预言机。独立完成：18,400+ 行 Python、7 份 Solidity 合约、14 套测试。</li>
+            <li><b>测量：</b>P95 约 3.9 秒，安全门控决策低于 5 毫秒；5,866,037 个 TLA+ 状态，0 违规；提示注入 F1 0.765（5% 误报率）；在 100/100 次自适应 RL 攻击中存活。</li>
+            <li><b>可验证：</b>一条命令的流水线、种子可控、结论到产物可追溯。</li>
+          </ul>
+          <p class="note">代码可应要求提供。</p>
         </div>
-        <div class="m">
-          <div class="num">3<em> 阶段</em></div>
-          <div class="lab">MVP &rarr; 生产级 &rarr; 实战检验</div>
+        <div class="proj fade" id="p-oc2">
+          <h3>OC2：链上多智能体辩论</h3>
+          <p class="tagline">三个 LLM 角色辩论，裁决在链上执行。</p>
+          <ul>
+            <li><b>构建：</b>三角色辩论（提案者、质疑者、裁判）在执行前审查 DeFi 操作，通过 4 份经 Foundry 测试的 Solidity 合约在链上提交，带 ECDSA 验证与转录哈希。</li>
+            <li><b>测量：</b>裁决准确率 90.2% [87.6, 92.8]，在真实链上操作上与专家一致率 95%，端到端 16.8 秒，gas 比 Optimism 故障证明基线便宜 8.7%（1.95M 对 2.13M gas）。</li>
+            <li><b>可验证：</b>76 个 Foundry 测试，覆盖单元、对抗与 gas 基准。</li>
+          </ul>
+          <p class="note">代码可应要求提供。</p>
         </div>
-        <div class="m">
-          <div class="num">&lt;200<em> 行</em></div>
-          <div class="lab">单组件代码上限，可审计、可维护</div>
+        <div class="proj fade" id="p-mvf">
+          <h3>MVF-Composer：稳定币储备控制器</h3>
+          <p class="tagline">被 IEEE ICBC 2026 接收并宣讲。</p>
+          <ul>
+            <li><b>构建：</b>12 个并发 LLM 智能体，横跨 4 种行为原型，运行于 OpenAI、Anthropic 与 DeepSeek，带 Pydantic 校验的输出与受约束的均值方差优化器。约 12,500 行带类型的 Python，46 个模块。</li>
+            <li><b>测量：</b>在 1,200 次可复现仿真中，峰值脱锚偏差降低 62%，危机恢复比行业基线快 3.1 倍。</li>
+            <li><b>可验证：</b>同行评审，每次运行记录种子、提交哈希与时间戳。</li>
+          </ul>
+          <p class="note">代码可应要求提供。</p>
+        </div>
+        <div class="proj fade" id="p-noc">
+          <h3>NOC：可加密验证的预言机</h3>
+          <p class="tagline">链上 SNARK 验证，成本仅为现有方案的一小部分。</p>
+          <ul>
+            <li><b>构建：</b>一个 Solidity 0.8.23 预言机，带链上 Groth16 与 BN254 验证，以及质押、罚没和按声誉加权的共识。</li>
+            <li><b>测量：</b>在 L2 上每次更新约 0.04 美元（约比现有委员会预言机便宜 21 倍），在 37.5% 对手占比下仍 100% 检测拜占庭行为。</li>
+            <li><b>可验证：</b>76 个通过的测试，含 256 次模糊测试与 gas 基准。</li>
+          </ul>
+          <p class="note">代码可应要求提供。</p>
         </div>
       </div>
     </div>
@@ -1017,13 +1161,12 @@
     <div class="container">
       <div class="sh fade">
         <span class="st">研究</span>
-        <h2 class="stitle">多智能体可信性与安全</h2>
-        <p class="ssub">我的博士研究处于自主智能体、共识机制设计与安全的交叉领域。工程实践与学术研究相互驱动。</p>
+        <h2 class="stitle">多智能体的信任与安全</h2>
+        <p class="ssub">我的博士研究处于自主智能体、共识设计与安全的交叉点。工程与研究互相滋养。</p>
       </div>
       <div class="rcard fade">
-        <h3>校准型多智能体决策系统</h3>
-        <p>如何信任自主智能体的输出？我的研究开发了<strong>提案者 / 挑战者 /
-            裁决者</strong>架构，独立智能体在决策执行前进行论证与裁决，作为实现可校准、可辩护自动化的路径。我在学术中研究的同一架构，正是我在客户系统中部署的安全层：输出经过挑战与裁决，而非盲目执行。
+        <h3>校准的多智能体决策系统</h3>
+        <p>如何信任一个自主智能体的输出？我的研究提出一种<strong>提案者、质疑者、裁判</strong>的架构，让独立的智能体在决策被执行之前先辩论与裁定，作为通往可校准、可辩护自动化的路径。我在学术上研究的同一套机制，就是我在真实系统中部署的安全层：输出会被质疑与裁定，而不是被盲目执行。
           <br><br>
           <em>主题：多智能体系统、共识与信任、校准预测、区块链与去中心化系统安全。</em>
         </p>
@@ -1038,9 +1181,9 @@
           <span class="yr">2026</span>
           <div>
             <h3>Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven
-              Coordination</h3>
+              Arbitrage</h3>
             <p class="meta">书籍章节 &middot; You, Kuehlkamp, Nabrzyski &middot; DOI: <a
-                href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank">10.1007/978-3-032-00495-6_8</a></p>
+                href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank" rel="noopener">10.1007/978-3-032-00495-6_8</a></p>
           </div>
         </div>
         <div class="pub">
@@ -1048,8 +1191,8 @@
           <div>
             <h3>Persona-Preserving Reputation Protocol (P2RP) for Enhanced Security, Privacy, and Trust in Blockchain
               Oracles</h3>
-            <p class="meta">Cluster Computing (期刊) &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a
-                href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank">10.1007/s10586-023-04222-4</a></p>
+            <p class="meta">Cluster Computing（期刊）&middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a
+                href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank" rel="noopener">10.1007/s10586-023-04222-4</a></p>
           </div>
         </div>
         <div class="pub">
@@ -1057,8 +1200,8 @@
           <div>
             <h3>Mining User Behavior in Decentralized Applications for Blockchain Trust and Security Analytics</h3>
             <p class="meta">IEEE BCCA 2023 &middot; You, Joshi, Kuehlkamp, Nabrzyski &middot; DOI: <a
-                href="https://doi.org/10.1109/bcca58897.2023.10338860"
-                target="_blank">10.1109/bcca58897.2023.10338860</a></p>
+                href="https://doi.org/10.1109/bcca58897.2023.10338860" target="_blank"
+                rel="noopener">10.1109/bcca58897.2023.10338860</a></p>
           </div>
         </div>
         <div class="pub">
@@ -1066,7 +1209,8 @@
           <div>
             <h3>Trust in the Context of Blockchain Applications</h3>
             <p class="meta">IEEE BCCA 2022 &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a
-                href="https://doi.org/10.1109/bcca55292.2022.9922068" target="_blank">10.1109/bcca55292.2022.9922068</a>
+                href="https://doi.org/10.1109/bcca55292.2022.9922068" target="_blank"
+                rel="noopener">10.1109/bcca55292.2022.9922068</a>
             </p>
           </div>
         </div>
@@ -1079,37 +1223,35 @@
     <div class="container">
       <div class="sh fade">
         <span class="st">经历</span>
-        <h2 class="stitle">项目履历</h2>
-        <p class="ssub">从 Linux 基金会开源基础设施到如今的生产级 AI 系统交付。
-        </p>
+        <h2 class="stitle">履历</h2>
+        <p class="ssub">从 The Linux Foundation 的开源基础设施，到今天交付 AI 智能体系统。</p>
       </div>
       <div class="tl">
         <div class="ti fade">
-          <div class="when">2024 – 至今</div>
-          <h3>AI 部署架构师 — 独立执业</h3>
+          <div class="when">2024 至今</div>
+          <h3>AI 部署工程师（独立）</h3>
           <p class="org">Lion Protocol &middot; 香港</p>
-          <p>为企业设计与交付生产级 AI Agent：基于 LangGraph 与 n8n 的智能体工作流，通过 FastAPI 部署于 Cloud
-            Run，内置可观测性与人机协同安全机制。作为一人交付团队运作，从需求定义、系统构建、生产加固到完整移交，客户拥有全部产权。</p>
+          <p>设计并交付 AI 智能体系统：多模型编排、检索接地与安全门控，通过 FastAPI 提供服务，内建可观测性与人在回路的检查点。负责界定、构建、加固并移交客户完全拥有的系统。</p>
         </div>
         <div class="ti fade">
-          <div class="when">2025 – 至今</div>
-          <h3>客座讲师 — 金融计算</h3>
-          <p class="org">香港浸会大学商学院</p>
-          <p>研究生级别金融计算课程客座讲师，指导学生使用 Python（NumPy、pandas、scikit-learn）构建与回测量化模型。</p>
+          <div class="when">2025 至今</div>
+          <h3>客座讲师，金融计算</h3>
+          <p class="org">香港浸会大学 工商管理学院</p>
+          <p>在研究生层次的金融计算课程担任客座讲师，教学生用 Python（NumPy、pandas、scikit-learn）构建并回测量化模型。</p>
         </div>
         <div class="ti fade">
           <div class="when">2019</div>
           <h3>区块链全栈工程师（实习）</h3>
-          <p class="org">Linux 基金会 &middot; 旧金山</p>
-          <p>使用 MERN 技术栈为 Hyperledger Fabric 构建实时性能监控面板，编写 Caliper-CLI 文档显著缩短开发者上手时间。成果在 <a
-              href="https://www.youtube.com/watch?v=MK7x87mUQOk" target="_blank">Hyperledger Global Forum 2020</a> 展示。
-          </p>
+          <p class="org">The Linux Foundation &middot; 美国旧金山</p>
+          <p>用 MERN 技术栈为 Hyperledger Fabric 构建实时性能仪表盘，并撰写 Caliper-CLI 文档，缩短了开发者上手时间。相关工作在 <a
+              href="https://www.youtube.com/watch?v=MK7x87mUQOk" target="_blank" rel="noopener">Hyperledger Global Forum
+              2020</a> 上展示。</p>
         </div>
         <div class="ti fade">
-          <div class="when">2018 – 2019</div>
-          <h3>研究生助理研究员</h3>
-          <p class="org">普渡大学计算机系 &middot; 西拉法叶</p>
-          <p>使用 Go 语言构建安全分层确定性（HD）钱包并开源发布。在 CNN 上实现对抗性机器学习攻击，向校内安全社区展示研究成果。</p>
+          <div class="when">2018 至 2019</div>
+          <h3>研究生研究员</h3>
+          <p class="org">普渡大学 计算机科学与工程系 &middot; 美国西拉法叶</p>
+          <p>用 Go 构建了一个安全的分层确定性（HD）钱包并开源。实现了针对 CNN 的对抗性机器学习攻击，并向校内安全社区展示了发现。</p>
         </div>
       </div>
     </div>
@@ -1123,22 +1265,22 @@
       </div>
       <div class="grid3">
         <div class="edu fade">
-          <p class="deg">博士研究生，计算机科学</p>
+          <p class="deg">计算机科学博士在读</p>
           <p class="sch">圣母大学（University of Notre Dame）</p>
           <p class="when">导师：Jarek Nabrzyski</p>
-          <p class="det">论文研究方向：去中心化系统中的信任与系统性风险，以及面向校准型、安全感知自动化的多智能体架构。</p>
+          <p class="det">博士论文研究去中心化系统中的信任与系统性风险，以及面向可校准、安全感知自动化的多智能体架构。</p>
         </div>
         <div class="edu fade">
-          <p class="deg">理学硕士，计算机科学（信息安全方向）</p>
+          <p class="deg">计算机科学硕士（信息安全）</p>
           <p class="sch">普渡大学（Purdue University）</p>
-          <p class="when">2018 – 2019</p>
+          <p class="when">2018 至 2019</p>
           <p class="det">信息安全、密码学与对抗性机器学习。</p>
         </div>
         <div class="edu fade">
-          <p class="deg">文学学士，数学</p>
+          <p class="deg">数学学士</p>
           <p class="sch">华盛顿大学（University of Washington）</p>
-          <p class="when">2014 – 2018</p>
-          <p class="det">应用数学，聚焦机器学习与自然语言处理。</p>
+          <p class="when">2014 至 2018</p>
+          <p class="det">应用数学，专注于机器学习与自然语言处理。</p>
         </div>
       </div>
     </div>
@@ -1148,38 +1290,63 @@
   <section id="skills">
     <div class="container">
       <div class="sh fade"><span class="st">技术栈</span>
-        <h2 class="stitle">构建工具</h2>
+        <h2 class="stitle">我使用的工具</h2>
       </div>
       <div class="grid3">
         <div class="scat fade">
-          <h3>Agent 与 AI</h3>
+          <h3>智能体与 AI</h3>
           <div class="chips">
-            <span class="chip">LangGraph</span><span class="chip">n8n</span><span class="chip">Multi-Agent
-              Systems</span><span class="chip">Prompt Engineering</span><span class="chip">RAG</span>
+            <span class="chip">多模型编排</span><span class="chip">LangGraph</span><span class="chip">RAG</span><span
+              class="chip">提示注入检测</span><span class="chip">评测框架设计</span>
           </div>
         </div>
         <div class="scat fade">
-          <h3>后端与基础设施</h3>
+          <h3>工程</h3>
           <div class="chips">
-            <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Cloud Run</span><span
-              class="chip">Docker</span><span class="chip">REST APIs</span>
+            <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">asyncio</span><span
+              class="chip">Pydantic v2</span><span class="chip">pytest</span>
           </div>
         </div>
         <div class="scat fade">
-          <h3>数据与机器学习</h3>
+          <h3>严谨性</h3>
           <div class="chips">
-            <span class="chip">pandas / NumPy</span><span class="chip">scikit-learn</span><span
-              class="chip">Backtesting</span><span class="chip">SQL</span>
+            <span class="chip">TLA+ 模型检验</span><span class="chip">BCa 自助法置信区间</span><span
+              class="chip">预注册实验</span><span class="chip">可复现流水线</span>
           </div>
         </div>
         <div class="scat fade">
-          <h3>系统与 Web3</h3>
+          <h3>区块链</h3>
           <div class="chips">
-            <span class="chip">Go</span><span class="chip">TypeScript</span><span class="chip">Solidity</span><span
-              class="chip">Smart Contracts</span>
+            <span class="chip">Solidity</span><span class="chip">Foundry</span><span class="chip">Hardhat</span><span
+              class="chip">Gas 分析</span><span class="chip">EVM</span>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CURRENTLY OPEN TO -->
+  <section id="open"
+    style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="sh fade"><span class="st">目前开放</span>
+        <h2 class="stitle">我能补位的方向</h2>
+      </div>
+      <div class="grid3">
+        <div class="scat fade">
+          <h3>AI 部署工程师 / FDE</h3>
+          <p>主攻方向。OpenAI、Anthropic、Crypto.com。</p>
+        </div>
+        <div class="scat fade">
+          <h3>AI &times; 加密，创新工程师</h3>
+          <p>Binance、OKX、Crypto.com。</p>
+        </div>
+        <div class="scat fade">
+          <h3>开发者关系 / 开发者体验（中文）</h3>
+          <p>OpenAI DevX、MiniMax、Mistral、Qwen、DeepSeek、智谱。</p>
+        </div>
+      </div>
+      <p class="ssub fade" style="margin-top:1.5rem;">同时在打造一门以中文为主的课程《你的第一位 AI 员工》，以及在 Lion Protocol OPC 每周一次的 Skill Studio。节奏是：做、记录、分享、变现。</p>
     </div>
   </section>
 
@@ -1188,26 +1355,47 @@
     <div class="container">
       <div class="cbox fade">
         <span class="st">联系</span>
-        <h2>一起打造能上线的产品</h2>
-        <p>开放 AI 部署咨询、FDE / 解决方案工程师职位，以及研究合作。我会阅读每一封邮件。</p>
+        <h2>一起做能上线的东西</h2>
+        <p>开放 AI 部署 / FDE 机会、AI 与加密工程、开发者关系，以及精选的咨询合作。每条消息我都会看。</p>
         <div class="clinks">
           <a class="clink" href="mailto:shengwei.you@gmail.com"><span>&#9993;</span> shengwei.you@gmail.com</a>
-          <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank"><span>&#128188;</span>
-            LinkedIn</a>
-          <a class="clink" href="https://github.com/Jasonyou1995" target="_blank"><span>&#128025;</span> GitHub</a>
+          <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank"
+            rel="noopener"><span>&#128188;</span> LinkedIn</a>
+          <a class="clink" href="https://github.com/Jasonyou1995" target="_blank" rel="noopener"><span>&#128025;</span>
+            GitHub</a>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2026 游盛巍 &middot; Lion Protocol</p>
+    <p>&copy; 2026 游盛巍 &middot; Shengwei You &middot; 香港</p>
+    <p>这是一个静态站点。无追踪、无 Cookie、不收集任何数据。</p>
   </footer>
 
   <script>
     const obs = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }); }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade').forEach(el => obs.observe(el));
-    document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function (e) { e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); }); });
+    document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function (e) { const t = document.querySelector(this.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); } }); });
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function animateCount(el) {
+      const target = parseFloat(el.dataset.count);
+      const dec = parseInt(el.dataset.decimals || '0');
+      const suffix = el.dataset.suffix || '';
+      const fmt = (n) => (dec > 0 ? n.toFixed(dec) : Math.round(n).toLocaleString('en-US')) + suffix;
+      if (reduce) { el.textContent = fmt(target); return; }
+      const dur = 1100, t0 = performance.now();
+      function tick(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(target * eased);
+        if (p < 1) requestAnimationFrame(tick); else el.textContent = fmt(target);
+      }
+      requestAnimationFrame(tick);
+    }
+    const numObs = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) { animateCount(e.target); numObs.unobserve(e.target); } }); }, { threshold: .4 });
+    document.querySelectorAll('.nums .big[data-count]').forEach(el => numObs.observe(el));
   </script>
 </body>
 
