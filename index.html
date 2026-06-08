@@ -4,9 +4,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shengwei You — AI Deployment Architect</title>
+  <title>Shengwei You (Jason You) · AI Deployment Engineer / FDE</title>
   <meta name="description"
-    content="Shengwei You (Jason You) – AI Deployment Architect. I help companies put AI agents into production. LangGraph, FastAPI, Cloud Run. PhD candidate researching multi-agent trust & safety.">
+    content="Shengwei You (游盛巍 / Jason You). AI Deployment Engineer and Forward Deployed Engineer. PhD candidate in Hong Kong. Four shipped, verifiable AI agent systems: TLA+-verified safety, on-chain multi-agent debate, an IEEE ICBC 2026 stablecoin controller, and a SNARK oracle.">
+  <link rel="canonical" href="https://jasonyou1995.github.io/">
+  <link rel="alternate" hreflang="en" href="https://jasonyou1995.github.io/index.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://jasonyou1995.github.io/index.zh-CN.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://jasonyou1995.github.io/index.zh-TW.html">
+  <link rel="alternate" hreflang="x-default" href="https://jasonyou1995.github.io/index.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Shengwei You · AI Deployment Engineer / FDE">
+  <meta property="og:description"
+    content="Four shipped, verifiable AI agent systems. PhD candidate, Hong Kong. Open to AI Deployment / FDE roles.">
+  <meta property="og:url" content="https://jasonyou1995.github.io/">
+  <meta property="og:image" content="https://jasonyou1995.github.io/photo.jpg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Shengwei You · AI Deployment Engineer / FDE">
+  <meta name="twitter:description" content="Four shipped, verifiable AI agent systems. PhD candidate, Hong Kong.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shengwei You",
+    "alternateName": ["游盛巍", "Jason You"],
+    "jobTitle": "AI Deployment Engineer / Forward Deployed Engineer",
+    "email": "mailto:shengwei.you@gmail.com",
+    "url": "https://jasonyou1995.github.io/",
+    "homeLocation": {"@type": "Place", "name": "Hong Kong"},
+    "knowsLanguage": ["en", "zh-Hans", "zh-Hant"],
+    "sameAs": [
+      "https://www.linkedin.com/in/shengwei-you/",
+      "https://github.com/Jasonyou1995"
+    ],
+    "alumniOf": [
+      {"@type": "CollegeOrUniversity", "name": "University of Notre Dame"},
+      {"@type": "CollegeOrUniversity", "name": "Purdue University"},
+      {"@type": "CollegeOrUniversity", "name": "University of Washington"}
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -46,6 +83,13 @@
     ::selection {
       background: var(--accent);
       color: #fff;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
     }
 
     .bg-grain {
@@ -149,7 +193,8 @@
       box-shadow: 0 12px 30px rgba(0, 0, 0, .5);
     }
 
-    .lang:hover .dd {
+    .lang:hover .dd,
+    .lang:focus-within .dd {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
@@ -305,6 +350,7 @@
 
     .portrait img {
       width: 100%;
+      height: auto;
       border-radius: 16px;
       position: relative;
       z-index: 1;
@@ -389,7 +435,7 @@
       margin-top: .8rem;
     }
 
-    /* offer / what I do */
+    /* offer / how I engineer */
     .offer {
       background: var(--bg2);
       border-top: 1px solid var(--border);
@@ -451,91 +497,122 @@
       font-size: .92rem;
     }
 
-    /* process */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      counter-reset: s;
-    }
-
-    .step {
-      position: relative;
-      padding: 1.8rem;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--bg2);
-      counter-increment: s;
-    }
-
-    .step::before {
-      content: counter(s);
-      font-family: 'Fraunces', serif;
-      font-weight: 900;
-      font-size: 2.4rem;
-      color: var(--accent);
-      opacity: .35;
-      position: absolute;
-      top: 1rem;
-      right: 1.3rem;
-    }
-
-    .step .when {
-      font-size: .74rem;
-      color: var(--accent-2);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 600;
-      margin-bottom: .5rem;
-    }
-
-    .step h3 {
-      font-size: 1.1rem;
-      margin-bottom: .5rem;
-    }
-
-    .step p {
+    .delivery {
+      margin-top: 2rem;
       color: var(--text-dim);
-      font-size: .9rem;
+      font-size: .95rem;
     }
 
-    /* metrics strip */
-    .strip {
+    .delivery b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* numbers strip */
+    .nums {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 0;
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
-      margin-top: 3rem;
     }
 
-    .strip .m {
-      padding: 1.8rem;
+    .nums a {
+      padding: 2rem 1.2rem;
       text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: .25s;
     }
 
-    .strip .m:not(:last-child) {
+    .nums a:not(:last-child) {
       border-right: 1px solid var(--border);
     }
 
-    .strip .num {
+    .nums a:hover {
+      background: var(--bg2);
+    }
+
+    .nums .big {
       font-family: 'Fraunces', serif;
       font-weight: 900;
-      font-size: 2.3rem;
-      color: var(--text);
-    }
-
-    .strip .num em {
+      font-size: 2.6rem;
       color: var(--accent);
-      font-style: normal;
-      font-size: 1.4rem;
+      line-height: 1;
     }
 
-    .strip .lab {
+    .nums .lab {
       color: var(--text-dim);
+      font-size: .8rem;
+      margin-top: .6rem;
+    }
+
+    /* projects */
+    .projs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .proj {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: .3s;
+    }
+
+    .proj:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .proj h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: .2rem;
+    }
+
+    .proj .tagline {
+      color: var(--accent-2);
+      font-size: .92rem;
+      margin-bottom: 1rem;
+    }
+
+    .proj ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .proj li {
+      color: var(--text-dim);
+      font-size: .9rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .proj li::before {
+      content: "\25B9";
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+    }
+
+    .proj li b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .proj .note {
       font-size: .82rem;
-      margin-top: .4rem;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      padding-top: .8rem;
     }
 
     /* research */
@@ -687,6 +764,11 @@
       margin-bottom: 1.1rem;
     }
 
+    .scat p {
+      color: var(--text-dim);
+      font-size: .9rem;
+    }
+
     .chips {
       display: flex;
       flex-wrap: wrap;
@@ -801,6 +883,10 @@
       font-size: .85rem;
     }
 
+    footer p {
+      margin: .25rem 0;
+    }
+
     .fade {
       opacity: 0;
       transform: translateY(26px);
@@ -843,17 +929,21 @@
         display: none;
       }
 
-      .steps {
-        grid-template-columns: 1fr;
+      .nums {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .strip {
-        grid-template-columns: 1fr;
-      }
-
-      .strip .m:not(:last-child) {
+      .nums a:nth-child(2) {
         border-right: none;
+      }
+
+      .nums a:nth-child(1),
+      .nums a:nth-child(2) {
         border-bottom: 1px solid var(--border);
+      }
+
+      .projs {
+        grid-template-columns: 1fr;
       }
 
       .stitle {
@@ -873,6 +963,23 @@
         gap: .7rem;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .fade {
+        transition: none;
+        opacity: 1;
+        transform: none;
+      }
+
+      .fc1,
+      .fc2 {
+        animation: none;
+      }
+    }
   </style>
 </head>
 
@@ -885,13 +992,13 @@
       <div style="display:flex;align-items:center;gap:1.8rem;">
         <ul>
           <li><a href="#about">About</a></li>
-          <li><a href="#work">What I Do</a></li>
-          <li><a href="#process">Process</a></li>
+          <li><a href="#numbers">Numbers</a></li>
+          <li><a href="#work">Work</a></li>
           <li><a href="#research">Research</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="lang"><span>&#127760; EN</span>
+        <div class="lang" tabindex="0" aria-label="Language"><span>&#127760; EN</span>
           <div class="dd">
             <a href="index.html">English</a>
             <a href="index.zh-CN.html">&#31616;&#20307;&#20013;&#25991;</a>
@@ -907,28 +1014,28 @@
     <div class="container">
       <div class="hero-grid">
         <div class="fade">
-          <span class="tag">Open to Consulting &amp; FDE Opportunities</span>
+          <span class="tag">Open to AI Deployment / FDE roles</span>
           <h1><span class="notranslate">Shengwei <span class="sur">You</span><span class="cn">&#28216;&#30427;&#24013;
-                &middot; &ldquo;Shengwei You&rdquo;</span></span></h1>
-          <p class="sub">AI Deployment Architect</p>
-          <p class="lead">I help companies put <b>AI agents into production</b>. Not demos or slideware. I take
-            one high-value workflow from scoped problem to a live, monitored, owned system, typically in <b>90 days</b>.
-            PhD candidate researching multi-agent trust &amp; safety; I build what I publish.</p>
+                &middot; Jason</span></span></h1>
+          <p class="sub">AI Deployment Engineer / FDE</p>
+          <p class="lead">I build the full reliability layer around frontier model calls: multi-provider orchestration,
+            retrieval grounding, on-chain execution, and <b>provable safety gating</b>. I verify every claim with
+            seeds, logs, and receipts, and I treat my own results with a reviewer's skepticism.</p>
           <div class="btns">
-            <a href="#contact" class="btn btn-1">Work With Me</a>
-            <a href="#research" class="btn btn-2">See the Research</a>
+            <a href="#numbers" class="btn btn-1">See the work</a>
+            <a href="#contact" class="btn btn-2">Get in touch</a>
           </div>
         </div>
         <div class="fade">
           <div class="portrait">
-            <img src="photo.png" alt="Shengwei You (&#28216;&#30427;&#24013;)">
+            <img src="photo.jpg" width="660" height="660" alt="Shengwei You (&#28216;&#30427;&#24013;)">
             <div class="fcard fc1">
               <h4>Focus</h4>
-              <p>Agents in Production</p>
+              <p>Agent safety &amp; deployment</p>
             </div>
             <div class="fcard fc2">
-              <h4>Stack</h4>
-              <p>LangGraph &middot; FastAPI</p>
+              <h4>Open to</h4>
+              <p>FDE &amp; AI roles</p>
             </div>
           </div>
         </div>
@@ -936,83 +1043,135 @@
     </div>
   </section>
 
-  <!-- WHAT I DO -->
-  <section class="offer" id="work">
+  <!-- NUMBERS -->
+  <section id="numbers">
     <div class="container">
       <div class="sh fade">
-        <span class="st">What I Do</span>
-        <h2 class="stitle">Production AI, not proofs-of-concept</h2>
-        <p class="ssub">Most AI projects die between the demo and the deploy. I specialize in that gap: shipping agents
-          that do real operational work and that your team can own and run after I leave.</p>
+        <span class="st">By the numbers</span>
+        <h2 class="stitle">Verifiable, not claimed</h2>
+        <p class="ssub">Every figure traces to a seed, a log, and a result file. Click a number to jump to the system
+          that produced it.</p>
       </div>
-      <div class="pillars">
-        <div class="pcard fade">
-          <div class="ic">01</div>
-          <h3>Agent Design &amp; Orchestration</h3>
-          <p>Multi-step agentic workflows built on LangGraph and n8n, scoped to one real business process, with
-            human-in-the-loop checkpoints where they matter.</p>
-        </div>
-        <div class="pcard fade">
-          <div class="ic">02</div>
-          <h3>Production Engineering</h3>
-          <p>FastAPI services on Cloud Run with proper error handling, observability, and alerting. Auditable
-            components, no black boxes.</p>
-        </div>
-        <div class="pcard fade">
-          <div class="ic">03</div>
-          <h3>Trust &amp; Safety Architecture</h3>
-          <p>Proposer / challenger / judge review patterns from my research, applied so agent outputs are checked before
-            they act. Not blindly executed.</p>
-        </div>
-        <div class="pcard fade">
-          <div class="ic">04</div>
-          <h3>Handover &amp; Enablement</h3>
-          <p>Full source code, a runbook, and a working session so your team owns the system. No lock-in, no dependency
-            on me.</p>
-        </div>
+      <div class="nums fade">
+        <a href="#p-oc1">
+          <div class="big" data-count="18400" data-decimals="0" data-suffix="+">0</div>
+          <div class="lab">lines of production Python, shipped solo</div>
+        </a>
+        <a href="#p-oc1">
+          <div class="big" data-count="5.8" data-decimals="1" data-suffix="M">0</div>
+          <div class="lab">TLA+ states model-checked, 0 violations</div>
+        </a>
+        <a href="#p-mvf">
+          <div class="big" data-count="62" data-decimals="0" data-suffix="%">0</div>
+          <div class="lab">peak peg deviation cut, IEEE ICBC 2026</div>
+        </a>
+        <a href="#p-noc">
+          <div class="big" data-count="21" data-decimals="0" data-suffix="x">0</div>
+          <div class="lab">cheaper oracle vs committee baseline</div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section id="process">
+  <!-- HOW I ENGINEER -->
+  <section class="offer" id="work">
     <div class="container">
       <div class="sh fade">
-        <span class="st">The 90-Day Path</span>
-        <h2 class="stitle">From scoped problem to owned system</h2>
-        <p class="ssub">A fixed timeline with three checkpoints, not an open-ended retainer.</p>
+        <span class="st">How I engineer</span>
+        <h2 class="stitle">Production AI you can verify, not proofs-of-concept</h2>
+        <p class="ssub">Most AI projects die between the demo and the deploy. I build for the part after the demo: systems
+          that do real work, fail safe under pressure, and prove it.</p>
       </div>
-      <div class="steps">
-        <div class="step fade">
-          <div class="when">Days 1&ndash;30 &middot; MVP</div>
-          <h3>Ship something real</h3>
-          <p>Scope one workflow, build a working agent, prove operational impact early instead of perfecting in the
-            dark.</p>
+      <div class="pillars">
+        <div class="pcard fade">
+          <div class="ic">01</div>
+          <h3>Reliability layer around frontier models</h3>
+          <p>Multi-provider orchestration (OpenAI, Anthropic, local) with automatic failover, content-hashed caching,
+            and per-call cost, latency, and token telemetry.</p>
         </div>
-        <div class="step fade">
-          <div class="when">Days 31&ndash;60 &middot; Production</div>
-          <h3>Harden it</h3>
-          <p>Error handling, observability, human-in-the-loop checkpoints, and the monitoring you need to trust it in
-            the wild.</p>
+        <div class="pcard fade">
+          <div class="ic">02</div>
+          <h3>Formal verification</h3>
+          <p>Safety state machines specified and model-checked in TLA+, so the kill-circuit is proven safe, not hoped
+            safe.</p>
         </div>
-        <div class="step fade">
-          <div class="when">Days 61&ndash;90 &middot; Battle-tested</div>
-          <h3>Hand it over</h3>
-          <p>Load-tested, documented, and transferred with a runbook your team runs. The system is yours.</p>
+        <div class="pcard fade">
+          <div class="ic">03</div>
+          <h3>Adversarial red-teaming</h3>
+          <p>A Q-learning adversary I use to attack my own systems, with the failure modes documented honestly instead
+            of hidden.</p>
+        </div>
+        <div class="pcard fade">
+          <div class="ic">04</div>
+          <h3>Reproducibility</h3>
+          <p>Every reported number traces to a seed, an LLM trace, and a result file. One command reruns everything. I
+            document the limits of my own evidence.</p>
         </div>
       </div>
-      <div class="strip fade">
-        <div class="m">
-          <div class="num"><em>90</em> days</div>
-          <div class="lab">Scoped problem to live, monitored agent</div>
+      <p class="delivery fade">Also available for AI deployment delivery work through <b>Lion Protocol</b>: one scoped
+        workflow taken from problem to a live, monitored, owned system, typically in about 90 days.</p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="sh fade">
+        <span class="st">Selected work</span>
+        <h2 class="stitle">Four shipped systems</h2>
+        <p class="ssub">Built solo, end to end. Each one ships with the measurements and the means to reproduce them.</p>
+      </div>
+      <div class="projs">
+        <div class="proj fade" id="p-oc1">
+          <h3>OC1: Agent Safety Control System</h3>
+          <p class="tagline">A multi-provider agent stack with a formally verified safety circuit.</p>
+          <ul>
+            <li><b>Built:</b> multi-provider LLM orchestration with auto-failover, a TLA+ safety state machine,
+              prompt-injection detection, an EVM execution layer, and a RAG policy oracle. Solo: 18,400+ lines of
+              Python, 7 Solidity contracts, 14 test suites.</li>
+            <li><b>Measured:</b> P95 about 3.9s with sub-5ms safety gating; 5,866,037 TLA+ states, 0 violations;
+              prompt-injection F1 0.765 at a 5% false-positive rate; survived 100/100 adaptive RL attack episodes.</li>
+            <li><b>Verifiable:</b> one-command pipeline, seed-controlled, with claim-to-artifact traceability.</li>
+          </ul>
+          <p class="note">Code available on request.</p>
         </div>
-        <div class="m">
-          <div class="num">3<em>-stage</em></div>
-          <div class="lab">MVP &rarr; production &rarr; battle-tested</div>
+        <div class="proj fade" id="p-oc2">
+          <h3>OC2: On-Chain Multi-Agent Debate</h3>
+          <p class="tagline">Three LLM roles argue, then the verdict is enforced on-chain.</p>
+          <ul>
+            <li><b>Built:</b> a 3-role debate (Proposer, Challenger, Judge) that vets DeFi actions before execution,
+              committed on-chain via 4 Foundry-tested Solidity contracts with ECDSA verification and transcript
+              hashing.</li>
+            <li><b>Measured:</b> 90.2% verdict accuracy [87.6, 92.8], 95% expert agreement on real on-chain actions,
+              16.8s end to end, 8.7% cheaper gas than the Optimism fault-proof baseline (1.95M vs 2.13M gas).</li>
+            <li><b>Verifiable:</b> 76 Foundry tests covering unit, adversarial, and gas benchmarks.</li>
+          </ul>
+          <p class="note">Code available on request.</p>
         </div>
-        <div class="m">
-          <div class="num">&lt;200<em> loc</em></div>
-          <div class="lab">Per-component ceiling, auditable, ownable</div>
+        <div class="proj fade" id="p-mvf">
+          <h3>MVF-Composer: Stablecoin Reserve Controller</h3>
+          <p class="tagline">Accepted and presented at IEEE ICBC 2026.</p>
+          <ul>
+            <li><b>Built:</b> 12 concurrent LLM agents across 4 archetypes over OpenAI, Anthropic, and DeepSeek, with
+              Pydantic-validated outputs and a constrained mean-variance optimizer. About 12,500 lines of typed Python
+              across 46 modules.</li>
+            <li><b>Measured:</b> across 1,200 reproducible simulations, 62% peak peg deviation reduction and 3.1x faster
+              crisis recovery versus the industry baseline.</li>
+            <li><b>Verifiable:</b> peer-reviewed, with seed, commit hash, and timestamp captured per run.</li>
+          </ul>
+          <p class="note">Code available on request.</p>
+        </div>
+        <div class="proj fade" id="p-noc">
+          <h3>NOC: Cryptographically Verifiable Oracle</h3>
+          <p class="tagline">On-chain SNARK verification at a fraction of incumbent cost.</p>
+          <ul>
+            <li><b>Built:</b> a Solidity 0.8.23 oracle with on-chain Groth16 and BN254 verification, plus staking,
+              slashing, and reputation-weighted consensus.</li>
+            <li><b>Measured:</b> about 0.04 USD per update on L2 (about 21x cheaper than incumbent committee oracles),
+              100% Byzantine detection up to a 37.5% adversary fraction.</li>
+            <li><b>Verifiable:</b> 76 passing tests, including a 256-run fuzz suite and gas benchmarks.</li>
+          </ul>
+          <p class="note">Code available on request.</p>
         </div>
       </div>
     </div>
@@ -1030,18 +1189,18 @@
       </div>
       <div class="rcard fade">
         <h3>Calibrated multi-agent decision systems</h3>
-        <p>How do you trust the output of an autonomous agent? My research develops a <strong>proposer / challenger /
+        <p>How do you trust the output of an autonomous agent? My research develops a <strong>proposer, challenger,
             judge</strong> architecture, where independent agents argue and adjudicate before a decision is acted
           on, as a path to calibrated, defensible automation. The same chassis I study academically is the safety
-          layer I deploy in client systems: outputs are challenged and judged, not blindly executed.
+          layer I deploy in real systems: outputs are challenged and judged, not blindly executed.
           <br><br>
-          <em>Themes: multi-agent systems, consensus &amp; trust, calibrated forecasting, blockchain &amp;
+          <em>Themes: multi-agent systems, consensus and trust, calibrated forecasting, blockchain and
             decentralized-system safety.</em>
         </p>
       </div>
 
       <div class="sh fade" style="margin-top:4rem;">
-        <span class="st">Selected Publications</span>
+        <span class="st">Selected publications</span>
         <h2 class="stitle" style="font-size:1.9rem;">Peer-reviewed work</h2>
       </div>
       <div class="fade">
@@ -1049,9 +1208,9 @@
           <span class="yr">2026</span>
           <div>
             <h3>Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven
-              Coordination</h3>
+              Arbitrage</h3>
             <p class="meta">Book chapter &middot; You, Kuehlkamp, Nabrzyski &middot; DOI: <a
-                href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank">10.1007/978-3-032-00495-6_8</a></p>
+                href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank" rel="noopener">10.1007/978-3-032-00495-6_8</a></p>
           </div>
         </div>
         <div class="pub">
@@ -1060,7 +1219,7 @@
             <h3>Persona-Preserving Reputation Protocol (P2RP) for Enhanced Security, Privacy, and Trust in Blockchain
               Oracles</h3>
             <p class="meta">Cluster Computing (journal) &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a
-                href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank">10.1007/s10586-023-04222-4</a></p>
+                href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank" rel="noopener">10.1007/s10586-023-04222-4</a></p>
           </div>
         </div>
         <div class="pub">
@@ -1068,8 +1227,8 @@
           <div>
             <h3>Mining User Behavior in Decentralized Applications for Blockchain Trust and Security Analytics</h3>
             <p class="meta">IEEE BCCA 2023 &middot; You, Joshi, Kuehlkamp, Nabrzyski &middot; DOI: <a
-                href="https://doi.org/10.1109/bcca58897.2023.10338860"
-                target="_blank">10.1109/bcca58897.2023.10338860</a></p>
+                href="https://doi.org/10.1109/bcca58897.2023.10338860" target="_blank"
+                rel="noopener">10.1109/bcca58897.2023.10338860</a></p>
           </div>
         </div>
         <div class="pub">
@@ -1077,7 +1236,8 @@
           <div>
             <h3>Trust in the Context of Blockchain Applications</h3>
             <p class="meta">IEEE BCCA 2022 &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a
-                href="https://doi.org/10.1109/bcca55292.2022.9922068" target="_blank">10.1109/bcca55292.2022.9922068</a>
+                href="https://doi.org/10.1109/bcca55292.2022.9922068" target="_blank"
+                rel="noopener">10.1109/bcca55292.2022.9922068</a>
             </p>
           </div>
         </div>
@@ -1091,21 +1251,20 @@
       <div class="sh fade">
         <span class="st">Experience</span>
         <h2 class="stitle">Track record</h2>
-        <p class="ssub">From open-source infrastructure at The Linux Foundation to shipping production AI systems today.
-        </p>
+        <p class="ssub">From open-source infrastructure at The Linux Foundation to shipping AI agent systems today.</p>
       </div>
       <div class="tl">
         <div class="ti fade">
-          <div class="when">2024 &ndash; Present</div>
-          <h3>AI Deployment Architect &mdash; Independent</h3>
+          <div class="when">2024 to Present</div>
+          <h3>AI Deployment Engineer (Independent)</h3>
           <p class="org">Lion Protocol &middot; Hong Kong</p>
-          <p>Design and ship production AI agents for businesses: agentic workflows on LangGraph and n8n, served via
-            FastAPI on Cloud Run, with observability and human-in-the-loop safety built in. Operate as a one-person
-            delivery practice: scope, build, harden, and hand over systems clients own outright.</p>
+          <p>Design and ship AI agent systems: multi-provider orchestration, retrieval grounding, and safety gating,
+            served through FastAPI with observability and human-in-the-loop checkpoints built in. Scope, build, harden,
+            and hand over systems clients own outright.</p>
         </div>
         <div class="ti fade">
-          <div class="when">2025 &ndash; Present</div>
-          <h3>Guest Lecturer &mdash; Financial Computing</h3>
+          <div class="when">2025 to Present</div>
+          <h3>Guest Lecturer, Financial Computing</h3>
           <p class="org">School of Business, Hong Kong Baptist University</p>
           <p>Guest lecturer on a graduate-level financial-computing course, teaching students to build and backtest
             quantitative models in Python (NumPy, pandas, scikit-learn).</p>
@@ -1116,10 +1275,11 @@
           <p class="org">The Linux Foundation &middot; San Francisco, CA</p>
           <p>Built a real-time performance dashboard for Hyperledger Fabric using the MERN stack and authored
             Caliper-CLI documentation that cut developer onboarding time. Work presented at <a
-              href="https://www.youtube.com/watch?v=MK7x87mUQOk" target="_blank">Hyperledger Global Forum 2020</a>.</p>
+              href="https://www.youtube.com/watch?v=MK7x87mUQOk" target="_blank" rel="noopener">Hyperledger Global Forum
+              2020</a>.</p>
         </div>
         <div class="ti fade">
-          <div class="when">2018 &ndash; 2019</div>
+          <div class="when">2018 to 2019</div>
           <h3>Graduate Student Researcher</h3>
           <p class="org">Purdue University, CSE &middot; West Lafayette, IN</p>
           <p>Built a secure Hierarchical-Deterministic (HD) wallet in Go and open-sourced it. Implemented an adversarial
@@ -1140,19 +1300,19 @@
           <p class="deg">PhD Candidate, Computer Science</p>
           <p class="sch">University of Notre Dame</p>
           <p class="when">Advisor: Jarek Nabrzyski</p>
-          <p class="det">Dissertation on trust and systemic risk in decentralized systems, and multi-agent architectures
-            for calibrated, safety-aware automation.</p>
+          <p class="det">Dissertation on trust and systemic risk in decentralized systems, and multi-agent
+            architectures for calibrated, safety-aware automation.</p>
         </div>
         <div class="edu fade">
           <p class="deg">M.S., Computer Science (Information Security)</p>
           <p class="sch">Purdue University</p>
-          <p class="when">2018 &ndash; 2019</p>
+          <p class="when">2018 to 2019</p>
           <p class="det">Information security, cryptography, and adversarial machine learning.</p>
         </div>
         <div class="edu fade">
           <p class="deg">B.A., Mathematics</p>
           <p class="sch">University of Washington</p>
-          <p class="when">2014 &ndash; 2018</p>
+          <p class="when">2014 to 2018</p>
           <p class="det">Applied mathematics with a focus on machine learning and NLP.</p>
         </div>
       </div>
@@ -1162,39 +1322,66 @@
   <!-- SKILLS -->
   <section id="skills">
     <div class="container">
-      <div class="sh fade"><span class="st">Tech Stack</span>
+      <div class="sh fade"><span class="st">Tech stack</span>
         <h2 class="stitle">Tools I build with</h2>
       </div>
       <div class="grid3">
         <div class="scat fade">
           <h3>Agents &amp; AI</h3>
           <div class="chips">
-            <span class="chip">LangGraph</span><span class="chip">n8n</span><span class="chip">Multi-Agent
-              Systems</span><span class="chip">Prompt Engineering</span><span class="chip">RAG</span>
+            <span class="chip">Multi-provider orchestration</span><span class="chip">LangGraph</span><span
+              class="chip">RAG</span><span class="chip">Prompt-injection detection</span><span class="chip">Eval-harness
+              design</span>
           </div>
         </div>
         <div class="scat fade">
-          <h3>Backend &amp; Infra</h3>
+          <h3>Engineering</h3>
           <div class="chips">
-            <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Cloud Run</span><span
-              class="chip">Docker</span><span class="chip">REST APIs</span>
+            <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">asyncio</span><span
+              class="chip">Pydantic v2</span><span class="chip">pytest</span>
           </div>
         </div>
         <div class="scat fade">
-          <h3>Data &amp; ML</h3>
+          <h3>Rigor</h3>
           <div class="chips">
-            <span class="chip">pandas / NumPy</span><span class="chip">scikit-learn</span><span
-              class="chip">Backtesting</span><span class="chip">SQL</span>
+            <span class="chip">TLA+ model checking</span><span class="chip">BCa bootstrap CIs</span><span
+              class="chip">Pre-registered experiments</span><span class="chip">Reproducible pipelines</span>
           </div>
         </div>
         <div class="scat fade">
-          <h3>Systems &amp; Web3</h3>
+          <h3>Blockchain</h3>
           <div class="chips">
-            <span class="chip">Go</span><span class="chip">TypeScript</span><span class="chip">Solidity</span><span
-              class="chip">Smart Contracts</span>
+            <span class="chip">Solidity</span><span class="chip">Foundry</span><span class="chip">Hardhat</span><span
+              class="chip">Gas profiling</span><span class="chip">EVM</span>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CURRENTLY OPEN TO -->
+  <section id="open"
+    style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="sh fade"><span class="st">Currently open to</span>
+        <h2 class="stitle">Where I can plug in</h2>
+      </div>
+      <div class="grid3">
+        <div class="scat fade">
+          <h3>AI Deployment Engineer / FDE</h3>
+          <p>Primary focus. OpenAI, Anthropic, Crypto.com.</p>
+        </div>
+        <div class="scat fade">
+          <h3>AI &times; Crypto, Innovation Engineer</h3>
+          <p>Binance, OKX, Crypto.com.</p>
+        </div>
+        <div class="scat fade">
+          <h3>DevRel / DevX (Mandarin)</h3>
+          <p>OpenAI DevX, MiniMax, Mistral, Qwen, DeepSeek, Zhipu.</p>
+        </div>
+      </div>
+      <p class="ssub fade" style="margin-top:1.5rem;">Also building a Mandarin-first course, "Your First AI Employee",
+        and a weekly Skill Studio at Lion Protocol OPC. The cadence is make, document, share, sell.</p>
     </div>
   </section>
 
@@ -1204,26 +1391,47 @@
       <div class="cbox fade">
         <span class="st">Contact</span>
         <h2>Let&rsquo;s build something that ships</h2>
-        <p>Open to AI deployment consulting, FDE / solutions-engineering roles, and research collaboration. I read every
+        <p>Open to AI Deployment / FDE roles, AI and crypto engineering, DevRel, and selective consulting. I read every
           message.</p>
         <div class="clinks">
           <a class="clink" href="mailto:shengwei.you@gmail.com"><span>&#9993;</span> shengwei.you@gmail.com</a>
-          <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank"><span>&#128188;</span>
-            LinkedIn</a>
-          <a class="clink" href="https://github.com/Jasonyou1995" target="_blank"><span>&#128025;</span> GitHub</a>
+          <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank"
+            rel="noopener"><span>&#128188;</span> LinkedIn</a>
+          <a class="clink" href="https://github.com/Jasonyou1995" target="_blank" rel="noopener"><span>&#128025;</span>
+            GitHub</a>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2026 Shengwei You &middot; Lion Protocol</p>
+    <p>&copy; 2026 Shengwei You &middot; 游盛巍 &middot; Hong Kong</p>
+    <p>This is a static site. No tracking, no cookies, no data collected.</p>
   </footer>
 
   <script>
     const obs = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }); }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade').forEach(el => obs.observe(el));
-    document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function (e) { e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); }); });
+    document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function (e) { const t = document.querySelector(this.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); } }); });
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function animateCount(el) {
+      const target = parseFloat(el.dataset.count);
+      const dec = parseInt(el.dataset.decimals || '0');
+      const suffix = el.dataset.suffix || '';
+      const fmt = (n) => (dec > 0 ? n.toFixed(dec) : Math.round(n).toLocaleString('en-US')) + suffix;
+      if (reduce) { el.textContent = fmt(target); return; }
+      const dur = 1100, t0 = performance.now();
+      function tick(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(target * eased);
+        if (p < 1) requestAnimationFrame(tick); else el.textContent = fmt(target);
+      }
+      requestAnimationFrame(tick);
+    }
+    const numObs = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) { animateCount(e.target); numObs.unobserve(e.target); } }); }, { threshold: .4 });
+    document.querySelectorAll('.nums .big[data-count]').forEach(el => numObs.observe(el));
   </script>
 </body>
 
