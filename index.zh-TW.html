@@ -4,9 +4,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>游盛巍 — AI 部署架構師</title>
+  <title>游盛巍（Jason You）· AI 部署工程師 / FDE</title>
   <meta name="description"
-    content="游盛巍（Jason You）—— AI 部署架構師。協助企業將 AI Agent 投入生產。LangGraph、FastAPI、Cloud Run。博士研究生，研究方向為多智能體可信性與安全。">
+    content="游盛巍（Jason You）。AI 部署工程師與前線部署工程師（FDE）。香港在讀博士。四個已交付、可驗證的 AI 智能體系統：TLA+ 形式化驗證的安全機制、鏈上多智能體辯論、IEEE ICBC 2026 穩定幣控制器，以及一個 SNARK 預言機。">
+  <link rel="canonical" href="https://jasonyou1995.github.io/index.zh-TW.html">
+  <link rel="alternate" hreflang="en" href="https://jasonyou1995.github.io/index.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://jasonyou1995.github.io/index.zh-CN.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://jasonyou1995.github.io/index.zh-TW.html">
+  <link rel="alternate" hreflang="x-default" href="https://jasonyou1995.github.io/index.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:title" content="游盛巍 · AI 部署工程師 / FDE">
+  <meta property="og:description" content="四個已交付、可驗證的 AI 智能體系統。香港在讀博士。開放 AI 部署 / FDE 機會。">
+  <meta property="og:url" content="https://jasonyou1995.github.io/index.zh-TW.html">
+  <meta property="og:image" content="https://jasonyou1995.github.io/photo.jpg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="游盛巍 · AI 部署工程師 / FDE">
+  <meta name="twitter:description" content="四個已交付、可驗證的 AI 智能體系統。香港在讀博士。">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shengwei You",
+    "alternateName": ["游盛巍", "Jason You"],
+    "jobTitle": "AI Deployment Engineer / Forward Deployed Engineer",
+    "email": "mailto:shengwei.you@gmail.com",
+    "url": "https://jasonyou1995.github.io/",
+    "homeLocation": {"@type": "Place", "name": "Hong Kong"},
+    "knowsLanguage": ["en", "zh-Hans", "zh-Hant"],
+    "sameAs": [
+      "https://www.linkedin.com/in/shengwei-you/",
+      "https://github.com/Jasonyou1995"
+    ],
+    "alumniOf": [
+      {"@type": "CollegeOrUniversity", "name": "University of Notre Dame"},
+      {"@type": "CollegeOrUniversity", "name": "Purdue University"},
+      {"@type": "CollegeOrUniversity", "name": "University of Washington"}
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -46,6 +83,13 @@
     ::selection {
       background: var(--accent);
       color: #fff;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
     }
 
     .bg-grain {
@@ -149,7 +193,8 @@
       box-shadow: 0 12px 30px rgba(0, 0, 0, .5);
     }
 
-    .lang:hover .dd {
+    .lang:hover .dd,
+    .lang:focus-within .dd {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
@@ -204,8 +249,7 @@
       border-radius: 40px;
       font-size: .72rem;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .18em;
+      letter-spacing: .12em;
       margin-bottom: 1.6rem;
     }
 
@@ -306,6 +350,7 @@
 
     .portrait img {
       width: 100%;
+      height: auto;
       border-radius: 16px;
       position: relative;
       z-index: 1;
@@ -325,7 +370,6 @@
     .fcard h4 {
       font-size: .66rem;
       color: var(--text-dim);
-      text-transform: uppercase;
       letter-spacing: .12em;
       margin-bottom: .2rem;
     }
@@ -369,7 +413,6 @@
     .st {
       font-size: .74rem;
       color: var(--accent);
-      text-transform: uppercase;
       letter-spacing: .2em;
       font-weight: 600;
       display: block;
@@ -390,7 +433,7 @@
       margin-top: .8rem;
     }
 
-    /* offer / what I do */
+    /* offer / how I engineer */
     .offer {
       background: var(--bg2);
       border-top: 1px solid var(--border);
@@ -452,91 +495,122 @@
       font-size: .92rem;
     }
 
-    /* process */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      counter-reset: s;
-    }
-
-    .step {
-      position: relative;
-      padding: 1.8rem;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--bg2);
-      counter-increment: s;
-    }
-
-    .step::before {
-      content: counter(s);
-      font-family: 'Fraunces', 'Noto Serif TC', serif;
-      font-weight: 900;
-      font-size: 2.4rem;
-      color: var(--accent);
-      opacity: .35;
-      position: absolute;
-      top: 1rem;
-      right: 1.3rem;
-    }
-
-    .step .when {
-      font-size: .74rem;
-      color: var(--accent-2);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 600;
-      margin-bottom: .5rem;
-    }
-
-    .step h3 {
-      font-size: 1.1rem;
-      margin-bottom: .5rem;
-    }
-
-    .step p {
+    .delivery {
+      margin-top: 2rem;
       color: var(--text-dim);
-      font-size: .9rem;
+      font-size: .95rem;
     }
 
-    /* metrics strip */
-    .strip {
+    .delivery b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* numbers strip */
+    .nums {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 0;
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
-      margin-top: 3rem;
     }
 
-    .strip .m {
-      padding: 1.8rem;
+    .nums a {
+      padding: 2rem 1.2rem;
       text-align: center;
+      text-decoration: none;
+      color: inherit;
+      transition: .25s;
     }
 
-    .strip .m:not(:last-child) {
+    .nums a:not(:last-child) {
       border-right: 1px solid var(--border);
     }
 
-    .strip .num {
+    .nums a:hover {
+      background: var(--bg2);
+    }
+
+    .nums .big {
       font-family: 'Fraunces', 'Noto Serif TC', serif;
       font-weight: 900;
-      font-size: 2.3rem;
-      color: var(--text);
-    }
-
-    .strip .num em {
+      font-size: 2.6rem;
       color: var(--accent);
-      font-style: normal;
-      font-size: 1.4rem;
+      line-height: 1;
     }
 
-    .strip .lab {
+    .nums .lab {
       color: var(--text-dim);
+      font-size: .8rem;
+      margin-top: .6rem;
+    }
+
+    /* projects */
+    .projs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .proj {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: .3s;
+    }
+
+    .proj:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .proj h3 {
+      font-family: 'Fraunces', 'Noto Serif TC', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: .2rem;
+    }
+
+    .proj .tagline {
+      color: var(--accent-2);
+      font-size: .92rem;
+      margin-bottom: 1rem;
+    }
+
+    .proj ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .proj li {
+      color: var(--text-dim);
+      font-size: .9rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .proj li::before {
+      content: "\25B9";
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+    }
+
+    .proj li b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .proj .note {
       font-size: .82rem;
-      margin-top: .4rem;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      padding-top: .8rem;
     }
 
     /* research */
@@ -688,6 +762,11 @@
       margin-bottom: 1.1rem;
     }
 
+    .scat p {
+      color: var(--text-dim);
+      font-size: .9rem;
+    }
+
     .chips {
       display: flex;
       flex-wrap: wrap;
@@ -802,6 +881,10 @@
       font-size: .85rem;
     }
 
+    footer p {
+      margin: .25rem 0;
+    }
+
     .fade {
       opacity: 0;
       transform: translateY(26px);
@@ -844,17 +927,21 @@
         display: none;
       }
 
-      .steps {
-        grid-template-columns: 1fr;
+      .nums {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .strip {
-        grid-template-columns: 1fr;
-      }
-
-      .strip .m:not(:last-child) {
+      .nums a:nth-child(2) {
         border-right: none;
+      }
+
+      .nums a:nth-child(1),
+      .nums a:nth-child(2) {
         border-bottom: 1px solid var(--border);
+      }
+
+      .projs {
+        grid-template-columns: 1fr;
       }
 
       .stitle {
@@ -874,6 +961,23 @@
         gap: .7rem;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .fade {
+        transition: none;
+        opacity: 1;
+        transform: none;
+      }
+
+      .fc1,
+      .fc2 {
+        animation: none;
+      }
+    }
   </style>
 </head>
 
@@ -886,13 +990,13 @@
       <div style="display:flex;align-items:center;gap:1.8rem;">
         <ul>
           <li><a href="#about">關於</a></li>
-          <li><a href="#work">業務</a></li>
-          <li><a href="#process">流程</a></li>
+          <li><a href="#numbers">數據</a></li>
+          <li><a href="#work">工作</a></li>
           <li><a href="#research">研究</a></li>
           <li><a href="#experience">經歷</a></li>
-          <li><a href="#contact">聯繫</a></li>
+          <li><a href="#contact">聯絡</a></li>
         </ul>
-        <div class="lang"><span>&#127760; 繁中</span>
+        <div class="lang" tabindex="0" aria-label="語言"><span>&#127760; 繁中</span>
           <div class="dd">
             <a href="index.html">English</a>
             <a href="index.zh-CN.html">&#31616;&#20307;&#20013;&#25991;</a>
@@ -908,27 +1012,26 @@
     <div class="container">
       <div class="hero-grid">
         <div class="fade">
-          <span class="tag">開放諮詢與 FDE 合作機會</span>
+          <span class="tag">開放 AI 部署 / FDE 機會</span>
           <h1><span class="notranslate">Shengwei <span class="sur">You</span><span class="cn">游盛巍
-                &middot; "Shengwei You"</span></span></h1>
-          <p class="sub">AI 部署架構師</p>
-          <p class="lead">我協助企業將 <b>AI Agent 投入生產</b>。不是 Demo 展示或簡報概念。我選定一個高價值業務場景，從需求定義到上線維運，通常在 <b>90 天</b>
-            內交付可監控、可交接的生產系統。博士研究生在讀，研究方向為多智能體可信性與安全；我構建的，正是我發表的。</p>
+                &middot; Jason</span></span></h1>
+          <p class="sub">AI 部署工程師 / FDE</p>
+          <p class="lead">我為前沿大模型呼叫構建完整的可靠性層：多模型編排、檢索接地、鏈上執行，以及<b>可證明的安全門控</b>。我用種子、日誌和回執驗證每一個結論，並以審稿人的懷疑態度審視自己的結果。</p>
           <div class="btns">
-            <a href="#contact" class="btn btn-1">合作諮詢</a>
-            <a href="#research" class="btn btn-2">查看研究</a>
+            <a href="#numbers" class="btn btn-1">查看作品</a>
+            <a href="#contact" class="btn btn-2">聯絡我</a>
           </div>
         </div>
         <div class="fade">
           <div class="portrait">
-            <img src="photo.png" alt="游盛巍 (Shengwei You)">
+            <img src="photo.jpg" width="660" height="660" alt="游盛巍 Shengwei You">
             <div class="fcard fc1">
-              <h4>專注領域</h4>
-              <p>生產級 Agent 部署</p>
+              <h4>方向</h4>
+              <p>智能體安全與部署</p>
             </div>
             <div class="fcard fc2">
-              <h4>技術棧</h4>
-              <p>LangGraph &middot; FastAPI</p>
+              <h4>開放</h4>
+              <p>FDE 與 AI 職位</p>
             </div>
           </div>
         </div>
@@ -936,76 +1039,117 @@
     </div>
   </section>
 
-  <!-- WHAT I DO -->
-  <section class="offer" id="work">
+  <!-- NUMBERS -->
+  <section id="numbers">
     <div class="container">
       <div class="sh fade">
-        <span class="st">業務範圍</span>
-        <h2 class="stitle">落地級 AI，而非概念驗證</h2>
-        <p class="ssub">大多數 AI 專案死在 Demo 和上線之間。我專注於彌合這一鴻溝：交付能夠承擔真實業務任務的 Agent 系統，並在離開後讓你的團隊能夠獨立維運。</p>
+        <span class="st">關鍵數據</span>
+        <h2 class="stitle">可驗證，而非空談</h2>
+        <p class="ssub">每一個數字都可追溯到種子、日誌和結果檔案。點擊數字可跳轉到產出它的系統。</p>
       </div>
-      <div class="pillars">
-        <div class="pcard fade">
-          <div class="ic">01</div>
-          <h3>Agent 設計與編排</h3>
-          <p>基於 LangGraph 與 n8n 的多步驟智能體工作流，聚焦一個真實業務流程，在關鍵環節設置人機協作檢查點。</p>
-        </div>
-        <div class="pcard fade">
-          <div class="ic">02</div>
-          <h3>生產工程化</h3>
-          <p>基於 Cloud Run 的 FastAPI 服務，具備完善的錯誤處理、可觀測性與告警機制。元件可稽核，拒絕黑箱。</p>
-        </div>
-        <div class="pcard fade">
-          <div class="ic">03</div>
-          <h3>可信與安全架構</h3>
-          <p>將研究中的提案者 / 挑戰者 / 裁決者審查模式落地應用，確保 Agent 輸出在執行前經過校驗，而不是盲目執行。</p>
-        </div>
-        <div class="pcard fade">
-          <div class="ic">04</div>
-          <h3>移交與賦能</h3>
-          <p>交付完整原始碼、維運手冊與培訓 session，確保你的團隊真正掌握系統。無鎖定，無依賴。</p>
-        </div>
+      <div class="nums fade">
+        <a href="#p-oc1">
+          <div class="big" data-count="18400" data-decimals="0" data-suffix="+">0</div>
+          <div class="lab">行生產級 Python，獨立交付</div>
+        </a>
+        <a href="#p-oc1">
+          <div class="big" data-count="5.8" data-decimals="1" data-suffix="M">0</div>
+          <div class="lab">個 TLA+ 狀態已模型檢驗，0 違規</div>
+        </a>
+        <a href="#p-mvf">
+          <div class="big" data-count="62" data-decimals="0" data-suffix="%">0</div>
+          <div class="lab">峰值脫錨偏差降低，IEEE ICBC 2026</div>
+        </a>
+        <a href="#p-noc">
+          <div class="big" data-count="21" data-decimals="0" data-suffix="x">0</div>
+          <div class="lab">預言機成本低於委員會基線（倍）</div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section id="process">
+  <!-- HOW I ENGINEER -->
+  <section class="offer" id="work">
     <div class="container">
       <div class="sh fade">
-        <span class="st">90 天交付路徑</span>
-        <h2 class="stitle">從明確問題到可自主維運的系統</h2>
-        <p class="ssub">固定時間線，三個驗收節點，非開放式長期外包。</p>
+        <span class="st">我如何做工程</span>
+        <h2 class="stitle">可驗證的生產級 AI，而非概念演示</h2>
+        <p class="ssub">大多數 AI 專案死在演示與上線之間。我專注於演示之後的部分：能做真實工作、在壓力下安全失敗、並且可以證明的系統。</p>
       </div>
-      <div class="steps">
-        <div class="step fade">
-          <div class="when">第 1–30 天 &middot; MVP</div>
-          <h3>交付真實可用的產品</h3>
-          <p>鎖定一個工作流，構建可運行的 Agent，儘早驗證業務價值，而不是在黑暗中追求完美。</p>
+      <div class="pillars">
+        <div class="pcard fade">
+          <div class="ic">01</div>
+          <h3>圍繞前沿模型的可靠性層</h3>
+          <p>多模型編排（OpenAI、Anthropic、本地）帶自動故障切換、內容雜湊快取，以及每次呼叫的成本、延遲與 token 遙測。</p>
         </div>
-        <div class="step fade">
-          <div class="when">第 31–60 天 &middot; 生產級</div>
-          <h3>系統加固</h3>
-          <p>完善錯誤處理、可觀測性、人機協作檢查點，以及生產環境所需的監控告警能力。</p>
+        <div class="pcard fade">
+          <div class="ic">02</div>
+          <h3>形式化驗證</h3>
+          <p>用 TLA+ 規範並模型檢驗安全狀態機，讓熔斷電路是被證明安全的，而不是寄希望於安全。</p>
         </div>
-        <div class="step fade">
-          <div class="when">第 61–90 天 &middot; 實戰檢驗</div>
-          <h3>完整移交</h3>
-          <p>經過壓力測試、文件化，並附帶維運手冊移交團隊。系統真正屬於你們。</p>
+        <div class="pcard fade">
+          <div class="ic">03</div>
+          <h3>對抗性紅隊</h3>
+          <p>用 Q-learning 對手攻擊我自己的系統，並誠實記錄失敗模式，而不是把它們藏起來。</p>
+        </div>
+        <div class="pcard fade">
+          <div class="ic">04</div>
+          <h3>可重現性</h3>
+          <p>每一個報告的數字都可追溯到一個種子、一段大模型軌跡和一個結果檔案。一條命令即可重跑全部。我會寫明自己證據的侷限。</p>
         </div>
       </div>
-      <div class="strip fade">
-        <div class="m">
-          <div class="num"><em>90</em> 天</div>
-          <div class="lab">從明確問題到上線監控的 Agent 系統</div>
+      <p class="delivery fade">也可透過 <b>Lion Protocol</b> 承接 AI 部署交付：把一個明確界定的工作流從問題做到上線、可監控、客戶完全擁有的系統，通常約 90 天。</p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="sh fade">
+        <span class="st">精選作品</span>
+        <h2 class="stitle">四個已交付的系統</h2>
+        <p class="ssub">獨立從頭到尾構建。每一個都附帶測量結果與重現方法。</p>
+      </div>
+      <div class="projs">
+        <div class="proj fade" id="p-oc1">
+          <h3>OC1：智能體安全控制系統</h3>
+          <p class="tagline">帶形式化驗證安全機制的多模型智能體堆疊。</p>
+          <ul>
+            <li><b>構建：</b>多模型 LLM 編排（自動故障切換）、TLA+ 安全狀態機、提示注入偵測、EVM 執行層，以及 RAG 策略預言機。獨立完成：18,400+ 行 Python、7 份 Solidity 合約、14 套測試。</li>
+            <li><b>測量：</b>P95 約 3.9 秒，安全門控決策低於 5 毫秒；5,866,037 個 TLA+ 狀態，0 違規；提示注入 F1 0.765（5% 誤報率）；在 100/100 次自適應 RL 攻擊中存活。</li>
+            <li><b>可驗證：</b>一條命令的流水線、種子可控、結論到產物可追溯。</li>
+          </ul>
+          <p class="note">程式碼可應要求提供。</p>
         </div>
-        <div class="m">
-          <div class="num">3<em> 階段</em></div>
-          <div class="lab">MVP &rarr; 生產級 &rarr; 實戰檢驗</div>
+        <div class="proj fade" id="p-oc2">
+          <h3>OC2：鏈上多智能體辯論</h3>
+          <p class="tagline">三個 LLM 角色辯論，裁決在鏈上執行。</p>
+          <ul>
+            <li><b>構建：</b>三角色辯論（提案者、質疑者、裁判）在執行前審查 DeFi 操作，透過 4 份經 Foundry 測試的 Solidity 合約在鏈上提交，帶 ECDSA 驗證與轉錄雜湊。</li>
+            <li><b>測量：</b>裁決準確率 90.2% [87.6, 92.8]，在真實鏈上操作上與專家一致率 95%，端到端 16.8 秒，gas 比 Optimism 故障證明基線便宜 8.7%（1.95M 對 2.13M gas）。</li>
+            <li><b>可驗證：</b>76 個 Foundry 測試，涵蓋單元、對抗與 gas 基準。</li>
+          </ul>
+          <p class="note">程式碼可應要求提供。</p>
         </div>
-        <div class="m">
-          <div class="num">&lt;200<em> 行</em></div>
-          <div class="lab">單元件程式碼上限，可稽核、可維護</div>
+        <div class="proj fade" id="p-mvf">
+          <h3>MVF-Composer：穩定幣儲備控制器</h3>
+          <p class="tagline">獲 IEEE ICBC 2026 接收並宣講。</p>
+          <ul>
+            <li><b>構建：</b>12 個並行 LLM 智能體，橫跨 4 種行為原型，執行於 OpenAI、Anthropic 與 DeepSeek，帶 Pydantic 校驗的輸出與受約束的均值方差最佳化器。約 12,500 行帶型別的 Python，46 個模組。</li>
+            <li><b>測量：</b>在 1,200 次可重現模擬中，峰值脫錨偏差降低 62%，危機恢復比業界基線快 3.1 倍。</li>
+            <li><b>可驗證：</b>同行評審，每次執行記錄種子、提交雜湊與時間戳。</li>
+          </ul>
+          <p class="note">程式碼可應要求提供。</p>
+        </div>
+        <div class="proj fade" id="p-noc">
+          <h3>NOC：可加密驗證的預言機</h3>
+          <p class="tagline">鏈上 SNARK 驗證，成本僅為現有方案的一小部分。</p>
+          <ul>
+            <li><b>構建：</b>一個 Solidity 0.8.23 預言機，帶鏈上 Groth16 與 BN254 驗證，以及質押、罰沒和按聲譽加權的共識。</li>
+            <li><b>測量：</b>在 L2 上每次更新約 0.04 美元（約比現有委員會預言機便宜 21 倍），在 37.5% 對手佔比下仍 100% 偵測拜占庭行為。</li>
+            <li><b>可驗證：</b>76 個通過的測試，含 256 次模糊測試與 gas 基準。</li>
+          </ul>
+          <p class="note">程式碼可應要求提供。</p>
         </div>
       </div>
     </div>
@@ -1017,13 +1161,12 @@
     <div class="container">
       <div class="sh fade">
         <span class="st">研究</span>
-        <h2 class="stitle">多智能體可信性與安全</h2>
-        <p class="ssub">我的博士研究處於自主智能體、共識機制設計與安全的交叉領域。工程實踐與學術研究相互驅動。</p>
+        <h2 class="stitle">多智能體的信任與安全</h2>
+        <p class="ssub">我的博士研究處於自主智能體、共識設計與安全的交叉點。工程與研究互相滋養。</p>
       </div>
       <div class="rcard fade">
-        <h3>校準型多智能體決策系統</h3>
-        <p>如何信任自主智能體的輸出？我的研究開發了<strong>提案者 / 挑戰者 /
-            裁決者</strong>架構，獨立智能體在決策執行前進行論證與裁決，作為實現可校準、可辯護自動化的路徑。我在學術中研究的同一架構，正是我在客戶系統中部署的安全層：輸出經過挑戰與裁決，而非盲目執行。
+        <h3>校準的多智能體決策系統</h3>
+        <p>如何信任一個自主智能體的輸出？我的研究提出一種<strong>提案者、質疑者、裁判</strong>的架構，讓獨立的智能體在決策被執行之前先辯論與裁定，作為通往可校準、可辯護自動化的路徑。我在學術上研究的同一套機制，就是我在真實系統中部署的安全層：輸出會被質疑與裁定，而不是被盲目執行。
           <br><br>
           <em>主題：多智能體系統、共識與信任、校準預測、區塊鏈與去中心化系統安全。</em>
         </p>
@@ -1038,9 +1181,9 @@
           <span class="yr">2026</span>
           <div>
             <h3>Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven
-              Coordination</h3>
+              Arbitrage</h3>
             <p class="meta">書籍章節 &middot; You, Kuehlkamp, Nabrzyski &middot; DOI: <a
-                href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank">10.1007/978-3-032-00495-6_8</a></p>
+                href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank" rel="noopener">10.1007/978-3-032-00495-6_8</a></p>
           </div>
         </div>
         <div class="pub">
@@ -1048,8 +1191,8 @@
           <div>
             <h3>Persona-Preserving Reputation Protocol (P2RP) for Enhanced Security, Privacy, and Trust in Blockchain
               Oracles</h3>
-            <p class="meta">Cluster Computing (期刊) &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a
-                href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank">10.1007/s10586-023-04222-4</a></p>
+            <p class="meta">Cluster Computing（期刊）&middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a
+                href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank" rel="noopener">10.1007/s10586-023-04222-4</a></p>
           </div>
         </div>
         <div class="pub">
@@ -1057,8 +1200,8 @@
           <div>
             <h3>Mining User Behavior in Decentralized Applications for Blockchain Trust and Security Analytics</h3>
             <p class="meta">IEEE BCCA 2023 &middot; You, Joshi, Kuehlkamp, Nabrzyski &middot; DOI: <a
-                href="https://doi.org/10.1109/bcca58897.2023.10338860"
-                target="_blank">10.1109/bcca58897.2023.10338860</a></p>
+                href="https://doi.org/10.1109/bcca58897.2023.10338860" target="_blank"
+                rel="noopener">10.1109/bcca58897.2023.10338860</a></p>
           </div>
         </div>
         <div class="pub">
@@ -1066,7 +1209,8 @@
           <div>
             <h3>Trust in the Context of Blockchain Applications</h3>
             <p class="meta">IEEE BCCA 2022 &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a
-                href="https://doi.org/10.1109/bcca55292.2022.9922068" target="_blank">10.1109/bcca55292.2022.9922068</a>
+                href="https://doi.org/10.1109/bcca55292.2022.9922068" target="_blank"
+                rel="noopener">10.1109/bcca55292.2022.9922068</a>
             </p>
           </div>
         </div>
@@ -1079,37 +1223,35 @@
     <div class="container">
       <div class="sh fade">
         <span class="st">經歷</span>
-        <h2 class="stitle">專案履歷</h2>
-        <p class="ssub">從 Linux 基金會開源基礎設施到如今的生產級 AI 系統交付。
-        </p>
+        <h2 class="stitle">履歷</h2>
+        <p class="ssub">從 The Linux Foundation 的開源基礎設施，到今天交付 AI 智能體系統。</p>
       </div>
       <div class="tl">
         <div class="ti fade">
-          <div class="when">2024 – 至今</div>
-          <h3>AI 部署架構師 — 獨立執業</h3>
+          <div class="when">2024 至今</div>
+          <h3>AI 部署工程師（獨立）</h3>
           <p class="org">Lion Protocol &middot; 香港</p>
-          <p>為企業設計與交付生產級 AI Agent：基於 LangGraph 與 n8n 的智能體工作流，透過 FastAPI 部署於 Cloud
-            Run，內建可觀測性與人機協作安全機制。作為一人交付團隊運作，從需求定義、系統構建、生產加固到完整移交，客戶擁有全部產權。</p>
+          <p>設計並交付 AI 智能體系統：多模型編排、檢索接地與安全門控，透過 FastAPI 提供服務，內建可觀測性與人在迴路的檢查點。負責界定、構建、加固並移交客戶完全擁有的系統。</p>
         </div>
         <div class="ti fade">
-          <div class="when">2025 – 至今</div>
-          <h3>客座講師 — 金融計算</h3>
-          <p class="org">香港浸會大學商學院</p>
-          <p>研究所級別金融計算課程客座講師，指導學生使用 Python（NumPy、pandas、scikit-learn）構建與回測量化模型。</p>
+          <div class="when">2025 至今</div>
+          <h3>客座講師，金融計算</h3>
+          <p class="org">香港浸會大學 工商管理學院</p>
+          <p>在研究所層次的金融計算課程擔任客座講師，教學生用 Python（NumPy、pandas、scikit-learn）構建並回測量化模型。</p>
         </div>
         <div class="ti fade">
           <div class="when">2019</div>
           <h3>區塊鏈全端工程師（實習）</h3>
-          <p class="org">Linux 基金會 &middot; 舊金山</p>
-          <p>使用 MERN 技術棧為 Hyperledger Fabric 構建即時效能監控面板，編寫 Caliper-CLI 文件顯著縮短開發者上手時間。成果在 <a
-              href="https://www.youtube.com/watch?v=MK7x87mUQOk" target="_blank">Hyperledger Global Forum 2020</a> 展示。
-          </p>
+          <p class="org">The Linux Foundation &middot; 美國舊金山</p>
+          <p>用 MERN 技術堆疊為 Hyperledger Fabric 構建即時效能儀表板，並撰寫 Caliper-CLI 文件，縮短了開發者上手時間。相關工作在 <a
+              href="https://www.youtube.com/watch?v=MK7x87mUQOk" target="_blank" rel="noopener">Hyperledger Global Forum
+              2020</a> 上展示。</p>
         </div>
         <div class="ti fade">
-          <div class="when">2018 – 2019</div>
-          <h3>研究生助理研究員</h3>
-          <p class="org">普渡大學計算機系 &middot; 西拉法葉</p>
-          <p>使用 Go 語言構建安全分層確定性（HD）錢包並開源發布。在 CNN 上實現對抗性機器學習攻擊，向校內安全社群展示研究成果。</p>
+          <div class="when">2018 至 2019</div>
+          <h3>研究生研究員</h3>
+          <p class="org">普渡大學 計算機科學與工程系 &middot; 美國西拉法葉</p>
+          <p>用 Go 構建了一個安全的分層確定性（HD）錢包並開源。實作了針對 CNN 的對抗性機器學習攻擊，並向校內安全社群展示了發現。</p>
         </div>
       </div>
     </div>
@@ -1123,22 +1265,22 @@
       </div>
       <div class="grid3">
         <div class="edu fade">
-          <p class="deg">博士研究生，電腦科學</p>
+          <p class="deg">電腦科學博士在讀</p>
           <p class="sch">聖母大學（University of Notre Dame）</p>
           <p class="when">指導教授：Jarek Nabrzyski</p>
-          <p class="det">論文研究方向：去中心化系統中的信任與系統性風險，以及面向校準型、安全感知自動化的多智能體架構。</p>
+          <p class="det">博士論文研究去中心化系統中的信任與系統性風險，以及面向可校準、安全感知自動化的多智能體架構。</p>
         </div>
         <div class="edu fade">
-          <p class="deg">理學碩士，電腦科學（資訊安全方向）</p>
+          <p class="deg">電腦科學碩士（資訊安全）</p>
           <p class="sch">普渡大學（Purdue University）</p>
-          <p class="when">2018 – 2019</p>
+          <p class="when">2018 至 2019</p>
           <p class="det">資訊安全、密碼學與對抗性機器學習。</p>
         </div>
         <div class="edu fade">
-          <p class="deg">文學學士，數學</p>
+          <p class="deg">數學學士</p>
           <p class="sch">華盛頓大學（University of Washington）</p>
-          <p class="when">2014 – 2018</p>
-          <p class="det">應用數學，聚焦機器學習與自然語言處理。</p>
+          <p class="when">2014 至 2018</p>
+          <p class="det">應用數學，專注於機器學習與自然語言處理。</p>
         </div>
       </div>
     </div>
@@ -1148,38 +1290,63 @@
   <section id="skills">
     <div class="container">
       <div class="sh fade"><span class="st">技術棧</span>
-        <h2 class="stitle">構建工具</h2>
+        <h2 class="stitle">我使用的工具</h2>
       </div>
       <div class="grid3">
         <div class="scat fade">
-          <h3>Agent 與 AI</h3>
+          <h3>智能體與 AI</h3>
           <div class="chips">
-            <span class="chip">LangGraph</span><span class="chip">n8n</span><span class="chip">Multi-Agent
-              Systems</span><span class="chip">Prompt Engineering</span><span class="chip">RAG</span>
+            <span class="chip">多模型編排</span><span class="chip">LangGraph</span><span class="chip">RAG</span><span
+              class="chip">提示注入偵測</span><span class="chip">評測框架設計</span>
           </div>
         </div>
         <div class="scat fade">
-          <h3>後端與基礎設施</h3>
+          <h3>工程</h3>
           <div class="chips">
-            <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Cloud Run</span><span
-              class="chip">Docker</span><span class="chip">REST APIs</span>
+            <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">asyncio</span><span
+              class="chip">Pydantic v2</span><span class="chip">pytest</span>
           </div>
         </div>
         <div class="scat fade">
-          <h3>資料與機器學習</h3>
+          <h3>嚴謹性</h3>
           <div class="chips">
-            <span class="chip">pandas / NumPy</span><span class="chip">scikit-learn</span><span
-              class="chip">Backtesting</span><span class="chip">SQL</span>
+            <span class="chip">TLA+ 模型檢驗</span><span class="chip">BCa 自助法信賴區間</span><span
+              class="chip">預註冊實驗</span><span class="chip">可重現流水線</span>
           </div>
         </div>
         <div class="scat fade">
-          <h3>系統與 Web3</h3>
+          <h3>區塊鏈</h3>
           <div class="chips">
-            <span class="chip">Go</span><span class="chip">TypeScript</span><span class="chip">Solidity</span><span
-              class="chip">Smart Contracts</span>
+            <span class="chip">Solidity</span><span class="chip">Foundry</span><span class="chip">Hardhat</span><span
+              class="chip">Gas 分析</span><span class="chip">EVM</span>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- CURRENTLY OPEN TO -->
+  <section id="open"
+    style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div class="sh fade"><span class="st">目前開放</span>
+        <h2 class="stitle">我能補位的方向</h2>
+      </div>
+      <div class="grid3">
+        <div class="scat fade">
+          <h3>AI 部署工程師 / FDE</h3>
+          <p>主攻方向。OpenAI、Anthropic、Crypto.com。</p>
+        </div>
+        <div class="scat fade">
+          <h3>AI &times; 加密，創新工程師</h3>
+          <p>Binance、OKX、Crypto.com。</p>
+        </div>
+        <div class="scat fade">
+          <h3>開發者關係 / 開發者體驗（中文）</h3>
+          <p>OpenAI DevX、MiniMax、Mistral、Qwen、DeepSeek、智譜。</p>
+        </div>
+      </div>
+      <p class="ssub fade" style="margin-top:1.5rem;">同時在打造一門以中文為主的課程《你的第一位 AI 員工》，以及在 Lion Protocol OPC 每週一次的 Skill Studio。節奏是：做、記錄、分享、變現。</p>
     </div>
   </section>
 
@@ -1187,27 +1354,48 @@
   <section id="contact">
     <div class="container">
       <div class="cbox fade">
-        <span class="st">聯繫</span>
-        <h2>一起打造能上線的產品</h2>
-        <p>開放 AI 部署諮詢、FDE / 解決方案工程師職位，以及研究合作。我會閱讀每一封郵件。</p>
+        <span class="st">聯絡</span>
+        <h2>一起做能上線的東西</h2>
+        <p>開放 AI 部署 / FDE 機會、AI 與加密工程、開發者關係，以及精選的諮詢合作。每則訊息我都會看。</p>
         <div class="clinks">
           <a class="clink" href="mailto:shengwei.you@gmail.com"><span>&#9993;</span> shengwei.you@gmail.com</a>
-          <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank"><span>&#128188;</span>
-            LinkedIn</a>
-          <a class="clink" href="https://github.com/Jasonyou1995" target="_blank"><span>&#128025;</span> GitHub</a>
+          <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank"
+            rel="noopener"><span>&#128188;</span> LinkedIn</a>
+          <a class="clink" href="https://github.com/Jasonyou1995" target="_blank" rel="noopener"><span>&#128025;</span>
+            GitHub</a>
         </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2026 游盛巍 &middot; Lion Protocol</p>
+    <p>&copy; 2026 游盛巍 &middot; Shengwei You &middot; 香港</p>
+    <p>這是一個靜態網站。無追蹤、無 Cookie、不收集任何資料。</p>
   </footer>
 
   <script>
     const obs = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }); }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.fade').forEach(el => obs.observe(el));
-    document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function (e) { e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); }); });
+    document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function (e) { const t = document.querySelector(this.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); } }); });
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function animateCount(el) {
+      const target = parseFloat(el.dataset.count);
+      const dec = parseInt(el.dataset.decimals || '0');
+      const suffix = el.dataset.suffix || '';
+      const fmt = (n) => (dec > 0 ? n.toFixed(dec) : Math.round(n).toLocaleString('en-US')) + suffix;
+      if (reduce) { el.textContent = fmt(target); return; }
+      const dur = 1100, t0 = performance.now();
+      function tick(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(target * eased);
+        if (p < 1) requestAnimationFrame(tick); else el.textContent = fmt(target);
+      }
+      requestAnimationFrame(tick);
+    }
+    const numObs = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) { animateCount(e.target); numObs.unobserve(e.target); } }); }, { threshold: .4 });
+    document.querySelectorAll('.nums .big[data-count]').forEach(el => numObs.observe(el));
   </script>
 </body>
 
