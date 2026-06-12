@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research · Shengwei You</title>
+  <meta name="description"
+    content="PhD research by Shengwei You (游盛巍 / Jason You): calibrated multi-agent decision systems, proposer / challenger / judge architectures, and trust in decentralized systems. University of Notre Dame. Four peer-reviewed publications including IEEE ICBC 2026.">
+  <link rel="canonical" href="https://jasonyou1995.github.io/research/">
+  <link rel="alternate" hreflang="en" href="https://jasonyou1995.github.io/research/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://jasonyou1995.github.io/research/index.zh-CN.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://jasonyou1995.github.io/research/index.zh-TW.html">
+  <link rel="alternate" hreflang="x-default" href="https://jasonyou1995.github.io/research/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Research · Shengwei You">
+  <meta property="og:description" content="PhD research on multi-agent trust, calibrated decision systems, and decentralized-system safety.">
+  <meta property="og:url" content="https://jasonyou1995.github.io/research/">
+  <meta property="og:image" content="https://jasonyou1995.github.io/photo.jpg">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Shengwei You",
+      "jobTitle": "PhD Candidate, Computer Science",
+      "affiliation": {"@type": "CollegeOrUniversity", "name": "University of Notre Dame"},
+      "knowsAbout": ["multi-agent systems", "consensus protocols", "stablecoin safety", "blockchain oracles", "calibrated decision systems"]
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Spline+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0e0c;
+      --bg2: #161310;
+      --paper: #f7f3ea;
+      --ink: #15130f;
+      --accent: #e0612f;
+      --accent-2: #d9a441;
+      --text: #ece7dc;
+      --text-dim: #9a9384;
+      --border: #2a2620;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Spline Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent); color: #fff; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+    .bg-grain {
+      position: fixed; inset: 0; z-index: -1;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(224, 97, 47, .10), transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(217, 164, 65, .07), transparent 45%), var(--bg);
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.1rem 2.5rem;
+      background: rgba(15, 14, 12, .72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .wrap { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.25rem; letter-spacing: -.01em; text-decoration: none; color: inherit; }
+    .logo span { color: var(--accent); }
+    nav ul { display: flex; gap: 2rem; list-style: none; }
+    nav a { color: var(--text-dim); text-decoration: none; font-size: .88rem; font-weight: 500; transition: .25s; position: relative; }
+    nav a:hover { color: var(--text); }
+    nav a.active { color: var(--text); }
+    nav a.active::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--accent); }
+    nav a:hover::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--accent); }
+
+    .lang { font-size: .8rem; color: var(--text-dim); border: 1px solid var(--border); border-radius: 30px; padding: 4px 12px; position: relative; cursor: default; }
+    .lang .dd {
+      position: absolute; top: 130%; right: 0; background: var(--bg2);
+      border: 1px solid var(--border); border-radius: 10px; padding: 6px;
+      min-width: 140px; opacity: 0; visibility: hidden;
+      transform: translateY(-6px); transition: .25s;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .5);
+    }
+    .lang:hover .dd, .lang:focus-within .dd { opacity: 1; visibility: visible; transform: translateY(0); }
+    .lang .dd a { display: block; padding: 6px 12px; color: var(--text-dim); text-decoration: none; border-radius: 6px; font-size: .85rem; }
+    .lang .dd a:hover { background: var(--bg); color: var(--accent); }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 2.5rem; }
+    section { padding: 4rem 0; }
+
+    .rh-hero { padding-top: 9rem; padding-bottom: 3rem; }
+    .rh-hero .tag { display: inline-block; padding: .45rem 1rem; border: 1px solid var(--accent); color: var(--accent); border-radius: 40px; font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .18em; margin-bottom: 1.6rem; }
+    .rh-hero h1 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 3.2rem; line-height: 1.05; letter-spacing: -.02em; max-width: 820px; margin-bottom: 1rem; }
+    .rh-hero h1 .sur { color: var(--accent); font-weight: 900; }
+    .rh-hero .lede { font-size: 1.1rem; color: var(--text-dim); max-width: 760px; }
+    .rh-hero .lede b { color: var(--text); font-weight: 600; }
+
+    .sh { margin-bottom: 2.5rem; max-width: 720px; }
+    .st { font-size: .74rem; color: var(--accent); text-transform: uppercase; letter-spacing: .2em; font-weight: 600; display: block; margin-bottom: .8rem; }
+    .stitle { font-family: 'Fraunces', serif; font-weight: 600; font-size: 2.2rem; line-height: 1.15; letter-spacing: -.015em; }
+    .ssub { color: var(--text-dim); font-size: 1.02rem; margin-top: .7rem; }
+
+    .thread-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.4rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .thread-card h2 { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+    .thread-card p { color: var(--text-dim); font-size: 1rem; text-align: justify; }
+    .thread-card p em { color: var(--text-dim); }
+
+    .thread-meta { display: flex; flex-direction: column; gap: .8rem; }
+    .thread-meta .row { display: flex; gap: .6rem; font-size: .88rem; color: var(--text-dim); border-bottom: 1px dashed var(--border); padding-bottom: .5rem; }
+    .thread-meta .row:last-child { border-bottom: none; }
+    .thread-meta .row b { color: var(--text); font-weight: 500; min-width: 110px; }
+
+    .arch-svg { width: 100%; height: auto; margin-top: 1.4rem; border-radius: 12px; background: var(--bg); border: 1px solid var(--border); padding: 1.2rem; }
+
+    .theme-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+    .theme { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem; }
+    .theme .ic { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.2rem; color: var(--accent); margin-bottom: .5rem; }
+    .theme h3 { font-size: 1rem; margin-bottom: .4rem; }
+    .theme p { color: var(--text-dim); font-size: .88rem; }
+
+    .pub {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.6rem 1.8rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 1.1rem;
+      transition: .25s;
+    }
+    .pub:hover { border-color: var(--accent); }
+    .yr { font-size: .78rem; color: var(--accent); font-weight: 600; background: rgba(224, 97, 47, .12); padding: .4rem .9rem; border-radius: 30px; white-space: nowrap; }
+    .pub h3 { font-size: 1.02rem; line-height: 1.4; margin-bottom: .4rem; }
+    .pub .meta { color: var(--text-dim); font-size: .85rem; }
+    .pub .meta a { color: var(--accent); text-decoration: none; }
+    .pub .meta a:hover { text-decoration: underline; }
+
+    .venue-table { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 1.6rem 1.8rem; margin-top: 1.2rem; }
+    .venue-table h3 { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 1rem; }
+    .venue-row { display: grid; grid-template-columns: 90px 1fr auto; gap: 1.2rem; padding: .6rem 0; border-bottom: 1px dashed var(--border); align-items: center; font-size: .92rem; }
+    .venue-row:last-child { border-bottom: none; }
+    .venue-row .vyr { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: .85rem; }
+    .venue-row .vname { color: var(--text); }
+    .venue-row .vrole { color: var(--text-dim); font-size: .82rem; }
+
+    .hcard { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem 1.6rem; margin-bottom: .8rem; display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; align-items: center; transition: .25s; }
+    .hcard:hover { border-color: var(--accent); }
+    .hcard .hyr { font-family: 'JetBrains Mono', monospace; font-size: .82rem; color: var(--accent); }
+    .hcard h3 { font-size: 1rem; margin-bottom: .2rem; }
+    .hcard p { color: var(--text-dim); font-size: .88rem; }
+    .hcard p a { color: var(--accent); text-decoration: none; }
+    .hcard p a:hover { text-decoration: underline; }
+
+    .cbox { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; text-align: center; max-width: 760px; margin: 4rem auto 0; }
+    .cbox h2 { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 600; margin-bottom: .6rem; }
+    .cbox p { color: var(--text-dim); margin-bottom: 1.6rem; }
+    .clinks { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .clink { display: flex; align-items: center; gap: .6rem; color: var(--text); text-decoration: none; padding: .85rem 1.4rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; transition: .25s; font-size: .92rem; }
+    .clink:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: .85rem; }
+    footer p { margin: .25rem 0; }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .rh-hero h1 { font-size: 2.3rem; }
+      .thread-card { grid-template-columns: 1fr; }
+      .pub { grid-template-columns: 1fr; gap: .7rem; }
+      .venue-row { grid-template-columns: 70px 1fr; }
+      .venue-row .vrole { grid-column: 1 / -1; padding-left: 86px; }
+      .hcard { grid-template-columns: 1fr; gap: .4rem; }
+      .container { padding: 0 1.4rem; }
+      nav { padding: 1rem 1.4rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+
+<body>
+  <div class="bg-grain"></div>
+
+  <nav>
+    <div class="wrap">
+      <a class="logo" href="../index.html">Shengwei <span>You</span></a>
+      <div style="display:flex;align-items:center;gap:1.8rem;">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#work">Work</a></li>
+          <li><a href="../projects/">Projects</a></li>
+          <li><a href="./" class="active">Research</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+        <div class="lang" tabindex="0" aria-label="Language"><span>&#127760; EN</span>
+          <div class="dd">
+            <a href="index.html">English</a>
+            <a href="index.zh-CN.html">&#31616;&#20307;&#20013;&#25991;</a>
+            <a href="index.zh-TW.html">&#32321;&#39636;&#20013;&#25991;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="rh-hero">
+    <div class="container">
+      <span class="tag">Research</span>
+      <h1>Calibrated multi-agent decision systems for high-stakes automation.</h1>
+      <p class="lede">My PhD is about one question: <b>how do you trust the output of an autonomous agent?</b> The answer I
+        work on is a <i>proposer, challenger, judge</i> architecture, where independent agents argue and adjudicate
+        before a decision is acted on. The same chassis I study academically is the safety layer I deploy in real
+        systems (OC1, OC2, MVF-Composer).</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sh"><span class="st">The thread</span><h2 class="stitle">One architecture, four systems, one paper trail</h2></div>
+
+      <div class="thread-card">
+        <div>
+          <h2>Proposer, Challenger, Judge - a trust chassis for autonomous agents</h2>
+          <p>The single-LLM-call pattern is convenient and dangerous: convenience because it is one prompt, dangerous
+            because the verifier is the same model that produced the claim. My dissertation develops a multi-agent
+            pattern where a Proposer drafts a decision, a Challenger attacks it, and a Judge commits a verdict. The
+            transcript is hashed and committed externally, so the audit trail is outside the LLM rather than inside
+            it.
+            <br><br>
+            The pattern shows up in three deployed systems (OC1, OC2, MVF-Composer) and in the IEEE ICBC 2026 paper
+            on stablecoin reserve control. I treat the engineering and the research as the same feedback loop: I
+            ship the system, instrument it, find the failure mode the paper didn't predict, and ship the next paper.
+            <br><br>
+            <em>Themes: multi-agent systems, consensus and trust, calibrated forecasting, blockchain and
+              decentralized-system safety.</em></p>
+
+          <svg class="arch-svg" viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" aria-label="Proposer Challenger Judge architecture diagram">
+            <defs>
+              <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#e0612f"/>
+              </marker>
+              <linearGradient id="ag" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stop-color="#e0612f"/><stop offset="100%" stop-color="#9c3a17"/>
+              </linearGradient>
+            </defs>
+            <g font-family="JetBrains Mono, monospace" font-size="11">
+              <rect x="20" y="70" width="140" height="60" rx="10" fill="url(#ag)"/>
+              <text x="90" y="98" text-anchor="middle" fill="#fff" font-weight="600">PROPOSER</text>
+              <text x="90" y="115" text-anchor="middle" fill="#fff" font-size="9">drafts a decision</text>
+
+              <rect x="200" y="70" width="140" height="60" rx="10" fill="#161310" stroke="#d9a441" stroke-width="1.5"/>
+              <text x="270" y="98" text-anchor="middle" fill="#d9a441" font-weight="600">CHALLENGER</text>
+              <text x="270" y="115" text-anchor="middle" fill="#9a9384" font-size="9">attacks the decision</text>
+
+              <rect x="380" y="70" width="140" height="60" rx="10" fill="#161310" stroke="#e0612f" stroke-width="1.5"/>
+              <text x="450" y="98" text-anchor="middle" fill="#e0612f" font-weight="600">JUDGE</text>
+              <text x="450" y="115" text-anchor="middle" fill="#9a9384" font-size="9">commits a verdict</text>
+
+              <rect x="560" y="50" width="140" height="50" rx="8" fill="#161310" stroke="#7fb37a" stroke-width="1.5"/>
+              <text x="630" y="74" text-anchor="middle" fill="#7fb37a" font-weight="600">EXTERNAL</text>
+              <text x="630" y="90" text-anchor="middle" fill="#9a9384" font-size="9">receipt / on-chain</text>
+
+              <rect x="560" y="110" width="140" height="50" rx="8" fill="#161310" stroke="#9a9384" stroke-width="1.5"/>
+              <text x="630" y="134" text-anchor="middle" fill="#9a9384" font-weight="600">HUMAN</text>
+              <text x="630" y="150" text-anchor="middle" fill="#9a9384" font-size="9">review on flag</text>
+            </g>
+            <g stroke="#e0612f" stroke-width="1.5" fill="none" marker-end="url(#arr)">
+              <line x1="160" y1="100" x2="200" y2="100"/>
+              <line x1="340" y1="100" x2="380" y2="100"/>
+              <line x1="520" y1="90" x2="560" y2="75"/>
+              <line x1="520" y1="110" x2="560" y2="135"/>
+            </g>
+            <g font-family="Spline Sans, sans-serif" font-size="10" fill="#9a9384">
+              <text x="180" y="92" text-anchor="middle">plan</text>
+              <text x="360" y="92" text-anchor="middle">critique</text>
+              <text x="540" y="68" text-anchor="middle">commit</text>
+              <text x="540" y="128" text-anchor="middle">flag</text>
+            </g>
+          </svg>
+        </div>
+        <div class="thread-meta">
+          <div class="row"><b>PhD</b><span>Computer Science, University of Notre Dame</span></div>
+          <div class="row"><b>Advisor</b><span>Prof. Jarek Nabrzyski</span></div>
+          <div class="row"><b>Timeline</b><span>2020 to 2026 (expected)</span></div>
+          <div class="row"><b>Topic</b><span>Trust and systemic risk in decentralized systems; multi-agent architectures for calibrated, safety-aware automation</span></div>
+          <div class="row"><b>Core method</b><span>Adversarial multi-agent debate, cryptographic transcript receipt, block-by-block crisis replay, formal safety specification</span></div>
+          <div class="row"><b>Applied in</b><span>OC1 (agent safety), OC2 (DeFi debate), MVF-Composer (stablecoin control)</span></div>
+        </div>
+      </div>
+
+      <div class="sh" style="margin-top:3rem;"><span class="st">Research themes</span><h2 class="stitle" style="font-size:1.6rem;">What I work on</h2></div>
+      <div class="theme-grid">
+        <div class="theme">
+          <div class="ic">01</div>
+          <h3>Multi-agent consensus</h3>
+          <p>Patterns where independent agents argue, judge, and commit a decision outside the LLM that drafted it.</p>
+        </div>
+        <div class="theme">
+          <div class="ic">02</div>
+          <h3>Calibrated automation</h3>
+          <p>Decisions the system can defend with a measurable confidence score and a human-readable audit trail.</p>
+        </div>
+        <div class="theme">
+          <div class="ic">03</div>
+          <h3>Stablecoin safety</h3>
+          <p>Defense mechanisms for the moments when a stablecoin depegs, replayed block by block against real
+            crises.</p>
+        </div>
+        <div class="theme">
+          <div class="ic">04</div>
+          <h3>Trust in decentralized systems</h3>
+          <p>Why trust assumptions break, when cryptography helps, and when you still need a human in the loop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sh"><span class="st">Publications</span><h2 class="stitle">Peer-reviewed work</h2>
+        <p class="ssub">Four publications, single-author first author on the most recent, an invited talk at IEEE ICBC
+          2026.</p>
+      </div>
+
+      <div class="pub">
+        <span class="yr">2026</span>
+        <div>
+          <h3>Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven
+            Arbitrage</h3>
+          <p class="meta">Book chapter &middot; You, Kuehlkamp, Nabrzyski &middot; DOI: <a
+              href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank" rel="noopener">10.1007/978-3-032-00495-6_8</a></p>
+        </div>
+      </div>
+
+      <div class="pub">
+        <span class="yr">2024</span>
+        <div>
+          <h3>Persona-Preserving Reputation Protocol (P2RP) for Enhanced Security, Privacy, and Trust in Blockchain
+            Oracles</h3>
+          <p class="meta">Cluster Computing (journal) &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a
+              href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank" rel="noopener">10.1007/s10586-023-04222-4</a></p>
+        </div>
+      </div>
+
+      <div class="pub">
+        <span class="yr">2023</span>
+        <div>
+          <h3>Mining User Behavior in Decentralized Applications for Blockchain Trust and Security Analytics</h3>
+          <p class="meta">IEEE BCCA 2023 &middot; You, Joshi, Kuehlkamp, Nabrzyski &middot; DOI: <a
+              href="https://doi.org/10.1109/bcca58897.2023.10338860" target="_blank" rel="noopener">10.1109/bcca58897.2023.10338860</a></p>
+        </div>
+      </div>
+
+      <div class="pub">
+        <span class="yr">2022</span>
+        <div>
+          <h3>Trust in the Context of Blockchain Applications</h3>
+          <p class="meta">IEEE BCCA 2022 &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a
+              href="https://doi.org/10.1109/bcca55292.2022.9922068" target="_blank" rel="noopener">10.1109/bcca55292.2022.9922068</a></p>
+        </div>
+      </div>
+
+      <div class="venue-table">
+        <h3>Where the work has appeared</h3>
+        <div class="venue-row">
+          <div class="vyr">2026</div>
+          <div class="vname">IEEE ICBC 2026 &middot; MVF-Composer talk</div>
+          <div class="vrole">Conference speaker</div>
+        </div>
+        <div class="venue-row">
+          <div class="vyr">2026</div>
+          <div class="vname">InnoAI Thailand 2026 &middot; stablecoin and agent safety</div>
+          <div class="vrole">Invited speaker</div>
+        </div>
+        <div class="venue-row">
+          <div class="vyr">2024</div>
+          <div class="vname">Cluster Computing (journal)</div>
+          <div class="vrole">First author</div>
+        </div>
+        <div class="venue-row">
+          <div class="vyr">2023</div>
+          <div class="vname">IEEE BCCA 2023</div>
+          <div class="vrole">First author</div>
+        </div>
+        <div class="venue-row">
+          <div class="vyr">2022</div>
+          <div class="vname">IEEE BCCA 2022</div>
+          <div class="vrole">First author</div>
+        </div>
+        <div class="venue-row">
+          <div class="vyr">2020</div>
+          <div class="vname">Hyperledger Global Forum 2020</div>
+          <div class="vrole">Speaker</div>
+        </div>
+        <div class="venue-row">
+          <div class="vyr">2020</div>
+          <div class="vname">Techstars Seattle Blockchain Startup Weekend</div>
+          <div class="vrole">First place</div>
+        </div>
+        <div class="venue-row">
+          <div class="vyr">2025</div>
+          <div class="vname">Sino-German Scientist Conference 2025</div>
+          <div class="vrole">Session host</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sh"><span class="st">Academic history</span><h2 class="stitle">Where I trained</h2></div>
+      <div class="theme-grid">
+        <div class="theme">
+          <div class="ic">PhD</div>
+          <h3>Computer Science</h3>
+          <p>University of Notre Dame &middot; 2020 to 2026 (expected)<br>Advisor: Jarek Nabrzyski</p>
+        </div>
+        <div class="theme">
+          <div class="ic">MS</div>
+          <h3>Computer Science (Information Security)</h3>
+          <p>Purdue University &middot; 2018 to 2019</p>
+        </div>
+        <div class="theme">
+          <div class="ic">BA</div>
+          <h3>Mathematics</h3>
+          <p>University of Washington &middot; 2014 to 2018</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cbox">
+        <h2>Want a copy of a paper or a deeper walkthrough?</h2>
+        <p>Happy to share preprints, code, and replication notes under standard academic terms. I read every message.</p>
+        <div class="clinks">
+          <a class="clink" href="mailto:shengwei.you@gmail.com"><span>&#9993;</span> shengwei.you@gmail.com</a>
+          <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank" rel="noopener"><span>&#128188;</span> LinkedIn</a>
+          <a class="clink" href="https://github.com/Jasonyou1995" target="_blank" rel="noopener"><span>&#128025;</span> GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Shengwei You &middot; 游盛巍 &middot; Hong Kong</p>
+    <p>This is a static site. No tracking, no cookies, no data collected.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function (e) {
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+  </script>
+</body>
+
+</html>

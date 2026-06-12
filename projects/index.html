@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects · Shengwei You</title>
+  <meta name="description"
+    content="Four shipped AI agent systems by Shengwei You (游盛巍 / Jason You): OC1 agent safety, OC2 on-chain multi-agent debate, MVF-Composer stablecoin controller (IEEE ICBC 2026), NOC SNARK oracle, plus an in-progress Web3 Agent Platform demo.">
+  <link rel="canonical" href="https://jasonyou1995.github.io/projects/">
+  <link rel="alternate" hreflang="en" href="https://jasonyou1995.github.io/projects/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://jasonyou1995.github.io/projects/index.zh-CN.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://jasonyou1995.github.io/projects/index.zh-TW.html">
+  <link rel="alternate" hreflang="x-default" href="https://jasonyou1995.github.io/projects/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects · Shengwei You">
+  <meta property="og:description"
+    content="Four shipped AI agent systems. PhD candidate, Hong Kong. Open to AI Deployment / FDE roles.">
+  <meta property="og:url" content="https://jasonyou1995.github.io/projects/">
+  <meta property="og:image" content="https://jasonyou1995.github.io/photo.jpg">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Projects by Shengwei You",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "OC1: Agent Safety Control System" },
+        { "@type": "ListItem", "position": 2, "name": "OC2: On-Chain Multi-Agent Debate" },
+        { "@type": "ListItem", "position": 3, "name": "MVF-Composer: Stablecoin Reserve Controller" },
+        { "@type": "ListItem", "position": 4, "name": "NOC: Cryptographically Verifiable Oracle" },
+        { "@type": "ListItem", "position": 5, "name": "Web3 Agent Platform (in progress)" }
+      ]
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Spline+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0e0c;
+      --bg2: #161310;
+      --paper: #f7f3ea;
+      --ink: #15130f;
+      --accent: #e0612f;
+      --accent-2: #d9a441;
+      --text: #ece7dc;
+      --text-dim: #9a9384;
+      --border: #2a2620;
+      --ok: #7fb37a;
+      --warn: #d9a441;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Spline Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    .bg-grain {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(224, 97, 47, .10), transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(217, 164, 65, .07), transparent 45%), var(--bg);
+    }
+
+    /* nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.1rem 2.5rem;
+      background: rgba(15, 14, 12, .72);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      letter-spacing: -.01em;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 500;
+      transition: .25s;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    nav a.active {
+      color: var(--text);
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    nav a:hover::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .lang {
+      font-size: .8rem;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 4px 12px;
+      position: relative;
+      cursor: default;
+    }
+
+    .lang .dd {
+      position: absolute;
+      top: 130%;
+      right: 0;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 6px;
+      min-width: 140px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: .25s;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .5);
+    }
+
+    .lang:hover .dd,
+    .lang:focus-within .dd {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .lang .dd a {
+      display: block;
+      padding: 6px 12px;
+      color: var(--text-dim);
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: .85rem;
+    }
+
+    .lang .dd a:hover {
+      background: var(--bg);
+      color: var(--accent);
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    /* hero */
+    .ph-hero {
+      padding: 9rem 0 3rem;
+    }
+
+    .ph-hero .tag {
+      display: inline-block;
+      padding: .45rem 1rem;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 40px;
+      font-size: .72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      margin-bottom: 1.6rem;
+    }
+
+    .ph-hero h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 3.2rem;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      max-width: 760px;
+      margin-bottom: 1rem;
+    }
+
+    .ph-hero h1 .sur {
+      color: var(--accent);
+      font-weight: 900;
+    }
+
+    .ph-hero .lede {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      max-width: 720px;
+    }
+
+    .ph-hero .lede b {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* tabs */
+    .tabs {
+      position: sticky;
+      top: 64px;
+      z-index: 50;
+      background: rgba(15, 14, 12, .85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      margin-top: 1.5rem;
+    }
+
+    .tabs .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      display: flex;
+      gap: .3rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs .wrap::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab {
+      padding: 1rem 1.1rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 500;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: .2s;
+      cursor: pointer;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: inherit;
+    }
+
+    .tab .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      color: var(--accent);
+      margin-right: .5rem;
+    }
+
+    .tab:hover {
+      color: var(--text);
+    }
+
+    .tab.active {
+      color: var(--text);
+      border-bottom-color: var(--accent);
+    }
+
+    .tab.in-prog {
+      color: var(--accent-2);
+    }
+
+    .tab.in-prog.active {
+      color: var(--accent-2);
+      border-bottom-color: var(--accent-2);
+    }
+
+    /* project section */
+    .proj-sec {
+      padding: 5rem 0 4rem;
+      border-bottom: 1px solid var(--border);
+      scroll-margin-top: 130px;
+    }
+
+    .proj-sec:last-of-type {
+      border-bottom: none;
+    }
+
+    .proj-head {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 2.5rem;
+    }
+
+    .proj-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .76rem;
+      color: var(--accent);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .7rem;
+    }
+
+    .proj-head h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 2.4rem;
+      line-height: 1.1;
+      letter-spacing: -.015em;
+      margin-bottom: .6rem;
+    }
+
+    .proj-head .tagline {
+      color: var(--accent-2);
+      font-size: 1.05rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .proj-meta {
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: .6rem;
+      font-size: .85rem;
+      color: var(--text-dim);
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: .5rem;
+    }
+
+    .meta-row:last-child {
+      border-bottom: none;
+    }
+
+    .meta-row b {
+      color: var(--text);
+      font-weight: 500;
+      min-width: 90px;
+    }
+
+    .pm-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .pm-col h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent-2);
+      margin-bottom: .7rem;
+    }
+
+    .pm-col p {
+      color: var(--text-dim);
+      font-size: .96rem;
+    }
+
+    /* visual block */
+    .vis-block {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .vis-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.4rem;
+    }
+
+    .vis-head h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .vis-head .src {
+      font-size: .75rem;
+      color: var(--text-dim);
+    }
+
+    .vis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .vis-grid.full {
+      grid-template-columns: 1fr;
+    }
+
+    .vis-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .vis-side h4 {
+      font-size: .76rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      margin-bottom: .6rem;
+      font-weight: 600;
+    }
+
+    .vis-side p {
+      color: var(--text-dim);
+      font-size: .92rem;
+      margin-bottom: 1rem;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem 1.2rem;
+      font-size: .8rem;
+      color: var(--text-dim);
+    }
+
+    .legend .sw {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      margin-right: .4rem;
+      vertical-align: middle;
+    }
+
+    /* kpi strip */
+    .kpi {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .kpi .cell {
+      padding: 1.4rem 1rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .kpi .cell:last-child {
+      border-right: none;
+    }
+
+    .kpi .big {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .kpi .lab {
+      color: var(--text-dim);
+      font-size: .72rem;
+      margin-top: .4rem;
+    }
+
+    /* chip list */
+    .chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+
+    .chip-list .chip {
+      padding: .35rem .85rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      font-size: .78rem;
+      color: var(--text-dim);
+    }
+
+    /* pipeline diagram */
+    .pipeline {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .pipeline h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: .3rem;
+    }
+
+    .pipeline .sub {
+      color: var(--text-dim);
+      font-size: .85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pipe-svg {
+      width: 100%;
+      height: auto;
+    }
+
+    /* take-aways */
+    .take {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .take h4 {
+      font-size: .74rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      margin-bottom: .5rem;
+    }
+
+    .take p {
+      color: var(--text);
+      font-size: .96rem;
+    }
+
+    .take p b {
+      color: var(--accent-2);
+      font-weight: 600;
+    }
+
+    /* in-progress */
+    .inprog {
+      background: var(--bg2);
+      border: 1px dashed var(--accent-2);
+      border-radius: 16px;
+      padding: 2.4rem;
+    }
+
+    .inprog .ip-tag {
+      display: inline-block;
+      padding: .3rem .8rem;
+      background: rgba(217, 164, 65, .12);
+      color: var(--accent-2);
+      border-radius: 30px;
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      margin-bottom: 1rem;
+    }
+
+    .inprog h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: .5rem;
+    }
+
+    .inprog p.lede {
+      color: var(--text-dim);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      max-width: 720px;
+    }
+
+    .inprog .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .inprog .grid2 h4 {
+      font-size: .78rem;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      margin-bottom: .5rem;
+    }
+
+    .inprog .grid2 ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .inprog .grid2 li {
+      color: var(--text-dim);
+      font-size: .9rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .inprog .grid2 li::before {
+      content: "\25B9";
+      color: var(--accent-2);
+      position: absolute;
+      left: 0;
+    }
+
+    /* contact */
+    .cbox {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem;
+      text-align: center;
+      max-width: 760px;
+      margin: 4rem auto 0;
+    }
+
+    .cbox h2 {
+      font-family: 'Fraunces', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: .6rem;
+    }
+
+    .cbox p {
+      color: var(--text-dim);
+      margin-bottom: 1.6rem;
+    }
+
+    .clinks {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .clink {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      color: var(--text);
+      text-decoration: none;
+      padding: .85rem 1.4rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: .25s;
+      font-size: .92rem;
+    }
+
+    .clink:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: .85rem;
+    }
+
+    footer p {
+      margin: .25rem 0;
+    }
+
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+
+      .ph-hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .proj-head,
+      .pm-cols,
+      .vis-grid,
+      .inprog .grid2 {
+        grid-template-columns: 1fr;
+      }
+
+      .kpi {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .kpi .cell:nth-child(2) {
+        border-right: none;
+      }
+
+      .kpi .cell:nth-child(1),
+      .kpi .cell:nth-child(2) {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .container {
+        padding: 0 1.4rem;
+      }
+
+      nav {
+        padding: 1rem 1.4rem;
+      }
+
+      .tabs {
+        top: 60px;
+      }
+
+      .tabs .wrap {
+        padding: 0 1.4rem;
+      }
+
+      .proj-head h2 {
+        font-size: 1.9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-grain"></div>
+
+  <nav>
+    <div class="wrap">
+      <a class="logo" href="../index.html">Shengwei <span>You</span></a>
+      <div style="display:flex;align-items:center;gap:1.8rem;">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#work">Work</a></li>
+          <li><a href="./" class="active">Projects</a></li>
+          <li><a href="../research/">Research</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+        <div class="lang" tabindex="0" aria-label="Language"><span>&#127760; EN</span>
+          <div class="dd">
+            <a href="index.html">English</a>
+            <a href="index.zh-CN.html">&#31616;&#20307;&#20013;&#25991;</a>
+            <a href="index.zh-TW.html">&#32321;&#39636;&#20013;&#25991;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="ph-hero">
+    <div class="container">
+      <span class="tag">Projects</span>
+      <h1>Four shipped agent systems - built solo, measured, and reproduced.</h1>
+      <p class="lede">Each project is a real system with real numbers. I design the problem, ship the implementation,
+        instrument the runs, and write up what worked and what didn't. <b>Click any tab to see the full problem,
+          motivation, and contribution walkthrough.</b></p>
+    </div>
+  </section>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <div class="wrap">
+      <a class="tab active" href="#p-oc1"><span class="num">01</span>OC1 · Agent Safety</a>
+      <a class="tab" href="#p-oc2"><span class="num">02</span>OC2 · On-Chain Debate</a>
+      <a class="tab" href="#p-mvf"><span class="num">03</span>MVF · Stablecoin (ICBC 2026)</a>
+      <a class="tab" href="#p-noc"><span class="num">04</span>NOC · SNARK Oracle</a>
+      <a class="tab in-prog" href="#p-w3a"><span class="num">05</span>Web3 Agent Platform</a>
+    </div>
+  </div>
+
+  <!-- OC1 -->
+  <section class="proj-sec" id="p-oc1">
+    <div class="container">
+      <div class="proj-head">
+        <div>
+          <div class="proj-eyebrow">01 · Agent Platform</div>
+          <h2>OC1: Agent Safety Control System</h2>
+          <p class="tagline">A multi-provider agent stack with a formally verified safety circuit.</p>
+        </div>
+        <div class="proj-meta">
+          <div class="meta-row"><b>Status</b><span>Shipped · production-grade</span></div>
+          <div class="meta-row"><b>Stack</b><span>Python · FastAPI · TLA+ · Solidity</span></div>
+          <div class="meta-row"><b>Scale</b><span>18,400+ lines · 7 contracts · 14 test suites</span></div>
+          <div class="meta-row"><b>JD fit</b><span>Agent Harness · eval · trace · HITL</span></div>
+        </div>
+      </div>
+
+      <div class="pm-cols">
+        <div class="pm-col">
+          <h3>Problem</h3>
+          <p>Frontier model calls fail in three ways the demos never show: provider outage, prompt-injection, and silent
+            policy drift. A chatbot demo doesn't need to handle any of them. A production agent system has to fail safe
+            under pressure, not just fail loud.</p>
+        </div>
+        <div class="pm-col">
+          <h3>Motivation</h3>
+          <p>I wanted a chassis I could put real money and real users behind. That meant a kill-circuit I could <i>prove</i>
+            safe, not one I hoped was safe, and a stack where every external call is observable and reversible.</p>
+        </div>
+      </div>
+
+      <div class="pm-cols">
+        <div class="pm-col">
+          <h3>What I built</h3>
+          <p>Multi-provider LLM orchestration across OpenAI, Anthropic, and local Ollama, with auto-failover, content-hashed
+            disk caching, and per-call cost, latency, and token telemetry. A TLA+ safety state machine gates every
+            action. Prompt-injection detection runs on the input path. An EVM execution layer handles on-chain side effects.
+            A RAG policy oracle grounds the agent in our own documents.</p>
+        </div>
+        <div class="pm-col">
+          <h3>My contribution</h3>
+          <p>End to end. Architecture, TLA+ spec, agent code, Solidity contracts, eval framework, and the one-command
+            pipeline that runs the whole battery. Solo: 18,400+ lines of Python, 7 Solidity contracts, 14 test suites,
+            5,866,037 TLA+ states model-checked with zero violations.</p>
+        </div>
+      </div>
+
+      <div class="kpi">
+        <div class="cell">
+          <div class="big">3.9s</div>
+          <div class="lab">P95 end-to-end latency</div>
+        </div>
+        <div class="cell">
+          <div class="big">&lt;5ms</div>
+          <div class="lab">Safety gating overhead</div>
+        </div>
+        <div class="cell">
+          <div class="big">5.86M</div>
+          <div class="lab">TLA+ states, 0 violations</div>
+        </div>
+        <div class="cell">
+          <div class="big">100/100</div>
+          <div class="lab">RL red-team attacks survived</div>
+        </div>
+      </div>
+
+      <div class="vis-block">
+        <div class="vis-head">
+          <h3>Safety vs. speed: the kill-circuit overhead</h3>
+          <span class="src">Source: OC1 load test, 1,000 mixed-action requests</span>
+        </div>
+        <div class="vis-grid">
+          <svg class="vis-svg" viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart comparing latency with and without safety circuit">
+            <defs>
+              <linearGradient id="oc1a" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#e0612f"/>
+                <stop offset="100%" stop-color="#9c3a17"/>
+              </linearGradient>
+              <linearGradient id="oc1b" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#d9a441"/>
+                <stop offset="100%" stop-color="#8a6420"/>
+              </linearGradient>
+            </defs>
+            <g font-family="JetBrains Mono, monospace" font-size="10" fill="#9a9384">
+              <line x1="50" y1="20" x2="50" y2="200" stroke="#2a2620"/>
+              <line x1="50" y1="200" x2="400" y2="200" stroke="#2a2620"/>
+              <line x1="50" y1="155" x2="400" y2="155" stroke="#2a2620" stroke-dasharray="2 3"/>
+              <line x1="50" y1="110" x2="400" y2="110" stroke="#2a2620" stroke-dasharray="2 3"/>
+              <line x1="50" y1="65" x2="400" y2="65" stroke="#2a2620" stroke-dasharray="2 3"/>
+              <line x1="50" y1="20" x2="400" y2="20" stroke="#2a2620" stroke-dasharray="2 3"/>
+              <text x="44" y="204" text-anchor="end">0</text>
+              <text x="44" y="159" text-anchor="end">2s</text>
+              <text x="44" y="114" text-anchor="end">5s</text>
+              <text x="44" y="69" text-anchor="end">8s</text>
+              <text x="44" y="24" text-anchor="end">10s</text>
+            </g>
+            <g>
+              <rect x="100" y="22" width="60" height="178" fill="url(#oc1a)" rx="3"/>
+              <text x="130" y="16" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="600" fill="#ece7dc">3.9s</text>
+              <text x="130" y="218" text-anchor="middle" font-family="Spline Sans, sans-serif" font-size="11" fill="#9a9384">With safety circuit</text>
+            </g>
+            <g>
+              <rect x="240" y="55" width="60" height="145" fill="url(#oc1b)" rx="3"/>
+              <text x="270" y="49" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="600" fill="#ece7dc">2.95s</text>
+              <text x="270" y="218" text-anchor="middle" font-family="Spline Sans, sans-serif" font-size="11" fill="#9a9384">Without (baseline)</text>
+            </g>
+            <g font-family="Spline Sans, sans-serif" font-size="10" fill="#d9a441">
+              <text x="200" y="40" text-anchor="middle">+0.95s · acceptable</text>
+              <line x1="160" y1="42" x2="240" y2="42" stroke="#d9a441" stroke-dasharray="3 2"/>
+            </g>
+          </svg>
+          <div class="vis-side">
+            <h4>What it means</h4>
+            <p>The safety circuit costs under a second per call and is provably correct, so I pay that cost in
+              latency, not in incidents. The alternative, hoping the LLM behaves, doesn't show up on a P95 chart but it
+              shows up in a postmortem.</p>
+            <div class="legend">
+              <span><span class="sw" style="background:#e0612f"></span>With safety</span>
+              <span><span class="sw" style="background:#d9a441"></span>Baseline</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="take">
+        <h4>Why this matters for a JD</h4>
+        <p>OC1 is the closest thing I have to a textbook <b>Agent Harness</b>: tool calling, eval, trace, observability,
+          human-in-the-loop checkpoints, and a sandbox. The TLA+ kill-circuit is the part most teams don't bother with,
+          and the part that turns a demo into a system you can put in front of users.</p>
+      </div>
+
+      <div class="chip-list">
+        <span class="chip">Multi-provider failover</span>
+        <span class="chip">TLA+ model checking</span>
+        <span class="chip">Prompt-injection F1 0.765</span>
+        <span class="chip">Q-learning red team</span>
+        <span class="chip">EVM execution</span>
+        <span class="chip">RAG policy oracle</span>
+        <span class="chip">Content-hashed cache</span>
+        <span class="chip">Per-call telemetry</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OC2 -->
+  <section class="proj-sec" id="p-oc2">
+    <div class="container">
+      <div class="proj-head">
+        <div>
+          <div class="proj-eyebrow">02 · Web3 Chatbot · DeFi</div>
+          <h2>OC2: On-Chain Multi-Agent Debate</h2>
+          <p class="tagline">Three LLM roles argue, then the verdict is enforced on-chain.</p>
+        </div>
+        <div class="proj-meta">
+          <div class="meta-row"><b>Status</b><span>Shipped · 76 Foundry tests passing</span></div>
+          <div class="meta-row"><b>Stack</b><span>Solidity 0.8.23 · Foundry · ECDSA · EVM</span></div>
+          <div class="meta-row"><b>Architecture</b><span>Proposer · Challenger · Judge</span></div>
+          <div class="meta-row"><b>JD fit</b><span>Multi-agent · tool calling · eval · trace</span></div>
+        </div>
+      </div>
+
+      <div class="pm-cols">
+        <div class="pm-col">
+          <h3>Problem</h3>
+          <p>DeFi actions are usually gated by a single signer or a small multisig, which means a single bad call or a
+            single compromised key can drain a protocol. Adding a second human doesn't help if the second human just
+            rubber-stamps the first.</p>
+        </div>
+        <div class="pm-col">
+          <h3>Motivation</h3>
+          <p>The same idea that makes a peer review stronger than a single review, an independent challenger forces the
+            proposer to defend the proposal, can make an autonomous agent safer than a single LLM call. The catch is
+            that you need cryptographic receipts, not vibes, or it's theater.</p>
+        </div>
+      </div>
+
+      <div class="pm-cols">
+        <div class="pm-col">
+          <h3>What I built</h3>
+          <p>A 3-role debate pattern. The Proposer drafts a DeFi action, the Challenger attacks it, and the Judge
+            commits a verdict. All three sign the transcript. The full debate is hashed and posted on-chain, and a
+            Foundry-tested Solidity stack (DebateRegistry, JudgeCommitment, SlashingPool, EmergencyStop) gates
+            execution. If anything looks wrong, EmergencyStop halts the action and a human takes over.</p>
+        </div>
+        <div class="pm-col">
+          <h3>My contribution</h3>
+          <p>End to end again. The pattern, the prompt engineering, the agent code, all four Solidity contracts, the
+            ECDSA verification, the transcript hashing, the 76 Foundry tests, and the gas benchmarks. The interesting
+            part was making the on-chain cost 8.7% lower than the Optimism fault-proof baseline while keeping a
+            cryptographically verifiable audit trail.</p>
+        </div>
+      </div>
+
+      <div class="kpi">
+        <div class="cell">
+          <div class="big">90.2%</div>
+          <div class="lab">Judge verdict accuracy (CI [87.6, 92.8])</div>
+        </div>
+        <div class="cell">
+          <div class="big">95%</div>
+          <div class="lab">Expert agreement on real on-chain actions</div>
+        </div>
+        <div class="cell">
+          <div class="big">16.8s</div>
+          <div class="lab">End-to-end debate latency</div>
+        </div>
+        <div class="cell">
+          <div class="big">-8.7%</div>
+          <div class="lab">Gas vs. Optimism fault-proof baseline</div>
+        </div>
+      </div>
+
+      <div class="vis-block">
+        <div class="vis-head">
+          <h3>Proposer / Challenger / Judge flow with checkpoints</h3>
+          <span class="src">OC2 design, 4 Solidity contracts in production</span>
+        </div>
+        <div class="vis-grid full">
+          <svg class="vis-svg" viewBox="0 0 940 280" xmlns="http://www.w3.org/2000/svg" aria-label="Pipeline diagram of the on-chain multi-agent debate flow">
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#e0612f"/>
+              </marker>
+              <linearGradient id="gProp" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stop-color="#e0612f"/>
+                <stop offset="100%" stop-color="#9c3a17"/>
+              </linearGradient>
+            </defs>
+            <g font-family="JetBrains Mono, monospace" font-size="11">
+              <rect x="20" y="60" width="140" height="60" rx="10" fill="url(#gProp)"/>
+              <text x="90" y="88" text-anchor="middle" fill="#fff" font-weight="600">PROPOSER</text>
+              <text x="90" y="105" text-anchor="middle" fill="#fff" font-size="9">drafts action</text>
+
+              <rect x="220" y="60" width="140" height="60" rx="10" fill="#161310" stroke="#d9a441" stroke-width="1.5"/>
+              <text x="290" y="88" text-anchor="middle" fill="#d9a441" font-weight="600">CHALLENGER</text>
+              <text x="290" y="105" text-anchor="middle" fill="#9a9384" font-size="9">attacks the plan</text>
+
+              <rect x="420" y="60" width="140" height="60" rx="10" fill="#161310" stroke="#e0612f" stroke-width="1.5"/>
+              <text x="490" y="88" text-anchor="middle" fill="#e0612f" font-weight="600">JUDGE</text>
+              <text x="490" y="105" text-anchor="middle" fill="#9a9384" font-size="9">commits verdict</text>
+
+              <rect x="620" y="20" width="140" height="40" rx="8" fill="#161310" stroke="#7fb37a" stroke-width="1.5"/>
+              <text x="690" y="44" text-anchor="middle" fill="#7fb37a" font-weight="600">EXECUTE</text>
+
+              <rect x="620" y="80" width="140" height="40" rx="8" fill="#161310" stroke="#9a9384" stroke-width="1.5"/>
+              <text x="690" y="104" text-anchor="middle" fill="#9a9384" font-weight="600">HUMAN REVIEW</text>
+
+              <rect x="620" y="140" width="140" height="40" rx="8" fill="#161310" stroke="#e0612f" stroke-width="1.5"/>
+              <text x="690" y="164" text-anchor="middle" fill="#e0612f" font-weight="600">EMERGENCY STOP</text>
+
+              <rect x="800" y="80" width="120" height="40" rx="8" fill="#161310" stroke="#2a2620" stroke-width="1.5"/>
+              <text x="860" y="98" text-anchor="middle" fill="#ece7dc" font-weight="600">ON-CHAIN</text>
+              <text x="860" y="112" text-anchor="middle" fill="#9a9384" font-size="9">ECDSA + transcript hash</text>
+            </g>
+            <g stroke="#e0612f" stroke-width="1.5" fill="none" marker-end="url(#arrow)">
+              <line x1="160" y1="90" x2="220" y2="90"/>
+              <line x1="360" y1="90" x2="420" y2="90"/>
+              <line x1="560" y1="80" x2="620" y2="40"/>
+              <line x1="560" y1="90" x2="620" y2="100"/>
+              <line x1="560" y1="100" x2="620" y2="160"/>
+            </g>
+            <g font-family="Spline Sans, sans-serif" font-size="10" fill="#9a9384">
+              <text x="190" y="82" text-anchor="middle">action</text>
+              <text x="390" y="82" text-anchor="middle">critique</text>
+              <text x="590" y="36" text-anchor="middle">approve</text>
+              <text x="590" y="138" text-anchor="middle">flag</text>
+            </g>
+            <g font-family="Spline Sans, sans-serif" font-size="10" fill="#7fb37a">
+              <rect x="20" y="170" width="900" height="80" rx="8" fill="rgba(127, 179, 122, .05)" stroke="rgba(127, 179, 122, .2)" stroke-dasharray="4 3"/>
+              <text x="40" y="194" fill="#7fb37a" font-weight="600">FOUNDRY TEST SUITE · 76 tests</text>
+              <text x="40" y="214" fill="#9a9384">unit (28) · adversarial (24) · gas benchmarks (12) · fuzz (12)</text>
+              <text x="40" y="232" fill="#9a9384">All four contracts verified; ECDSA + transcript hash enforced on-chain</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="take">
+        <h4>Why this matters for a JD</h4>
+        <p>OC2 is the <b>multi-agent harness</b> pattern in its production form. Proposer / Challenger / Judge maps
+          cleanly onto the three roles every agent platform needs (planner, critic, gatekeeper), and the on-chain
+          receipts mean the eval is <i>external</i> to the LLM, not just an LLM grading itself.</p>
+      </div>
+
+      <div class="chip-list">
+        <span class="chip">Foundry tests</span>
+        <span class="chip">ECDSA verification</span>
+        <span class="chip">Transcript hashing</span>
+        <span class="chip">Slashing pool</span>
+        <span class="chip">Emergency stop</span>
+        <span class="chip">Multi-agent eval</span>
+        <span class="chip">Gas-optimized</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MVF -->
+  <section class="proj-sec" id="p-mvf">
+    <div class="container">
+      <div class="proj-head">
+        <div>
+          <div class="proj-eyebrow">03 · Stablecoin · IEEE ICBC 2026</div>
+          <h2>MVF-Composer: Stablecoin Reserve Controller</h2>
+          <p class="tagline">A 12-agent rescue system for a stablecoin's peg, peer-reviewed and presented at IEEE ICBC
+            2026.</p>
+        </div>
+        <div class="proj-meta">
+          <div class="meta-row"><b>Status</b><span>Accepted &amp; presented at IEEE ICBC 2026</span></div>
+          <div class="meta-row"><b>Stack</b><span>12 agents · 4 archetypes · 3 LLM providers</span></div>
+          <div class="meta-row"><b>Scale</b><span>12,500 lines · 46 modules · 1,200 sims</span></div>
+          <div class="meta-row"><b>JD fit</b><span>Web3 Chatbot · RAG · multi-agent eval</span></div>
+        </div>
+      </div>
+
+      <div class="pm-cols">
+        <div class="pm-col">
+          <h3>Problem</h3>
+          <p>Stablecoins depeg in chaotic ways. USDC's 2023/03 crisis, UST in 2022/05, stETH in 2022/06 all played out
+            differently, and a controller trained on one history doesn't know how to handle the next one. Static
+            dashboards are good at showing the fire, bad at putting it out.</p>
+        </div>
+        <div class="pm-col">
+          <h3>Motivation</h3>
+          <p>I wanted to find out whether a population of specialized agents, each watching one slice of the market
+            (depth, oracle deviation, cross-chain spread, sentiment), could coordinate a defense faster and cheaper
+            than a single monolithic policy. The IEEE ICBC venue was the right pressure test for the question.</p>
+        </div>
+      </div>
+
+      <div class="pm-cols">
+        <div class="pm-col">
+          <h3>What I built</h3>
+          <p>12 concurrent LLM agents in 4 archetypes (sentinel, analyst, trader, governor) running across OpenAI,
+            Anthropic, and DeepSeek, with Pydantic-validated outputs and a constrained mean-variance optimizer on top.
+            I replayed real depeg events block by block, USDC 2023/03, UST 2022/05, stETH 2022/06, and let the
+            population react in real time.</p>
+        </div>
+        <div class="pm-col">
+          <h3>My contribution</h3>
+          <p>Single-author paper, single-engineer system. Architecture, agent prompts, optimization layer, evaluation
+            harness, and the 1,200 reproducible simulations. About 12,500 lines of typed Python across 46 modules.
+            Each run captures a seed, a commit hash, and a timestamp so anyone can re-derive the result.</p>
+        </div>
+      </div>
+
+      <div class="kpi">
+        <div class="cell">
+          <div class="big">62%</div>
+          <div class="lab">Peak peg deviation cut</div>
+        </div>
+        <div class="cell">
+          <div class="big">3.1&times;</div>
+          <div class="lab">Faster crisis recovery</div>
+        </div>
+        <div class="cell">
+          <div class="big">12</div>
+          <div class="lab">Concurrent agents</div>
+        </div>
+        <div class="cell">
+          <div class="big">1,200</div>
+          <div class="lab">Reproducible simulations</div>
+        </div>
+      </div>
+
+      <div class="vis-block">
+        <div class="vis-head">
+          <h3>USDC 2023/03 depeg replay: MVF-Composer vs. baseline controller</h3>
+          <span class="src">1,200 sims, median peg deviation trace, seed-controlled</span>
+        </div>
+        <div class="vis-grid">
+          <svg class="vis-svg" viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg" aria-label="Line chart showing MVF-Composer vs baseline peg deviation over the USDC 2023/03 crisis">
+            <defs>
+              <linearGradient id="mvg" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#e0612f" stop-opacity=".6"/>
+                <stop offset="100%" stop-color="#e0612f" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <g font-family="JetBrains Mono, monospace" font-size="10" fill="#9a9384">
+              <line x1="50" y1="20" x2="50" y2="200" stroke="#2a2620"/>
+              <line x1="50" y1="200" x2="430" y2="200" stroke="#2a2620"/>
+              <line x1="50" y1="20" x2="430" y2="20" stroke="#2a2620" stroke-dasharray="2 3"/>
+              <line x1="50" y1="110" x2="430" y2="110" stroke="#2a2620" stroke-dasharray="2 3"/>
+              <text x="44" y="204" text-anchor="end">0%</text>
+              <text x="44" y="24" text-anchor="end">10%</text>
+              <text x="44" y="114" text-anchor="end">5%</text>
+              <text x="240" y="245" text-anchor="middle" fill="#9a9384">time &rarr; block progression</text>
+              <text x="14" y="110" text-anchor="middle" fill="#9a9384" transform="rotate(-90 14 110)">peg deviation</text>
+            </g>
+            <g>
+              <path d="M50,200 L50,200 L100,40 L160,70 L220,110 L280,140 L340,165 L400,180 L430,188 L430,200 Z" fill="url(#mvg)"/>
+              <path d="M50,200 L50,200 L100,40 L160,70 L220,110 L280,140 L340,165 L400,180 L430,188" fill="none" stroke="#d9a441" stroke-width="2"/>
+            </g>
+            <g>
+              <path d="M50,200 L100,42 L160,75 L220,118 L280,150 L340,178 L400,194 L430,199" fill="none" stroke="#e0612f" stroke-width="2.5"/>
+              <circle cx="100" cy="42" r="3" fill="#e0612f"/>
+              <circle cx="160" cy="75" r="3" fill="#e0612f"/>
+              <circle cx="220" cy="118" r="3" fill="#e0612f"/>
+              <circle cx="280" cy="150" r="3" fill="#e0612f"/>
+              <circle cx="340" cy="178" r="3" fill="#e0612f"/>
+              <circle cx="400" cy="194" r="3" fill="#e0612f"/>
+            </g>
+            <g font-family="Spline Sans, sans-serif" font-size="10" fill="#ece7dc">
+              <text x="350" y="80" fill="#e0612f" font-weight="600">MVF-Composer</text>
+              <text x="350" y="155" fill="#d9a441" font-weight="600">Industry baseline</text>
+            </g>
+            <g font-family="JetBrains Mono, monospace" font-size="9" fill="#7fb37a">
+              <text x="105" y="32">-62% peak</text>
+            </g>
+          </svg>
+          <div class="vis-side">
+            <h4>Reading the chart</h4>
+            <p>The two lines start at the same peak deviation (the depeg moment). The MVF-Composer curve recovers
+              faster and to a tighter peg than the industry baseline controller, with a 62% smaller peak deviation and
+              a 3.1x shorter crisis window. Numbers are median over 1,200 seeded runs.</p>
+            <div class="legend">
+              <span><span class="sw" style="background:#e0612f"></span>MVF-Composer (12 agents)</span>
+              <span><span class="sw" style="background:#d9a441"></span>Industry baseline</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="take">
+        <h4>Why this matters for a JD</h4>
+        <p>MVF-Composer shows the <b>RAG + multi-agent + eval</b> pattern in a setting with real money and real
+          regulation behind it. The IEEE peer review is the part I lean on when recruiters want to know the numbers
+          hold up under independent scrutiny.</p>
+      </div>
+
+      <div class="chip-list">
+        <span class="chip">12 agents · 4 archetypes</span>
+        <span class="chip">Multi-provider LLM</span>
+        <span class="chip">Pydantic v2 contracts</span>
+        <span class="chip">Mean-variance optimizer</span>
+        <span class="chip">Block-by-block replay</span>
+        <span class="chip">Seed-controlled</span>
+        <span class="chip">IEEE ICBC 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOC -->
+  <section class="proj-sec" id="p-noc">
+    <div class="container">
+      <div class="proj-head">
+        <div>
+          <div class="proj-eyebrow">04 · Oracle · Cryptography</div>
+          <h2>NOC: Cryptographically Verifiable Oracle</h2>
+          <p class="tagline">On-chain SNARK verification at a fraction of incumbent cost.</p>
+        </div>
+        <div class="proj-meta">
+          <div class="meta-row"><b>Status</b><span>Shipped · 76 tests + 256-run fuzz</span></div>
+          <div class="meta-row"><b>Stack</b><span>Solidity 0.8.23 · Groth16 · BN254</span></div>
+          <div class="meta-row"><b>Byzantine</b><span>100% detection up to 37.5% adversary</span></div>
+          <div class="meta-row"><b>JD fit</b><span>Web3 infrastructure · security</span></div>
+        </div>
+      </div>
+
+      <div class="pm-cols">
+        <div class="pm-col">
+          <h3>Problem</h3>
+          <p>Existing oracle designs either trust a small committee (cheap, fragile) or run a heavy consensus (expensive,
+            slow). The committee design was exploited more than once, and the consensus design prices out the use cases
+            that need an update every block.</p>
+        </div>
+        <div class="pm-col">
+          <h3>Motivation</h3>
+          <p>Cryptographic proofs let you skip the trust assumption entirely. The verifier runs on-chain, the proof is
+            cheap, and the only way to lie is to break the curve. The open question was whether you could ship a
+            production-ready system on top of that idea at L2 cost.</p>
+        </div>
+      </div>
+
+      <div class="pm-cols">
+        <div class="pm-col">
+          <h3>What I built</h3>
+          <p>A Solidity 0.8.23 oracle with on-chain Groth16 / BN254 verification, plus a staking, slashing, and
+            reputation-weighted consensus layer to handle the cases where proofs aren't available. 76 Foundry tests
+            pass, including a 256-run fuzz suite and gas benchmarks. A 100% Byzantine detection rate up to a 37.5%
+            adversary fraction.</p>
+        </div>
+        <div class="pm-col">
+          <h3>My contribution</h3>
+          <p>End to end. The Solidity contracts, the Groth16 verifier integration, the staking and slashing logic, the
+            reputation model, the test harness, and the gas benchmarks. About 21x cheaper per update than incumbent
+            committee oracles on L2, which is the part that makes it usable in production instead of just a paper.</p>
+        </div>
+      </div>
+
+      <div class="kpi">
+        <div class="cell">
+          <div class="big">$0.04</div>
+          <div class="lab">Cost per update (L2)</div>
+        </div>
+        <div class="cell">
+          <div class="big">21&times;</div>
+          <div class="lab">Cheaper vs. committee baseline</div>
+        </div>
+        <div class="cell">
+          <div class="big">100%</div>
+          <div class="lab">Byzantine detection (up to 37.5%)</div>
+        </div>
+        <div class="cell">
+          <div class="big">76</div>
+          <div class="lab">Tests · 256 fuzz runs</div>
+        </div>
+      </div>
+
+      <div class="vis-block">
+        <div class="vis-head">
+          <h3>Cost per oracle update (L2): NOC vs. committee baseline</h3>
+          <span class="src">L2 gas snapshot, 30 gwei, ETH $3,200</span>
+        </div>
+        <div class="vis-grid">
+          <svg class="vis-svg" viewBox="0 0 440 240" xmlns="http://www.w3.org/2000/svg" aria-label="Bar chart comparing oracle cost per update">
+            <defs>
+              <linearGradient id="noc1" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#e0612f"/>
+                <stop offset="100%" stop-color="#9c3a17"/>
+              </linearGradient>
+              <linearGradient id="noc2" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#d9a441"/>
+                <stop offset="100%" stop-color="#8a6420"/>
+              </linearGradient>
+            </defs>
+            <g font-family="JetBrains Mono, monospace" font-size="10" fill="#9a9384">
+              <line x1="50" y1="20" x2="50" y2="200" stroke="#2a2620"/>
+              <line x1="50" y1="200" x2="420" y2="200" stroke="#2a2620"/>
+              <line x1="50" y1="110" x2="420" y2="110" stroke="#2a2620" stroke-dasharray="2 3"/>
+              <line x1="50" y1="65" x2="420" y2="65" stroke="#2a2620" stroke-dasharray="2 3"/>
+              <line x1="50" y1="20" x2="420" y2="20" stroke="#2a2620" stroke-dasharray="2 3"/>
+              <text x="44" y="204" text-anchor="end">$0</text>
+              <text x="44" y="114" text-anchor="end">$0.50</text>
+              <text x="44" y="69" text-anchor="end">$0.75</text>
+              <text x="44" y="24" text-anchor="end">$1.00</text>
+            </g>
+            <g>
+              <rect x="100" y="180" width="70" height="20" fill="url(#noc1)" rx="3"/>
+              <text x="135" y="174" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="600" fill="#ece7dc">$0.04</text>
+              <text x="135" y="218" text-anchor="middle" font-family="Spline Sans, sans-serif" font-size="11" fill="#9a9384">NOC (Groth16)</text>
+            </g>
+            <g>
+              <rect x="240" y="42" width="70" height="158" fill="url(#noc2)" rx="3"/>
+              <text x="275" y="36" text-anchor="middle" font-family="Fraunces, serif" font-size="14" font-weight="600" fill="#ece7dc">$0.84</text>
+              <text x="275" y="218" text-anchor="middle" font-family="Spline Sans, sans-serif" font-size="11" fill="#9a9384">Committee baseline</text>
+            </g>
+            <g font-family="Spline Sans, sans-serif" font-size="10" fill="#7fb37a">
+              <text x="205" y="155" text-anchor="middle">21&times; cheaper</text>
+              <line x1="170" y1="158" x2="240" y2="158" stroke="#7fb37a" stroke-dasharray="3 2"/>
+            </g>
+          </svg>
+          <div class="vis-side">
+            <h4>What it means</h4>
+            <p>At L2 cost, a single NOC update is around four cents. The same update from a committee oracle runs
+              around 84 cents. That gap is the difference between an oracle you can call every block and an oracle
+              you only call when you absolutely have to.</p>
+            <div class="legend">
+              <span><span class="sw" style="background:#e0612f"></span>NOC</span>
+              <span><span class="sw" style="background:#d9a441"></span>Committee</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="take">
+        <h4>Why this matters for a JD</h4>
+        <p>NOC is the <b>Web3 infrastructure</b> piece in my portfolio. It shows I can ship cryptographic primitives
+          to production and that I understand the cost / trust tradeoff well enough to make the call on which to use
+          where. Most agent platform teams have at least one oracle question, and the answer is rarely "just use
+          Chainlink."</p>
+      </div>
+
+      <div class="chip-list">
+        <span class="chip">Groth16 on-chain</span>
+        <span class="chip">BN254 pairing</span>
+        <span class="chip">Staking &amp; slashing</span>
+        <span class="chip">Reputation model</span>
+        <span class="chip">Fuzz tested</span>
+        <span class="chip">Gas optimized</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEB3 AGENT PLATFORM (in progress) -->
+  <section class="proj-sec" id="p-w3a">
+    <div class="container">
+      <div class="inprog">
+        <span class="ip-tag">In progress · demo on request</span>
+        <h2>Web3 Agent Platform</h2>
+        <p class="lede">A production-style agent platform built against the Agent Platform / Web3 Chatbot JD. Currently in
+          final integration. Trace / replay, human-in-the-loop checkpoints, tool registry, and eval framework are wired
+          up and demonstrable end to end on a private deploy. Happy to share a live walkthrough on request.</p>
+
+        <div class="grid2">
+          <div>
+            <h4>Built so far</h4>
+            <ul>
+              <li>Tool registry and policy-gated tool calling (per-tool permission scopes)</li>
+              <li>Trace / replay viewer with full LLM call and tool I/O capture</li>
+              <li>Human-in-the-loop checkpoints at action boundaries (approve / edit / reject)</li>
+              <li>Eval framework with seeded regression suite for prompt and tool changes</li>
+              <li>FastAPI on Cloud Run, Pydantic v2 contracts, asyncio pipeline</li>
+              <li>LangGraph orchestrator with proposer / challenger / judge role support</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Designed for the JD</h4>
+            <ul>
+              <li>Capability layering, module boundaries, and a permission model as first-class concerns</li>
+              <li>Agent execution: planning, tool calling, context, result validation, retry, state recovery</li>
+              <li>Harness-level capabilities: tool calls, workflow engine, sandbox, eval, trace, MCP-friendly I/O</li>
+              <li>SDD-friendly: every change is spec, test, then code, with diff-scoped review</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="take" style="margin-top:1.6rem;">
+          <h4>Why it is in progress, not shipped</h4>
+          <p>The chassis is up. The last 20% is the part where I run it against real workloads with real users and
+            find the failure modes I haven't thought of yet. I'd rather call it in progress than call it done and
+            hope.</p>
+        </div>
+
+        <div class="chip-list">
+          <span class="chip">LangGraph</span>
+          <span class="chip">FastAPI</span>
+          <span class="chip">Cloud Run</span>
+          <span class="chip">Pydantic v2</span>
+          <span class="chip">Trace / replay</span>
+          <span class="chip">Human-in-the-loop</span>
+          <span class="chip">Eval framework</span>
+          <span class="chip">SDD workflow</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="cbox">
+        <h2>Want the live demo or the code?</h2>
+        <p>Code is shared on request under NDA. The Web3 Agent Platform walkthrough is also on request, with a short
+          Loom if a live session doesn't fit the schedule. I read every message.</p>
+        <div class="clinks">
+          <a class="clink" href="mailto:shengwei.you@gmail.com"><span>&#9993;</span> shengwei.you@gmail.com</a>
+          <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank"
+            rel="noopener"><span>&#128188;</span> LinkedIn</a>
+          <a class="clink" href="https://github.com/Jasonyou1995" target="_blank" rel="noopener"><span>&#128025;</span>
+            GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Shengwei You &middot; 游盛巍 &middot; Hong Kong</p>
+    <p>This is a static site. No tracking, no cookies, no data collected.</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function (e) {
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+
+    // tab highlighting on scroll
+    const tabs = document.querySelectorAll('.tabs .tab');
+    const sections = Array.from(tabs).map(t => document.querySelector(t.getAttribute('href'))).filter(Boolean);
+    const tabObs = new IntersectionObserver((es) => {
+      es.forEach(e => {
+        if (e.isIntersecting) {
+          const id = '#' + e.target.id;
+          tabs.forEach(t => t.classList.toggle('active', t.getAttribute('href') === id));
+        }
+      });
+    }, { rootMargin: '-160px 0px -55% 0px' });
+    sections.forEach(s => tabObs.observe(s));
+  </script>
+</body>
+
+</html>

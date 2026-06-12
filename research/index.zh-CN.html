@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>研究 · 游盛巍 (Shengwei You)</title>
+  <meta name="description"
+    content="游盛巍 (Jason You) 的博士研究: 校准的多 Agent 决策系统、提议者 / 挑战者 / 裁判架构、去中心化系统中的信任。圣母大学博士。包含 IEEE ICBC 2026 在内的四篇同行评审论文。">
+  <link rel="canonical" href="https://jasonyou1995.github.io/research/index.zh-CN.html">
+  <link rel="alternate" hreflang="en" href="https://jasonyou1995.github.io/research/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://jasonyou1995.github.io/research/index.zh-CN.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://jasonyou1995.github.io/research/index.zh-TW.html">
+  <link rel="alternate" hreflang="x-default" href="https://jasonyou1995.github.io/research/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="研究 · 游盛巍 (Shengwei You)">
+  <meta property="og:description" content="博士研究: 多 Agent 信任、校准的决策系统、去中心化系统安全。">
+  <meta property="og:url" content="https://jasonyou1995.github.io/research/index.zh-CN.html">
+  <meta property="og:image" content="https://jasonyou1995.github.io/photo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Noto+Sans+SC:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0e0c;
+      --bg2: #161310;
+      --paper: #f7f3ea;
+      --ink: #15130f;
+      --accent: #e0612f;
+      --accent-2: #d9a441;
+      --text: #ece7dc;
+      --text-dim: #9a9384;
+      --border: #2a2620;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans SC', 'Spline Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; overflow-x: hidden; }
+    ::selection { background: var(--accent); color: #fff; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+    .bg-grain { position: fixed; inset: 0; z-index: -1;
+      background: radial-gradient(circle at 15% 15%, rgba(224, 97, 47, .10), transparent 45%),
+                  radial-gradient(circle at 85% 85%, rgba(217, 164, 65, .07), transparent 45%), var(--bg); }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.1rem 2.5rem; background: rgba(15, 14, 12, .72); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+    nav .wrap { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.25rem; letter-spacing: -.01em; text-decoration: none; color: inherit; }
+    .logo span { color: var(--accent); }
+    nav ul { display: flex; gap: 2rem; list-style: none; }
+    nav a { color: var(--text-dim); text-decoration: none; font-size: .88rem; font-weight: 500; transition: .25s; position: relative; }
+    nav a:hover { color: var(--text); }
+    nav a.active { color: var(--text); }
+    nav a.active::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--accent); }
+    nav a:hover::after { content: ""; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px; background: var(--accent); }
+
+    .lang { font-size: .8rem; color: var(--text-dim); border: 1px solid var(--border); border-radius: 30px; padding: 4px 12px; position: relative; cursor: default; }
+    .lang .dd { position: absolute; top: 130%; right: 0; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 6px; min-width: 140px; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: .25s; box-shadow: 0 12px 30px rgba(0, 0, 0, .5); }
+    .lang:hover .dd, .lang:focus-within .dd { opacity: 1; visibility: visible; transform: translateY(0); }
+    .lang .dd a { display: block; padding: 6px 12px; color: var(--text-dim); text-decoration: none; border-radius: 6px; font-size: .85rem; }
+    .lang .dd a:hover { background: var(--bg); color: var(--accent); }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 2.5rem; }
+    section { padding: 4rem 0; }
+
+    .rh-hero { padding-top: 9rem; padding-bottom: 3rem; }
+    .rh-hero .tag { display: inline-block; padding: .45rem 1rem; border: 1px solid var(--accent); color: var(--accent); border-radius: 40px; font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .18em; margin-bottom: 1.6rem; }
+    .rh-hero h1 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 3rem; line-height: 1.15; letter-spacing: -.015em; max-width: 820px; margin-bottom: 1rem; }
+    .rh-hero h1 .sur { color: var(--accent); font-weight: 900; }
+    .rh-hero .lede { font-size: 1.08rem; color: var(--text-dim); max-width: 760px; }
+    .rh-hero .lede b { color: var(--text); font-weight: 600; }
+
+    .sh { margin-bottom: 2.5rem; max-width: 720px; }
+    .st { font-size: .74rem; color: var(--accent); text-transform: uppercase; letter-spacing: .2em; font-weight: 600; display: block; margin-bottom: .8rem; }
+    .stitle { font-family: 'Fraunces', serif; font-weight: 600; font-size: 2.1rem; line-height: 1.15; letter-spacing: -.01em; }
+    .ssub { color: var(--text-dim); font-size: 1rem; margin-top: .7rem; }
+
+    .thread-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 2.4rem; display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; align-items: start; }
+    .thread-card h2 { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+    .thread-card p { color: var(--text-dim); font-size: .98rem; text-align: justify; }
+    .thread-card p em { color: var(--text-dim); }
+
+    .thread-meta { display: flex; flex-direction: column; gap: .8rem; }
+    .thread-meta .row { display: flex; gap: .6rem; font-size: .88rem; color: var(--text-dim); border-bottom: 1px dashed var(--border); padding-bottom: .5rem; }
+    .thread-meta .row:last-child { border-bottom: none; }
+    .thread-meta .row b { color: var(--text); font-weight: 500; min-width: 100px; }
+
+    .arch-svg { width: 100%; height: auto; margin-top: 1.4rem; border-radius: 12px; background: var(--bg); border: 1px solid var(--border); padding: 1.2rem; }
+
+    .theme-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+    .theme { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem; }
+    .theme .ic { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.2rem; color: var(--accent); margin-bottom: .5rem; }
+    .theme h3 { font-size: 1rem; margin-bottom: .4rem; }
+    .theme p { color: var(--text-dim); font-size: .88rem; }
+
+    .pub { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.6rem 1.8rem; display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start; margin-bottom: 1.1rem; transition: .25s; }
+    .pub:hover { border-color: var(--accent); }
+    .yr { font-size: .78rem; color: var(--accent); font-weight: 600; background: rgba(224, 97, 47, .12); padding: .4rem .9rem; border-radius: 30px; white-space: nowrap; }
+    .pub h3 { font-size: 1.02rem; line-height: 1.4; margin-bottom: .4rem; }
+    .pub .meta { color: var(--text-dim); font-size: .85rem; }
+    .pub .meta a { color: var(--accent); text-decoration: none; }
+    .pub .meta a:hover { text-decoration: underline; }
+
+    .venue-table { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 1.6rem 1.8rem; margin-top: 1.2rem; }
+    .venue-table h3 { font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 1rem; }
+    .venue-row { display: grid; grid-template-columns: 90px 1fr auto; gap: 1.2rem; padding: .6rem 0; border-bottom: 1px dashed var(--border); align-items: center; font-size: .92rem; }
+    .venue-row:last-child { border-bottom: none; }
+    .venue-row .vyr { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: .85rem; }
+    .venue-row .vname { color: var(--text); }
+    .venue-row .vrole { color: var(--text-dim); font-size: .82rem; }
+
+    .cbox { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; text-align: center; max-width: 760px; margin: 4rem auto 0; }
+    .cbox h2 { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 600; margin-bottom: .6rem; }
+    .cbox p { color: var(--text-dim); margin-bottom: 1.6rem; }
+    .clinks { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .clink { display: flex; align-items: center; gap: .6rem; color: var(--text); text-decoration: none; padding: .85rem 1.4rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; transition: .25s; font-size: .92rem; }
+    .clink:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: .85rem; }
+    footer p { margin: .25rem 0; }
+
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .rh-hero h1 { font-size: 2.2rem; }
+      .thread-card { grid-template-columns: 1fr; }
+      .pub { grid-template-columns: 1fr; gap: .7rem; }
+      .venue-row { grid-template-columns: 70px 1fr; }
+      .venue-row .vrole { grid-column: 1 / -1; padding-left: 86px; }
+      .container { padding: 0 1.4rem; }
+      nav { padding: 1rem 1.4rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+
+<body>
+  <div class="bg-grain"></div>
+
+  <nav>
+    <div class="wrap">
+      <a class="logo" href="../index.zh-CN.html">游盛巍 <span>Shengwei</span></a>
+      <div style="display:flex;align-items:center;gap:1.8rem;">
+        <ul>
+          <li><a href="../index.zh-CN.html#about">关于</a></li>
+          <li><a href="../index.zh-CN.html#work">方法</a></li>
+          <li><a href="../projects/index.zh-CN.html">项目</a></li>
+          <li><a href="./" class="active">研究</a></li>
+          <li><a href="../index.zh-CN.html#contact">联系</a></li>
+        </ul>
+        <div class="lang" tabindex="0" aria-label="语言"><span>&#127760; 简体</span>
+          <div class="dd">
+            <a href="index.html">English</a>
+            <a href="index.zh-CN.html">&#31616;&#20307;&#20013;&#25991;</a>
+            <a href="index.zh-TW.html">&#32321;&#39636;&#20013;&#25991;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="rh-hero">
+    <div class="container">
+      <span class="tag">研究</span>
+      <h1>为高风险自动化而做的: 校准的多 Agent 决策系统。</h1>
+      <p class="lede">我的博士工作围绕一个问题: <b>你凭什么相信一个自主 Agent 给出的输出?</b> 我给出的答案是 <i>提议者、挑战者、裁判</i> 的架构: 多个独立 Agent 先互相辩论, 给出判决之后再执行。同一个底盘既是学术上研究的对象, 也是 OC1、OC2、MVF-Composer 这几套生产系统的安全层。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sh"><span class="st">研究主线</span><h2 class="stitle">一套架构, 四个系统, 一条可追溯的论文链</h2></div>
+
+      <div class="thread-card">
+        <div>
+          <h2>Proposer, Challenger, Judge - 自主 Agent 的信任底盘</h2>
+          <p>单次 LLM 调用的模式又方便又危险: 方便在于它只是一次 prompt, 危险在于做验证的也是同一个模型。博士论文研究的是一种多 Agent 模式: Proposer 起草决策, Challenger 攻击它, Judge 提交判决, 辩论记录做哈希之后提交到 LLM 之外, 让审计链位于模型之外, 而不是模型内部。
+            <br><br>
+            这个模式出现在三套已交付系统里 (OC1、OC2、MVF-Composer), 也写进了 IEEE ICBC 2026 那篇稳定币储备控制的论文里。我把工程和论文当成一个反馈循环: 系统上线、装好观测、找到论文没预测到的失败模式、再写下一篇。
+            <br><br>
+            <em>主题: 多 Agent 系统、共识与信任、校准的预测、区块链与去中心化系统安全。</em></p>
+
+          <svg class="arch-svg" viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" aria-label="Proposer Challenger Judge 架构图">
+            <defs>
+              <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" fill="#e0612f"/>
+              </marker>
+              <linearGradient id="ag" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0%" stop-color="#e0612f"/><stop offset="100%" stop-color="#9c3a17"/>
+              </linearGradient>
+            </defs>
+            <g font-family="JetBrains Mono, monospace" font-size="11">
+              <rect x="20" y="70" width="140" height="60" rx="10" fill="url(#ag)"/>
+              <text x="90" y="98" text-anchor="middle" fill="#fff" font-weight="600">PROPOSER</text>
+              <text x="90" y="115" text-anchor="middle" fill="#fff" font-size="9">起草决策</text>
+
+              <rect x="200" y="70" width="140" height="60" rx="10" fill="#161310" stroke="#d9a441" stroke-width="1.5"/>
+              <text x="270" y="98" text-anchor="middle" fill="#d9a441" font-weight="600">CHALLENGER</text>
+              <text x="270" y="115" text-anchor="middle" fill="#9a9384" font-size="9">攻击决策</text>
+
+              <rect x="380" y="70" width="140" height="60" rx="10" fill="#161310" stroke="#e0612f" stroke-width="1.5"/>
+              <text x="450" y="98" text-anchor="middle" fill="#e0612f" font-weight="600">JUDGE</text>
+              <text x="450" y="115" text-anchor="middle" fill="#9a9384" font-size="9">提交判决</text>
+
+              <rect x="560" y="50" width="140" height="50" rx="8" fill="#161310" stroke="#7fb37a" stroke-width="1.5"/>
+              <text x="630" y="74" text-anchor="middle" fill="#7fb37a" font-weight="600">外部</text>
+              <text x="630" y="90" text-anchor="middle" fill="#9a9384" font-size="9">收据 / 链上</text>
+
+              <rect x="560" y="110" width="140" height="50" rx="8" fill="#161310" stroke="#9a9384" stroke-width="1.5"/>
+              <text x="630" y="134" text-anchor="middle" fill="#9a9384" font-weight="600">人工</text>
+              <text x="630" y="150" text-anchor="middle" fill="#9a9384" font-size="9">存疑时复核</text>
+            </g>
+            <g stroke="#e0612f" stroke-width="1.5" fill="none" marker-end="url(#arr)">
+              <line x1="160" y1="100" x2="200" y2="100"/>
+              <line x1="340" y1="100" x2="380" y2="100"/>
+              <line x1="520" y1="90" x2="560" y2="75"/>
+              <line x1="520" y1="110" x2="560" y2="135"/>
+            </g>
+            <g font-family="Noto Sans SC, sans-serif" font-size="10" fill="#9a9384">
+              <text x="180" y="92" text-anchor="middle">方案</text>
+              <text x="360" y="92" text-anchor="middle">批评</text>
+              <text x="540" y="68" text-anchor="middle">提交</text>
+              <text x="540" y="128" text-anchor="middle">存疑</text>
+            </g>
+          </svg>
+        </div>
+        <div class="thread-meta">
+          <div class="row"><b>博士</b><span>计算机科学, 圣母大学</span></div>
+          <div class="row"><b>导师</b><span>Jarek Nabrzyski 教授</span></div>
+          <div class="row"><b>时间</b><span>2020 至 2026 (预计)</span></div>
+          <div class="row"><b>课题</b><span>去中心化系统中的信任与系统性风险; 校准的、安全感知的自动化多 Agent 架构</span></div>
+          <div class="row"><b>方法</b><span>对抗式多 Agent 辩论, 密码学辩论记录收据, 逐区块危机回放, 形式化安全规格</span></div>
+          <div class="row"><b>应用</b><span>OC1 (Agent 安全), OC2 (DeFi 辩论), MVF-Composer (稳定币控制)</span></div>
+        </div>
+      </div>
+
+      <div class="sh" style="margin-top:3rem;"><span class="st">研究主题</span><h2 class="stitle" style="font-size:1.6rem;">我具体在做什么</h2></div>
+      <div class="theme-grid">
+        <div class="theme"><div class="ic">01</div><h3>多 Agent 共识</h3><p>独立 Agent 互相辩论、判决, 决策的提交位于起草它的 LLM 之外的模式。</p></div>
+        <div class="theme"><div class="ic">02</div><h3>校准的自动化</h3><p>系统的决策可以拿可量化的置信度分数与人类可读的审计链来兜底。</p></div>
+        <div class="theme"><div class="ic">03</div><h3>稳定币安全</h3><p>稳定币脱锚瞬间的防御机制, 逐区块对照真实危机做回放。</p></div>
+        <div class="theme"><div class="ic">04</div><h3>去中心化系统中的信任</h3><p>信任假设为什么破裂, 密码学什么时候能帮上忙, 什么时候依然需要人在环。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sh"><span class="st">发表论文</span><h2 class="stitle">同行评审的工作</h2>
+        <p class="ssub">四篇论文, 最新一篇为独立一作, IEEE ICBC 2026 受邀演讲。</p>
+      </div>
+
+      <div class="pub">
+        <span class="yr">2026</span>
+        <div>
+          <h3>Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven Arbitrage</h3>
+          <p class="meta">书籍章节 &middot; You, Kuehlkamp, Nabrzyski &middot; DOI: <a href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank" rel="noopener">10.1007/978-3-032-00495-6_8</a></p>
+        </div>
+      </div>
+      <div class="pub">
+        <span class="yr">2024</span>
+        <div>
+          <h3>Persona-Preserving Reputation Protocol (P2RP) for Enhanced Security, Privacy, and Trust in Blockchain Oracles</h3>
+          <p class="meta">Cluster Computing (期刊) &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank" rel="noopener">10.1007/s10586-023-04222-4</a></p>
+        </div>
+      </div>
+      <div class="pub">
+        <span class="yr">2023</span>
+        <div>
+          <h3>Mining User Behavior in Decentralized Applications for Blockchain Trust and Security Analytics</h3>
+          <p class="meta">IEEE BCCA 2023 &middot; You, Joshi, Kuehlkamp, Nabrzyski &middot; DOI: <a href="https://doi.org/10.1109/bcca58897.2023.10338860" target="_blank" rel="noopener">10.1109/bcca58897.2023.10338860</a></p>
+        </div>
+      </div>
+      <div class="pub">
+        <span class="yr">2022</span>
+        <div>
+          <h3>Trust in the Context of Blockchain Applications</h3>
+          <p class="meta">IEEE BCCA 2022 &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a href="https://doi.org/10.1109/bcca55292.2022.9922068" target="_blank" rel="noopener">10.1109/bcca55292.2022.9922068</a></p>
+        </div>
+      </div>
+
+      <div class="venue-table">
+        <h3>工作出现过的地方</h3>
+        <div class="venue-row"><div class="vyr">2026</div><div class="vname">IEEE ICBC 2026 &middot; MVF-Composer 演讲</div><div class="vrole">会议演讲者</div></div>
+        <div class="venue-row"><div class="vyr">2026</div><div class="vname">InnoAI Thailand 2026 &middot; 稳定币与 Agent 安全</div><div class="vrole">特邀讲者</div></div>
+        <div class="venue-row"><div class="vyr">2024</div><div class="vname">Cluster Computing (期刊)</div><div class="vrole">一作</div></div>
+        <div class="venue-row"><div class="vyr">2023</div><div class="vname">IEEE BCCA 2023</div><div class="vrole">一作</div></div>
+        <div class="venue-row"><div class="vyr">2022</div><div class="vname">IEEE BCCA 2022</div><div class="vrole">一作</div></div>
+        <div class="venue-row"><div class="vyr">2020</div><div class="vname">Hyperledger Global Forum 2020</div><div class="vrole">讲者</div></div>
+        <div class="venue-row"><div class="vyr">2020</div><div class="vname">Techstars 西雅图区块链创业周末</div><div class="vrole">第一名</div></div>
+        <div class="venue-row"><div class="vyr">2025</div><div class="vname">2025 中德科学家大会</div><div class="vrole">主持人</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="sh"><span class="st">学术背景</span><h2 class="stitle">在哪里受过训练</h2></div>
+      <div class="theme-grid">
+        <div class="theme"><div class="ic">博士</div><h3>计算机科学</h3><p>圣母大学 &middot; 2020 至 2026 (预计)<br>导师: Jarek Nabrzyski</p></div>
+        <div class="theme"><div class="ic">硕士</div><h3>计算机科学 (信息安全)</h3><p>普渡大学 &middot; 2018 至 2019</p></div>
+        <div class="theme"><div class="ic">学士</div><h3>数学</h3><p>华盛顿大学 &middot; 2014 至 2018</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cbox">
+        <h2>想要论文或更深入的讲解?</h2>
+        <p>可以按学术通行条款分享预印本、代码、复现笔记。每封邮件我都看。</p>
+        <div class="clinks">
+          <a class="clink" href="mailto:shengwei.you@gmail.com"><span>&#9993;</span> shengwei.you@gmail.com</a>
+          <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank" rel="noopener"><span>&#128188;</span> LinkedIn</a>
+          <a class="clink" href="https://github.com/Jasonyou1995" target="_blank" rel="noopener"><span>&#128025;</span> GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 游盛巍 Shengwei You &middot; 香港</p>
+    <p>静态站点, 不埋点, 不写 cookie, 不收集数据。</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function (e) {
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+  </script>
+</body>
+
+</html>
