@@ -728,6 +728,18 @@
       margin: .3rem 0 .2rem;
     }
 
+    .ti h3 .org-tag {
+      display: inline-block;
+      margin-left: .4rem;
+      padding: .12rem .55rem;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      border-radius: 20px;
+      font-size: .68rem;
+      font-weight: 500;
+      vertical-align: middle;
+    }
+
     .ti .org {
       color: var(--text-dim);
       font-size: .92rem;
@@ -1136,11 +1148,11 @@
         </div>
         <div class="proj fade" id="p-mvf">
           <h3>MVF-Composer：稳定币储备控制器</h3>
-          <p class="tagline">被 IEEE ICBC 2026 接收并宣讲。</p>
+          <p class="tagline">面向稳定币锚定的信任加权均值-方差控制，已被 IEEE ICBC 2026 接收。</p>
           <ul>
-            <li><b>构建：</b>12 个并发 LLM 智能体，横跨 4 种行为原型，运行于 OpenAI、Anthropic 与 DeepSeek，带 Pydantic 校验的输出与受约束的均值方差优化器。约 12,500 行带类型的 Python，46 个模块。</li>
-            <li><b>测量：</b>在 1,200 次可复现仿真中，峰值脱锚偏差降低 62%，危机恢复比行业基线快 3.1 倍。</li>
-            <li><b>可验证：</b>同行评审，每次运行记录种子、提交哈希与时间戳。</li>
+            <li><b>构建：</b>Stress Harness 装 12 个 LLM Agent（交易员/做市商/套利者/攻击者），跨 OpenAI、Anthropic、DeepSeek 调度，输出进入信任加权的均值-方差优化器。约 12,500 行带类型的 Python，46 个模块。</li>
+            <li><b>测量：</b>1,200 次黑色星期四模拟，峰值脱锚 3.2%（基线 SAS 7.4%，削减 57%），回到 1% 锚定带内 14 vs 44 个时间步（快 3.1 倍）。</li>
+            <li><b>可验证：</b>同行评审；每次运行记录种子、提交哈希与时间戳。</li>
           </ul>
           <p class="note">代码可应要求提供。<a href="projects/index.zh-CN.html#p-mvf" style="color:var(--accent);text-decoration:none;font-weight:600;">深入了解 &rarr;</a></p>
         </div>
@@ -1239,9 +1251,9 @@
         </div>
         <div class="ti fade">
           <div class="when">2025 至今</div>
-          <h3>客座讲师，金融计算</h3>
+          <h3>客座讲师，金融计算 <span class="org-tag">TTPS 签证</span></h3>
           <p class="org">香港浸会大学 工商管理学院</p>
-          <p>在研究生层次的金融计算课程担任客座讲师，教学生用 Python（NumPy、pandas、scikit-learn）构建并回测量化模型。</p>
+          <p>在研究生层次的金融计算课程担任客座讲师，教学生用 Python（NumPy、pandas、scikit-learn）构建并回测量化模型。本人现居香港，持高端人才通行证（TTPS）。</p>
         </div>
         <div class="ti fade">
           <div class="when">2019</div>

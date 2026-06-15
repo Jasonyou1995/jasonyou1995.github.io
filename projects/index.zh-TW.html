@@ -546,36 +546,36 @@
         </div>
         <div class="proj-meta">
           <div class="meta-row"><b>狀態</b><span>已接收 · IEEE ICBC 2026 演講</span></div>
-          <div class="meta-row"><b>技術棧</b><span>12 個 Agent · 4 類角色 · 3 家 LLM 供應商</span></div>
-          <div class="meta-row"><b>規模</b><span>12,500 行 · 46 個模組 · 1,200 次模擬</span></div>
-          <div class="meta-row"><b>JD 對應</b><span>Web3 Chatbot · RAG · 多 Agent 評測</span></div>
+          <div class="meta-row"><b>技術棧</b><span>Stress Harness · 信任加權 MVF · 3 家 LLM 供應商</span></div>
+          <div class="meta-row"><b>規模</b><span>12 Agent · 1,200 次模擬 · 12,500 行</span></div>
+          <div class="meta-row"><b>JD 對應</b><span>Web3 風控 · 多 Agent 評測 · 對抗魯棒性</span></div>
         </div>
       </div>
 
       <div class="pm-cols">
         <div class="pm-col">
           <h3>問題</h3>
-          <p>穩定幣脫錨是混亂的。USDC 2023/03、UST 2022/05、stETH 2022/06 三場危機的劇情完全不同, 而用某一段歷史訓出來的控制器具體能不能扛住下一段。靜態儀表板擅長顯示火情, 不擅長滅火。</p>
+          <p>穩定幣儲備控制器多在平靜期資料上估協方差。壓力一來, 協方差會被低估 7.17 倍 (&ldquo;2020 遺漏&rdquo;), 最優權重反而變成最脆弱的那組, 2020/03 與 2023/03 的脫錨就是這樣發生的。</p>
         </div>
         <div class="pm-col">
-          <h3>動機</h3>
-          <p>我想驗證一個假設: 一群各看一面的專門 Agent (深度、預言機偏差、跨鏈價差、情緒) 能不能比單一的整體策略更快、更便宜地協同防禦。IEEE ICBC 是這個問題的合適壓測場景。</p>
+          <h3>思路</h3>
+          <p>12 個 LLM Agent 跨 4 類角色 (交易員、做市商、套利者、攻擊者) 在 Stress Harness 內對抗衝擊 (於 t=30 注入)。信任分數 T(a) 對協同或砸盤行為降權, 上層接一個受約束的均值-方差最佳化器, 對壓力增廣後的協方差做再平衡。</p>
         </div>
       </div>
 
       <div class="pm-cols">
         <div class="pm-col">
           <h3>具體造了什麼</h3>
-          <p>12 個並發 LLM Agent, 4 類角色 (哨兵、分析師、交易員、治理者), 跨 OpenAI、Anthropic、DeepSeek 調度, 輸出由 Pydantic 校驗, 上面掛一層受約束的均值-方差最佳化器。我把真實脫錨事件按區塊逐個回放, USDC 2023/03、UST 2022/05、stETH 2022/06, 讓這組 Agent 即時反應。</p>
+          <p>12 個並發 LLM Agent (5 交易員、3 做市商、2 套利者、2 攻擊者) 跨 OpenAI、Anthropic、DeepSeek 調度, 輸出由 Pydantic 校驗, 進入信任加權風險狀態, 再到受約束的均值-方差最佳化器。1,200 次種子化的黑色星期四模擬跑在消費級硬體上 (每週期 47-99 秒)。</p>
         </div>
         <div class="pm-col">
           <h3>我一個人做了什麼</h3>
-          <p>單作者論文, 獨立工程師系統。架構、Agent 提示、優化層、評測框架, 以及 1,200 次可重現模擬。12,500 行型別化 Python, 46 個模組。每次執行都記下 seed、commit hash 和時戳, 任何人都能重現出同樣的結果。</p>
+          <p>單作者論文, 獨立工程師系統: Stress Harness、信任加權聚合、壓力增廣協方差混合, 以及 1,200 次可重現模擬。約 12,500 行型別化 Python, 46 個模組。每次執行都記下 seed、commit 與時戳。</p>
         </div>
       </div>
 
       <div class="kpi">
-        <div class="cell"><div class="big">62%</div><div class="lab">峰值錨定偏差削減</div></div>
+        <div class="cell"><div class="big">57%</div><div class="lab">峰值錨定偏差削減</div></div>
         <div class="cell"><div class="big">3.1&times;</div><div class="lab">危機恢復加速</div></div>
         <div class="cell"><div class="big">12</div><div class="lab">並發 Agent 數</div></div>
         <div class="cell"><div class="big">1,200</div><div class="lab">可重現模擬</div></div>
@@ -583,14 +583,14 @@
 
       <div class="vis-block">
         <div class="vis-head">
-          <h3>USDC 2023/03 脫錨回放: MVF-Composer vs. 業界基線控制器</h3>
+          <h3>黑色星期四回放: MVF-Composer vs. 業界基線 (SAS)</h3>
           <span class="src">1,200 次模擬, 錨定偏差中位數軌跡, seed 控制</span>
         </div>
         <div class="vis-grid">
-          <svg class="vis-svg" viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg" aria-label="折線圖: USDC 2023/03 危機下 MVF-Composer 與基線的錨定偏差">
+          <svg class="vis-svg" viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg" aria-label="折線圖: 黑色星期四危機下 MVF-Composer 與 SAS 基線的錨定偏差">
             <defs>
               <linearGradient id="mvg" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stop-color="#e0612f" stop-opacity=".6"/>
+                <stop offset="0%" stop-color="#e0612f" stop-opacity=".55"/>
                 <stop offset="100%" stop-color="#e0612f" stop-opacity="0"/>
               </linearGradient>
             </defs>
@@ -600,54 +600,58 @@
               <line x1="50" y1="20" x2="430" y2="20" stroke="#2a2620" stroke-dasharray="2 3"/>
               <line x1="50" y1="110" x2="430" y2="110" stroke="#2a2620" stroke-dasharray="2 3"/>
               <text x="44" y="204" text-anchor="end">0%</text>
-              <text x="44" y="24" text-anchor="end">10%</text>
-              <text x="44" y="114" text-anchor="end">5%</text>
-              <text x="240" y="245" text-anchor="middle" fill="#9a9384">時間 &rarr; 區塊推進</text>
+              <text x="44" y="24" text-anchor="end">8%</text>
+              <text x="44" y="114" text-anchor="end">4%</text>
+              <text x="240" y="245" text-anchor="middle" fill="#9a9384">時間步 &rarr; 衝擊後推進</text>
               <text x="14" y="110" text-anchor="middle" fill="#9a9384" transform="rotate(-90 14 110)">錨定偏差</text>
             </g>
-            <g>
-              <path d="M50,200 L50,200 L100,40 L160,70 L220,110 L280,140 L340,165 L400,180 L430,188 L430,200 Z" fill="url(#mvg)"/>
-              <path d="M50,200 L50,200 L100,40 L160,70 L220,110 L280,140 L340,165 L400,180 L430,188" fill="none" stroke="#d9a441" stroke-width="2"/>
+            <g font-family="JetBrains Mono, monospace" font-size="9" fill="#9a9384">
+              <line x1="158" y1="20" x2="158" y2="200" stroke="#7a6f5d" stroke-dasharray="3 3"/>
+              <text x="162" y="32" fill="#9a9384">衝擊 @ t=30</text>
+              <line x1="50" y1="182" x2="430" y2="182" stroke="#7a6f5d" stroke-dasharray="3 3"/>
+              <text x="426" y="178" text-anchor="end" fill="#9a9384">1% 恢復線</text>
             </g>
             <g>
-              <path d="M50,200 L100,42 L160,75 L220,118 L280,150 L340,178 L400,194 L430,199" fill="none" stroke="#e0612f" stroke-width="2.5"/>
-              <circle cx="100" cy="42" r="3" fill="#e0612f"/>
-              <circle cx="160" cy="75" r="3" fill="#e0612f"/>
-              <circle cx="220" cy="118" r="3" fill="#e0612f"/>
-              <circle cx="280" cy="150" r="3" fill="#e0612f"/>
-              <circle cx="340" cy="178" r="3" fill="#e0612f"/>
-              <circle cx="400" cy="194" r="3" fill="#e0612f"/>
+              <path d="M50,200 L75,200 L130,200 L158,68 L190,98 L230,128 L270,150 L310,165 L350,176 L400,188 L430,194 L430,200 Z" fill="url(#mvg)"/>
+              <path d="M50,200 L75,200 L130,200 L158,68 L190,98 L230,128 L270,150 L310,165 L350,176 L400,188 L430,194" fill="none" stroke="#d9a441" stroke-width="2"/>
+            </g>
+            <g>
+              <path d="M50,200 L75,200 L130,200 L158,158 L180,170 L210,178 L240,184 L280,189 L330,193 L380,196 L430,198" fill="none" stroke="#e0612f" stroke-width="2.5"/>
+              <circle cx="158" cy="158" r="3" fill="#e0612f"/>
+              <circle cx="210" cy="178" r="3" fill="#e0612f"/>
+              <circle cx="280" cy="189" r="3" fill="#e0612f"/>
+              <circle cx="380" cy="196" r="3" fill="#e0612f"/>
             </g>
             <g font-family="Noto Sans TC, sans-serif" font-size="10" fill="#ece7dc">
-              <text x="350" y="80" fill="#e0612f" font-weight="600">MVF-Composer</text>
-              <text x="350" y="155" fill="#d9a441" font-weight="600">業界基線</text>
+              <text x="200" y="60" fill="#e0612f" font-weight="600">MVF-Composer</text>
+              <text x="260" y="118" fill="#d9a441" font-weight="600">SAS 業界基線</text>
             </g>
             <g font-family="JetBrains Mono, monospace" font-size="9" fill="#7fb37a">
-              <text x="105" y="32">峰值 -62%</text>
+              <text x="166" y="150">峰值 3.2%</text>
             </g>
           </svg>
           <div class="vis-side">
             <h4>怎麼讀這張圖</h4>
-            <p>兩條線都從同一個峰值偏差出發 (脫錨瞬間)。MVF-Composer 曲線回落得更快、最終更貼近錨定, 峰值偏差比業界基線小 62%, 危機窗口短 3.1 倍。數字來自 1,200 次種子化執行的中位數。</p>
+            <p>衝擊前兩條線都貼近錨定。t=30 注入衝擊後, SAS 業界基線峰值跳到 7.4%, 恢復緩慢; MVF-Composer 峰值 3.2%, 跨過 1% 恢復線比基線快約 3.1 倍 (14 vs 44 個時間步)。1,200 次種子化執行的中位數。</p>
             <div class="legend">
               <span><span class="sw" style="background:#e0612f"></span>MVF-Composer (12 Agent)</span>
-              <span><span class="sw" style="background:#d9a441"></span>業界基線</span>
+              <span><span class="sw" style="background:#d9a441"></span>SAS 業界基線</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="take">
-        <h4>這個專案對 JD 有什麼用</h4>
-        <p>MVF-Composer 展示了 <b>RAG + 多 Agent + 評測</b> 模式在一個有真實資金、真實監管約束的領域裡的樣子。IEEE 同行評審是當招聘方問"這些數字撐得住嗎"時我用來背書的東西。</p>
+        <h4>這個專案為什麼重要</h4>
+        <p>MVF-Composer 把 <b>多 Agent + 信任加權聚合 + 均值-方差最佳化</b> 模式打包進有真實資金與真實監管的場景。IEEE 同行評審是這些數字能扛住獨立檢驗的背書。</p>
       </div>
 
       <div class="chip-list">
-        <span class="chip">12 Agent · 4 類角色</span>
+        <span class="chip">Stress Harness</span>
+        <span class="chip">信任加權聚合</span>
+        <span class="chip">均值-方差最佳化</span>
         <span class="chip">多供應商 LLM</span>
         <span class="chip">Pydantic v2 契約</span>
-        <span class="chip">均值-方差最佳化</span>
-        <span class="chip">逐區塊回放</span>
         <span class="chip">種子控制</span>
         <span class="chip">IEEE ICBC 2026</span>
       </div>

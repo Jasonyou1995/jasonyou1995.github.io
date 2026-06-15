@@ -728,6 +728,18 @@
       margin: .3rem 0 .2rem;
     }
 
+    .ti h3 .org-tag {
+      display: inline-block;
+      margin-left: .4rem;
+      padding: .12rem .55rem;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      border-radius: 20px;
+      font-size: .68rem;
+      font-weight: 500;
+      vertical-align: middle;
+    }
+
     .ti .org {
       color: var(--text-dim);
       font-size: .92rem;
@@ -1060,7 +1072,7 @@
           <div class="lab">個 TLA+ 狀態已模型檢驗，0 違規</div>
         </a>
         <a href="#p-mvf">
-          <div class="big" data-count="62" data-decimals="0" data-suffix="%">0</div>
+          <div class="big" data-count="57" data-decimals="0" data-suffix="%">0</div>
           <div class="lab">峰值脫錨偏差降低，IEEE ICBC 2026</div>
         </a>
         <a href="#p-noc">
@@ -1136,11 +1148,11 @@
         </div>
         <div class="proj fade" id="p-mvf">
           <h3>MVF-Composer：穩定幣儲備控制器</h3>
-          <p class="tagline">獲 IEEE ICBC 2026 接收並宣講。</p>
+          <p class="tagline">為穩定幣錨定而生的信任加權均值-方差控制，獲 IEEE ICBC 2026 接收。</p>
           <ul>
-            <li><b>構建：</b>12 個並行 LLM 智能體，橫跨 4 種行為原型，執行於 OpenAI、Anthropic 與 DeepSeek，帶 Pydantic 校驗的輸出與受約束的均值方差最佳化器。約 12,500 行帶型別的 Python，46 個模組。</li>
-            <li><b>測量：</b>在 1,200 次可重現模擬中，峰值脫錨偏差降低 62%，危機恢復比業界基線快 3.1 倍。</li>
-            <li><b>可驗證：</b>同行評審，每次執行記錄種子、提交雜湊與時間戳。</li>
+            <li><b>構建：</b>Stress Harness 內 12 個 LLM Agent（交易員/做市商/套利者/攻擊者），跨 OpenAI、Anthropic、DeepSeek 調度，輸出進入信任加權的均值-方差最佳化器。約 12,500 行帶型別的 Python，46 個模組。</li>
+            <li><b>測量：</b>1,200 次黑色星期四模擬，峰值脫錨 3.2%（基線 SAS 7.4%，削減 57%），回到 1% 錨定帶內 14 vs 44 個時間步（快 3.1 倍）。</li>
+            <li><b>可驗證：</b>同行評審；每次執行記錄種子、提交雜湊與時戳。</li>
           </ul>
           <p class="note">程式碼可應要求提供。<a href="projects/index.zh-TW.html#p-mvf" style="color:var(--accent);text-decoration:none;font-weight:600;">深入了解 &rarr;</a></p>
         </div>
@@ -1239,9 +1251,9 @@
         </div>
         <div class="ti fade">
           <div class="when">2025 至今</div>
-          <h3>客座講師，金融計算</h3>
+          <h3>客座講師，金融計算 <span class="org-tag">TTPS 簽證</span></h3>
           <p class="org">香港浸會大學 工商管理學院</p>
-          <p>在研究所層次的金融計算課程擔任客座講師，教學生用 Python（NumPy、pandas、scikit-learn）構建並回測量化模型。</p>
+          <p>在研究所層次的金融計算課程擔任客座講師，教學生用 Python（NumPy、pandas、scikit-learn）構建並回測量化模型。本人現居香港，持高端人才通行證（TTPS）。</p>
         </div>
         <div class="ti fade">
           <div class="when">2019</div>

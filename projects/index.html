@@ -1149,46 +1149,46 @@
         </div>
         <div class="proj-meta">
           <div class="meta-row"><b>Status</b><span>Accepted &amp; presented at IEEE ICBC 2026</span></div>
-          <div class="meta-row"><b>Stack</b><span>12 agents · 4 archetypes · 3 LLM providers</span></div>
-          <div class="meta-row"><b>Scale</b><span>12,500 lines · 46 modules · 1,200 sims</span></div>
-          <div class="meta-row"><b>JD fit</b><span>Web3 Chatbot · RAG · multi-agent eval</span></div>
+          <div class="meta-row"><b>Stack</b><span>Stress Harness · trust-weighted MVF · 3 LLM providers</span></div>
+          <div class="meta-row"><b>Scale</b><span>12 agents · 1,200 sims · 12,500 lines</span></div>
+          <div class="meta-row"><b>JD fit</b><span>Web3 risk · multi-agent eval · adversarial robustness</span></div>
         </div>
       </div>
 
       <div class="pm-cols">
         <div class="pm-col">
           <h3>Problem</h3>
-          <p>Stablecoins depeg in chaotic ways. USDC's 2023/03 crisis, UST in 2022/05, stETH in 2022/06 all played out
-            differently, and a controller trained on one history doesn't know how to handle the next one. Static
-            dashboards are good at showing the fire, bad at putting it out.</p>
+          <p>Stablecoin reserve controllers calibrate on calm-period returns. Under stress, that covariance is wrong
+            by a factor of 7.17&times; (the &ldquo;2020 Omission&rdquo;), so the optimal allocation is precisely
+            the most fragile one. The result is the kind of peg collapse seen in 2020/03 and 2023/03.</p>
         </div>
         <div class="pm-col">
-          <h3>Motivation</h3>
-          <p>I wanted to find out whether a population of specialized agents, each watching one slice of the market
-            (depth, oracle deviation, cross-chain spread, sentiment), could coordinate a defense faster and cheaper
-            than a single monolithic policy. The IEEE ICBC venue was the right pressure test for the question.</p>
+          <h3>Approach</h3>
+          <p>12 LLM agents across 4 archetypes (trader, liquidity provider, arbitrageur, attacker) act inside a
+            Stress Harness that injects shocks at t=30. A trust score T(a) down-weights coordinated or
+            peg-destabilizing behavior, and a constrained mean-variance optimizer rebalances reserves against the
+            stress-augmented covariance.</p>
         </div>
       </div>
 
       <div class="pm-cols">
         <div class="pm-col">
           <h3>What I built</h3>
-          <p>12 concurrent LLM agents in 4 archetypes (sentinel, analyst, trader, governor) running across OpenAI,
-            Anthropic, and DeepSeek, with Pydantic-validated outputs and a constrained mean-variance optimizer on top.
-            I replayed real depeg events block by block, USDC 2023/03, UST 2022/05, stETH 2022/06, and let the
-            population react in real time.</p>
+          <p>12 concurrent LLM agents (5 traders, 3 LPs, 2 arbitrageurs, 2 attackers) across OpenAI, Anthropic, and
+            DeepSeek, with Pydantic-validated outputs feeding a trust-weighted risk-state and a constrained
+            mean-variance optimizer. 1,200 seeded Black-Thursday simulations on commodity hardware (~47-99s/epoch).</p>
         </div>
         <div class="pm-col">
           <h3>My contribution</h3>
-          <p>Single-author paper, single-engineer system. Architecture, agent prompts, optimization layer, evaluation
-            harness, and the 1,200 reproducible simulations. About 12,500 lines of typed Python across 46 modules.
-            Each run captures a seed, a commit hash, and a timestamp so anyone can re-derive the result.</p>
+          <p>Single-author paper, single-engineer system: Stress Harness, trust-weighted aggregation, the
+            stress-augmented covariance blend, and the 1,200 reproducible simulations. ~12,500 lines of typed Python
+            across 46 modules. Each run records seed, commit, and timestamp.</p>
         </div>
       </div>
 
       <div class="kpi">
         <div class="cell">
-          <div class="big">62%</div>
+          <div class="big">57%</div>
           <div class="lab">Peak peg deviation cut</div>
         </div>
         <div class="cell">
@@ -1207,14 +1207,14 @@
 
       <div class="vis-block">
         <div class="vis-head">
-          <h3>USDC 2023/03 depeg replay: MVF-Composer vs. baseline controller</h3>
-          <span class="src">1,200 sims, median peg deviation trace, seed-controlled</span>
+          <h3>Black Thursday replay: MVF-Composer vs. industry baseline (SAS)</h3>
+          <span class="src">1,200 sims, median peg-deviation trace, seed-controlled</span>
         </div>
         <div class="vis-grid">
-          <svg class="vis-svg" viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg" aria-label="Line chart showing MVF-Composer vs baseline peg deviation over the USDC 2023/03 crisis">
+          <svg class="vis-svg" viewBox="0 0 460 260" xmlns="http://www.w3.org/2000/svg" aria-label="Line chart showing MVF-Composer vs SAS peg deviation over the Black Thursday crisis">
             <defs>
               <linearGradient id="mvg" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stop-color="#e0612f" stop-opacity=".6"/>
+                <stop offset="0%" stop-color="#e0612f" stop-opacity=".55"/>
                 <stop offset="100%" stop-color="#e0612f" stop-opacity="0"/>
               </linearGradient>
             </defs>
@@ -1224,58 +1224,62 @@
               <line x1="50" y1="20" x2="430" y2="20" stroke="#2a2620" stroke-dasharray="2 3"/>
               <line x1="50" y1="110" x2="430" y2="110" stroke="#2a2620" stroke-dasharray="2 3"/>
               <text x="44" y="204" text-anchor="end">0%</text>
-              <text x="44" y="24" text-anchor="end">10%</text>
-              <text x="44" y="114" text-anchor="end">5%</text>
-              <text x="240" y="245" text-anchor="middle" fill="#9a9384">time &rarr; block progression</text>
+              <text x="44" y="24" text-anchor="end">8%</text>
+              <text x="44" y="114" text-anchor="end">4%</text>
+              <text x="240" y="245" text-anchor="middle" fill="#9a9384">time step &rarr; post-shock</text>
               <text x="14" y="110" text-anchor="middle" fill="#9a9384" transform="rotate(-90 14 110)">peg deviation</text>
             </g>
-            <g>
-              <path d="M50,200 L50,200 L100,40 L160,70 L220,110 L280,140 L340,165 L400,180 L430,188 L430,200 Z" fill="url(#mvg)"/>
-              <path d="M50,200 L50,200 L100,40 L160,70 L220,110 L280,140 L340,165 L400,180 L430,188" fill="none" stroke="#d9a441" stroke-width="2"/>
+            <g font-family="JetBrains Mono, monospace" font-size="9" fill="#9a9384">
+              <line x1="158" y1="20" x2="158" y2="200" stroke="#7a6f5d" stroke-dasharray="3 3"/>
+              <text x="162" y="32" fill="#9a9384">shock @ t=30</text>
+              <line x1="50" y1="182" x2="430" y2="182" stroke="#7a6f5d" stroke-dasharray="3 3"/>
+              <text x="426" y="178" text-anchor="end" fill="#9a9384">1% recovery</text>
             </g>
             <g>
-              <path d="M50,200 L100,42 L160,75 L220,118 L280,150 L340,178 L400,194 L430,199" fill="none" stroke="#e0612f" stroke-width="2.5"/>
-              <circle cx="100" cy="42" r="3" fill="#e0612f"/>
-              <circle cx="160" cy="75" r="3" fill="#e0612f"/>
-              <circle cx="220" cy="118" r="3" fill="#e0612f"/>
-              <circle cx="280" cy="150" r="3" fill="#e0612f"/>
-              <circle cx="340" cy="178" r="3" fill="#e0612f"/>
-              <circle cx="400" cy="194" r="3" fill="#e0612f"/>
+              <path d="M50,200 L75,200 L130,200 L158,68 L190,98 L230,128 L270,150 L310,165 L350,176 L400,188 L430,194 L430,200 Z" fill="url(#mvg)"/>
+              <path d="M50,200 L75,200 L130,200 L158,68 L190,98 L230,128 L270,150 L310,165 L350,176 L400,188 L430,194" fill="none" stroke="#d9a441" stroke-width="2"/>
+            </g>
+            <g>
+              <path d="M50,200 L75,200 L130,200 L158,158 L180,170 L210,178 L240,184 L280,189 L330,193 L380,196 L430,198" fill="none" stroke="#e0612f" stroke-width="2.5"/>
+              <circle cx="158" cy="158" r="3" fill="#e0612f"/>
+              <circle cx="210" cy="178" r="3" fill="#e0612f"/>
+              <circle cx="280" cy="189" r="3" fill="#e0612f"/>
+              <circle cx="380" cy="196" r="3" fill="#e0612f"/>
             </g>
             <g font-family="Spline Sans, sans-serif" font-size="10" fill="#ece7dc">
-              <text x="350" y="80" fill="#e0612f" font-weight="600">MVF-Composer</text>
-              <text x="350" y="155" fill="#d9a441" font-weight="600">Industry baseline</text>
+              <text x="200" y="60" fill="#e0612f" font-weight="600">MVF-Composer</text>
+              <text x="260" y="118" fill="#d9a441" font-weight="600">SAS (industry baseline)</text>
             </g>
             <g font-family="JetBrains Mono, monospace" font-size="9" fill="#7fb37a">
-              <text x="105" y="32">-62% peak</text>
+              <text x="166" y="150">peak 3.2%</text>
             </g>
           </svg>
           <div class="vis-side">
             <h4>Reading the chart</h4>
-            <p>The two lines start at the same peak deviation (the depeg moment). The MVF-Composer curve recovers
-              faster and to a tighter peg than the industry baseline controller, with a 62% smaller peak deviation and
-              a 3.1x shorter crisis window. Numbers are median over 1,200 seeded runs.</p>
+            <p>Both lines sit near peg until a shock at t=30, when SAS (the industry baseline) jumps to a 7.4% deviation
+              and slowly recovers; MVF-Composer peaks at 3.2% and crosses the 1% recovery line ~3.1&times; faster
+              (14 vs 44 time steps). Median over 1,200 seeded runs.</p>
             <div class="legend">
               <span><span class="sw" style="background:#e0612f"></span>MVF-Composer (12 agents)</span>
-              <span><span class="sw" style="background:#d9a441"></span>Industry baseline</span>
+              <span><span class="sw" style="background:#d9a441"></span>SAS industry baseline</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="take">
-        <h4>Why this matters for a JD</h4>
-        <p>MVF-Composer shows the <b>RAG + multi-agent + eval</b> pattern in a setting with real money and real
-          regulation behind it. The IEEE peer review is the part I lean on when recruiters want to know the numbers
-          hold up under independent scrutiny.</p>
+        <h4>Why this matters</h4>
+        <p>MVF-Composer packages the <b>multi-agent + trust-weighted aggregation + mean-variance optimization</b>
+          pattern in a setting with real money and real regulators watching. The IEEE peer review is the part that
+          holds the numbers up under independent scrutiny.</p>
       </div>
 
       <div class="chip-list">
-        <span class="chip">12 agents · 4 archetypes</span>
+        <span class="chip">Stress Harness</span>
+        <span class="chip">Trust-weighted aggregation</span>
+        <span class="chip">Mean-variance optimizer</span>
         <span class="chip">Multi-provider LLM</span>
         <span class="chip">Pydantic v2 contracts</span>
-        <span class="chip">Mean-variance optimizer</span>
-        <span class="chip">Block-by-block replay</span>
         <span class="chip">Seed-controlled</span>
         <span class="chip">IEEE ICBC 2026</span>
       </div>
