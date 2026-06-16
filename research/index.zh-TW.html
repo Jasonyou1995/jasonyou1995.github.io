@@ -165,23 +165,23 @@
   <section class="rh-hero">
     <div class="container">
       <span class="tag">研究</span>
-      <h1>為高風險自動化而做的: 校準的多 Agent 決策系統。</h1>
-      <p class="lede">我的博士工作圍繞一個問題: <b>你憑什麼相信一個自主 Agent 給出的輸出?</b> 我給出的答案是 <i>提議者、挑戰者、裁判</i> 的架構: 多個獨立 Agent 先互相辯論, 給出判決之後再執行。同一個底盤既是學術上研究的對象, 也是 OC1、OC2、MVF-Composer 這幾套生產系統的安全層。</p>
+      <h1>為高風險自動化而做的: 校準的多 Agent 決策系統</h1>
+      <p class="lede">博士工作圍繞一個問題展開: <b>憑什麼信一個自主 Agent 給出的輸出?</b> 我給出的答案是一種 <i>Proposer、Challenger、Judge</i> 架構——三個獨立 Agent 先互相辯論、給出裁定, 再進入執行。同一底盤在學術上是研究對象, 在生產裡是 OC1、OC2、MVF-Composer 的安全層。校準用信心分數與稽核鏈外置來兜底, 不靠單次 prompt 自證可信。</p>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <div class="sh"><span class="st">研究主線</span><h2 class="stitle">一套架構, 四個系統, 一條可追溯的論文鏈</h2></div>
+      <div class="sh"><span class="st">研究主線</span><h2 class="stitle">一個底盤, 四個系統, 一條可追溯的論文鏈</h2></div>
 
       <div class="thread-card">
         <div>
-          <h2>Proposer, Challenger, Judge - 自主 Agent 的信任底盤</h2>
-          <p>單次 LLM 呼叫的模式又方便又危險: 方便在於它只是一次 prompt, 危險在於做驗證的也是同一個模型。博士論文研究的是一種多 Agent 模式: Proposer 起草決策, Challenger 攻擊它, Judge 提交判決, 辯論紀錄做雜湊之後提交到 LLM 之外, 讓審計鏈位於模型之外, 而不是模型內部。
+          <h2>Proposer / Challenger / Judge: 自主 Agent 的信任底盤</h2>
+          <p>單次 LLM 呼叫的局限很明確: 起草決策與驗證決策的是同一個模型。博士工作研究一種多 Agent 模式, Proposer 起草決策, Challenger 攻擊它, Judge 提交裁定; 辯論紀錄做雜湊後寫到 LLM 之外, 稽核鏈獨立於模型內部。
             <br><br>
-            這個模式出現在三套已交付系統裡 (OC1、OC2、MVF-Composer), 也寫進了 IEEE ICBC 2026 那篇穩定幣儲備控制的論文裡。我把工程和論文當成一個反饋循環: 系統上線、裝好觀測、找到論文沒預測到的失敗模式、再寫下一篇。
+            該模式同時落到三套已交付系統——OC1 (Agent 安全)、OC2 (DeFi 辯論)、MVF-Composer (穩定幣儲備控制)——並寫進 IEEE ICBC 2026 的論文。工程與論文走一個反饋循環: 系統上線, 裝監測, 暴露論文沒預測到的失敗模式, 再寫下一篇。當前公開數據裡 OC2 裁定準確率 90.2% [BCa 95% CI: 87.6, 92.8], MVF-Composer 把峰值脫錨從 7.4% 壓到 3.2% (1,200 次 Black Thursday 模擬)。
             <br><br>
-            <em>主題: 多 Agent 系統、共識與信任、校準的預測、區塊鏈與去中心化系統安全。</em></p>
+            <em>主題: 多 Agent 系統、共識與信任、校準預測、區塊鏈與去中心化系統安全。</em></p>
 
           <svg class="arch-svg" viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" aria-label="Proposer Challenger Judge 架構圖">
             <defs>
@@ -195,15 +195,15 @@
             <g font-family="JetBrains Mono, monospace" font-size="11">
               <rect x="20" y="70" width="140" height="60" rx="10" fill="url(#ag)"/>
               <text x="90" y="98" text-anchor="middle" fill="#fff" font-weight="600">PROPOSER</text>
-              <text x="90" y="115" text-anchor="middle" fill="#fff" font-size="9">起草決策</text>
+              <text x="90" y="115" text-anchor="middle" fill="#fff" font-size="9">起草</text>
 
               <rect x="200" y="70" width="140" height="60" rx="10" fill="#161310" stroke="#d9a441" stroke-width="1.5"/>
               <text x="270" y="98" text-anchor="middle" fill="#d9a441" font-weight="600">CHALLENGER</text>
-              <text x="270" y="115" text-anchor="middle" fill="#9a9384" font-size="9">攻擊決策</text>
+              <text x="270" y="115" text-anchor="middle" fill="#9a9384" font-size="9">攻擊</text>
 
               <rect x="380" y="70" width="140" height="60" rx="10" fill="#161310" stroke="#e0612f" stroke-width="1.5"/>
               <text x="450" y="98" text-anchor="middle" fill="#e0612f" font-weight="600">JUDGE</text>
-              <text x="450" y="115" text-anchor="middle" fill="#9a9384" font-size="9">提交判決</text>
+              <text x="450" y="115" text-anchor="middle" fill="#9a9384" font-size="9">裁定</text>
 
               <rect x="560" y="50" width="140" height="50" rx="8" fill="#161310" stroke="#7fb37a" stroke-width="1.5"/>
               <text x="630" y="74" text-anchor="middle" fill="#7fb37a" font-weight="600">外部</text>
@@ -211,7 +211,7 @@
 
               <rect x="560" y="110" width="140" height="50" rx="8" fill="#161310" stroke="#9a9384" stroke-width="1.5"/>
               <text x="630" y="134" text-anchor="middle" fill="#9a9384" font-weight="600">人工</text>
-              <text x="630" y="150" text-anchor="middle" fill="#9a9384" font-size="9">存疑時複核</text>
+              <text x="630" y="150" text-anchor="middle" fill="#9a9384" font-size="9">低信心複核</text>
             </g>
             <g stroke="#e0612f" stroke-width="1.5" fill="none" marker-end="url(#arr)">
               <line x1="160" y1="100" x2="200" y2="100"/>
@@ -220,10 +220,10 @@
               <line x1="520" y1="110" x2="560" y2="135"/>
             </g>
             <g font-family="Noto Sans TC, sans-serif" font-size="10" fill="#9a9384">
-              <text x="180" y="92" text-anchor="middle">方案</text>
-              <text x="360" y="92" text-anchor="middle">批評</text>
-              <text x="540" y="68" text-anchor="middle">提交</text>
-              <text x="540" y="128" text-anchor="middle">存疑</text>
+              <text x="180" y="92" text-anchor="middle">草案</text>
+              <text x="360" y="92" text-anchor="middle">反駁</text>
+              <text x="540" y="68" text-anchor="middle">裁決</text>
+              <text x="540" y="128" text-anchor="middle">升級</text>
             </g>
           </svg>
         </div>
@@ -231,7 +231,7 @@
           <div class="row"><b>博士</b><span>電腦科學, 聖母大學</span></div>
           <div class="row"><b>指導</b><span>Jarek Nabrzyski 教授</span></div>
           <div class="row"><b>時間</b><span>2020 至 2026 (預計)</span></div>
-          <div class="row"><b>課題</b><span>去中心化系統中的信任與系統性風險; 校準的、安全感知的自動化多 Agent 架構</span></div>
+          <div class="row"><b>課題</b><span>去中心化系統中的信任與系統性風險; 面向校準、安全感知自動化的多 Agent 架構</span></div>
           <div class="row"><b>方法</b><span>對抗式多 Agent 辯論, 密碼學辯論紀錄收據, 逐區塊危機回放, 形式化安全規格</span></div>
           <div class="row"><b>應用</b><span>OC1 (Agent 安全), OC2 (DeFi 辯論), MVF-Composer (穩定幣控制)</span></div>
         </div>
@@ -239,32 +239,32 @@
 
       <div class="sh" style="margin-top:3rem;"><span class="st">研究主題</span><h2 class="stitle" style="font-size:1.6rem;">我具體在做什麼</h2></div>
       <div class="theme-grid">
-        <div class="theme"><div class="ic">01</div><h3>多 Agent 共識</h3><p>獨立 Agent 互相辯論、判決, 決策的提交位於起草它的 LLM 之外的模式。</p></div>
-        <div class="theme"><div class="ic">02</div><h3>校準的自動化</h3><p>系統的決策可以拿可量化的信心分數與人類可讀的審計鏈來兜底。</p></div>
-        <div class="theme"><div class="ic">03</div><h3>穩定幣安全</h3><p>穩定幣脫錨瞬間的防禦機制, 逐區塊對照真實危機做回放。</p></div>
-        <div class="theme"><div class="ic">04</div><h3>去中心化系統中的信任</h3><p>信任假設為什麼破裂, 密碼學什麼時候能幫上忙, 什麼時候依然需要人在環。</p></div>
+        <div class="theme"><div class="ic">01</div><h3>多 Agent 共識</h3><p>獨立 Agent 互相辯論、裁定, 決策紀錄寫到起草它的 LLM 之外; 稽核不依賴模型自證。</p></div>
+        <div class="theme"><div class="ic">02</div><h3>校準的自動化</h3><p>為系統決策配可量化的信心分數, 配人類可讀的稽核鏈; 校準失敗時降級到人工。</p></div>
+        <div class="theme"><div class="ic">03</div><h3>穩定幣安全</h3><p>穩定幣脫錨瞬間的防禦, 逐區塊對照真實危機 (UST、stETH、USDC) 做回放, 而非合成情境。</p></div>
+        <div class="theme"><div class="ic">04</div><h3>去中心化系統中的信任</h3><p>信任假設在哪一步破, 密碼學覆蓋到哪一步, 剩下來還是需要人在環。</p></div>
       </div>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <div class="sh"><span class="st">發表論文</span><h2 class="stitle">同儕評審的工作</h2>
-        <p class="ssub">四篇論文, 最新一篇為獨立一作, IEEE ICBC 2026 受邀演講。</p>
+      <div class="sh"><span class="st">發表論文</span><h2 class="stitle">同儕審查的工作</h2>
+        <p class="ssub">四篇論文; 最新一篇 IEEE ICBC 2026 為獨立一作並受邀演講。</p>
       </div>
 
       <div class="pub">
         <span class="yr">2026</span>
         <div>
           <h3>Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven Arbitrage</h3>
-          <p class="meta">書籍章節 &middot; You, Kuehlkamp, Nabrzyski &middot; DOI: <a href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank" rel="noopener">10.1007/978-3-032-00495-6_8</a></p>
+          <p class="meta">書籍章節, Springer &middot; You, Kuehlkamp, Nabrzyski &middot; DOI: <a href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank" rel="noopener">10.1007/978-3-032-00495-6_8</a></p>
         </div>
       </div>
       <div class="pub">
         <span class="yr">2024</span>
         <div>
           <h3>Persona-Preserving Reputation Protocol (P2RP) for Enhanced Security, Privacy, and Trust in Blockchain Oracles</h3>
-          <p class="meta">Cluster Computing (期刊) &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank" rel="noopener">10.1007/s10586-023-04222-4</a></p>
+          <p class="meta">Cluster Computing (期刊, SCI) &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank" rel="noopener">10.1007/s10586-023-04222-4</a></p>
         </div>
       </div>
       <div class="pub">
@@ -286,12 +286,12 @@
         <h3>工作出現過的地方</h3>
         <div class="venue-row"><div class="vyr">2026</div><div class="vname">IEEE ICBC 2026 &middot; MVF-Composer 演講</div><div class="vrole">會議演講者</div></div>
         <div class="venue-row"><div class="vyr">2026</div><div class="vname">InnoAI Thailand 2026 &middot; 穩定幣與 Agent 安全</div><div class="vrole">特邀講者</div></div>
-        <div class="venue-row"><div class="vyr">2024</div><div class="vname">Cluster Computing (期刊)</div><div class="vrole">一作</div></div>
+        <div class="venue-row"><div class="vyr">2025</div><div class="vname">2025 中德科學家大會</div><div class="vrole">主持人</div></div>
+        <div class="venue-row"><div class="vyr">2024</div><div class="vname">Cluster Computing (期刊, SCI)</div><div class="vrole">一作</div></div>
         <div class="venue-row"><div class="vyr">2023</div><div class="vname">IEEE BCCA 2023</div><div class="vrole">一作</div></div>
         <div class="venue-row"><div class="vyr">2022</div><div class="vname">IEEE BCCA 2022</div><div class="vrole">一作</div></div>
         <div class="venue-row"><div class="vyr">2020</div><div class="vname">Hyperledger Global Forum 2020</div><div class="vrole">講者</div></div>
         <div class="venue-row"><div class="vyr">2020</div><div class="vname">Techstars 西雅圖區塊鏈創業週末</div><div class="vrole">第一名</div></div>
-        <div class="venue-row"><div class="vyr">2025</div><div class="vname">2025 中德科學家大會</div><div class="vrole">主持人</div></div>
       </div>
     </div>
   </section>
@@ -310,8 +310,8 @@
   <section>
     <div class="container">
       <div class="cbox">
-        <h2>想要論文或更深入的講解?</h2>
-        <p>可以按學術通行條款分享預印本、代碼、復現筆記。每封郵件我都看。</p>
+        <h2>想要預印本或更深入的講解?</h2>
+        <p>可按學術通行條款分享預印本、復現代碼與回放腳本。每封郵件我都看。</p>
         <div class="clinks">
           <a class="clink" href="mailto:shengwei.you@gmail.com"><span>&#9993;</span> shengwei.you@gmail.com</a>
           <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank" rel="noopener"><span>&#128188;</span> LinkedIn</a>
@@ -323,7 +323,7 @@
 
   <footer>
     <p>&copy; 2026 游盛巍 Shengwei You &middot; 香港</p>
-    <p>靜態站, 不埋點, 不寫 cookie, 不收集資料。</p>
+    <p>靜態站。無追蹤、無 Cookie、不收集任何資料。</p>
   </footer>
 
   <script>

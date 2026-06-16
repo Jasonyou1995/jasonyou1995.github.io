@@ -165,23 +165,23 @@
   <section class="rh-hero">
     <div class="container">
       <span class="tag">研究</span>
-      <h1>为高风险自动化而做的: 校准的多 Agent 决策系统。</h1>
-      <p class="lede">我的博士工作围绕一个问题: <b>你凭什么相信一个自主 Agent 给出的输出?</b> 我给出的答案是 <i>提议者、挑战者、裁判</i> 的架构: 多个独立 Agent 先互相辩论, 给出判决之后再执行。同一个底盘既是学术上研究的对象, 也是 OC1、OC2、MVF-Composer 这几套生产系统的安全层。</p>
+      <h1>面向高风险自动化的校准多 Agent 决策系统</h1>
+      <p class="lede">博士工作围绕一个问题展开: <b>凭什么信一个自主 Agent 给出的输出?</b> 我给出的答案是一种 <i>Proposer、Challenger、Judge</i> 架构——三个独立 Agent 先互相辩论、给出裁定, 再进入执行。同一底盘在学术上是研究对象, 在生产里是 OC1、OC2、MVF-Composer 的安全层。校准用置信度分数与审计链外置来兜底, 不靠单次 prompt 自证可信。</p>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <div class="sh"><span class="st">研究主线</span><h2 class="stitle">一套架构, 四个系统, 一条可追溯的论文链</h2></div>
+      <div class="sh"><span class="st">研究主线</span><h2 class="stitle">一个底盘, 四个系统, 一条可追溯的论文链</h2></div>
 
       <div class="thread-card">
         <div>
-          <h2>Proposer, Challenger, Judge - 自主 Agent 的信任底盘</h2>
-          <p>单次 LLM 调用的模式又方便又危险: 方便在于它只是一次 prompt, 危险在于做验证的也是同一个模型。博士论文研究的是一种多 Agent 模式: Proposer 起草决策, Challenger 攻击它, Judge 提交判决, 辩论记录做哈希之后提交到 LLM 之外, 让审计链位于模型之外, 而不是模型内部。
+          <h2>Proposer / Challenger / Judge: 自主 Agent 的信任底盘</h2>
+          <p>单次 LLM 调用的局限很清楚: 起草决策与验证决策的是同一个模型。博士工作研究一种多 Agent 模式, Proposer 起草决策, Challenger 攻击它, Judge 提交裁定; 辩论记录做哈希后写到 LLM 之外, 审计链独立于模型内部。
             <br><br>
-            这个模式出现在三套已交付系统里 (OC1、OC2、MVF-Composer), 也写进了 IEEE ICBC 2026 那篇稳定币储备控制的论文里。我把工程和论文当成一个反馈循环: 系统上线、装好观测、找到论文没预测到的失败模式、再写下一篇。
+            该模式同时落到三套已交付系统——OC1 (Agent 安全)、OC2 (DeFi 辩论)、MVF-Composer (稳定币储备控制)——并写进了 IEEE ICBC 2026 的论文。工程与论文走一个反馈循环: 系统上线, 装观测, 暴露论文没预测到的失败模式, 再写下一篇。当前公开数据里 OC2 裁定准确率 90.2% [BCa 95% CI: 87.6, 92.8], MVF-Composer 把峰值脱锚从 7.4% 压到 3.2% (1,200 次 Black Thursday 模拟)。
             <br><br>
-            <em>主题: 多 Agent 系统、共识与信任、校准的预测、区块链与去中心化系统安全。</em></p>
+            <em>主题: 多 Agent 系统、共识与信任、校准预测、区块链与去中心化系统安全。</em></p>
 
           <svg class="arch-svg" viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" aria-label="Proposer Challenger Judge 架构图">
             <defs>
@@ -195,15 +195,15 @@
             <g font-family="JetBrains Mono, monospace" font-size="11">
               <rect x="20" y="70" width="140" height="60" rx="10" fill="url(#ag)"/>
               <text x="90" y="98" text-anchor="middle" fill="#fff" font-weight="600">PROPOSER</text>
-              <text x="90" y="115" text-anchor="middle" fill="#fff" font-size="9">起草决策</text>
+              <text x="90" y="115" text-anchor="middle" fill="#fff" font-size="9">起草</text>
 
               <rect x="200" y="70" width="140" height="60" rx="10" fill="#161310" stroke="#d9a441" stroke-width="1.5"/>
               <text x="270" y="98" text-anchor="middle" fill="#d9a441" font-weight="600">CHALLENGER</text>
-              <text x="270" y="115" text-anchor="middle" fill="#9a9384" font-size="9">攻击决策</text>
+              <text x="270" y="115" text-anchor="middle" fill="#9a9384" font-size="9">攻击</text>
 
               <rect x="380" y="70" width="140" height="60" rx="10" fill="#161310" stroke="#e0612f" stroke-width="1.5"/>
               <text x="450" y="98" text-anchor="middle" fill="#e0612f" font-weight="600">JUDGE</text>
-              <text x="450" y="115" text-anchor="middle" fill="#9a9384" font-size="9">提交判决</text>
+              <text x="450" y="115" text-anchor="middle" fill="#9a9384" font-size="9">裁定</text>
 
               <rect x="560" y="50" width="140" height="50" rx="8" fill="#161310" stroke="#7fb37a" stroke-width="1.5"/>
               <text x="630" y="74" text-anchor="middle" fill="#7fb37a" font-weight="600">外部</text>
@@ -211,7 +211,7 @@
 
               <rect x="560" y="110" width="140" height="50" rx="8" fill="#161310" stroke="#9a9384" stroke-width="1.5"/>
               <text x="630" y="134" text-anchor="middle" fill="#9a9384" font-weight="600">人工</text>
-              <text x="630" y="150" text-anchor="middle" fill="#9a9384" font-size="9">存疑时复核</text>
+              <text x="630" y="150" text-anchor="middle" fill="#9a9384" font-size="9">低置信复核</text>
             </g>
             <g stroke="#e0612f" stroke-width="1.5" fill="none" marker-end="url(#arr)">
               <line x1="160" y1="100" x2="200" y2="100"/>
@@ -220,10 +220,10 @@
               <line x1="520" y1="110" x2="560" y2="135"/>
             </g>
             <g font-family="Noto Sans SC, sans-serif" font-size="10" fill="#9a9384">
-              <text x="180" y="92" text-anchor="middle">方案</text>
-              <text x="360" y="92" text-anchor="middle">批评</text>
-              <text x="540" y="68" text-anchor="middle">提交</text>
-              <text x="540" y="128" text-anchor="middle">存疑</text>
+              <text x="180" y="92" text-anchor="middle">草案</text>
+              <text x="360" y="92" text-anchor="middle">反驳</text>
+              <text x="540" y="68" text-anchor="middle">裁决</text>
+              <text x="540" y="128" text-anchor="middle">升级</text>
             </g>
           </svg>
         </div>
@@ -231,7 +231,7 @@
           <div class="row"><b>博士</b><span>计算机科学, 圣母大学</span></div>
           <div class="row"><b>导师</b><span>Jarek Nabrzyski 教授</span></div>
           <div class="row"><b>时间</b><span>2020 至 2026 (预计)</span></div>
-          <div class="row"><b>课题</b><span>去中心化系统中的信任与系统性风险; 校准的、安全感知的自动化多 Agent 架构</span></div>
+          <div class="row"><b>课题</b><span>去中心化系统中的信任与系统性风险; 面向校准、安全感知自动化的多 Agent 架构</span></div>
           <div class="row"><b>方法</b><span>对抗式多 Agent 辩论, 密码学辩论记录收据, 逐区块危机回放, 形式化安全规格</span></div>
           <div class="row"><b>应用</b><span>OC1 (Agent 安全), OC2 (DeFi 辩论), MVF-Composer (稳定币控制)</span></div>
         </div>
@@ -239,32 +239,32 @@
 
       <div class="sh" style="margin-top:3rem;"><span class="st">研究主题</span><h2 class="stitle" style="font-size:1.6rem;">我具体在做什么</h2></div>
       <div class="theme-grid">
-        <div class="theme"><div class="ic">01</div><h3>多 Agent 共识</h3><p>独立 Agent 互相辩论、判决, 决策的提交位于起草它的 LLM 之外的模式。</p></div>
-        <div class="theme"><div class="ic">02</div><h3>校准的自动化</h3><p>系统的决策可以拿可量化的置信度分数与人类可读的审计链来兜底。</p></div>
-        <div class="theme"><div class="ic">03</div><h3>稳定币安全</h3><p>稳定币脱锚瞬间的防御机制, 逐区块对照真实危机做回放。</p></div>
-        <div class="theme"><div class="ic">04</div><h3>去中心化系统中的信任</h3><p>信任假设为什么破裂, 密码学什么时候能帮上忙, 什么时候依然需要人在环。</p></div>
+        <div class="theme"><div class="ic">01</div><h3>多 Agent 共识</h3><p>独立 Agent 互相辩论、裁定, 决策记录写到起草它的 LLM 之外; 审计不依赖模型自证。</p></div>
+        <div class="theme"><div class="ic">02</div><h3>校准的自动化</h3><p>为系统决策配可量化的置信度分数, 配人类可读的审计链; 校准失败时降级到人工。</p></div>
+        <div class="theme"><div class="ic">03</div><h3>稳定币安全</h3><p>稳定币脱锚瞬间的防御, 逐区块对照真实危机 (UST、stETH、USDC) 做回放, 而不是合成场景。</p></div>
+        <div class="theme"><div class="ic">04</div><h3>去中心化系统中的信任</h3><p>信任假设在哪一步破, 密码学覆盖到哪一步, 剩下来还是得有人在环。</p></div>
       </div>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <div class="sh"><span class="st">发表论文</span><h2 class="stitle">同行评审的工作</h2>
-        <p class="ssub">四篇论文, 最新一篇为独立一作, IEEE ICBC 2026 受邀演讲。</p>
+      <div class="sh"><span class="st">发表论文</span><h2 class="stitle">同侪评审的工作</h2>
+        <p class="ssub">四篇论文; 最新一篇 IEEE ICBC 2026 为独立一作并受邀演讲。</p>
       </div>
 
       <div class="pub">
         <span class="yr">2026</span>
         <div>
           <h3>Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven Arbitrage</h3>
-          <p class="meta">书籍章节 &middot; You, Kuehlkamp, Nabrzyski &middot; DOI: <a href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank" rel="noopener">10.1007/978-3-032-00495-6_8</a></p>
+          <p class="meta">书籍章节, Springer &middot; You, Kuehlkamp, Nabrzyski &middot; DOI: <a href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank" rel="noopener">10.1007/978-3-032-00495-6_8</a></p>
         </div>
       </div>
       <div class="pub">
         <span class="yr">2024</span>
         <div>
           <h3>Persona-Preserving Reputation Protocol (P2RP) for Enhanced Security, Privacy, and Trust in Blockchain Oracles</h3>
-          <p class="meta">Cluster Computing (期刊) &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank" rel="noopener">10.1007/s10586-023-04222-4</a></p>
+          <p class="meta">Cluster Computing (期刊, SCI) &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank" rel="noopener">10.1007/s10586-023-04222-4</a></p>
         </div>
       </div>
       <div class="pub">
@@ -286,12 +286,12 @@
         <h3>工作出现过的地方</h3>
         <div class="venue-row"><div class="vyr">2026</div><div class="vname">IEEE ICBC 2026 &middot; MVF-Composer 演讲</div><div class="vrole">会议演讲者</div></div>
         <div class="venue-row"><div class="vyr">2026</div><div class="vname">InnoAI Thailand 2026 &middot; 稳定币与 Agent 安全</div><div class="vrole">特邀讲者</div></div>
-        <div class="venue-row"><div class="vyr">2024</div><div class="vname">Cluster Computing (期刊)</div><div class="vrole">一作</div></div>
+        <div class="venue-row"><div class="vyr">2025</div><div class="vname">2025 中德科学家大会</div><div class="vrole">主持人</div></div>
+        <div class="venue-row"><div class="vyr">2024</div><div class="vname">Cluster Computing (期刊, SCI)</div><div class="vrole">一作</div></div>
         <div class="venue-row"><div class="vyr">2023</div><div class="vname">IEEE BCCA 2023</div><div class="vrole">一作</div></div>
         <div class="venue-row"><div class="vyr">2022</div><div class="vname">IEEE BCCA 2022</div><div class="vrole">一作</div></div>
         <div class="venue-row"><div class="vyr">2020</div><div class="vname">Hyperledger Global Forum 2020</div><div class="vrole">讲者</div></div>
         <div class="venue-row"><div class="vyr">2020</div><div class="vname">Techstars 西雅图区块链创业周末</div><div class="vrole">第一名</div></div>
-        <div class="venue-row"><div class="vyr">2025</div><div class="vname">2025 中德科学家大会</div><div class="vrole">主持人</div></div>
       </div>
     </div>
   </section>
@@ -310,8 +310,8 @@
   <section>
     <div class="container">
       <div class="cbox">
-        <h2>想要论文或更深入的讲解?</h2>
-        <p>可以按学术通行条款分享预印本、代码、复现笔记。每封邮件我都看。</p>
+        <h2>想要预印本或更深入的讲解?</h2>
+        <p>可按学术通行条款分享预印本、复现代码与回放脚本。每封邮件我都看。</p>
         <div class="clinks">
           <a class="clink" href="mailto:shengwei.you@gmail.com"><span>&#9993;</span> shengwei.you@gmail.com</a>
           <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank" rel="noopener"><span>&#128188;</span> LinkedIn</a>
@@ -323,7 +323,7 @@
 
   <footer>
     <p>&copy; 2026 游盛巍 Shengwei You &middot; 香港</p>
-    <p>静态站点, 不埋点, 不写 cookie, 不收集数据。</p>
+    <p>静态站点。无追踪、无 Cookie、不收集任何数据。</p>
   </footer>
 
   <script>

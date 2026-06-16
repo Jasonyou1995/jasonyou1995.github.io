@@ -256,7 +256,7 @@
       <div style="display:flex;align-items:center;gap:1.8rem;">
         <ul>
           <li><a href="../index.zh-TW.html#about">關於</a></li>
-          <li><a href="../index.zh-TW.html#work">方法</a></li>
+          <li><a href="../index.zh-TW.html#work">我怎麼做工程</a></li>
           <li><a href="./" class="active">專案</a></li>
           <li><a href="../research/index.zh-TW.html">研究</a></li>
           <li><a href="../index.zh-TW.html#contact">聯絡</a></li>
@@ -275,8 +275,8 @@
   <section class="ph-hero">
     <div class="container">
       <span class="tag">專案</span>
-      <h1>四個已上線的 Agent 系統, 一個人寫, 每個都有數字可查。</h1>
-      <p class="lede">每個專案都是真實系統、真實數字。我自己定義問題、寫實作、裝好觀測、寫清楚哪裡有效、哪裡不行。<b>點擊任一 Tab 即可看到完整的問題、動機、貢獻與可重現證據。</b></p>
+      <h1>四個 Agent 系統, 一個人端到端交付, 每個都有數字可查。</h1>
+      <p class="lede">每個專案都是真實系統、真實測量。我自己定義問題、寫實作、裝好觀測, 並寫清楚哪裡有效、哪裡有限制。<b>點 Tab 看完整的問題、動機、貢獻與可重現證據; 沒有「待補充」的部分。</b></p>
     </div>
   </section>
 
@@ -297,7 +297,7 @@
         <div>
           <div class="proj-eyebrow">01 · Agent 平台</div>
           <h2>OC1: Agent 安全控制系統</h2>
-          <p class="tagline">多供應商 Agent 棧, 配一個用形式化方法驗證過的安全迴路。</p>
+          <p class="tagline">多供應商 Agent 棧, 配 TLA+ 形式化驗證過的安全迴路。</p>
         </div>
         <div class="proj-meta">
           <div class="meta-row"><b>狀態</b><span>已交付 · 生產級</span></div>
@@ -310,22 +310,22 @@
       <div class="pm-cols">
         <div class="pm-col">
           <h3>問題</h3>
-          <p>前沿模型呼叫會以三種 Demo 看不到的方式失敗: 供應商宕機、提示注入、靜默策略漂移。聊天機器人 Demo 不需要處理這些, 但生產級 Agent 系統必須 fail safe, 不能只是 fail loud。</p>
+          <p>前沿模型呼叫會以三種 Demo 看不到的方式失敗: 供應商宕機、prompt injection、靜默策略漂移。聊天機器人 Demo 不需要管這些; 生產級 Agent 系統必須 fail safe, 不是 fail loud。</p>
         </div>
         <div class="pm-col">
           <h3>動機</h3>
-          <p>我要的是一個敢把錢和真實用戶放上去的底盤。意味著要有一個 <i>可證明</i> 安全的 kill-circuit, 而不是一個希望它安全的迴路, 還要讓每一次外部呼叫都可觀測、可回滾。</p>
+          <p>我要的是一套敢把錢和真實使用者放上去的底盤。意味著 kill-circuit 要 <i>可證明</i> 安全 (不是希望它安全), 並且每一次外部呼叫都要可觀測、可回滾。</p>
         </div>
       </div>
 
       <div class="pm-cols">
         <div class="pm-col">
           <h3>具體造了什麼</h3>
-          <p>跨 OpenAI、Anthropic、本地 Ollama 的多供應商 LLM 編排, 含自動故障切換、內容雜湊磁碟快取、逐次呼叫的成本/延遲/Token 記帳。一台用 TLA+ 形式化驗證過的安全狀態機在每一次動作前把關; 提示注入偵測在輸入路徑上跑; 一個 EVM 執行層處理鏈上副作用; 一台 RAG 策略 Oracle 負責把 Agent 錨定在我自己的文件庫上。</p>
+          <p>跨 OpenAI、Anthropic、本地 Ollama 的多供應商 LLM 編排, 帶自動 failover、content-hash 磁碟快取、逐次呼叫的成本/延遲/token 記帳。一台 TLA+ 形式化驗證過的安全狀態機在每次動作前把關; prompt-injection 偵測在輸入路徑上跑; 一個 EVM 執行層處理鏈上副作用; 一台 RAG 策略 oracle 把 Agent 錨定在我自己的文件庫裡。</p>
         </div>
         <div class="pm-col">
           <h3>我一個人做了什麼</h3>
-          <p>端到端。架構、TLA+ 規格、Agent 代碼、Solidity 合約、評測框架, 以及一條命令跑完整個套件的管線。18,400+ 行 Python、7 份 Solidity 合約、14 套測試; 5,866,037 個 TLA+ 狀態, 零違規。</p>
+          <p>端到端: 架構、TLA+ 規格、Agent 程式碼、Solidity 合約、評測框架, 以及一條指令跑完整個套件的 pipeline。18,400+ 行 Python、7 份 Solidity 合約、14 套測試; 5,866,037 個 TLA+ 狀態, 零違規。</p>
         </div>
       </div>
 
@@ -333,13 +333,13 @@
         <div class="cell"><div class="big">3.9s</div><div class="lab">端到端 P95 延遲</div></div>
         <div class="cell"><div class="big">&lt;5ms</div><div class="lab">安全迴路開銷</div></div>
         <div class="cell"><div class="big">5.86M</div><div class="lab">TLA+ 狀態, 零違規</div></div>
-        <div class="cell"><div class="big">100/100</div><div class="lab">紅隊 RL 攻擊全部擋下</div></div>
+        <div class="cell"><div class="big">100/100</div><div class="lab">自適應 RL 攻擊全部存活</div></div>
       </div>
 
       <div class="vis-block">
         <div class="vis-head">
           <h3>安全 vs. 速度: kill-circuit 的代價</h3>
-          <span class="src">資料來源: OC1 壓測, 1,000 次混合動作請求</span>
+          <span class="src">OC1 壓測, 1,000 次混合動作請求</span>
         </div>
         <div class="vis-grid">
           <svg class="vis-svg" viewBox="0 0 420 240" xmlns="http://www.w3.org/2000/svg" aria-label="柱狀圖: 開/關安全迴路的延遲對比">
@@ -381,7 +381,7 @@
           </svg>
           <div class="vis-side">
             <h4>這代表什麼</h4>
-            <p>安全迴路每次呼叫增加不到 1 秒, 而且是可證明正確的, 所以我願意用延遲換故障率。另一種選擇 (希望 LLM 乖乖聽話) 在 P95 圖上看不出來, 但在事故復盤裡看得很清楚。</p>
+            <p>安全迴路每次呼叫多花不到 1 秒, 而且是可證明正確的, 所以我願意拿這點延遲換故障率。「希望 LLM 這次別出錯」在 P95 圖上看不出來, 但在事故復盤裡看得很清楚。</p>
             <div class="legend">
               <span><span class="sw" style="background:#e0612f"></span>開啟安全</span>
               <span><span class="sw" style="background:#d9a441"></span>基線</span>
@@ -392,17 +392,17 @@
 
       <div class="take">
         <h4>這個專案對 JD 有什麼用</h4>
-        <p>OC1 是我能拿出來最接近教科書版 <b>Agent Harness</b> 的東西: 工具呼叫、評測、Trace、可觀測性、人在環檢查點、Sandbox。TLA+ kill-circuit 是大多數團隊懶得做的那一塊, 也是把 Demo 變成能上用戶的系統的關鍵。</p>
+        <p>OC1 是我能拿出來最接近教科書版 <b>Agent Harness</b> 的東西: 工具呼叫、評測、Trace、可觀測性、人在環 checkpoint、sandbox。TLA+ kill-circuit 是大多數團隊跳過不做的那一塊, 也是把 Demo 變成能上使用者的系統的關鍵。</p>
       </div>
 
       <div class="chip-list">
-        <span class="chip">多供應商故障切換</span>
+        <span class="chip">多供應商 failover</span>
         <span class="chip">TLA+ 模型檢驗</span>
-        <span class="chip">提示注入 F1 0.765</span>
+        <span class="chip">prompt-injection F1 0.765</span>
         <span class="chip">Q-learning 紅隊</span>
         <span class="chip">EVM 執行</span>
-        <span class="chip">RAG 策略 Oracle</span>
-        <span class="chip">內容雜湊快取</span>
+        <span class="chip">RAG 策略 oracle</span>
+        <span class="chip">content-hash 快取</span>
         <span class="chip">逐次呼叫遙測</span>
       </div>
     </div>
@@ -415,12 +415,12 @@
         <div>
           <div class="proj-eyebrow">02 · Web3 Chatbot · DeFi</div>
           <h2>OC2: 鏈上多 Agent 辯論</h2>
-          <p class="tagline">三個 LLM 角色互相辯論, 然後把判決寫到鏈上。</p>
+          <p class="tagline">三個 LLM 角色互相辯論, 判決在鏈上執行。</p>
         </div>
         <div class="proj-meta">
           <div class="meta-row"><b>狀態</b><span>已交付 · 76 套 Foundry 測試全通過</span></div>
           <div class="meta-row"><b>技術棧</b><span>Solidity 0.8.23 · Foundry · ECDSA · EVM</span></div>
-          <div class="meta-row"><b>架構</b><span>提議者 · 挑戰者 · 裁判</span></div>
+          <div class="meta-row"><b>架構</b><span>Proposer · Challenger · Judge</span></div>
           <div class="meta-row"><b>JD 對應</b><span>多 Agent · 工具呼叫 · 評測 · Trace</span></div>
         </div>
       </div>
@@ -428,28 +428,28 @@
       <div class="pm-cols">
         <div class="pm-col">
           <h3>問題</h3>
-          <p>DeFi 動作通常由單一簽名人或小規模多簽把守, 意味著一次失誤的呼叫或一把被攻破的私鑰就能清空一個協議。加一個第二人沒用, 如果他只是給第一個人背書的話。</p>
+          <p>DeFi 動作常由單一簽名人或小規模多簽把守, 一次失誤的呼叫或一把被攻破的私鑰就能清空一個協議。加第二個簽名人沒用, 如果他只是給第一個背書的話。</p>
         </div>
         <div class="pm-col">
           <h3>動機</h3>
-          <p>同行評審比單人評審更強 (獨立的挑戰者強迫提議者為自己的方案辯護) 同一個思路可以讓自主 Agent 比單次 LLM 呼叫更安全。前提是: 你需要密碼學收據, 不是氛圍感, 否則只是演戲。</p>
+          <p>同儕審查比單人審查強 (獨立的 Challenger 強迫 Proposer 為自己的方案辯護)。同一個思路能讓自主 Agent 比單次 LLM 呼叫安全; 前提是你有密碼學收據, 不是氛圍感。否則只是演戲。</p>
         </div>
       </div>
 
       <div class="pm-cols">
         <div class="pm-col">
           <h3>具體造了什麼</h3>
-          <p>一個三角色辯論模式。Proposer 起草 DeFi 動作, Challenger 攻擊它, Judge 提交判決, 三方都要在辯論紀錄上簽名。完整辯論做雜湊之後寫到鏈上, Foundry 測試通過的 Solidity 棧 (DebateRegistry、JudgeCommitment、SlashingPool、EmergencyStop) 把守執行。任意環節有異常, EmergencyStop 立刻停手, 讓人接手。</p>
+          <p>一個三角色辯論模式: Proposer 起草 DeFi 動作, Challenger 攻擊它, Judge 提交判決, 三方都要在辯論紀錄上簽名。完整辯論做雜湊後寫到鏈上, Foundry 測試通過的 Solidity 棧 (DebateRegistry、JudgeCommitment、SlashingPool、EmergencyStop) 把守執行。任一環節異常, EmergencyStop 立刻停手, 讓人接手。</p>
         </div>
         <div class="pm-col">
           <h3>我一個人做了什麼</h3>
-          <p>又是端到端。模式、提示工程、Agent 代碼、四份 Solidity 合約、ECDSA 驗證、辯論紀錄雜湊、76 套 Foundry 測試、Gas 基準。最有意思的一步是: 在保留可密碼學驗證審計鏈的前提下, 鏈上成本比 Optimism fault-proof 基線還低 8.7%。</p>
+          <p>又是端到端。模式、提示工程、Agent 程式碼、4 份 Solidity 合約、ECDSA 驗證、辯論紀錄雜湊、76 套 Foundry 測試、gas 基準。最有意思的一步是: 在保留可密碼學驗證審計鏈的前提下, 鏈上成本還比 Optimism fault-proof 基線低 8.7%。</p>
         </div>
       </div>
 
       <div class="kpi">
-        <div class="cell"><div class="big">90.2%</div><div class="lab">Judge 準確率 (CI [87.6, 92.8])</div></div>
-        <div class="cell"><div class="big">95%</div><div class="lab">真實鏈上動作的專家一致率</div></div>
+        <div class="cell"><div class="big">90.2%</div><div class="lab">Judge 準確率 (BCa 95% CI [87.6, 92.8])</div></div>
+        <div class="cell"><div class="big">95%</div><div class="lab">真實鏈上動作專家一致率</div></div>
         <div class="cell"><div class="big">16.8s</div><div class="lab">端到端辯論延遲</div></div>
         <div class="cell"><div class="big">-8.7%</div><div class="lab">Gas 對比 Optimism fault-proof</div></div>
       </div>
@@ -457,7 +457,7 @@
       <div class="vis-block">
         <div class="vis-head">
           <h3>Proposer / Challenger / Judge 流程與檢查點</h3>
-          <span class="src">OC2 設計, 4 份 Solidity 合約在線上</span>
+          <span class="src">OC2 設計, 4 份 Solidity 合約, 線上</span>
         </div>
         <div class="vis-grid full">
           <svg class="vis-svg" viewBox="0 0 940 280" xmlns="http://www.w3.org/2000/svg" aria-label="鏈上多 Agent 辯論流程圖">
@@ -512,7 +512,7 @@
               <rect x="20" y="170" width="900" height="80" rx="8" fill="rgba(127, 179, 122, .05)" stroke="rgba(127, 179, 122, .2)" stroke-dasharray="4 3"/>
               <text x="40" y="194" fill="#7fb37a" font-weight="600">Foundry 測試套件 · 76 項</text>
               <text x="40" y="214" fill="#9a9384">單元 (28) · 對抗 (24) · Gas 基準 (12) · 模糊 (12)</text>
-              <text x="40" y="232" fill="#9a9384">四份合約全部驗證; ECDSA + 辯論紀錄雜湊在鏈上強制執行</text>
+              <text x="40" y="232" fill="#9a9384">4 份合約驗證通過; ECDSA + 辯論紀錄雜湊在鏈上強制執行</text>
             </g>
           </svg>
         </div>
@@ -520,17 +520,17 @@
 
       <div class="take">
         <h4>這個專案對 JD 有什麼用</h4>
-        <p>OC2 是 <b>多 Agent Harness</b> 模式的生產版本。Proposer / Challenger / Judge 乾淨地對應到任何 Agent 平台都需要的三个角色 (規劃器、批評者、把關人), 鏈上收據讓評測 <i>外部於</i> LLM, 不只是 LLM 給自己打分。</p>
+        <p>OC2 是 <b>多 Agent Harness</b> 模式的生產版本。Proposer / Challenger / Judge 直接對應到任何 Agent 平台都需要的這三個角色 (規劃者、批評者、把關人)。鏈上收據讓評測 <i>外於</i> LLM, 不只是 LLM 給自己打分。</p>
       </div>
 
       <div class="chip-list">
         <span class="chip">Foundry 測試</span>
         <span class="chip">ECDSA 驗證</span>
         <span class="chip">辯論紀錄雜湊</span>
-        <span class="chip">Slashing 池</span>
-        <span class="chip">緊急停止</span>
+        <span class="chip">slashing pool</span>
+        <span class="chip">EmergencyStop</span>
         <span class="chip">多 Agent 評測</span>
-        <span class="chip">Gas 優化</span>
+        <span class="chip">gas 優化</span>
       </div>
     </div>
   </section>
@@ -542,12 +542,12 @@
         <div>
           <div class="proj-eyebrow">03 · 穩定幣 · IEEE ICBC 2026</div>
           <h2>MVF-Composer: 穩定幣儲備控制器</h2>
-          <p class="tagline">一套 12 個 Agent 的穩定幣錨定救援系統, 已被 IEEE ICBC 2026 接收並演講。</p>
+          <p class="tagline">12 個 Agent 的穩定幣錨定救援系統, 已被 IEEE ICBC 2026 接收。</p>
         </div>
         <div class="proj-meta">
-          <div class="meta-row"><b>狀態</b><span>已接收 · IEEE ICBC 2026 演講</span></div>
-          <div class="meta-row"><b>技術棧</b><span>Stress Harness · 信任加權 MVF · 3 家 LLM 供應商</span></div>
-          <div class="meta-row"><b>規模</b><span>12 Agent · 1,200 次模擬 · 12,500 行</span></div>
+          <div class="meta-row"><b>狀態</b><span>已接收 · IEEE ICBC 2026</span></div>
+          <div class="meta-row"><b>技術棧</b><span>Stress Harness · 信任加權 MVF · 3 家 LLM</span></div>
+          <div class="meta-row"><b>規模</b><span>12 Agent · 1,200 次模擬 · 約 12,500 行</span></div>
           <div class="meta-row"><b>JD 對應</b><span>Web3 風控 · 多 Agent 評測 · 對抗魯棒性</span></div>
         </div>
       </div>
@@ -555,35 +555,35 @@
       <div class="pm-cols">
         <div class="pm-col">
           <h3>問題</h3>
-          <p>穩定幣儲備控制器多在平靜期資料上估協方差。壓力一來, 協方差會被低估 7.17 倍 (&ldquo;2020 遺漏&rdquo;), 最優權重反而變成最脆弱的那組, 2020/03 與 2023/03 的脫錨就是這樣發生的。</p>
+          <p>穩定幣儲備控制器通常只在平靜期資料上估協方差。壓力一來, 協方差會被低估約 7.17× (&ldquo;2020 遺漏&rdquo;), 當時最優的權重反而變成最脆弱的那一組; 2020/03 與 2023/03 的脫錨就是這樣發生的。</p>
         </div>
         <div class="pm-col">
           <h3>思路</h3>
-          <p>12 個 LLM Agent 跨 4 類角色 (交易員、做市商、套利者、攻擊者) 在 Stress Harness 內對抗衝擊 (於 t=30 注入)。信任分數 T(a) 對協同或砸盤行為降權, 上層接一個受約束的均值-方差最佳化器, 對壓力增廣後的協方差做再平衡。</p>
+          <p>12 個 LLM Agent 跨 4 類角色 (trader / LP / arbitrageur / attacker) 在 Stress Harness 內對抗衝擊 (t=30 注入)。信任分數 T(a) 對協同動作或砸盤行為降權, 上層接一個受約束的均值-方差最佳化器, 對壓力增廣後的協方差做再平衡。</p>
         </div>
       </div>
 
       <div class="pm-cols">
         <div class="pm-col">
           <h3>具體造了什麼</h3>
-          <p>12 個並發 LLM Agent (5 交易員、3 做市商、2 套利者、2 攻擊者) 跨 OpenAI、Anthropic、DeepSeek 調度, 輸出由 Pydantic 校驗, 進入信任加權風險狀態, 再到受約束的均值-方差最佳化器。1,200 次種子化的黑色星期四模擬跑在消費級硬體上 (每週期 47-99 秒)。</p>
+          <p>12 個並發 LLM Agent (5 traders、3 LPs、2 arbitrageurs、2 attackers) 跨 OpenAI、Anthropic、DeepSeek 調度, 輸出由 Pydantic 校驗, 進入 trust-weighted 風險狀態, 再到受約束的均值-方差最佳化器。1,200 次種子化 Black-Thursday 模擬跑在消費級硬體上 (每週期 47–99 秒)。</p>
         </div>
         <div class="pm-col">
           <h3>我一個人做了什麼</h3>
-          <p>單作者論文, 獨立工程師系統: Stress Harness、信任加權聚合、壓力增廣協方差混合, 以及 1,200 次可重現模擬。約 12,500 行型別化 Python, 46 個模組。每次執行都記下 seed、commit 與時戳。</p>
+          <p>單作者論文, 獨立工程系統: Stress Harness、trust-weighted aggregation、壓力增廣協方差混合, 以及 1,200 次可重現模擬。約 12,500 行帶型別註記的 Python, 46 個模組。每次執行記下 seed、commit hash 與時戳。</p>
         </div>
       </div>
 
       <div class="kpi">
-        <div class="cell"><div class="big">57%</div><div class="lab">峰值錨定偏差削減</div></div>
-        <div class="cell"><div class="big">3.1&times;</div><div class="lab">危機恢復加速</div></div>
-        <div class="cell"><div class="big">12</div><div class="lab">並發 Agent 數</div></div>
-        <div class="cell"><div class="big">1,200</div><div class="lab">可重現模擬</div></div>
+        <div class="cell"><div class="big">57%</div><div class="lab">峰值錨定偏差削減 (vs. SAS 基線)</div></div>
+        <div class="cell"><div class="big">3.1&times;</div><div class="lab">回到 1% 帶內 time step 加速</div></div>
+        <div class="cell"><div class="big">12</div><div class="lab">並發 LLM Agent (5/3/2/2)</div></div>
+        <div class="cell"><div class="big">1,200</div><div class="lab">seed-controlled 可重現模擬</div></div>
       </div>
 
       <div class="vis-block">
         <div class="vis-head">
-          <h3>黑色星期四回放: MVF-Composer vs. 業界基線 (SAS)</h3>
+          <h3>Black Thursday 回放: MVF-Composer vs. 業界基線 (SAS)</h3>
           <span class="src">1,200 次模擬, 錨定偏差中位數軌跡, seed 控制</span>
         </div>
         <div class="vis-grid">
@@ -632,7 +632,7 @@
           </svg>
           <div class="vis-side">
             <h4>怎麼讀這張圖</h4>
-            <p>衝擊前兩條線都貼近錨定。t=30 注入衝擊後, SAS 業界基線峰值跳到 7.4%, 恢復緩慢; MVF-Composer 峰值 3.2%, 跨過 1% 恢復線比基線快約 3.1 倍 (14 vs 44 個時間步)。1,200 次種子化執行的中位數。</p>
+            <p>衝擊前兩條線都貼近錨定。t=30 注入衝擊後, SAS 業界基線峰值跳到 7.4%, 恢復慢; MVF-Composer 峰值 3.2%, 跨過 1% 恢復線比基線快約 3.1× (14 vs 44 個 time step)。1,200 次種子化執行的中位數軌跡。</p>
             <div class="legend">
               <span><span class="sw" style="background:#e0612f"></span>MVF-Composer (12 Agent)</span>
               <span><span class="sw" style="background:#d9a441"></span>SAS 業界基線</span>
@@ -643,16 +643,16 @@
 
       <div class="take">
         <h4>這個專案為什麼重要</h4>
-        <p>MVF-Composer 把 <b>多 Agent + 信任加權聚合 + 均值-方差最佳化</b> 模式打包進有真實資金與真實監管的場景。IEEE 同行評審是這些數字能扛住獨立檢驗的背書。</p>
+        <p>MVF-Composer 把 <b>多 Agent + trust-weighted aggregation + mean-variance</b> 模式打包進有真實資金、真實監管的場景。IEEE 同儕審查是這些數字能扛住獨立檢驗的背書。</p>
       </div>
 
       <div class="chip-list">
         <span class="chip">Stress Harness</span>
-        <span class="chip">信任加權聚合</span>
-        <span class="chip">均值-方差最佳化</span>
+        <span class="chip">trust-weighted aggregation</span>
+        <span class="chip">mean-variance 最佳化</span>
         <span class="chip">多供應商 LLM</span>
         <span class="chip">Pydantic v2 契約</span>
-        <span class="chip">種子控制</span>
+        <span class="chip">seed 控制</span>
         <span class="chip">IEEE ICBC 2026</span>
       </div>
     </div>
@@ -665,12 +665,12 @@
         <div>
           <div class="proj-eyebrow">04 · 預言機 · 密碼學</div>
           <h2>NOC: 可密碼學驗證的預言機</h2>
-          <p class="tagline">鏈上 SNARK 驗證, 成本是現有方案的一小截。</p>
+          <p class="tagline">鏈上 SNARK 驗證, 成本是現有委員會方案的一小部分。</p>
         </div>
         <div class="proj-meta">
           <div class="meta-row"><b>狀態</b><span>已交付 · 76 項測試 + 256 次模糊</span></div>
           <div class="meta-row"><b>技術棧</b><span>Solidity 0.8.23 · Groth16 · BN254</span></div>
-          <div class="meta-row"><b>拜占庭</b><span>37.5% 對手下 100% 偵測</span></div>
+          <div class="meta-row"><b>Byzantine</b><span>37.5% 對手下 100% 偵測</span></div>
           <div class="meta-row"><b>JD 對應</b><span>Web3 基礎設施 · 安全</span></div>
         </div>
       </div>
@@ -678,36 +678,36 @@
       <div class="pm-cols">
         <div class="pm-col">
           <h3>問題</h3>
-          <p>現有預言機方案要麼信一個小委員會 (便宜, 脆弱), 要麼跑一套重共識 (貴, 慢)。委員會式的設計被攻破過不止一次; 共識式設計把需要逐塊更新的用例價格擠出可用區。</p>
+          <p>現有預言機方案要麼信一個小委員會 (便宜, 脆弱), 要麼跑一套重共識 (貴, 慢)。委員會式設計被攻破過不止一次; 共識式設計把需要逐塊更新的用例價格擠出可用區。</p>
         </div>
         <div class="pm-col">
           <h3>動機</h3>
-          <p>密碼學證明讓你跳過信任假設。驗證器在鏈上跑, 證明本身很便宜, 想撒謊的唯一方式是把曲線攻破。問題是: 能不能在這個想法上搭一個 L2 價格就能跑得起的生產系統。</p>
+          <p>密碼學證明讓你跳過信任假設: 驗證器在鏈上跑, 證明本身便宜, 想撒謊的唯一方式是攻破曲線。問題是, 能不能在這個想法上搭出 L2 價格就跑得起的生產系統。</p>
         </div>
       </div>
 
       <div class="pm-cols">
         <div class="pm-col">
           <h3>具體造了什麼</h3>
-          <p>一份 Solidity 0.8.23 預言機, 鏈上跑 Groth16 / BN254 驗證, 上面掛一層質押、罰沒、聲譽加權共識, 用來處理證明拿不到的情況。76 項 Foundry 測試全過, 含 256 次模糊套件和 Gas 基準。37.5% 對手下, 100% 拜占庭偵測率。</p>
+          <p>一份 Solidity 0.8.23 預言機, 鏈上跑 Groth16 / BN254 驗證, 上面掛一層 staking、slashing、reputation-weighted consensus, 處理證明拿不到的情況。76 項 Foundry 測試全過, 含 256 次模糊套件與 gas 基準。37.5% 對手下 100% Byzantine 偵測率。</p>
         </div>
         <div class="pm-col">
           <h3>我一個人做了什麼</h3>
-          <p>端到端。Solidity 合約、Groth16 驗證器整合、質押與罰沒邏輯、聲譽模型、測試框架、Gas 基準。L2 單次更新成本比現有委員會預言機低 21 倍, 這才是它能用於生產、而不只是寫在論文裡的原因。</p>
+          <p>端到端: Solidity 合約、Groth16 驗證器整合、staking / slashing 邏輯、聲譽模型、測試框架、gas 基準。L2 單次更新成本比現有 committee oracle 低 21× — 這才是它能用於生產、而不只是寫在論文裡的原因。</p>
         </div>
       </div>
 
       <div class="kpi">
         <div class="cell"><div class="big">$0.04</div><div class="lab">單次更新成本 (L2)</div></div>
-        <div class="cell"><div class="big">21&times;</div><div class="lab">對比委員會基線</div></div>
-        <div class="cell"><div class="big">100%</div><div class="lab">拜占庭偵測 (37.5% 內)</div></div>
-        <div class="cell"><div class="big">76</div><div class="lab">測試 · 256 次模糊</div></div>
+        <div class="cell"><div class="big">21&times;</div><div class="lab">對比 committee oracle 基線</div></div>
+        <div class="cell"><div class="big">100%</div><div class="lab">Byzantine 偵測 (37.5% 對手內)</div></div>
+        <div class="cell"><div class="big">76</div><div class="lab">Foundry 測試 · 256 次模糊</div></div>
       </div>
 
       <div class="vis-block">
         <div class="vis-head">
-          <h3>L2 預言機單次更新成本: NOC vs. 委員會基線</h3>
-          <span class="src">L2 Gas 快照, 30 gwei, ETH $3,200</span>
+          <h3>L2 預言機單次更新成本: NOC vs. committee 基線</h3>
+          <span class="src">L2 gas 快照, 30 gwei, ETH $3,200</span>
         </div>
         <div class="vis-grid">
           <svg class="vis-svg" viewBox="0 0 440 240" xmlns="http://www.w3.org/2000/svg" aria-label="柱狀圖: 預言機單次更新成本對比">
@@ -747,10 +747,10 @@
           </svg>
           <div class="vis-side">
             <h4>這代表什麼</h4>
-            <p>在 L2 成本下, NOC 單次更新大約 4 美分。委員會預言機的同一次更新大約 84 美分。這個差距決定了你是能逐塊呼叫預言機, 還是只能在不得不呼叫時才呼叫。</p>
+            <p>L2 成本下, NOC 單次更新約 4 美分。committee oracle 同一更新約 84 美分。這個差距決定了你能否逐塊叫預言機, 還是只能在不得不叫的時候才叫。</p>
             <div class="legend">
               <span><span class="sw" style="background:#e0612f"></span>NOC</span>
-              <span><span class="sw" style="background:#d9a441"></span>委員會</span>
+              <span><span class="sw" style="background:#d9a441"></span>committee oracle</span>
             </div>
           </div>
         </div>
@@ -758,16 +758,16 @@
 
       <div class="take">
         <h4>這個專案對 JD 有什麼用</h4>
-        <p>NOC 是我作品集裡的 <b>Web3 基礎設施</b> 那塊。說明我能把密碼學原語交付到生產, 並且對成本/信任的權衡有足夠感覺, 知道什麼時候該用哪個。大部分 Agent 平台團隊都會遇到至少一個預言機問題, 而答案很少是"直接用 Chainlink"。</p>
+        <p>NOC 是我作品集裡的 <b>Web3 基礎設施</b> 那塊。它說明我能把密碼學原語交付到生產, 並對成本/信任的權衡有足夠感覺, 知道什麼時候用哪個。大部分 Agent 平台團隊都會遇到至少一個預言機問題, 而答案很少是「直接用 Chainlink」。</p>
       </div>
 
       <div class="chip-list">
         <span class="chip">鏈上 Groth16</span>
         <span class="chip">BN254 雙線性配對</span>
-        <span class="chip">質押 &amp; 罰沒</span>
+        <span class="chip">staking &amp; slashing</span>
         <span class="chip">聲譽模型</span>
         <span class="chip">模糊測試</span>
-        <span class="chip">Gas 優化</span>
+        <span class="chip">gas 優化</span>
       </div>
     </div>
   </section>
@@ -778,34 +778,34 @@
       <div class="inprog">
         <span class="ip-tag">進行中 · 展示可申請</span>
         <h2>Web3 Agent Platform</h2>
-        <p class="lede">一個面向 Agent Platform / Web3 Chatbot 方向 JD 的生產級 Agent 平台, 目前在做最後整合。Trace / replay、人在環檢查點、工具註冊表、評測框架已在私有部署上端到端打通, 歡迎申請現場展示。</p>
+        <p class="lede">面向 Agent Platform / Web3 Chatbot 方向 JD 的生產級 Agent 平台, 目前做最後整合。Trace / replay、人在環 checkpoint、工具註冊表、評測框架已在私有部署上端到端打通, 歡迎申請現場展示。</p>
 
         <div class="grid2">
           <div>
             <h4>已經搭好的部分</h4>
             <ul>
-              <li>工具註冊表與策略守門的工具呼叫 (按工具分級的權限範圍)</li>
+              <li>工具註冊表 + 策略守門的工具呼叫 (按工具分級的權限範圍)</li>
               <li>Trace / replay 檢視器, 完整記錄 LLM 呼叫與工具 I/O</li>
-              <li>動作邊界上的人在環檢查點 (通過 / 改寫 / 拒絕)</li>
-              <li>評測框架, 含種子化回歸套件, 覆蓋提示與工具變更</li>
-              <li>FastAPI on Cloud Run, Pydantic v2 契約, asyncio 管線</li>
-              <li>LangGraph 編排器, 原生支援 proposer / challenger / judge 角色</li>
+              <li>動作邊界上的人在環 checkpoint (通過 / 改寫 / 拒絕)</li>
+              <li>評測框架, 含種子化回歸套件, 覆蓋 prompt 與工具變更</li>
+              <li>FastAPI on Cloud Run, Pydantic v2 契約, asyncio pipeline</li>
+              <li>LangGraph 編排器, 原生支援 Proposer / Challenger / Judge 角色</li>
             </ul>
           </div>
           <div>
-            <h4>為 JD 做的設計</h4>
+            <h4>為 JD 做的設計選擇</h4>
             <ul>
-              <li>能力分層、模組邊界、權限模型是一等公民</li>
+              <li>能力分層、模組邊界、權限模型做成一等公民</li>
               <li>Agent 執行: 規劃、工具呼叫、上下文、結果校驗、重試、狀態恢復</li>
-              <li>Harness 級能力: 工具呼叫、工作流引擎、沙箱、評測、Trace, 對 MCP 友善的 I/O</li>
-              <li>SDD 友善: 每次改動都按 spec / test / code 走, 評審按 diff 範圍</li>
+              <li>Harness 級能力: 工具呼叫、workflow engine、沙箱、評測、Trace, 對 MCP 友善的 I/O</li>
+              <li>SDD-friendly: 每次改動按 spec / test / code 走, 評審按 diff 範圍</li>
             </ul>
           </div>
         </div>
 
         <div class="take" style="margin-top:1.6rem;">
-          <h4>為什麼是"進行中"而不是"已發布"</h4>
-          <p>底盤已經搭好。最後 20% 是用真實負載和真實使用者跑一遍, 找出我還沒想到的失敗模式。我寧願寫"進行中", 也不願假裝完工然後靠運氣。</p>
+          <h4>為什麼是「進行中」而不是「已發布」</h4>
+          <p>底盤已搭好。最後 20% 是拿真實負載和真實使用者跑一遍, 找出我還沒想到的失敗模式。我寧願寫「進行中」, 也不願假裝完工然後靠運氣。</p>
         </div>
 
         <div class="chip-list">
@@ -826,7 +826,7 @@
     <div class="container">
       <div class="cbox">
         <h2>想看現場展示或要代碼?</h2>
-        <p>代碼在簽 NDA 之後可分享。Web3 Agent Platform 展示也可以申請, 排期緊的話會先用一段 Loom 錄影兜底。每封郵件我都看。</p>
+        <p>代碼在簽 NDA 後可分享。Web3 Agent Platform 展示也可申請; 排期緊的話會先發一段 Loom 錄影兜底。每封郵件我都看。</p>
         <div class="clinks">
           <a class="clink" href="mailto:shengwei.you@gmail.com"><span>&#9993;</span> shengwei.you@gmail.com</a>
           <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank" rel="noopener"><span>&#128188;</span> LinkedIn</a>
@@ -838,7 +838,7 @@
 
   <footer>
     <p>&copy; 2026 游盛巍 Shengwei You &middot; 香港</p>
-    <p>靜態站, 不埋點, 不寫 cookie, 不收集資料。</p>
+    <p>靜態站。無追蹤、無 Cookie、不收集任何資料。</p>
   </footer>
 
   <script>

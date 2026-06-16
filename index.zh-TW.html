@@ -1031,7 +1031,7 @@
           <h1><span class="notranslate">Shengwei <span class="sur">You</span><span class="cn">游盛巍
                 &middot; Jason</span></span></h1>
           <p class="sub">AI 部署工程師 / FDE</p>
-          <p class="lead">我為前沿大模型呼叫構建完整的可靠性層：多模型編排、檢索接地、鏈上執行，以及<b>可證明的安全門控</b>。我用種子、日誌和回執驗證每一個結論，並以審稿人的懷疑態度審視自己的結果。</p>
+          <p class="lead">我把前沿大模型呼叫做成可上線的系統：多模型編排、檢索 grounding、鏈上執行，配 <b>已驗證的安全門控</b>。每個數字都鏈回到 seed、日誌、回執；每個失敗模式都按 reviewer 標準如實記錄。</p>
           <div class="btns">
             <a href="#numbers" class="btn btn-1">查看作品</a>
             <a href="#contact" class="btn btn-2">聯絡我</a>
@@ -1059,8 +1059,8 @@
     <div class="container">
       <div class="sh fade">
         <span class="st">關鍵數據</span>
-        <h2 class="stitle">可驗證，而非空談</h2>
-        <p class="ssub">每一個數字都可追溯到種子、日誌和結果檔案。點擊數字可跳轉到產出它的系統。</p>
+        <h2 class="stitle">可核驗的，不只是聲稱的</h2>
+        <p class="ssub">每個數字都鏈回到一個 seed、一份 log、一個 result 檔案。點一下，跳到產出它的系統。</p>
       </div>
       <div class="nums fade">
         <a href="#p-oc1">
@@ -1069,7 +1069,7 @@
         </a>
         <a href="#p-oc1">
           <div class="big" data-count="5.8" data-decimals="1" data-suffix="M">0</div>
-          <div class="lab">個 TLA+ 狀態已模型檢驗，0 違規</div>
+          <div class="lab">TLA+ 狀態經模型檢驗，0 違規</div>
         </a>
         <a href="#p-mvf">
           <div class="big" data-count="57" data-decimals="0" data-suffix="%">0</div>
@@ -1077,7 +1077,7 @@
         </a>
         <a href="#p-noc">
           <div class="big" data-count="21" data-decimals="0" data-suffix="x">0</div>
-          <div class="lab">預言機成本低於委員會基線（倍）</div>
+          <div class="lab">預言機成本低於委員會基線</div>
         </a>
       </div>
     </div>
@@ -1087,33 +1087,33 @@
   <section class="offer" id="work">
     <div class="container">
       <div class="sh fade">
-        <span class="st">我如何做工程</span>
-        <h2 class="stitle">可驗證的生產級 AI，而非概念演示</h2>
-        <p class="ssub">大多數 AI 專案死在演示與上線之間。我專注於演示之後的部分：能做真實工作、在壓力下安全失敗、並且可以證明的系統。</p>
+        <span class="st">我怎麼做工程</span>
+        <h2 class="stitle">生產級 AI，可核驗的那種</h2>
+        <p class="ssub">多數 AI 專案死在 demo 與上線之間。我做 demo 之後那段：能跑真活兒、壓力下可解釋地失敗、並且可證明的。</p>
       </div>
       <div class="pillars">
         <div class="pcard fade">
           <div class="ic">01</div>
-          <h3>圍繞前沿模型的可靠性層</h3>
-          <p>多模型編排（OpenAI、Anthropic、本地）帶自動故障切換、內容雜湊快取，以及每次呼叫的成本、延遲與 token 遙測。</p>
+          <h3>前沿模型周圍的可靠性層</h3>
+          <p>多模型編排（OpenAI、Anthropic、本地）帶自動 failover、content-hash 快取、每次呼叫的成本/延遲/token 遙測。</p>
         </div>
         <div class="pcard fade">
           <div class="ic">02</div>
           <h3>形式化驗證</h3>
-          <p>用 TLA+ 規範並模型檢驗安全狀態機，讓熔斷電路是被證明安全的，而不是寄希望於安全。</p>
+          <p>用 TLA+ 規範並模型檢驗安全狀態機，使熔斷電路是 proven safe，不是希望安全。</p>
         </div>
         <div class="pcard fade">
           <div class="ic">03</div>
-          <h3>對抗性紅隊</h3>
-          <p>用 Q-learning 對手攻擊我自己的系統，並誠實記錄失敗模式，而不是把它們藏起來。</p>
+          <h3>對抗紅隊</h3>
+          <p>用 Q-learning 對手攻擊自己的系統，失敗模式如實記錄，不藏。</p>
         </div>
         <div class="pcard fade">
           <div class="ic">04</div>
           <h3>可重現性</h3>
-          <p>每一個報告的數字都可追溯到一個種子、一段大模型軌跡和一個結果檔案。一條命令即可重跑全部。我會寫明自己證據的侷限。</p>
+          <p>每個數字都鏈回到一個 seed、一段 LLM trace、一份 result 檔案。一條指令重跑全部。我會寫明自己證據的邊界。</p>
         </div>
       </div>
-      <p class="delivery fade">也可透過 <b>Lion Protocol</b> 承接 AI 部署交付：把一個明確界定的工作流從問題做到上線、可監控、客戶完全擁有的系統，通常約 90 天。</p>
+      <p class="delivery fade">也透過 <b>Lion Protocol</b> 接 AI 部署交付：一個明確 scope 的 workflow，從問題做到上線、可監控、客戶自持的系統，典型週期約 90 天。</p>
     </div>
   </section>
 
@@ -1123,16 +1123,16 @@
       <div class="sh fade">
         <span class="st">精選作品</span>
         <h2 class="stitle">四個已交付的系統</h2>
-        <p class="ssub">獨立從頭到尾構建。每一個都附帶測量結果與重現方法。</p>
+        <p class="ssub">獨立端到端構建。每個都附帶測量與重現方法。</p>
       </div>
       <div class="projs">
         <div class="proj fade" id="p-oc1">
           <h3>OC1：智能體安全控制系統</h3>
-          <p class="tagline">帶形式化驗證安全機制的多模型智能體堆疊。</p>
+          <p class="tagline">帶形式化驗證安全迴路的多模型智能體堆疊。</p>
           <ul>
-            <li><b>構建：</b>多模型 LLM 編排（自動故障切換）、TLA+ 安全狀態機、提示注入偵測、EVM 執行層，以及 RAG 策略預言機。獨立完成：18,400+ 行 Python、7 份 Solidity 合約、14 套測試。</li>
-            <li><b>測量：</b>P95 約 3.9 秒，安全門控決策低於 5 毫秒；5,866,037 個 TLA+ 狀態，0 違規；提示注入 F1 0.765（5% 誤報率）；在 100/100 次自適應 RL 攻擊中存活。</li>
-            <li><b>可驗證：</b>一條命令的流水線、種子可控、結論到產物可追溯。</li>
+            <li><b>構建：</b>多模型 LLM 編排（自動 failover）、TLA+ 安全狀態機、prompt injection 偵測、EVM 執行層、RAG 策略 oracle。獨立完成：18,400+ 行 Python，7 份 Solidity 合約，14 套測試。</li>
+            <li><b>測量：</b>P95 約 3.9 秒，安全門控決策 &lt; 5 毫秒；5,866,037 個 TLA+ 狀態，0 違規；prompt injection F1 0.765（5% 誤報率）；在 100/100 次自適應 RL 攻擊中存活。</li>
+            <li><b>可驗證：</b>一條指令的 pipeline，seed 可控，結論到產物可追溯。</li>
           </ul>
           <p class="note">程式碼可應要求提供。<a href="projects/index.zh-TW.html#p-oc1" style="color:var(--accent);text-decoration:none;font-weight:600;">深入了解 &rarr;</a></p>
         </div>
@@ -1140,9 +1140,9 @@
           <h3>OC2：鏈上多智能體辯論</h3>
           <p class="tagline">三個 LLM 角色辯論，裁決在鏈上執行。</p>
           <ul>
-            <li><b>構建：</b>三角色辯論（提案者、質疑者、裁判）在執行前審查 DeFi 操作，透過 4 份經 Foundry 測試的 Solidity 合約在鏈上提交，帶 ECDSA 驗證與轉錄雜湊。</li>
-            <li><b>測量：</b>裁決準確率 90.2% [87.6, 92.8]，在真實鏈上操作上與專家一致率 95%，端到端 16.8 秒，gas 比 Optimism 故障證明基線便宜 8.7%（1.95M 對 2.13M gas）。</li>
-            <li><b>可驗證：</b>76 個 Foundry 測試，涵蓋單元、對抗與 gas 基準。</li>
+            <li><b>構建：</b>三角色辯論（Proposer、Challenger、Judge）在執行前審視 DeFi 操作，經 4 份 Foundry 測試過的 Solidity 合約上鏈，附 ECDSA 驗證與 transcript hashing。</li>
+            <li><b>測量：</b>裁決準確率 90.2% [BCa 95% CI: 87.6, 92.8]，在真實鏈上操作與專家一致率 95%，端到端 16.8 秒，gas 較 Optimism fault-proof 基線省 8.7%（1.95M 對 2.13M gas）。</li>
+            <li><b>可驗證：</b>76 項 Foundry 測試，覆蓋單元、對抗、gas benchmark。</li>
           </ul>
           <p class="note">程式碼可應要求提供。<a href="projects/index.zh-TW.html#p-oc2" style="color:var(--accent);text-decoration:none;font-weight:600;">深入了解 &rarr;</a></p>
         </div>
@@ -1150,24 +1150,24 @@
           <h3>MVF-Composer：穩定幣儲備控制器</h3>
           <p class="tagline">為穩定幣錨定而生的信任加權均值-方差控制，獲 IEEE ICBC 2026 接收。</p>
           <ul>
-            <li><b>構建：</b>Stress Harness 內 12 個 LLM Agent（交易員/做市商/套利者/攻擊者），跨 OpenAI、Anthropic、DeepSeek 調度，輸出進入信任加權的均值-方差最佳化器。約 12,500 行帶型別的 Python，46 個模組。</li>
-            <li><b>測量：</b>1,200 次黑色星期四模擬，峰值脫錨 3.2%（基線 SAS 7.4%，削減 57%），回到 1% 錨定帶內 14 vs 44 個時間步（快 3.1 倍）。</li>
-            <li><b>可驗證：</b>同行評審；每次執行記錄種子、提交雜湊與時戳。</li>
+            <li><b>構建：</b>Stress Harness 內 12 個 LLM Agent（trader / LP / arbitrageur / attacker），跨 OpenAI、Anthropic、DeepSeek 調度，輸出進入信任加權的均值-方差最佳化器。約 12,500 行帶型別的 Python，46 個模組。</li>
+            <li><b>測量：</b>1,200 次 Black-Thursday 模擬，峰值脫錨 3.2%（基線 SAS 7.4%，削減 57%），回到 1% 錨定帶內 14 vs 44 個 time step（快 3.1 倍）。</li>
+            <li><b>可驗證：</b>同儕審查；每次執行記錄 seed、commit hash、時戳。</li>
           </ul>
           <p class="note">程式碼可應要求提供。<a href="projects/index.zh-TW.html#p-mvf" style="color:var(--accent);text-decoration:none;font-weight:600;">深入了解 &rarr;</a></p>
         </div>
         <div class="proj fade" id="p-noc">
-          <h3>NOC：可加密驗證的預言機</h3>
-          <p class="tagline">鏈上 SNARK 驗證，成本僅為現有方案的一小部分。</p>
+          <h3>NOC：可加密驗證的 oracle</h3>
+          <p class="tagline">鏈上 SNARK 驗證，成本為既有方案的一小部分。</p>
           <ul>
-            <li><b>構建：</b>一個 Solidity 0.8.23 預言機，帶鏈上 Groth16 與 BN254 驗證，以及質押、罰沒和按聲譽加權的共識。</li>
-            <li><b>測量：</b>在 L2 上每次更新約 0.04 美元（約比現有委員會預言機便宜 21 倍），在 37.5% 對手佔比下仍 100% 偵測拜占庭行為。</li>
-            <li><b>可驗證：</b>76 個通過的測試，含 256 次模糊測試與 gas 基準。</li>
+            <li><b>構建：</b>Solidity 0.8.23 實作的 oracle，鏈上 Groth16 與 BN254 驗證，配 staking、slashing、reputation-weighted consensus。</li>
+            <li><b>測量：</b>L2 上每次更新約 0.04 美元（約較既有 committee oracle 便宜 21 倍）；在 37.5% 對手佔比下 100% 偵測 Byzantine 行為。</li>
+            <li><b>可驗證：</b>76 個 passing test，含 256-run fuzz suite、gas benchmark。</li>
           </ul>
           <p class="note">程式碼可應要求提供。<a href="projects/index.zh-TW.html#p-noc" style="color:var(--accent);text-decoration:none;font-weight:600;">深入了解 &rarr;</a></p>
         </div>
       </div>
-      <p class="delivery fade" style="margin-top:2rem;">想看每個系統的完整問題、動機、貢獻走查? <a href="projects/index.zh-TW.html" style="color:var(--accent);text-decoration:none;font-weight:600;">前往專案頁 &rarr;</a></p>
+      <p class="delivery fade" style="margin-top:2rem;">想要每個系統的問題、動機、貢獻完整走查？<a href="projects/index.zh-TW.html" style="color:var(--accent);text-decoration:none;font-weight:600;">前往專案頁 &rarr;</a></p>
     </div>
   </section>
 
@@ -1181,8 +1181,8 @@
         <p class="ssub">我的博士研究處於自主智能體、共識設計與安全的交叉點。工程與研究互相滋養。</p>
       </div>
       <div class="rcard fade">
-        <h3>校準的多智能體決策系統</h3>
-        <p>如何信任一個自主智能體的輸出？我的研究提出一種<strong>提案者、質疑者、裁判</strong>的架構，讓獨立的智能體在決策被執行之前先辯論與裁定，作為通往可校準、可辯護自動化的路徑。我在學術上研究的同一套機制，就是我在真實系統中部署的安全層：輸出會被質疑與裁定，而不是被盲目執行。
+        <h3>可校準的多智能體決策系統</h3>
+        <p>我關心一個具體問題：憑什麼信一個自主智能體的輸出？我給的答案是一種 <strong>Proposer / Challenger / Judge</strong> 架構：獨立 agent 在決策被採用之前先辯論、給出裁定，再進入執行。它在學術上是研究對象，在生產裡是 OC1、OC2、MVF-Composer 這幾套系統的安全層：輸出是被質疑、被裁定的，不是被盲信的。
           <br><br>
           <em>主題：多智能體系統、共識與信任、校準預測、區塊鏈與去中心化系統安全。</em>
         </p>
@@ -1247,27 +1247,27 @@
           <div class="when">2024 至今</div>
           <h3>AI 部署工程師（獨立）</h3>
           <p class="org">Lion Protocol &middot; 香港</p>
-          <p>設計並交付 AI 智能體系統：多模型編排、檢索接地與安全門控，透過 FastAPI 提供服務，內建可觀測性與人在迴路的檢查點。負責界定、構建、加固並移交客戶完全擁有的系統。</p>
+          <p>設計並交付 AI 智能體系統：多模型編排、檢索 grounding、safety gating，FastAPI 出服務，內建 observability 與 human-in-the-loop checkpoint。負責 scope、build、harden，把客戶自持的系統交出去。</p>
         </div>
         <div class="ti fade">
           <div class="when">2025 至今</div>
           <h3>客座講師，金融計算 <span class="org-tag">TTPS 簽證</span></h3>
           <p class="org">香港浸會大學 工商管理學院</p>
-          <p>在研究所層次的金融計算課程擔任客座講師，教學生用 Python（NumPy、pandas、scikit-learn）構建並回測量化模型。本人現居香港，持高端人才通行證（TTPS）。</p>
+          <p>在研究所金融計算課程任客座講師，帶學生用 Python（NumPy、pandas、scikit-learn）構建並 backtest 量化模型。現居香港，持高端人才通行證（TTPS）。</p>
         </div>
         <div class="ti fade">
           <div class="when">2019</div>
           <h3>區塊鏈全端工程師（實習）</h3>
           <p class="org">The Linux Foundation &middot; 美國舊金山</p>
-          <p>用 MERN 技術堆疊為 Hyperledger Fabric 構建即時效能儀表板，並撰寫 Caliper-CLI 文件，縮短了開發者上手時間。相關工作在 <a
+          <p>為 Hyperledger Fabric 用 MERN 堆疊搭一個即時效能 dashboard，並為 Caliper-CLI 寫文件，縮短了開發者上手時間。工作在 <a
               href="https://www.youtube.com/watch?v=MK7x87mUQOk" target="_blank" rel="noopener">Hyperledger Global Forum
-              2020</a> 上展示。</p>
+              2020</a> 展示。</p>
         </div>
         <div class="ti fade">
           <div class="when">2018 至 2019</div>
           <h3>研究生研究員</h3>
-          <p class="org">普渡大學 計算機科學與工程系 &middot; 美國西拉法葉</p>
-          <p>用 Go 構建了一個安全的分層確定性（HD）錢包並開源。實作了針對 CNN 的對抗性機器學習攻擊，並向校內安全社群展示了發現。</p>
+          <p class="org">普渡大學 計算機科學與工程 &middot; 美國西拉法葉</p>
+          <p>用 Go 實作並開源了一個安全 HD（hierarchical-deterministic）錢包。實作了一種針對 CNN 的對抗 ML 攻擊，並把發現帶到校內安全社群。</p>
         </div>
       </div>
     </div>
@@ -1284,19 +1284,19 @@
           <p class="deg">電腦科學博士在讀</p>
           <p class="sch">聖母大學（University of Notre Dame）</p>
           <p class="when">指導教授：Jarek Nabrzyski</p>
-          <p class="det">博士論文研究去中心化系統中的信任與系統性風險，以及面向可校準、安全感知自動化的多智能體架構。</p>
+          <p class="det">論文方向：去中心化系統中的信任與系統性風險，面向可校準、安全感知自動化的多智能體架構。</p>
         </div>
         <div class="edu fade">
           <p class="deg">電腦科學碩士（資訊安全）</p>
           <p class="sch">普渡大學（Purdue University）</p>
           <p class="when">2018 至 2019</p>
-          <p class="det">資訊安全、密碼學與對抗性機器學習。</p>
+          <p class="det">資訊安全、密碼學、對抗性機器學習。</p>
         </div>
         <div class="edu fade">
           <p class="deg">數學學士</p>
           <p class="sch">華盛頓大學（University of Washington）</p>
           <p class="when">2014 至 2018</p>
-          <p class="det">應用數學，專注於機器學習與自然語言處理。</p>
+          <p class="det">應用數學，方向偏 ML 與 NLP。</p>
         </div>
       </div>
     </div>
@@ -1310,10 +1310,10 @@
       </div>
       <div class="grid3">
         <div class="scat fade">
-          <h3>智能體與 AI</h3>
+          <h3>智能體 &amp; AI</h3>
           <div class="chips">
             <span class="chip">多模型編排</span><span class="chip">LangGraph</span><span class="chip">RAG</span><span
-              class="chip">提示注入偵測</span><span class="chip">評測框架設計</span>
+              class="chip">prompt-injection 偵測</span><span class="chip">評測框架</span>
           </div>
         </div>
         <div class="scat fade">
@@ -1326,15 +1326,15 @@
         <div class="scat fade">
           <h3>嚴謹性</h3>
           <div class="chips">
-            <span class="chip">TLA+ 模型檢驗</span><span class="chip">BCa 自助法信賴區間</span><span
-              class="chip">預註冊實驗</span><span class="chip">可重現流水線</span>
+            <span class="chip">TLA+ 模型檢驗</span><span class="chip">BCa bootstrap CI</span><span
+              class="chip">預註冊實驗</span><span class="chip">可重現 pipeline</span>
           </div>
         </div>
         <div class="scat fade">
           <h3>區塊鏈</h3>
           <div class="chips">
             <span class="chip">Solidity</span><span class="chip">Foundry</span><span class="chip">Hardhat</span><span
-              class="chip">Gas 分析</span><span class="chip">EVM</span>
+              class="chip">gas 分析</span><span class="chip">EVM</span>
           </div>
         </div>
       </div>
@@ -1362,7 +1362,7 @@
           <p>OpenAI DevX、MiniMax、Mistral、Qwen、DeepSeek、智譜。</p>
         </div>
       </div>
-      <p class="ssub fade" style="margin-top:1.5rem;">同時在打造一門以中文為主的課程《你的第一位 AI 員工》，以及在 Lion Protocol OPC 每週一次的 Skill Studio。節奏是：做、記錄、分享、變現。</p>
+      <p class="ssub fade" style="margin-top:1.5rem;">同時在寫一門以中文為主的課《你的第一位 AI 員工》，並在 Lion Protocol OPC 每週做一次 Skill Studio。節奏：做、記錄、分享、變現。</p>
     </div>
   </section>
 
@@ -1372,7 +1372,7 @@
       <div class="cbox fade">
         <span class="st">聯絡</span>
         <h2>一起做能上線的東西</h2>
-        <p>開放 AI 部署 / FDE 機會、AI 與加密工程、開發者關係，以及精選的諮詢合作。每則訊息我都會看。</p>
+        <p>開放 AI 部署 / FDE 機會、AI × 加密工程、開發者關係，以及少量諮詢合作。每則訊息我都看。</p>
         <div class="clinks">
           <a class="clink" href="mailto:shengwei.you@gmail.com"><span>&#9993;</span> shengwei.you@gmail.com</a>
           <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank"
@@ -1386,7 +1386,7 @@
 
   <footer>
     <p>&copy; 2026 游盛巍 &middot; Shengwei You &middot; 香港</p>
-    <p>這是一個靜態網站。無追蹤、無 Cookie、不收集任何資料。</p>
+    <p>靜態網站。無追蹤、無 Cookie、不收集任何資料。</p>
   </footer>
 
   <script>
