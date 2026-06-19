@@ -166,7 +166,7 @@
     <div class="container">
       <span class="tag">研究</span>
       <h1>面向高风险自动化的校准多 Agent 决策系统</h1>
-      <p class="lede">博士工作围绕一个问题展开: <b>凭什么信一个自主 Agent 给出的输出?</b> 我给出的答案是一种 <i>Proposer、Challenger、Judge</i> 架构——三个独立 Agent 先互相辩论、给出裁定, 再进入执行。同一底盘在学术上是研究对象, 在生产里是 OC1、OC2、MVF-Composer 的安全层。校准用置信度分数与审计链外置来兜底, 不靠单次 prompt 自证可信。</p>
+      <p class="lede">博士工作围绕一个问题展开: <b>凭什么信一个自主 Agent 给出的输出?</b> 我给出的答案是一种 <i>Proposer、Challenger、Judge</i> 架构, 三个独立 Agent 先互相辩论、给出裁定, 再进入执行。同一底盘在学术上是研究对象, 在生产里是 OC1、OC2、MVF-Composer 的安全层。校准用置信度分数与审计链外置来兜底, 不靠单次 prompt 自证可信。</p>
     </div>
   </section>
 
@@ -179,7 +179,7 @@
           <h2>Proposer / Challenger / Judge: 自主 Agent 的信任底盘</h2>
           <p>单次 LLM 调用的局限很清楚: 起草决策与验证决策的是同一个模型。博士工作研究一种多 Agent 模式, Proposer 起草决策, Challenger 攻击它, Judge 提交裁定; 辩论记录做哈希后写到 LLM 之外, 审计链独立于模型内部。
             <br><br>
-            该模式同时落到三套已交付系统——OC1 (Agent 安全)、OC2 (DeFi 辩论)、MVF-Composer (稳定币储备控制)——并写进了 IEEE ICBC 2026 的论文。工程与论文走一个反馈循环: 系统上线, 装观测, 暴露论文没预测到的失败模式, 再写下一篇。当前公开数据里 OC2 裁定准确率 90.2% [BCa 95% CI: 87.6, 92.8], MVF-Composer 把峰值脱锚从 7.4% 压到 3.2% (1,200 次 Black Thursday 模拟)。
+            该模式同时落到三套已交付系统, OC1 (Agent 安全)、OC2 (DeFi 辩论)、MVF-Composer (稳定币储备控制), 并写进了 IEEE ICBC 2026 的论文。工程与论文走一个反馈循环: 系统上线, 装观测, 暴露论文没预测到的失败模式, 再写下一篇。当前公开数据里 OC2 裁定准确率 90.2% [BCa 95% CI: 87.6, 92.8], MVF-Composer 把峰值脱锚从 7.4% 压到 3.2% (1,200 次 Black Thursday 模拟)。
             <br><br>
             <em>主题: 多 Agent 系统、共识与信任、校准预测、区块链与去中心化系统安全。</em></p>
 
