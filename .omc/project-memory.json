@@ -1,0 +1,87 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1787923382731,
+  "projectRoot": "/Users/mac14/Library/Mobile Documents/com~apple~CloudDocs/Main-IC/Business/_Online_Education线上教育/jasonyou1995.github.io",
+  "techStack": {
+    "languages": [
+      {
+        "name": "Python",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "requirements.txt"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": "pip",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs"
+    ],
+    "gitBranches": {
+      "defaultBranch": "master",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "__pycache__": {
+      "path": "__pycache__",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1787923382660,
+      "keyFiles": [
+        "translate_site.cpython-314.pyc"
+      ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 0,
+      "lastAccessed": 1787923382660,
+      "keyFiles": []
+    },
+    "projects": {
+      "path": "projects",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1787923382661,
+      "keyFiles": [
+        "index.html",
+        "index.zh-CN.html",
+        "index.zh-TW.html"
+      ]
+    },
+    "research": {
+      "path": "research",
+      "purpose": null,
+      "fileCount": 3,
+      "lastAccessed": 1787923382662,
+      "keyFiles": [
+        "index.html",
+        "index.zh-CN.html",
+        "index.zh-TW.html"
+      ]
+    }
+  },
+  "hotPaths": [],
+  "userDirectives": []
+}
