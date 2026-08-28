@@ -82,6 +82,31 @@
       ]
     }
   },
-  "hotPaths": [],
+  "hotPaths": [
+    {
+      "path": "index.html",
+      "accessCount": 8,
+      "lastAccessed": 1787924772206,
+      "type": "file"
+    },
+    {
+      "path": "index.zh-CN.html",
+      "accessCount": 8,
+      "lastAccessed": 1787924777527,
+      "type": "file"
+    },
+    {
+      "path": "index.zh-TW.html",
+      "accessCount": 7,
+      "lastAccessed": 1787924782822,
+      "type": "file"
+    },
+    {
+      "path": "my_researchs.bib",
+      "accessCount": 1,
+      "lastAccessed": 1787923793006,
+      "type": "file"
+    }
+  ],
   "userDirectives": []
 }
