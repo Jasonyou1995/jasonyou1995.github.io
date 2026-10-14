@@ -1,10 +1,22 @@
+# OS / Editor noise
 .DS_Store
+.vscode/
+
+# Python toolchain (translation pipeline kept locally, not deployed)
+.venv/
+__pycache__/
+tools/
+
+# Local environment / secrets
 .env
 .env.*
 !.env.example
-.venv/
-__pycache__/
 
-.vscode/
-/.claude-flow
-/.omc
+# Claude / OMC runtime state (never deploy)
+.claude-flow/
+.omc/
+
+# Build / swap artifacts
+*.swp
+*.bak
+*~
