@@ -1,7 +1,8 @@
 /* Shengwei You site script. No dependencies, no storage, no cookies, no analytics.
    1) Agent X-ray: toggles the agent view and builds the panel from the page's real JSON-LD.
-   2) Pointer light on the hero (fine pointers only, off for reduced motion).
-   3) Digital twin widget. Talks to the proxy in twin/ when data-twin-endpoint is set,
+   2) Door picker: one situation, one next step. Works without JS (all panels stack).
+   3) Pointer light on the hero and the picker stage (fine pointers only, off for reduced motion).
+   4) Digital twin widget. Talks to the proxy in twin/ when data-twin-endpoint is set,
       otherwise degrades to a prefilled email. The browser never holds an API key. */
 (function () {
   "use strict";
@@ -103,6 +104,60 @@
     for (var i = 0; i < nodes.length; i++) if (frag(nodes[i]["@id"]) === key) { select(i, false); break; }
   });
   if (location.hash === "#xray") setXray(true, true);
+
+  /* ---------- Door picker ---------- */
+  var picker = d.getElementById("picker");
+  if (picker) {
+    var tabs = Array.prototype.slice.call(picker.querySelectorAll("[role=tab]"));
+    var panels = tabs.map(function (t) { return d.getElementById(t.getAttribute("aria-controls")); });
+    var rtl = d.documentElement.getAttribute("dir") === "rtl";
+    var pick = function (i, focus, remember) {
+      tabs.forEach(function (t, k) {
+        var on = k === i;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        if (panels[k]) panels[k].hidden = !on;
+      });
+      if (focus) tabs[i].focus();
+      if (remember && window.history && history.replaceState && !d.body.classList.contains("xray")) {
+        history.replaceState(null, "", "#for-" + tabs[i].getAttribute("data-door"));
+      }
+    };
+    var fromHash = function () {
+      var m = /^#for-([a-z]+)$/.exec(location.hash);
+      if (!m) return false;
+      for (var k = 0; k < tabs.length; k++) {
+        if (tabs[k].getAttribute("data-door") === m[1]) { pick(k, false, false); return true; }
+      }
+      return false;
+    };
+    picker.classList.add("live");
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { pick(i, false, true); });
+      t.addEventListener("keydown", function (e) {
+        var dir = 0;
+        if (e.key === "ArrowDown") dir = 1;
+        else if (e.key === "ArrowUp") dir = -1;
+        else if (e.key === "ArrowRight") dir = rtl ? -1 : 1;
+        else if (e.key === "ArrowLeft") dir = rtl ? 1 : -1;
+        else if (e.key === "Home") { e.preventDefault(); pick(0, true, true); return; }
+        else if (e.key === "End") { e.preventDefault(); pick(tabs.length - 1, true, true); return; }
+        if (!dir) return;
+        e.preventDefault();
+        pick((i + dir + tabs.length) % tabs.length, true, true);
+      });
+    });
+    if (!fromHash()) pick(0, false, false);
+    window.addEventListener("hashchange", fromHash);
+    var stage = picker.querySelector(".pick-stage");
+    if (stage && !reduce && window.matchMedia && window.matchMedia("(pointer: fine)").matches) {
+      stage.addEventListener("pointermove", function (e) {
+        var r = stage.getBoundingClientRect();
+        stage.style.setProperty("--px", ((e.clientX - r.left) / r.width * 100).toFixed(1) + "%");
+        stage.style.setProperty("--py", ((e.clientY - r.top) / r.height * 100).toFixed(1) + "%");
+      });
+    }
+  }
 
   /* ---------- Pointer light ---------- */
   var hero = d.querySelector(".hero");

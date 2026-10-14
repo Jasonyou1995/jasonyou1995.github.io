@@ -10,6 +10,7 @@ Checks (all offline):
   5. No private data patterns (phone, GPA, street address words)
   6. Every internal link and asset exists; JS under 200 KB; page weight report
   7. Text contrast of the design tokens meets WCAG AA
+  8. No unpublished claims or off-brand terms anywhere public; all 6 accepted papers render in every locale
 Still manual: run https://validator.schema.org on the live URL, and time the page from Shenzhen.
 """
 import glob
@@ -25,7 +26,7 @@ import content as C  # noqa: E402
 CORE_TYPES = {
     "WebSite", "WebPage", "Person", "ImageObject", "Service", "OfferCatalog", "Offer", "Product",
     "PropertyValue", "FAQPage", "Question", "Answer", "DefinedTermSet", "DefinedTerm", "Place",
-    "CollegeOrUniversity", "BusinessAudience",
+    "CollegeOrUniversity", "BusinessAudience", "ScholarlyArticle", "CreativeWork",
 }
 fails = []
 notes = []
@@ -131,8 +132,39 @@ def check_copy():
             fail("%s: three-dash divider" % rel)
         if banned.search(t) and rel.endswith((".html", ".md", ".txt")) and rel != "CLAUDE.md":
             fail("%s: banned word" % rel)
-        if rel.endswith((".html", ".md")) and priv.search(re.sub(r"https?://\S+|mailto:\S+|sitemap|\d{4}-\d{2}-\d{2}|5,866,037", "", t)):
-            notes.append("%s: private-data pattern matched, check by eye: %s" % (rel, priv.search(re.sub(r"https?://\S+|mailto:\S+|\d{4}-\d{2}-\d{2}|5,866,037", "", t)).group(0)))
+        if rel.endswith((".html", ".md")) and priv.search(re.sub(r"https?://\S+|mailto:\S+|sitemap|\d{4}-\d{2}-\d{2}", "", t)):
+            notes.append("%s: private-data pattern matched, check by eye: %s" % (rel, priv.search(re.sub(r"https?://\S+|mailto:\S+|\d{4}-\d{2}-\d{2}", "", t)).group(0)))
+
+
+UNPUBLISHED = re.compile(
+    r"TLA\+?|5,866,037|100\s?/\s?100|model[- ]check|adaptive attack|DEFIHARM|Three Facts at the Signing|"
+    r"Does the Judge Backend|Breaking the Peg|Configuration-Conditional|Decision-Native|Agent-Consensus|"
+    r"\bOC1\b|\bOC2\b|Intent Solver|FleetOS|BridgeOS", re.I)
+
+
+def check_unpublished():
+    """Nothing unpublished or off-brand may appear anywhere public (all locales, twin facts, specs excluded)."""
+    files = [p for p in glob.glob(os.path.join(ROOT, "**", "*"), recursive=True)
+             if p.endswith((".html", ".md", ".txt", ".js", ".css", ".toml", ".bib")) and
+             not any(x in p for x in ("/.git/", "/.venv/", "/tools/", "node_modules", "/docs/superpowers/", "/docs/build/", "CLAUDE.md", "twin/README.md", "twin/test"))]
+    for p in files:
+        t = open(p, encoding="utf-8", errors="ignore").read()
+        m = UNPUBLISHED.search(t)
+        if m:
+            fail("%s: unpublished or off-brand term %r" % (os.path.relpath(p, ROOT), m.group(0)))
+
+
+def check_papers():
+    n = len(C.PAPERS)
+    if n != 6:
+        fail("expected 6 accepted papers, found %d" % n)
+    for l in C.LOCALES:
+        t = open(os.path.join(ROOT, l["path"], "index.html"), encoding="utf-8").read()
+        if t.count('class="paper"') != n:
+            fail("%s: paper cards %d != %d" % (l["key"], t.count('class="paper"'), n))
+        for p in C.PAPERS:
+            if p["url"] and p["url"].replace("&", "&amp;") not in t:
+                fail("%s: missing paper link %s" % (l["key"], p["url"]))
 
 
 def check_links():
@@ -209,6 +241,8 @@ if __name__ == "__main__":
     check_hreflang()
     check_copy()
     check_links()
+    check_unpublished()
+    check_papers()
     check_contrast()
     check_budget()
     check_lockstep()

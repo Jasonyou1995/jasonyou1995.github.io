@@ -25,7 +25,7 @@ Every file in this repo is potentially public. Treat it as such.
 
 ## Source of truth
 
-- All copy, all 8 locales, offers, FAQ, glossary: `docs/build/content.py`. Never hand edit a generated page.
+- All copy, all 8 locales, offers, FAQ, glossary: `docs/build/content.py`. Doors, proof, papers and stages copy: `docs/build/content_home.py`. Never hand edit a generated page.
 - Layout and JSON-LD: `docs/build/build.py`. Styles: `assets/css/site.css`. Script: `assets/js/site.js`.
 - Checks: `python3 docs/build/verify.py` (JSON-LD graph, hreflang, dashes, banned words, links, contrast, JS budget).
 - Facts the twin may say: `twin/facts.md`. Twin proxy code: `twin/` (Cloudflare Worker, see twin/README.md).
@@ -36,13 +36,14 @@ Every file in this repo is potentially public. Treat it as such.
 
 8 crawlable URLs, one folder each, linked by hreflang, no JavaScript language toggle:
 `/` (en-US, x-default), `/zh-hans/`, `/zh-hk/`, `/ar/` (RTL), `/ja/`, `/ru/`, `/fr/`, `/es/`.
-Old `index.zh-CN.html` and `index.zh-TW.html` are redirect stubs. Arabic and zh-HK copy need a native speaker review.
+Old `index.zh-CN.html`, `index.zh-TW.html`, `research/` and `projects/` pages are redirect stubs. Arabic and zh-HK copy need a native speaker review.
 All locales must keep the same keys. build.py refuses to run otherwise.
 
 ## Keep off the page (hard rules)
 
-- The Intent Solver, FleetOS, BridgeOS internals and crypto positioning. They confuse the buyers above.
-- Dubai buyer names or any buyer names. Testimonials unless a written one exists.
+- Side projects, internal system names and any crypto or token positioning. They confuse the buyers above. The owner keeps the list privately.
+- Buyer names of any kind. Testimonials unless a written one exists.
+- Unpublished research: no in-review paper titles, no formal-verification claims, no attack-test numbers. Only published or accepted papers, taken from `docs/research.bib` and `docs/build/content_home.py` (PAPERS). `verify.py` fails the build if banned terms appear.
 - The title "Dr." until the defense. Use "Ph.D. candidate".
 - Home address, phone, GPA, grades, visa details, family context, budgets, prices (quotes are by RFQ only).
 - The product record in the page is a labelled format specimen. Never publish invented specs, CE or UL claims.

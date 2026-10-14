@@ -133,7 +133,7 @@ def nodes_for(loc, s, page="home"):
 
     aeo = {
         "@type": "Service", "@id": B + "#service-aeo", "name": s["svc_aeo"],
-        "serviceType": s["g1_t"], "description": s["d1_text"],
+        "serviceType": s["g1_t"], "description": s["d1_do"],
         "provider": person, "areaServed": "Worldwide",
         "audience": {"@type": "BusinessAudience", "audienceType": s["d1_tag"]},
         "url": page_url + "#doors", "hasOfferCatalog": {"@id": B + "#catalog-aeo"},
@@ -143,12 +143,12 @@ def nodes_for(loc, s, page="home"):
         "itemListElement": [
             offer("aeo-data-pack", s["off1"], s["a2"]),
             offer("aeo-rfq-agent", s["off2"], s["a2"]),
-            offer("lamp-sourcing", s["off3"], s["d1_text"]),
+            offer("lamp-sourcing", s["off3"], s["d1_do"]),
         ],
     }
     fin = {
         "@type": "Service", "@id": B + "#service-finprov", "name": s["svc_fin"],
-        "serviceType": s["g4_t"], "description": s["d2_text"],
+        "serviceType": s["g4_t"], "description": s["d2_do"],
         "provider": person, "areaServed": "Worldwide",
         "audience": {"@type": "BusinessAudience", "audienceType": s["d2_tag"]},
         "url": page_url + "#doors", "hasOfferCatalog": {"@id": B + "#catalog-finprov"},
@@ -157,7 +157,7 @@ def nodes_for(loc, s, page="home"):
         "@type": "OfferCatalog", "@id": B + "#catalog-finprov", "name": s["svc_fin"],
         "itemListElement": [
             offer("finprov-waitlist", s["off4"], s["a3"]),
-            offer("finprov-design-partner", s["off5"], s["d2_text"]),
+            offer("finprov-design-partner", s["off5"], s["d2_do"]),
         ],
     }
     props = [("material", "per-factory record"), ("rated power (W)", "per-factory record"),
@@ -181,10 +181,24 @@ def nodes_for(loc, s, page="home"):
         "inLanguage": loc["code"], "hasDefinedTerm": terms,
     }
 
+    papers = []
+    for i, p in enumerate(C.PAPERS, 1):
+        node = {
+            "@type": "ScholarlyArticle", "@id": B + "#" + p["id"], "name": p["title"],
+            "headline": p["title"], "description": s["p%d" % i], "inLanguage": "en",
+            "author": person, "creativeWorkStatus": p["status"],
+            "isPartOf": {"@type": "CreativeWork", "name": p["venue"]},
+        }
+        if p["status"] == "Published":
+            node["datePublished"] = p["year"]
+        if p["url"]:
+            node["url"] = p["url"]
+            node["sameAs"] = p["url"]
+        papers.append(node)
     if page == "cyberport":
         person_node["knowsAbout"] = [x["name"] for x in terms]
         return [website, webpage, person_node, headshot, aeo, aeo_cat, fin, fin_cat]
-    return [website, webpage, person_node, headshot, aeo, aeo_cat, fin, fin_cat, specimen, faq, glossary]
+    return [website, webpage, person_node, headshot, aeo, aeo_cat, fin, fin_cat, specimen] + papers + [faq, glossary]
 
 
 def jsonld(loc, s, page="home"):
@@ -303,18 +317,56 @@ def home_page(loc):
     s = C.S[loc["key"]]
     head, r, here = head_common(loc, s, "home", s["meta_title"], s["meta_desc"])
     i18n = json.dumps({k: s[k] for k in ("xray_on", "xray_off", "twin_hello", "twin_offline", "twin_breach", "twin_wait", "twin_error")}, ensure_ascii=False)
-    research = "research/index.html"
-    if loc["key"] == "zh-hans":
-        research = "research/index.zh-CN.html"
-    elif loc["key"] == "zh-hk":
-        research = "research/index.zh-TW.html"
-    research_href = rel(here, research)
     cp = cyberport_href(loc, here)
 
     specimen_rows = "".join(
         "<div><dt>%s</dt> <dd>per-factory record</dd></div>" % e(n)
         for n in ["material", "rated power (W)", "CE status", "UL status", "minimum order quantity", "lead time"]
     )
+
+    doors = [
+        ("lamps", 1, mailto(s["rfq_subject"], s["rfq_body"]), "service-aeo", "Service"),
+        ("finance", 2, mailto(s["fin_subject"], s["fin_body"]), "service-finprov", "Service"),
+        ("hiring", 3, mailto(s["cv_subject"], s["cv_body"]), None, None),
+        ("cyberport", 4, cp, None, None),
+    ]
+    tabs_html, panels_html = [], []
+    for idx, (slug, n, href, ld, ldt) in enumerate(doors):
+        sel = "true" if idx == 0 else "false"
+        tabs_html.append(
+            '<button type="button" role="tab" class="pick-tab" id="tab-%s" aria-controls="panel-%s" aria-selected="%s" tabindex="%s" data-door="%s"><span class="pick-n" aria-hidden="true">%d</span><span>%s</span></button>'
+            % (slug, slug, sel, "0" if idx == 0 else "-1", slug, n, e(s["d%d_tag" % n])))
+        alt = ""
+        if n == 1:
+            alt = '<a class="alt" href="%s">%s</a>' % (e(mailto(s["factory_subject"], s["factory_body"])), e(s["d1_alt"]))
+        ldattr = ' data-ld="%s" data-ld-type="%s"' % (ld, ldt) if ld else ""
+        panels_html.append(
+            """<article class="pick-panel" role="tabpanel" id="panel-%(slug)s" aria-labelledby="tab-%(slug)s" tabindex="0"%(ldattr)s>
+<h3>%(title)s</h3>
+<ol class="flow">
+<li><span class="flow-k">%(k1)s</span><p>%(have)s</p></li>
+<li><span class="flow-k">%(k2)s</span><p>%(do)s</p></li>
+<li><span class="flow-k">%(k3)s</span><p>%(get)s</p></li>
+</ol>
+<div class="pick-cta"><a class="btn go" href="%(href)s">%(cta)s<span class="arrow" aria-hidden="true"></span></a>%(alt)s</div>
+</article>""" % dict(slug=slug, ldattr=ldattr, title=e(s["d%d_title" % n]), k1=e(s["door_have"]), k2=e(s["door_do"]), k3=e(s["door_get"]),
+                     have=e(s["d%d_have" % n]), do=e(s["d%d_do" % n]), get=e(s["d%d_get" % n]), href=e(href), cta=e(s["d%d_cta" % n]), alt=alt))
+    tabs_html = "\n".join(tabs_html)
+    panels_html = "\n".join(panels_html)
+
+    papers_cards = []
+    for i, p in enumerate(C.PAPERS, 1):
+        link = ""
+        if p["url"]:
+            link = '<a class="paper-link" href="%s" rel="noopener">%s<span class="arrow" aria-hidden="true"></span></a>' % (e(p["url"]), e(s["papers_read"]))
+        papers_cards.append(
+            """<li class="paper" data-ld="%(id)s" data-ld-type="ScholarlyArticle">
+<p class="paper-meta"><span class="paper-year">%(year)s</span><span>%(venue)s</span></p>
+<p class="paper-plain">%(plain)s</p>
+<p class="paper-title" translate="no" lang="en">%(title)s</p>
+%(link)s
+</li>""" % dict(id=p["id"], year=p["year"], venue=e(p["venue"]), plain=e(s["p%d" % i]), title=e(p["title"]), link=link))
+    papers_html = "\n".join(papers_cards)
 
     body = """<a class="skip" href="#main">%(skip)s</a>
 %(header)s
@@ -337,25 +389,14 @@ def home_page(loc):
 </section>
 
 <section id="doors" class="band"><div class="wrap pad stack">
-<div class="sec-head"><p class="eyebrow">%(doors_eyebrow)s</p><h2>%(doors_title)s</h2></div>
-<div class="doors">
-<article class="door" data-ld="service-aeo" data-ld-type="Service">
-<p class="tag">%(d1_tag)s</p><h3>%(d1_title)s</h3><p>%(d1_text)s</p>
-<a class="btn" href="%(rfq)s">%(d1_cta)s</a>
-<a class="alt" href="%(factory)s">%(d1_alt)s</a>
-</article>
-<article class="door" data-ld="service-finprov" data-ld-type="Service">
-<p class="tag">%(d2_tag)s</p><h3>%(d2_title)s</h3><p>%(d2_text)s</p>
-<a class="btn" href="%(fin)s">%(d2_cta)s</a>
-</article>
-<article class="door">
-<p class="tag">%(d3_tag)s</p><h3>%(d3_title)s</h3><p>%(d3_text)s</p>
-<a class="btn" href="%(cv)s">%(d3_cta)s</a>
-</article>
-<article class="door">
-<p class="tag">%(d4_tag)s</p><h3>%(d4_title)s</h3><p>%(d4_text)s</p>
-<a class="btn" href="%(cp)s">%(d4_cta)s</a>
-</article>
+<div class="sec-head"><p class="eyebrow">%(doors_eyebrow)s</p><h2>%(doors_title)s</h2><p class="lead door-lead">%(doors_lead)s</p></div>
+<div class="picker" id="picker">
+<div class="pick-tabs" role="tablist" aria-label="%(doors_pick)s">
+%(tabs)s
+</div>
+<div class="pick-stage">
+%(panels)s
+</div>
 </div>
 <div class="specimen" data-ld="product-specimen" data-ld-type="Product">
 <h3>%(specimen_name)s</h3>
@@ -370,8 +411,12 @@ def home_page(loc):
 <div class="num"><b>%(n2_val)s</b><span>%(n2_text)s</span></div>
 <div class="num"><b>%(n3_val)s</b><span>%(n3_text)s</span></div>
 </div>
+<div id="papers" class="papers-head"><h3>%(papers_title)s</h3><p>%(papers_lead)s</p></div>
+<ol class="papers">
+%(papers)s
+</ol>
+<div class="stages"><h3>%(stages_title)s</h3><ul>%(stages)s</ul></div>
 <ul class="facts"><li>%(proof_l1)s</li><li>%(proof_l2)s</li><li>%(proof_l3)s</li></ul>
-<p><a class="more" href="%(research)s">%(proof_cta)s</a></p>
 </div></section>
 
 <section id="twin" class="dark"><div class="wrap pad twin-grid">
@@ -412,7 +457,7 @@ def home_page(loc):
 <footer id="contact" class="contact band"><div class="wrap">
 <div class="contact-row">
 <h2>%(contact_title)s</h2>
-<div class="person"><img class="portrait" src="%(r)sassets/photo.jpg" width="96" height="96" alt="%(img_alt)s" loading="lazy" decoding="async">
+<div class="person"><img class="portrait" src="%(r)sassets/img/portrait.jpg" width="176" height="220" alt="%(img_alt)s" loading="lazy" decoding="async">
 <div class="links"><a href="mailto:%(email)s">%(email)s</a><a href="%(linkedin)s" rel="me noopener">LinkedIn</a><a href="%(github)s" rel="me noopener">GitHub</a></div></div>
 </div>
 <p class="human">%(human_line)s</p>
@@ -429,19 +474,15 @@ def home_page(loc):
         hero_eyebrow=e(s["hero_eyebrow"]), hero_h1=em(s["hero_h1"]), hero_sub=e(s["hero_sub"]),
         xray_btn=e(s["xray_btn"]), xray_off=e(s["xray_off"]), xray_note=e(s["xray_note"]), hero_meta=e(s["hero_meta"]),
         lamp=LAMP_SVG,
-        doors_eyebrow=e(s["doors_eyebrow"]), doors_title=e(s["doors_title"]),
-        d1_tag=e(s["d1_tag"]), d1_title=e(s["d1_title"]), d1_text=e(s["d1_text"]), d1_cta=e(s["d1_cta"]), d1_alt=e(s["d1_alt"]),
-        d2_tag=e(s["d2_tag"]), d2_title=e(s["d2_title"]), d2_text=e(s["d2_text"]), d2_cta=e(s["d2_cta"]),
-        d3_tag=e(s["d3_tag"]), d3_title=e(s["d3_title"]), d3_text=e(s["d3_text"]), d3_cta=e(s["d3_cta"]),
-        d4_tag=e(s["d4_tag"]), d4_title=e(s["d4_title"]), d4_text=e(s["d4_text"]), d4_cta=e(s["d4_cta"]),
-        rfq=e(mailto(s["rfq_subject"], s["rfq_body"])), fin=e(mailto(s["fin_subject"], s["fin_body"])),
-        cv=e(mailto(s["cv_subject"], s["cv_body"])), factory=e(mailto(s["factory_subject"], s["factory_body"])),
-        cp=cp, specimen_name=e(s["specimen_name"]), specimen_rows=specimen_rows,
+        doors_eyebrow=e(s["doors_eyebrow"]), doors_title=e(s["doors_title"]), doors_lead=e(s["doors_lead"]),
+        doors_pick=e(s["doors_pick"]), tabs=tabs_html, panels=panels_html,
+        specimen_name=e(s["specimen_name"]), specimen_rows=specimen_rows,
+        papers_title=e(s["papers_title"]), papers_lead=e(s["papers_lead"]), papers=papers_html,
+        stages_title=e(s["stages_title"]), stages="".join("<li>%s</li>" % e(s["st%d" % i]) for i in range(1, 6)),
         proof_title=e(s["proof_title"]), proof_lead=e(s["proof_lead"]),
         n1_val=e(s["n1_val"]), n1_text=e(s["n1_text"]), n2_val=e(s["n2_val"]), n2_text=e(s["n2_text"]),
         n3_val=e(s["n3_val"]), n3_text=e(s["n3_text"]),
         proof_l1=e(s["proof_l1"]), proof_l2=e(s["proof_l2"]), proof_l3=e(s["proof_l3"]),
-        research=research_href, proof_cta=e(s["proof_cta"]),
         twin_eyebrow=e(s["twin_eyebrow"]), twin_title=e(s["twin_title"]), twin_lead=e(s["twin_lead"]),
         twin_ask=e(s["twin_ask"]), twin_break=e(s["twin_break"]), twin_hint=e(s["twin_hint"]),
         twin_placeholder=e(s["twin_placeholder"]), twin_send=e(s["twin_send"]),
@@ -535,10 +576,14 @@ def markdown_twin(loc):
     L.append("")
     L.append("## %s" % s["doors_title"])
     L.append("")
+    L.append(s["doors_lead"])
+    L.append("")
     for n, key, subj in ((1, "rfq", None), (2, "fin", None), (3, "cv", None), (4, None, None)):
         L.append("### %s (%s)" % (s["d%d_title" % n], s["d%d_tag" % n]))
         L.append("")
-        L.append(s["d%d_text" % n])
+        L.append("- %s: %s" % (s["door_have"], s["d%d_have" % n]))
+        L.append("- %s: %s" % (s["door_do"], s["d%d_do" % n]))
+        L.append("- %s: %s" % (s["door_get"], s["d%d_get" % n]))
         L.append("")
         if key:
             L.append("- %s: %s" % (s["d%d_cta" % n], mailto(s[key + "_subject"], s[key + "_body"])))
@@ -556,6 +601,16 @@ def markdown_twin(loc):
         L.append("- %s %s" % (s["n%d_val" % n], s["n%d_text" % n]))
     for n in (1, 2, 3):
         L.append("- %s" % s["proof_l%d" % n])
+    L.append("")
+    L.append("### %s" % s["papers_title"])
+    L.append("")
+    for i, p in enumerate(C.PAPERS, 1):
+        L.append("- %s, %s. %s %s%s" % (p["year"], p["venue"], s["p%d" % i], p["title"], (" " + p["url"]) if p["url"] else ""))
+    L.append("")
+    L.append("### %s" % s["stages_title"])
+    L.append("")
+    for i in range(1, 6):
+        L.append("- %s" % s["st%d" % i])
     L.append("")
     L.append("## FAQ")
     L.append("")
@@ -598,13 +653,13 @@ def llms_txt():
     L.append("")
     L.append("## Offers")
     L.append("")
-    L.append("- [AEO for crystal and marble lamps](%sindex.md): %s" % (B, en["d1_text"]))
-    L.append("- [FinProv: AI financial compliance](%sindex.md): %s" % (B, en["d2_text"]))
+    L.append("- [AEO for crystal and marble lamps](%sindex.md): %s" % (B, en["d1_do"]))
+    L.append("- [FinProv: AI financial compliance](%sindex.md): %s" % (B, en["d2_do"]))
     L.append("")
     L.append("## Optional")
     L.append("")
     L.append("- [Cyberport one-pager](%scyberport/): %s" % (B, en["cp_desc"]))
-    L.append("- [Research and papers](%sresearch/): peer-reviewed publications" % B)
+    L.append("- [Papers in plain words](%s#papers): six accepted peer-reviewed papers, each with a DOI or arXiv link where one exists" % B)
     L.append("- [Structured data](%s): every HTML page embeds a schema.org JSON-LD @graph with stable @id URLs" % B)
     L.append("- Contact: %s" % C.EMAIL)
     L.append("")
@@ -646,14 +701,15 @@ def not_found():
 """ % (B, B, ASSET_VER, links)
 
 
-def redirect_stub(target_path):
+def redirect_stub(target_path, frag=""):
     url = B + target_path
+    go = url + frag
     return """<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>Redirecting</title>
 <meta name="robots" content="noindex,follow"><link rel="canonical" href="%s">
 <meta http-equiv="refresh" content="0; url=%s"></head>
 <body><p><a href="%s">%s</a></p></body></html>
-""" % (url, url, url, url)
+""" % (url, go, go, go)
 
 
 def write(path, text):
@@ -678,6 +734,12 @@ def main():
     write("404.html", not_found())
     write("index.zh-CN.html", redirect_stub("zh-hans/"))
     write("index.zh-TW.html", redirect_stub("zh-hk/"))
+    # Retired pages: the old research and projects pages showed work that is not published and
+    # roles from the previous positioning. Their URLs now point to the matching home page.
+    for name, frag in (("research", "#papers"), ("projects", "#doors")):
+        write(name + "/index.html", redirect_stub("", frag))
+        write(name + "/index.zh-CN.html", redirect_stub("zh-hans/", frag))
+        write(name + "/index.zh-TW.html", redirect_stub("zh-hk/", frag))
 
 
 if __name__ == "__main__":

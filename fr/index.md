@@ -9,43 +9,70 @@ Quand un agent IA doit choisir un fournisseur de luminaires ou une fintech confo
 Canonical: https://jasonyou1995.github.io/fr/
 Language: fr · Dernière mise à jour: 2026-10-14
 
-## Choisissez la vôtre.
+## Qu'est-ce qui vous amène ?
 
-### Je cherche des luminaires (Acheteurs de luminaires)
+Une seule méthode soutient tout ce qui est sur cette page : rendre une affirmation vérifiable, pour qu'un agent IA puisse lui faire confiance. Choisissez votre situation et vous obtenez une seule prochaine étape.
 
-Éclairage en cristal et en marbre issu d'usines de Shenzhen et Foshan, avec des caractéristiques qu'un agent peut vérifier : matériau, puissance, statut CE et UL, quantité minimale et délai.
+### Des luminaires qu'un agent IA peut vérifier avant de les recommander. (Achat de luminaires)
+
+- Vous avez: Vous cherchez de l'éclairage en cristal ou en marbre et vous n'avez pas le temps de courir après des caractéristiques invérifiables.
+- Je fais: Je transforme les catalogues d'usines de Shenzhen et de Foshan en fiches vérifiées : matériau, puissance, statut CE et UL, quantité minimale, délai.
+- Vous obtenez: Une réponse d'une vraie personne, avec des caractéristiques que vous pouvez contrôler.
 
 - Envoyer une demande de prix: mailto:shengwei.you@gmail.com?subject=Demande%20de%20prix%20%3A%20luminaires&body=Type%20de%20produit%20%3A%0AQuantit%C3%A9%20%3A%0APays%20de%20destination%20%3A%0ACertificats%20requis%20%28CE%2C%20UL%29%20%3A%0AFourchette%20de%20prix%20vis%C3%A9e%20%28facultatif%29%20%3A
-- Vous êtes une usine ? Soyez lisible par les agents en 14 jours: mailto:shengwei.you@gmail.com?subject=AEO%20pour%20mon%20usine&body=Usine%20%3A%0AProduits%20%3A%0AVille%20%3A
+- Usine ? Devenez lisible par les agents en 14 jours: mailto:shengwei.you@gmail.com?subject=AEO%20pour%20mon%20usine&body=Usine%20%3A%0AProduits%20%3A%0AVille%20%3A
 
-### J'ai besoin de conformité IA (Équipes financières)
+### Des agents IA capables de prouver qu'ils ont respecté les règles. (Équipes finance)
 
-FinProv donne aux sociétés financières un comportement d'agent démontrable : ce qu'un agent IA peut faire, ce qu'il doit refuser, et une trace de preuves lisible par un responsable conformité.
+- Vous avez: Votre établissement adopte des agents IA, et un responsable conformité demandera ce qu'ils ont le droit de faire ou non.
+- Je fais: FinProv fixe les limites, les teste face à des attaques et garde une trace de preuves lisible par un humain.
+- Vous obtenez: Un accès anticipé et un mot à dire sur la première conception.
 
 - Rejoindre la liste d'attente FinProv: mailto:shengwei.you@gmail.com?subject=Liste%20d%27attente%20FinProv&body=Soci%C3%A9t%C3%A9%20%3A%0AFonction%20%3A%0AAgents%20IA%20que%20vous%20exploitez%20ou%20pr%C3%A9voyez%20%3A
 
-### Je recrute (Recrutement)
+### Quelqu'un qui sait sécuriser un agent IA et aussi le mettre en production. (Recrutement)
 
-Doctorant en sécurité des agents IA. J'ai conçu et vérifié des systèmes de sécurité d'agents, enseigné le calcul financier, et je mène seul un projet du problème au système en production.
+- Vous avez: Vous recrutez pour la sécurité des agents IA ou pour l'IA en finance.
+- Je fais: J'ai six articles acceptés sur la confiance et la sécurité, j'enseigne l'informatique financière et je mène seul un projet du problème au système en production.
+- Vous obtenez: Mon CV, par e-mail.
 
 - Demander mon CV: mailto:shengwei.you@gmail.com?subject=Demande%20de%20CV&body=Soci%C3%A9t%C3%A9%20%3A%0AFonction%20%3A
 
-### Une page pour le jury (Cyberport)
+### Le fondateur, le problème et la demande, sur une page. (Jury Cyberport)
 
-Le problème, les deux offres actives, pourquoi ce fondateur, et ce que je cherche à Hong Kong.
+- Vous avez: Vous évaluez des fondateurs en phase de démarrage pour Hong Kong.
+- Je fais: La page unique couvre le problème, les deux offres en service, pourquoi moi et ce que je recherche.
+- Vous obtenez: Deux minutes de lecture, sans présentation.
 
-- Lire la page de synthèse: https://jasonyou1995.github.io/cyberport/
+- Lire la page unique: https://jasonyou1995.github.io/cyberport/
 
-## Pourquoi lui faire confiance : la recherche en sécurité en dessous.
+## Pourquoi me croire : des travaux évalués par les pairs sur la confiance elle-même.
 
-Ma thèse porte sur la sécurité des agents IA autonomes. Les mêmes réflexes protègent les deux offres : supposer un attaquant, tester, garder les preuves.
+Ma thèse pose une seule question : comment des inconnus peuvent-ils faire confiance à un logiciel qui manie de l'argent et agit seul ? Six articles sont acceptés. Les voici en mots simples.
 
-- 5,866,037 états vérifiés par model checking en TLA+ sur un circuit de sécurité d'agent, 0 violation
-- 100/100 épisodes d'attaque adaptative résistés par le même système
-- 4 articles évalués par les pairs sur la confiance et la sécurité, de 2022 à 2026
-- Chargé de cours invité, calcul financier, Université baptiste de Hong Kong, depuis 2025
+- 6 articles acceptés dans des conférences et revues à comité de lecture, de 2022 à 2027
+- 5 prises de parole et victoires en public, de 2020 à 2026
+- 4 universités où j'ai étudié ou enseigné : Notre Dame, Purdue, Washington et Hong Kong Baptist
+- Chargé de cours invité en informatique financière, Hong Kong Baptist University, de 2025 à aujourd'hui
 - Cinq ans d'opérations de commerce transfrontalier en Grande Chine
-- Formation : Université de Notre-Dame (doctorant), Université Purdue, Université de Washington
+- Je fais le pont : entre les propriétaires d'usines et les acheteurs étrangers, et entre les ingénieurs IA et les responsables conformité.
+
+### Les articles, en mots simples
+
+- 2022, IEEE BCCA 2022. Ce que la confiance veut dire quand des inconnus s'appuient sur un logiciel commun pour échanger de la valeur. Trust in the Context of Blockchain Applications https://doi.org/10.1109/BCCA55292.2022.9922068
+- 2023, IEEE BCCA 2023. Observer comment on utilise vraiment des applications ouvertes sans propriétaire, pour mesurer la confiance et repérer les risques. Mining User Behavior in Decentralized Applications for Blockchain Trust and Security Analytics https://doi.org/10.1109/BCCA58897.2023.10338860
+- 2024, Cluster Computing (Springer). Un moyen pour des sources de données de se bâtir une réputation sans révéler qui les exploite. Persona-Preserving Reputation Protocol (P2RP) for Enhanced Security, Privacy, and Trust in Blockchain Oracles https://doi.org/10.1007/s10586-023-04222-4
+- 2025, Financial Cryptography and Data Security, FC 2025 Workshops (Springer). Garder une monnaie numérique stable quand elle passe d'un réseau à l'autre, avec des poignées de main cryptographiques et des traders IA. Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven Arbitrage https://doi.org/10.1007/978-3-032-00495-6_8
+- 2026, IEEE ICBC 2026. Un régulateur qui décide combien faire confiance à chaque signal, pour que les réserves d'un stablecoin tiennent sous tension. MVF-Composer: Trust-Weighted Controller for Stress-Resilient Stablecoin Reserves
+- 2027, MARBLE 2027 (Springer). Mettre un prix sur le retard quand l'argent passe d'un réseau à un autre. ASAS-BridgeAMM: Pricing Latency Risk into a Three-State Bridge AMM https://arxiv.org/abs/2601.12434
+
+### Sur scène et sur le podium
+
+- 2026 · Intervenant invité, InnoAI Thailand
+- 2026 · Intervenant, IEEE ICBC (contrôle des réserves d'un stablecoin)
+- 2025 · Animateur de session, Sino-German Scientist Conference
+- 2020 · Première place, Techstars Seattle Blockchain Startup Weekend
+- 2020 · Intervenant, Hyperledger Global Forum
 
 ## FAQ
 

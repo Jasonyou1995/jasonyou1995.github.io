@@ -9,43 +9,70 @@
 Canonical: https://jasonyou1995.github.io/zh-hans/
 Language: zh-Hans · 最后更新: 2026-10-14
 
-## 选一扇属于你的门。
+## 你为什么而来？
 
-### 我要采购灯具 (灯具采购方)
+这个页面背后只有一个方法：让每一项说法都可核验，AI 智能体才会信任它。选一个最像你的情境，你只会得到一个下一步。
 
-来自深圳和佛山工厂的水晶灯与云石灯，规格智能体可核对：材质、功率、CE 与 UL 状态、起订量、交期。
+### AI 智能体推荐之前，先能核验的灯。 (采购灯具)
+
+- 你有: 你需要水晶灯或云石灯，又没时间追问那些无法核实的参数。
+- 我来做: 我把深圳和佛山工厂的产品目录，整理成经过核对的记录：材质、功率、CE 与 UL 状态、起订量、交期。
+- 你得到: 真人回复，附上你能核对的规格。
 
 - 发送询价: mailto:shengwei.you@gmail.com?subject=%E8%AF%A2%E4%BB%B7%EF%BC%9A%E7%81%AF%E5%85%B7&body=%E4%BA%A7%E5%93%81%E7%B1%BB%E5%9E%8B%EF%BC%9A%0A%E6%95%B0%E9%87%8F%EF%BC%9A%0A%E7%9B%AE%E7%9A%84%E5%9C%B0%E5%9B%BD%E5%AE%B6%EF%BC%9A%0A%E6%89%80%E9%9C%80%E8%AE%A4%E8%AF%81%EF%BC%88CE%E3%80%81UL%EF%BC%89%EF%BC%9A%0A%E7%9B%AE%E6%A0%87%E4%BB%B7%E6%A0%BC%E5%8C%BA%E9%97%B4%EF%BC%88%E9%80%89%E5%A1%AB%EF%BC%89%EF%BC%9A
 - 工厂老板？14 天让产品被智能体读懂: mailto:shengwei.you@gmail.com?subject=%E6%88%91%E7%9A%84%E5%B7%A5%E5%8E%82%E5%81%9A%20AEO&body=%E5%B7%A5%E5%8E%82%E5%90%8D%E7%A7%B0%EF%BC%9A%0A%E4%BA%A7%E5%93%81%EF%BC%9A%0A%E5%9F%8E%E5%B8%82%EF%BC%9A
 
-### 我需要 AI 合规 (金融团队)
+### 能证明自己守规矩的 AI 智能体。 (金融团队)
 
-FinProv 让金融机构的智能体行为可被证明：AI 智能体能做什么，必须拒绝什么，并留下合规官能读懂的证据链。
+- 你有: 你的机构正在引入 AI 智能体，合规官会问：它们能做什么，不能做什么。
+- 我来做: FinProv 先划定限制，再用攻击来测试，并留下人能读懂的证据链。
+- 你得到: 抢先体验资格，以及对首版设计的发言权。
 
 - 加入 FinProv 候补名单: mailto:shengwei.you@gmail.com?subject=FinProv%20%E5%80%99%E8%A1%A5%E5%90%8D%E5%8D%95&body=%E5%85%AC%E5%8F%B8%EF%BC%9A%0A%E8%81%8C%E4%BD%8D%EF%BC%9A%0A%E6%AD%A3%E5%9C%A8%E8%BF%90%E8%A1%8C%E6%88%96%E8%AE%A1%E5%88%92%E8%BF%90%E8%A1%8C%E7%9A%84%20AI%20%E6%99%BA%E8%83%BD%E4%BD%93%EF%BC%9A
 
-### 我在招人 (招聘)
+### 既能守住 AI 智能体安全，又能把它做上线的人。 (招聘)
 
-AI 智能体安全方向博士候选人。做过并验证过智能体安全系统，讲授过金融计算，能独立把问题做成上线系统。
+- 你有: 你在招 AI 智能体安全方向，或金融 AI 方向的人。
+- 我来做: 我有六篇已录用论文，主题是信任与安全；我讲授金融计算，也能独自把问题做成上线系统。
+- 你得到: 通过邮件发给你我的简历。
 
 - 索取我的简历: mailto:shengwei.you@gmail.com?subject=%E7%B4%A2%E5%8F%96%E7%AE%80%E5%8E%86&body=%E5%85%AC%E5%8F%B8%EF%BC%9A%0A%E8%81%8C%E4%BD%8D%EF%BC%9A
 
-### 给评审的一页纸 (数码港)
+### 创办人、问题与诉求，一页说清。 (数码港评审)
 
-问题、两项在线服务、为什么是这位创办人，以及我在香港想争取的支持。
+- 你有: 你在评审想落地香港的早期创办人。
+- 我来做: 一页纸讲清问题、两项在线服务、为什么是我，以及我想争取什么。
+- 你得到: 两分钟读完，不用翻演示稿。
 
 - 阅读一页纸: https://jasonyou1995.github.io/zh-hk/cyberport/
 
-## 为什么可信：底层是安全研究。
+## 为什么可信：研究的正是“信任”本身。
 
-我的博士研究是让自主 AI 智能体保持安全。两项服务沿用同样的习惯：假设有攻击者，做测试，留下凭证。
+我的博士研究只问一个问题：陌生人如何信任一套经手资金、还会自主行动的软件？目前已有六篇论文被录用，下面用大白话讲。
 
-- 5,866,037 个状态经 TLA+ 模型检验（智能体安全回路），0 次违规
-- 100/100 轮自适应攻击，同一系统全部扛住
-- 4 篇同行评审论文，主题为信任与安全，2022 至 2026
+- 6 篇论文被同行评审的会议或期刊录用，2022 至 2027
+- 5 次公开舞台上的演讲与获奖，2020 至 2026
+- 4 所我就读或任教的大学：圣母大学、普渡大学、华盛顿大学、香港浸会大学
 - 香港浸会大学客座讲师，讲授金融计算，2025 年至今
 - 在大中华区从事跨境贸易运营五年
-- 教育背景：圣母大学（博士候选人）、普渡大学、华盛顿大学
+- 我的角色是桥梁：一头是工厂老板和海外买家，一头是 AI 工程师和合规官。
+
+### 论文，大白话版
+
+- 2022, IEEE BCCA 2022. 当陌生人依靠共用的软件来转移价值，“信任”到底指什么。 Trust in the Context of Blockchain Applications https://doi.org/10.1109/BCCA55292.2022.9922068
+- 2023, IEEE BCCA 2023. 观察人们实际怎么使用没有所有者的开放应用，用来衡量信任、发现风险。 Mining User Behavior in Decentralized Applications for Blockchain Trust and Security Analytics https://doi.org/10.1109/BCCA58897.2023.10338860
+- 2024, Cluster Computing (Springer). 让数据源在不暴露幕后是谁的前提下，也能积累信誉。 Persona-Preserving Reputation Protocol (P2RP) for Enhanced Security, Privacy, and Trust in Blockchain Oracles https://doi.org/10.1007/s10586-023-04222-4
+- 2025, Financial Cryptography and Data Security, FC 2025 Workshops (Springer). 数字货币在不同网络之间流动时如何保持稳定：用密码学握手加 AI 交易员。 Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven Arbitrage https://doi.org/10.1007/978-3-032-00495-6_8
+- 2026, IEEE ICBC 2026. 一个会权衡“该信哪个信号”的控制器，让稳定币的储备在压力下撑得住。 MVF-Composer: Trust-Weighted Controller for Stress-Resilient Stablecoin Reserves
+- 2027, MARBLE 2027 (Springer). 给“钱从一个网络转到另一个网络的延迟”定一个价格。 ASAS-BridgeAMM: Pricing Latency Risk into a Three-State Bridge AMM https://arxiv.org/abs/2601.12434
+
+### 舞台与领奖台
+
+- 2026 · 受邀演讲嘉宾，InnoAI Thailand
+- 2026 · 演讲嘉宾，IEEE ICBC（稳定币储备控制）
+- 2025 · 分会场主持，中德科学家大会
+- 2020 · 第一名，Techstars 西雅图区块链创业周末
+- 2020 · 演讲嘉宾，Hyperledger Global Forum
 
 ## FAQ
 

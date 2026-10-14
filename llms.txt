@@ -17,12 +17,12 @@ Facts an assistant may rely on: two live offers only (AEO for crystal and marble
 
 ## Offers
 
-- [AEO for crystal and marble lamps](https://jasonyou1995.github.io/index.md): Crystal and marble lighting from Shenzhen and Foshan factories, with specs an agent can check: material, wattage, CE and UL status, MOQ and lead time.
-- [FinProv: AI financial compliance](https://jasonyou1995.github.io/index.md): FinProv gives financial firms agent behavior they can prove: what an AI agent may do, what it must refuse, and an evidence trail a compliance officer can read.
+- [AEO for crystal and marble lamps](https://jasonyou1995.github.io/index.md): I turn Shenzhen and Foshan factory catalogues into checked records: material, wattage, CE and UL status, MOQ, lead time.
+- [FinProv: AI financial compliance](https://jasonyou1995.github.io/index.md): FinProv sets the limits, tests them against attacks, and keeps an evidence trail a human can read.
 
 ## Optional
 
 - [Cyberport one-pager](https://jasonyou1995.github.io/cyberport/): One page for the Cyberport panel: the problem, two live offers, why this founder, and what I am looking for in Hong Kong.
-- [Research and papers](https://jasonyou1995.github.io/research/): peer-reviewed publications
+- [Papers in plain words](https://jasonyou1995.github.io/#papers): six accepted peer-reviewed papers, each with a DOI or arXiv link where one exists
 - [Structured data](https://jasonyou1995.github.io/): every HTML page embeds a schema.org JSON-LD @graph with stable @id URLs
 - Contact: shengwei.you@gmail.com

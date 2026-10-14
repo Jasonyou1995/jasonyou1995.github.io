@@ -16,18 +16,18 @@ One page, one promise: he makes Chinese manufacturers and financial firms trustw
 
 ## Decisions made in auto mode (change freely)
 
-- Brand name: the person leads ("Shengwei You"). BridgeOS stays an internal name until the company is registered.
+- Brand name: the person leads ("Shengwei You"). The company name stays off the page until it is registered.
 - Visual system: "Marble and Light". Human view: warm marble ground #F2EFE8, ink #17140F, lamp amber accent. Agent view: near-black with amber and teal glow. Type: Instrument Serif display, Hanken Grotesk body, JetBrains Mono for machine text, all self-hosted (Google Fonts is blocked in mainland China). CJK and Arabic use system stacks.
 - Offers show no prices. Quotes are by RFQ only. The 14-day deployment is the only commercial fact shown.
 - Honest language claim: fluent English and Mandarin, learning Cantonese, Spanish and Japanese.
-- Proof numbers (5,866,037 TLA+ states with 0 violations, 100/100 adaptive attack episodes, 4 peer-reviewed papers) come from the owner's published work and the previous page. Crypto context is left out.
+- Proof is limited to published or accepted work: 6 accepted papers (docs/research.bib is the source), 5 public talks and wins, 4 universities. Each paper is shown as a plain-words card with the real title and a DOI or arXiv link. In-review titles, formal-verification claims and attack-test numbers never appear anywhere public, and verify.py fails the build if they do.
 - The sample lamp is a labelled format specimen with placeholder values, never real specs.
 
 ## Minimal loop (progress bar)
 
 | # | Quest | Binary exit | Status |
 |---|---|---|---|
-| 1 | Four-door copy in English | Each door fits one phone screen, one call to action | done |
+| 1 | Door picker copy (v3: one situation, one next step) | Each door fits one phone screen, one call to action | done |
 | 2 | Static page and JSON-LD | Validator shows 0 errors | built, run validator live |
 | 3 | 8 locale URLs with hreflang | All 8 live; native review of ar and zh-HK | built, review pending |
 | 4 | Agent X-ray toggle | A non-technical friend explains AEO back after 10 seconds | built, test with a friend |
@@ -38,3 +38,10 @@ One page, one promise: he makes Chinese manufacturers and financial firms trustw
 ## Rest protocol
 
 Three focused sessions a week, one quest per session. Every quest can be redone in under an hour. Do-overs are allowed.
+
+## v3 changes (2026-10-14, same day)
+
+- Doors became one interactive picker: four situations on the left, one panel with You have, I do, You get and a single call to action on the right. With JavaScript off, all four panels stack. In agent view, all four show at once.
+- Proof section rebuilt around the six accepted papers in plain words, a stages strip, and the bridge line. Old research and projects pages are redirect stubs to the home page.
+- Profile photo is full color in an arch frame (a doorway), generated from assets/photo.jpg into assets/img/portrait.jpg.
+- Twin Worker hardened: stateless single turn, input normalisation, strict origin and Turnstile hostname checks, fail-closed secrets, output filters for the canary in any encoding, prompt leaks, prices, promises, links and code, and the DeepSeek current model and non-thinking request.

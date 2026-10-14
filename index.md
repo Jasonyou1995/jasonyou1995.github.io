@@ -9,43 +9,70 @@ When an AI agent has to pick a lamp supplier or a compliant fintech, it can only
 Canonical: https://jasonyou1995.github.io/
 Language: en-US · Last updated: 2026-10-14
 
-## Pick the one that is yours.
+## What brings you here?
 
-### I source lamps (Lamp buyers)
+One method sits behind everything on this page: make a claim checkable, so an AI agent can trust it. Choose your situation and you get one next step.
 
-Crystal and marble lighting from Shenzhen and Foshan factories, with specs an agent can check: material, wattage, CE and UL status, MOQ and lead time.
+### Lamps an AI agent can verify before it recommends them. (Sourcing lamps)
+
+- You have: You need crystal or marble lighting and no time for unverified specs.
+- I do: I turn Shenzhen and Foshan factory catalogues into checked records: material, wattage, CE and UL status, MOQ, lead time.
+- You get: A reply from a person, with specs you can check.
 
 - Send an RFQ: mailto:shengwei.you@gmail.com?subject=RFQ%3A%20lamps&body=Product%20type%3A%0AQuantity%3A%0ADestination%20country%3A%0ACertificates%20needed%20%28CE%2C%20UL%29%3A%0ATarget%20price%20range%20%28optional%29%3A
 - Factory owner? Get agent-readable in 14 days: mailto:shengwei.you@gmail.com?subject=AEO%20for%20my%20factory&body=Factory%3A%0AProducts%3A%0ACity%3A
 
-### I need AI compliance (Finance teams)
+### AI agents that can prove they followed the rules. (Running finance)
 
-FinProv gives financial firms agent behavior they can prove: what an AI agent may do, what it must refuse, and an evidence trail a compliance officer can read.
+- You have: Your firm is adopting AI agents, and a compliance officer will ask what they may and may not do.
+- I do: FinProv sets the limits, tests them against attacks, and keeps an evidence trail a human can read.
+- You get: Early access, and a say in the first design.
 
 - Join the FinProv waitlist: mailto:shengwei.you@gmail.com?subject=FinProv%20waitlist&body=Company%3A%0ARole%3A%0AWhich%20AI%20agents%20you%20run%20or%20plan%20to%20run%3A
 
-### I'm hiring (Hiring)
+### Someone who can secure an AI agent and also ship it. (Hiring)
 
-Ph.D. candidate in AI agent security. Built and verified agent safety systems, taught financial computing, ships solo from problem to live system.
+- You have: You are hiring for AI agent safety, or for AI in finance.
+- I do: I have six accepted papers on trust and security, I teach financial computing, and I build solo from problem to live system.
+- You get: My CV, by email.
 
 - Request my CV: mailto:shengwei.you@gmail.com?subject=CV%20request&body=Company%3A%0ARole%3A
 
-### One page for the panel (Cyberport)
+### The founder, the problem and the ask, on one page. (Cyberport panel)
 
-The problem, the two live offers, why this founder, and what I am looking for in Hong Kong.
+- You have: You are reviewing early-stage founders for Hong Kong.
+- I do: The one-pager covers the problem, the two live offers, why me, and what I am looking for.
+- You get: Two minutes of reading, no deck.
 
 - Read the one-pager: https://jasonyou1995.github.io/cyberport/
 
-## Why trust it: the security work underneath.
+## Why trust it: peer-reviewed work on trust itself.
 
-My Ph.D. is on keeping autonomous AI agents safe. The same habits guard both offers: assume an attacker, test it, keep the receipts.
+My Ph.D. asks one question: how can strangers trust software that handles money and acts on its own? Six papers are accepted so far. Here they are in plain words.
 
-- 5,866,037 states model-checked in TLA+ on an agent safety circuit, 0 violations
-- 100/100 adaptive attack episodes survived by the same system
-- 4 peer-reviewed papers on trust and security, 2022 to 2026
+- 6 papers accepted at peer-reviewed venues, 2022 to 2027
+- 5 talks and wins on public stages, 2020 to 2026
+- 4 universities where I studied or taught: Notre Dame, Purdue, Washington, Hong Kong Baptist
 - Guest lecturer, Financial Computing, Hong Kong Baptist University, 2025 to present
 - Five years of cross-border trade operations across Greater China
-- Education: University of Notre Dame (Ph.D. candidate), Purdue University, University of Washington
+- I work as the bridge: between factory owners and overseas buyers, and between AI engineers and compliance officers.
+
+### The papers, in plain words
+
+- 2022, IEEE BCCA 2022. What trust means when strangers rely on shared software to move value. Trust in the Context of Blockchain Applications https://doi.org/10.1109/BCCA55292.2022.9922068
+- 2023, IEEE BCCA 2023. Reading how people actually use open apps that nobody owns, to measure trust and spot risk. Mining User Behavior in Decentralized Applications for Blockchain Trust and Security Analytics https://doi.org/10.1109/BCCA58897.2023.10338860
+- 2024, Cluster Computing (Springer). A way for data feeds to earn a reputation without revealing who runs them. Persona-Preserving Reputation Protocol (P2RP) for Enhanced Security, Privacy, and Trust in Blockchain Oracles https://doi.org/10.1007/s10586-023-04222-4
+- 2025, Financial Cryptography and Data Security, FC 2025 Workshops (Springer). Keeping digital money steady as it moves between networks, using cryptographic handshakes and AI traders. Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven Arbitrage https://doi.org/10.1007/978-3-032-00495-6_8
+- 2026, IEEE ICBC 2026. A controller that decides how much to trust each signal, so a stablecoin's reserves hold up under stress. MVF-Composer: Trust-Weighted Controller for Stress-Resilient Stablecoin Reserves
+- 2027, MARBLE 2027 (Springer). Putting a price on delay when money crosses from one network to another. ASAS-BridgeAMM: Pricing Latency Risk into a Three-State Bridge AMM https://arxiv.org/abs/2601.12434
+
+### On stage, and on the podium
+
+- 2026 · Invited speaker, InnoAI Thailand
+- 2026 · Speaker, IEEE ICBC (stablecoin reserve control)
+- 2025 · Session host, Sino-German Scientist Conference
+- 2020 · First place, Techstars Seattle Blockchain Startup Weekend
+- 2020 · Speaker, Hyperledger Global Forum
 
 ## FAQ
 

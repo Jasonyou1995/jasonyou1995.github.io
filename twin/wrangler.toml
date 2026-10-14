@@ -12,7 +12,7 @@ ALLOWED_ORIGINS = "https://jasonyou1995.github.io"
 PER_IP_PER_HOUR = "10"
 DAILY_CAP = "300"
 LLM_BASE_URL = "https://api.deepseek.com"
-LLM_MODEL = "deepseek-chat"
+LLM_MODEL = "deepseek-flash"
 
 # Create once:  npx wrangler kv namespace create RL   then paste the id here.
 [[kv_namespaces]]
@@ -25,7 +25,7 @@ enabled = false
 # Secrets (never in this file, never in git):
 #   npx wrangler secret put LLM_API_KEY
 #   npx wrangler secret put TURNSTILE_SECRET
-#   npx wrangler secret put CANARY                 (any random phrase, rotate after a breach)
+#   npx wrangler secret put CANARY                 (nonsense with digits, e.g. xq7-velm-ouro-4417; rotate after a breach)
 # Optional second provider for the FinProv door (a vendor you can defend in a compliance talk):
 #   npx wrangler secret put FINPROV_LLM_API_KEY
 #   set FINPROV_LLM_BASE_URL and FINPROV_LLM_MODEL under [vars]
