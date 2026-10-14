@@ -1,0 +1,7 @@
+#!/bin/sh
+# Enable once:  git config core.hooksPath .githooks   (needs gitleaks: brew install gitleaks)
+if command -v gitleaks >/dev/null 2>&1; then
+  gitleaks protect --staged --config .gitleaks.toml --redact || { echo "gitleaks blocked this commit"; exit 1; }
+else
+  echo "gitleaks not installed, skipping secret scan (brew install gitleaks)"
+fi

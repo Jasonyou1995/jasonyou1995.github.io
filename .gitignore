@@ -20,3 +20,7 @@ tools/
 *.swp
 *.bak
 *~
+# Twin proxy local files and secrets
+.dev.vars
+twin/.wrangler/
+twin/node_modules/

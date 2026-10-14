@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jasonyou1995.github.io/sitemap.xml
+# llms.txt: https://jasonyou1995.github.io/llms.txt

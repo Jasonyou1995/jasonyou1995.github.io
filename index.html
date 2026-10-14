@@ -1,1510 +1,538 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="en" dir="ltr" data-locale="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shengwei You (Jason You) · AI Deployment Engineer / FDE</title>
-  <meta name="description"
-    content="Shengwei You (游盛巍 / Jason You). AI Deployment Engineer and Forward Deployed Engineer. PhD candidate in Hong Kong. Four shipped, verifiable AI agent systems: TLA+-verified safety, on-chain multi-agent debate, an IEEE ICBC 2026 stablecoin controller, and a SNARK oracle.">
-  <link rel="canonical" href="https://jasonyou1995.github.io/">
-  <link rel="alternate" hreflang="en" href="https://jasonyou1995.github.io/index.html">
-  <link rel="alternate" hreflang="zh-Hans" href="https://jasonyou1995.github.io/index.zh-CN.html">
-  <link rel="alternate" hreflang="zh-Hant" href="https://jasonyou1995.github.io/index.zh-TW.html">
-  <link rel="alternate" hreflang="x-default" href="https://jasonyou1995.github.io/index.html">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Shengwei You · AI Deployment Engineer / FDE">
-  <meta property="og:description"
-    content="Four shipped, verifiable AI agent systems. PhD candidate, Hong Kong. Open to AI Deployment / FDE roles.">
-  <meta property="og:url" content="https://jasonyou1995.github.io/">
-  <meta property="og:image" content="https://jasonyou1995.github.io/assets/photo.jpg">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Shengwei You · AI Deployment Engineer / FDE">
-  <meta name="twitter:description" content="Four shipped, verifiable AI agent systems. PhD candidate, Hong Kong.">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Shengwei You",
-    "alternateName": ["游盛巍", "Jason You"],
-    "jobTitle": "AI Deployment Engineer / Forward Deployed Engineer",
-    "email": "mailto:shengwei.you@gmail.com",
-    "url": "https://jasonyou1995.github.io/",
-    "homeLocation": {"@type": "Place", "name": "Hong Kong"},
-    "knowsLanguage": ["en", "zh-Hans", "zh-Hant"],
-    "sameAs": [
-      "https://www.linkedin.com/in/shengwei-you/",
-      "https://github.com/Jasonyou1995"
-    ],
-    "alumniOf": [
-      {"@type": "CollegeOrUniversity", "name": "University of Notre Dame"},
-      {"@type": "CollegeOrUniversity", "name": "Purdue University"},
-      {"@type": "CollegeOrUniversity", "name": "University of Washington"}
-    ]
-  }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Spline+Sans:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0f0e0c;
-      --bg2: #161310;
-      --paper: #f7f3ea;
-      --ink: #15130f;
-      --accent: #e0612f;
-      --accent-2: #d9a441;
-      --text: #ece7dc;
-      --text-dim: #9a9384;
-      --border: #2a2620;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Spline Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    ::selection {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: 3px;
-    }
-
-    .bg-grain {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background:
-        radial-gradient(circle at 15% 15%, rgba(224, 97, 47, .10), transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(217, 164, 65, .07), transparent 45%), var(--bg);
-    }
-
-    /* nav */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 1.1rem 2.5rem;
-      background: rgba(15, 14, 12, .72);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    nav .wrap {
-      max-width: 1160px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: 'Fraunces', serif;
-      font-weight: 900;
-      font-size: 1.25rem;
-      letter-spacing: -.01em;
-    }
-
-    .logo span {
-      color: var(--accent);
-    }
-
-    nav ul {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    nav a {
-      color: var(--text-dim);
-      text-decoration: none;
-      font-size: .88rem;
-      font-weight: 500;
-      transition: .25s;
-      position: relative;
-    }
-
-    nav a:hover {
-      color: var(--text);
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: .25s;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    .lang {
-      font-size: .8rem;
-      color: var(--text-dim);
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      padding: 4px 12px;
-      position: relative;
-      cursor: default;
-    }
-
-    .lang .dd {
-      position: absolute;
-      top: 130%;
-      right: 0;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 6px;
-      min-width: 140px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-6px);
-      transition: .25s;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, .5);
-    }
-
-    .lang:hover .dd,
-    .lang:focus-within .dd {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .lang .dd a {
-      display: block;
-      padding: 6px 12px;
-      color: var(--text-dim);
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: .85rem;
-    }
-
-    .lang .dd a:hover {
-      background: var(--bg);
-      color: var(--accent);
-    }
-
-    .container {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 2.5rem;
-    }
-
-    section {
-      padding: 6rem 0;
-      position: relative;
-    }
-
-    /* hero */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 6rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.4fr .9fr;
-      gap: 4rem;
-      align-items: center;
-      width: 100%;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: .45rem 1rem;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      border-radius: 40px;
-      font-size: .72rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      margin-bottom: 1.6rem;
-    }
-
-    .hero h1 {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      font-size: 3.6rem;
-      line-height: 1.05;
-      letter-spacing: -.02em;
-      margin-bottom: .6rem;
-    }
-
-    .hero h1 .sur {
-      color: var(--accent);
-      font-weight: 900;
-    }
-
-    .hero h1 .cn {
-      display: block;
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--text-dim);
-      margin-top: .4rem;
-      letter-spacing: 0;
-    }
-
-    .hero .sub {
-      font-size: 1.25rem;
-      color: var(--accent-2);
-      font-weight: 500;
-      margin-bottom: 1.4rem;
-    }
-
-    .hero .lead {
-      font-size: 1.06rem;
-      color: var(--text-dim);
-      max-width: 540px;
-      margin-bottom: 2.2rem;
-    }
-
-    .hero .lead b {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .btns {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: .9rem 1.7rem;
-      border-radius: 8px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: .25s;
-      font-size: .95rem;
-    }
-
-    .btn-1 {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .btn-1:hover {
-      background: #c9501f;
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(224, 97, 47, .3);
-    }
-
-    .btn-2 {
-      border: 1px solid var(--border);
-      color: var(--text);
-    }
-
-    .btn-2:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .portrait {
-      position: relative;
-      max-width: 330px;
-      margin: 0 auto;
-    }
-
-    .portrait::before {
-      content: "";
-      position: absolute;
-      inset: -12px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      opacity: .25;
-      filter: blur(22px);
-    }
-
-    .portrait img {
-      width: 100%;
-      height: auto;
-      border-radius: 16px;
-      position: relative;
-      z-index: 1;
-      display: block;
-    }
-
-    .fcard {
-      position: absolute;
-      z-index: 2;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: .8rem 1.1rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .4);
-    }
-
-    .fcard h4 {
-      font-size: .66rem;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      margin-bottom: .2rem;
-    }
-
-    .fcard p {
-      font-size: .95rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .fc1 {
-      top: auto;
-      bottom: 20%;
-      right: -36px;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .fc2 {
-      bottom: 4%;
-      left: -36px;
-      animation: float 6s ease-in-out infinite 1.5s;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shengwei You | AEO for lamps and AI financial compliance</title>
+<meta name="description" content="Ph.D. candidate in AI agent security. I make Chinese manufacturers and financial firms readable and trustworthy to AI agents: AEO for crystal and marble lamps, and FinProv for AI financial compliance.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#F2EFE8">
+<link rel="canonical" href="https://jasonyou1995.github.io/">
+<link rel="alternate" hreflang="en-US" href="https://jasonyou1995.github.io/">
+<link rel="alternate" hreflang="zh-Hans" href="https://jasonyou1995.github.io/zh-hans/">
+<link rel="alternate" hreflang="zh-HK" href="https://jasonyou1995.github.io/zh-hk/">
+<link rel="alternate" hreflang="ar" href="https://jasonyou1995.github.io/ar/">
+<link rel="alternate" hreflang="ja" href="https://jasonyou1995.github.io/ja/">
+<link rel="alternate" hreflang="ru" href="https://jasonyou1995.github.io/ru/">
+<link rel="alternate" hreflang="fr" href="https://jasonyou1995.github.io/fr/">
+<link rel="alternate" hreflang="es" href="https://jasonyou1995.github.io/es/">
+<link rel="alternate" hreflang="x-default" href="https://jasonyou1995.github.io/">
+<link rel="alternate" type="text/markdown" href="https://jasonyou1995.github.io/index.md" title="Markdown">
+<link rel="alternate" type="text/plain" href="https://jasonyou1995.github.io/llms.txt" title="llms.txt">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shengwei You">
+<meta property="og:title" content="Shengwei You | AEO for lamps and AI financial compliance">
+<meta property="og:description" content="Ph.D. candidate in AI agent security. I make Chinese manufacturers and financial firms readable and trustworthy to AI agents: AEO for crystal and marble lamps, and FinProv for AI financial compliance.">
+<meta property="og:url" content="https://jasonyou1995.github.io/">
+<meta property="og:image" content="https://jasonyou1995.github.io/assets/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="zh_HK">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shengwei You | AEO for lamps and AI financial compliance">
+<meta name="twitter:description" content="Ph.D. candidate in AI agent security. I make Chinese manufacturers and financial firms readable and trustworthy to AI agents: AEO for crystal and marble lamps, and FinProv for AI financial compliance.">
+<meta name="twitter:image" content="https://jasonyou1995.github.io/assets/og.png">
+<link rel="preload" href="assets/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/hanken-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css?v=2026-10-14">
+<script type="application/ld+json" id="graph">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://jasonyou1995.github.io/#website",
+      "url": "https://jasonyou1995.github.io/",
+      "name": "Shengwei You",
+      "inLanguage": [
+        "en-US",
+        "zh-Hans",
+        "zh-HK",
+        "ar",
+        "ja",
+        "ru",
+        "fr",
+        "es"
+      ],
+      "publisher": {
+        "@id": "https://jasonyou1995.github.io/#person"
       }
-
-      50% {
-        transform: translateY(-9px);
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://jasonyou1995.github.io/#webpage",
+      "url": "https://jasonyou1995.github.io/",
+      "name": "Shengwei You | AEO for lamps and AI financial compliance",
+      "description": "Ph.D. candidate in AI agent security. I make Chinese manufacturers and financial firms readable and trustworthy to AI agents: AEO for crystal and marble lamps, and FinProv for AI financial compliance.",
+      "inLanguage": "en-US",
+      "isPartOf": {
+        "@id": "https://jasonyou1995.github.io/#website"
+      },
+      "about": {
+        "@id": "https://jasonyou1995.github.io/#person"
+      },
+      "mainEntity": {
+        "@id": "https://jasonyou1995.github.io/#person"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://jasonyou1995.github.io/#headshot"
+      },
+      "dateModified": "2026-10-14"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://jasonyou1995.github.io/#person",
+      "name": "Shengwei You",
+      "alternateName": [
+        "游盛巍",
+        "Jason You"
+      ],
+      "jobTitle": "Ph.D. candidate, AI agent security",
+      "description": "Ph.D. candidate in AI agent security. I make Chinese manufacturers and financial firms readable and trustworthy to AI agents: AEO for crystal and marble lamps, and FinProv for AI financial compliance.",
+      "url": "https://jasonyou1995.github.io/",
+      "image": {
+        "@id": "https://jasonyou1995.github.io/#headshot"
+      },
+      "email": "shengwei.you@gmail.com",
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Hong Kong"
+      },
+      "knowsAbout": [
+        {
+          "@id": "https://jasonyou1995.github.io/#term-aeo"
+        },
+        {
+          "@id": "https://jasonyou1995.github.io/#term-agentic-commerce"
+        },
+        {
+          "@id": "https://jasonyou1995.github.io/#term-product-digital-twin"
+        },
+        {
+          "@id": "https://jasonyou1995.github.io/#term-ai-financial-compliance"
+        },
+        {
+          "@id": "https://jasonyou1995.github.io/#term-ai-agent-security"
+        }
+      ],
+      "knowsLanguage": [
+        "en",
+        "zh-Hans"
+      ],
+      "affiliation": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Notre Dame",
+          "url": "https://www.nd.edu/"
+        }
+      ],
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Purdue University",
+          "url": "https://www.purdue.edu/"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Washington",
+          "url": "https://www.washington.edu/"
+        }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/shengwei-you/",
+        "https://github.com/Jasonyou1995"
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://jasonyou1995.github.io/#headshot",
+      "url": "https://jasonyou1995.github.io/assets/photo.jpg",
+      "contentUrl": "https://jasonyou1995.github.io/assets/photo.jpg",
+      "width": 660,
+      "height": 660,
+      "caption": "Portrait of Shengwei You"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://jasonyou1995.github.io/#service-aeo",
+      "name": "AEO for crystal and marble lamps",
+      "serviceType": "AEO (answer engine optimization)",
+      "description": "Crystal and marble lighting from Shenzhen and Foshan factories, with specs an agent can check: material, wattage, CE and UL status, MOQ and lead time.",
+      "provider": {
+        "@id": "https://jasonyou1995.github.io/#person"
+      },
+      "areaServed": "Worldwide",
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Lamp buyers"
+      },
+      "url": "https://jasonyou1995.github.io/#doors",
+      "hasOfferCatalog": {
+        "@id": "https://jasonyou1995.github.io/#catalog-aeo"
       }
-    }
-
-    /* section headers */
-    .sh {
-      margin-bottom: 3rem;
-      max-width: 640px;
-    }
-
-    .st {
-      font-size: .74rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      font-weight: 600;
-      display: block;
-      margin-bottom: .8rem;
-    }
-
-    .stitle {
-      font-family: 'Fraunces', serif;
-      font-weight: 600;
-      font-size: 2.5rem;
-      line-height: 1.1;
-      letter-spacing: -.015em;
-    }
-
-    .ssub {
-      color: var(--text-dim);
-      font-size: 1.05rem;
-      margin-top: .8rem;
-    }
-
-    /* offer / how I engineer */
-    .offer {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .pcard {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.8rem;
-      transition: .3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pcard::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      transform: scaleX(0);
-      transition: .3s;
-    }
-
-    .pcard:hover::before {
-      transform: scaleX(1);
-    }
-
-    .pcard:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
-
-    .pcard .ic {
-      font-family: 'Fraunces', serif;
-      font-weight: 900;
-      font-size: 1.4rem;
-      color: var(--accent);
-      margin-bottom: .7rem;
-    }
-
-    .pcard h3 {
-      font-size: 1.1rem;
-      margin-bottom: .6rem;
-    }
-
-    .pcard p {
-      color: var(--text-dim);
-      font-size: .92rem;
-    }
-
-    .delivery {
-      margin-top: 2rem;
-      color: var(--text-dim);
-      font-size: .95rem;
-    }
-
-    .delivery b {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    /* numbers strip */
-    .nums {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .nums a {
-      padding: 2rem 1.2rem;
-      text-align: center;
-      text-decoration: none;
-      color: inherit;
-      transition: .25s;
-    }
-
-    .nums a:not(:last-child) {
-      border-right: 1px solid var(--border);
-    }
-
-    .nums a:hover {
-      background: var(--bg2);
-    }
-
-    .nums .big {
-      font-family: 'Fraunces', serif;
-      font-weight: 900;
-      font-size: 2.6rem;
-      color: var(--accent);
-      line-height: 1;
-    }
-
-    .nums .lab {
-      color: var(--text-dim);
-      font-size: .8rem;
-      margin-top: .6rem;
-    }
-
-    /* projects */
-    .projs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    .proj {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-      transition: .3s;
-    }
-
-    .proj:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
-
-    .proj h3 {
-      font-family: 'Fraunces', serif;
-      font-size: 1.35rem;
-      font-weight: 600;
-      margin-bottom: .2rem;
-    }
-
-    .proj .tagline {
-      color: var(--accent-2);
-      font-size: .92rem;
-      margin-bottom: 1rem;
-    }
-
-    .proj ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: .6rem;
-      margin-bottom: 1.1rem;
-    }
-
-    .proj li {
-      color: var(--text-dim);
-      font-size: .9rem;
-      padding-left: 1.1rem;
-      position: relative;
-    }
-
-    .proj li::before {
-      content: "\25B9";
-      color: var(--accent);
-      position: absolute;
-      left: 0;
-    }
-
-    .proj li b {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .proj .note {
-      font-size: .82rem;
-      color: var(--text-dim);
-      border-top: 1px solid var(--border);
-      padding-top: .8rem;
-    }
-
-    /* research */
-    .rcard {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2.4rem;
-    }
-
-    .rcard h3 {
-      font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .rcard p {
-      color: var(--text-dim);
-      font-size: 1rem;
-      text-align: justify;
-    }
-
-    .rcard p em {
-      color: var(--text-dim);
-    }
-
-    /* publications */
-    .pub {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.6rem 1.8rem;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 1.5rem;
-      align-items: start;
-      margin-bottom: 1.1rem;
-      transition: .25s;
-    }
-
-    .pub:hover {
-      border-color: var(--accent);
-    }
-
-    .yr {
-      font-size: .78rem;
-      color: var(--accent);
-      font-weight: 600;
-      background: rgba(224, 97, 47, .12);
-      padding: .4rem .9rem;
-      border-radius: 30px;
-      white-space: nowrap;
-    }
-
-    .pub h3 {
-      font-size: 1.02rem;
-      line-height: 1.4;
-      margin-bottom: .4rem;
-    }
-
-    .pub .meta {
-      color: var(--text-dim);
-      font-size: .85rem;
-    }
-
-    .pub .meta a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    /* timeline */
-    .tl {
-      position: relative;
-      padding-left: 2.4rem;
-    }
-
-    .tl::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: .5rem;
-      bottom: .5rem;
-      width: 2px;
-      background: linear-gradient(180deg, var(--accent), var(--accent-2));
-    }
-
-    .ti {
-      position: relative;
-      padding-bottom: 2.4rem;
-    }
-
-    .ti::before {
-      content: "";
-      position: absolute;
-      left: -2.4rem;
-      top: .4rem;
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: var(--accent);
-      margin-left: -4.5px;
-      box-shadow: 0 0 16px var(--accent);
-    }
-
-    .ti .when {
-      font-size: .82rem;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .ti h3 {
-      font-size: 1.15rem;
-      margin: .3rem 0 .2rem;
-    }
-
-    .ti h3 .org-tag {
-      display: inline-block;
-      margin-left: .4rem;
-      padding: .12rem .55rem;
-      border: 1px solid var(--border);
-      color: var(--text-dim);
-      border-radius: 20px;
-      font-size: .68rem;
-      font-weight: 500;
-      vertical-align: middle;
-    }
-
-    .ti .org {
-      color: var(--text-dim);
-      font-size: .92rem;
-      margin-bottom: .7rem;
-    }
-
-    .ti p {
-      color: var(--text-dim);
-      font-size: .92rem;
-    }
-
-    .ti p a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    /* skills + edu grids */
-    .grid3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .scat {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.6rem;
-    }
-
-    .scat h3 {
-      font-size: 1rem;
-      margin-bottom: 1.1rem;
-    }
-
-    .scat p {
-      color: var(--text-dim);
-      font-size: .9rem;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .6rem;
-    }
-
-    .chip {
-      padding: .4rem .9rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      font-size: .82rem;
-      color: var(--text-dim);
-      transition: .25s;
-    }
-
-    .chip:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .edu {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.8rem;
-      transition: .3s;
-    }
-
-    .edu:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-    }
-
-    .edu .deg {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: .3rem;
-    }
-
-    .edu .sch {
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: .2rem;
-    }
-
-    .edu .when {
-      color: var(--text-dim);
-      font-size: .82rem;
-      margin-bottom: .8rem;
-    }
-
-    .edu .det {
-      color: var(--text-dim);
-      font-size: .88rem;
-    }
-
-    /* contact */
-    .cbox {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 3.5rem;
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .cbox h2 {
-      font-family: 'Fraunces', serif;
-      font-size: 2.2rem;
-      font-weight: 600;
-      margin-bottom: .8rem;
-    }
-
-    .cbox p {
-      color: var(--text-dim);
-      margin-bottom: 2rem;
-    }
-
-    .clinks {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .clink {
-      display: flex;
-      align-items: center;
-      gap: .6rem;
-      color: var(--text);
-      text-decoration: none;
-      padding: .85rem 1.4rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      transition: .25s;
-      font-size: .92rem;
-    }
-
-    .clink:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    footer {
-      text-align: center;
-      padding: 2.5rem;
-      border-top: 1px solid var(--border);
-      color: var(--text-dim);
-      font-size: .85rem;
-    }
-
-    footer p {
-      margin: .25rem 0;
-    }
-
-    .fade {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: all .6s ease;
-    }
-
-    .fade.vis {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media(max-width:900px) {
-      nav ul {
-        display: none;
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://jasonyou1995.github.io/#catalog-aeo",
+      "name": "AEO for crystal and marble lamps",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "@id": "https://jasonyou1995.github.io/#offer-aeo-data-pack",
+          "name": "Agent-readable product data, 14-day deployment",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Agent-readable product data, 14-day deployment",
+            "description": "Each lamp becomes a verified, machine-readable record in several languages, plus an RFQ agent for first-round questions. The deployment package runs 14 days."
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://jasonyou1995.github.io/#offer-aeo-rfq-agent",
+          "name": "Multilingual RFQ agent",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Multilingual RFQ agent",
+            "description": "Each lamp becomes a verified, machine-readable record in several languages, plus an RFQ agent for first-round questions. The deployment package runs 14 days."
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://jasonyou1995.github.io/#offer-lamp-sourcing",
+          "name": "Lamp sourcing by RFQ",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Lamp sourcing by RFQ",
+            "description": "Crystal and marble lighting from Shenzhen and Foshan factories, with specs an agent can check: material, wattage, CE and UL status, MOQ and lead time."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://jasonyou1995.github.io/#service-finprov",
+      "name": "FinProv: AI financial compliance",
+      "serviceType": "AI financial compliance",
+      "description": "FinProv gives financial firms agent behavior they can prove: what an AI agent may do, what it must refuse, and an evidence trail a compliance officer can read.",
+      "provider": {
+        "@id": "https://jasonyou1995.github.io/#person"
+      },
+      "areaServed": "Worldwide",
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Finance teams"
+      },
+      "url": "https://jasonyou1995.github.io/#doors",
+      "hasOfferCatalog": {
+        "@id": "https://jasonyou1995.github.io/#catalog-finprov"
       }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero h1 {
-        font-size: 2.7rem;
-      }
-
-      .hero .lead {
-        margin: 0 auto 2.2rem;
-      }
-
-      .btns {
-        justify-content: center;
-      }
-
-      .portrait {
-        order: -1;
-        max-width: 240px;
-      }
-
-      .fcard {
-        display: none;
-      }
-
-      .nums {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .nums a:nth-child(2) {
-        border-right: none;
-      }
-
-      .nums a:nth-child(1),
-      .nums a:nth-child(2) {
-        border-bottom: 1px solid var(--border);
-      }
-
-      .projs {
-        grid-template-columns: 1fr;
-      }
-
-      .stitle {
-        font-size: 2rem;
-      }
-
-      .container {
-        padding: 0 1.4rem;
-      }
-
-      nav {
-        padding: 1rem 1.4rem;
-      }
-
-      .pub {
-        grid-template-columns: 1fr;
-        gap: .7rem;
-      }
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://jasonyou1995.github.io/#catalog-finprov",
+      "name": "FinProv: AI financial compliance",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "@id": "https://jasonyou1995.github.io/#offer-finprov-waitlist",
+          "name": "FinProv early-access waitlist",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "FinProv early-access waitlist",
+            "description": "AI financial compliance: limits, tests and evidence for AI agents used by financial firms. The waitlist is open."
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://jasonyou1995.github.io/#offer-finprov-design-partner",
+          "name": "Design partner conversations for firms running AI agents",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Design partner conversations for firms running AI agents",
+            "description": "FinProv gives financial firms agent behavior they can prove: what an AI agent may do, what it must refuse, and an evidence trail a compliance officer can read."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "https://jasonyou1995.github.io/#product-specimen",
+      "name": "Specimen record: crystal pendant lamp (format demo, not for sale)",
+      "description": "Format demonstration of an AEO product record. Values are supplied per factory. Not a product for sale.",
+      "category": "Lighting",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "material",
+          "value": "per-factory record"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "rated power (W)",
+          "value": "per-factory record"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "CE status",
+          "value": "per-factory record"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "UL status",
+          "value": "per-factory record"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "minimum order quantity",
+          "value": "per-factory record"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "lead time",
+          "value": "per-factory record"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://jasonyou1995.github.io/#faq",
+      "inLanguage": "en-US",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is AEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Answer engine optimization: structuring a business so AI assistants can find it, read it, verify it and recommend it, instead of only ranking it in a search list."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a factory get?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each lamp becomes a verified, machine-readable record in several languages, plus an RFQ agent for first-round questions. The deployment package runs 14 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is FinProv?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI financial compliance: limits, tests and evidence for AI agents used by financial firms. The waitlist is open."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are you based, and which languages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hong Kong and Shenzhen. English and Mandarin fluently, learning Cantonese, Spanish and Japanese. This page exists in eight languages."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get a quote?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Send an email with the product type, quantity and destination country."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://jasonyou1995.github.io/#glossary",
+      "name": "Terms used here",
+      "inLanguage": "en-US",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://jasonyou1995.github.io/#term-aeo",
+          "name": "AEO (answer engine optimization)",
+          "description": "Preparing a business so AI assistants can find, read, verify and recommend it.",
+          "inDefinedTermSet": {
+            "@id": "https://jasonyou1995.github.io/#glossary"
+          }
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://jasonyou1995.github.io/#term-agentic-commerce",
+          "name": "Agentic commerce",
+          "description": "Buying and selling where AI agents act for the buyer or the seller.",
+          "inDefinedTermSet": {
+            "@id": "https://jasonyou1995.github.io/#glossary"
+          }
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://jasonyou1995.github.io/#term-product-digital-twin",
+          "name": "Product digital twin",
+          "description": "A machine-readable record of a physical product: specs, certificates, prices, lead time.",
+          "inDefinedTermSet": {
+            "@id": "https://jasonyou1995.github.io/#glossary"
+          }
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://jasonyou1995.github.io/#term-ai-financial-compliance",
+          "name": "AI financial compliance",
+          "description": "Proof that AI agents in finance stay within the rules: limits, tests, logs.",
+          "inDefinedTermSet": {
+            "@id": "https://jasonyou1995.github.io/#glossary"
+          }
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://jasonyou1995.github.io/#term-ai-agent-security",
+          "name": "AI agent security",
+          "description": "Protecting autonomous AI systems from manipulation and misuse.",
+          "inDefinedTermSet": {
+            "@id": "https://jasonyou1995.github.io/#glossary"
+          }
+        }
+      ]
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .fade {
-        transition: none;
-        opacity: 1;
-        transform: none;
-      }
-
-      .fc1,
-      .fc2 {
-        animation: none;
-      }
-    }
-  </style>
+  ]
+}
+</script>
 </head>
-
 <body>
-  <div class="bg-grain"></div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top" data-ld="website" data-ld-type="WebSite">
+<div class="wrap">
+<a class="brand" href="./"><span class="brand-mark" aria-hidden="true">SY</span><span translate="no">Shengwei You</span></a>
+<nav class="nav" aria-label="Primary"><a href="#doors">Doors</a><a href="#proof">Proof</a><a href="#twin">Twin</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+<details class="lang"><summary aria-label="Language">English</summary><ul><li><a href="./" hreflang="en-US" lang="en" aria-current="true">English</a></li><li><a href="zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a></li><li><a href="zh-hk/" hreflang="zh-HK" lang="zh-Hant-HK">繁體中文（香港）</a></li><li><a href="ar/" hreflang="ar" lang="ar">العربية</a></li><li><a href="ja/" hreflang="ja" lang="ja">日本語</a></li><li><a href="ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="es/" hreflang="es" lang="es">Español</a></li></ul></details>
+</nav>
+</div>
+</header>
+<main id="main" data-ld="webpage" data-ld-type="WebPage">
 
-  <nav>
-    <div class="wrap">
-      <div class="logo">Shengwei <span>You</span></div>
-      <div style="display:flex;align-items:center;gap:1.8rem;">
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#numbers">Numbers</a></li>
-          <li><a href="#work">Work</a></li>
-          <li><a href="projects/">Projects</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="research/">Papers</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="lang" tabindex="0" aria-label="Language"><span>&#127760; EN</span>
-          <div class="dd">
-            <a href="index.html">English</a>
-            <a href="index.zh-CN.html">&#31616;&#20307;&#20013;&#25991;</a>
-            <a href="index.zh-TW.html">&#32321;&#39636;&#20013;&#25991;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
+<section class="hero" id="top">
+<div class="wrap">
+<div class="hero-copy" data-ld="person" data-ld-type="Person">
+<p class="eyebrow">Hong Kong and Shenzhen · Ph.D. candidate, AI agent security</p>
+<h1>I make factories and financial firms <em>readable</em> to AI agents.</h1>
+<p class="hero-sub">When an AI agent has to pick a lamp supplier or a compliant fintech, it can only choose what it can read and verify. I build that trust layer for agentic commerce.</p>
+<div class="xray-row">
+<button type="button" class="xray-btn" id="xray-toggle" role="switch" aria-checked="false" aria-controls="xray-panel"><span class="sw" aria-hidden="true"></span>See this page as an AI agent</button>
+<p class="xray-note"><span id="xray-label">Agent view: off</span><br>One switch. Same page, as machines read it.</p>
+</div>
+<p class="hero-meta">2 live offers · 8 languages · machine-readable by design</p>
+</div>
+<div class="lamp"><svg viewBox="0 0 360 520" aria-hidden="true" focusable="false">
+<defs>
+<radialGradient id="lamp-glow" cx="50%" cy="52%" r="55%"><stop offset="0%" stop-color="#F7C46B" stop-opacity=".95"/><stop offset="55%" stop-color="#F2A33A" stop-opacity=".35"/><stop offset="100%" stop-color="#F2A33A" stop-opacity="0"/></radialGradient>
+<linearGradient id="lamp-body" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FFF4DC" stop-opacity=".95"/><stop offset="100%" stop-color="#F2A33A" stop-opacity=".45"/></linearGradient>
+</defs>
+<circle class="halo" cx="180" cy="290" r="170"/>
+<line class="cord" x1="180" y1="0" x2="180" y2="92" stroke-width="2"/>
+<rect class="cap" x="154" y="92" width="52" height="22"/>
+<polygon class="body" points="180,114 120,206 96,300 140,400 180,438 220,400 264,300 240,206"/>
+<g class="facets"><path d="M180 114 L180 438"/><path d="M120 206 L240 206"/><path d="M96 300 L264 300"/><path d="M120 206 L180 300 L240 206"/><path d="M96 300 L180 438 L264 300"/><path d="M140 400 L180 300 L220 400"/><path d="M180 114 L120 206"/><path d="M180 114 L240 206"/></g>
+<polygon class="drop" points="148,438 158,456 148,474 138,456"/><polygon class="drop" points="180,448 190,470 180,492 170,470"/><polygon class="drop" points="212,438 222,456 212,474 202,456"/>
+<g class="nodes"><circle cx="120" cy="206" r="6"/><circle cx="240" cy="206" r="6"/><circle cx="96" cy="300" r="6"/><circle cx="264" cy="300" r="6"/><circle cx="180" cy="438" r="6"/></g>
+</svg></div>
+</div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero" id="about">
-    <div class="container">
-      <div class="hero-grid">
-        <div class="fade">
-          <span class="tag">Open to AI Deployment / FDE roles</span>
-          <h1><span class="notranslate">Shengwei <span class="sur">You</span><span class="cn">&#28216;&#30427;&#24013;
-                &middot; Jason</span></span></h1>
-          <p class="sub">AI Deployment Engineer / FDE</p>
-          <p class="lead">I build the full reliability layer around frontier model calls: multi-provider orchestration,
-            retrieval grounding, on-chain execution, and <b>provable safety gating</b>. I verify every claim with
-            seeds, logs, and receipts, and I treat my own results with a reviewer's skepticism.</p>
-          <div class="btns">
-            <a href="#numbers" class="btn btn-1">See the work</a>
-            <a href="#contact" class="btn btn-2">Get in touch</a>
-          </div>
-        </div>
-        <div class="fade">
-          <div class="portrait">
-            <img src="assets/photo.jpg" width="660" height="660" alt="Shengwei You (&#28216;&#30427;&#24013;)">
-            <div class="fcard fc1">
-              <h4>Focus</h4>
-              <p>Agent safety &amp; deployment</p>
-            </div>
-            <div class="fcard fc2">
-              <h4>Open to</h4>
-              <p>FDE &amp; AI roles</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="doors" class="band"><div class="wrap pad stack">
+<div class="sec-head"><p class="eyebrow">Four doors</p><h2>Pick the one that is yours.</h2></div>
+<div class="doors">
+<article class="door" data-ld="service-aeo" data-ld-type="Service">
+<p class="tag">Lamp buyers</p><h3>I source lamps</h3><p>Crystal and marble lighting from Shenzhen and Foshan factories, with specs an agent can check: material, wattage, CE and UL status, MOQ and lead time.</p>
+<a class="btn" href="mailto:shengwei.you@gmail.com?subject=RFQ%3A%20lamps&amp;body=Product%20type%3A%0AQuantity%3A%0ADestination%20country%3A%0ACertificates%20needed%20%28CE%2C%20UL%29%3A%0ATarget%20price%20range%20%28optional%29%3A">Send an RFQ</a>
+<a class="alt" href="mailto:shengwei.you@gmail.com?subject=AEO%20for%20my%20factory&amp;body=Factory%3A%0AProducts%3A%0ACity%3A">Factory owner? Get agent-readable in 14 days</a>
+</article>
+<article class="door" data-ld="service-finprov" data-ld-type="Service">
+<p class="tag">Finance teams</p><h3>I need AI compliance</h3><p>FinProv gives financial firms agent behavior they can prove: what an AI agent may do, what it must refuse, and an evidence trail a compliance officer can read.</p>
+<a class="btn" href="mailto:shengwei.you@gmail.com?subject=FinProv%20waitlist&amp;body=Company%3A%0ARole%3A%0AWhich%20AI%20agents%20you%20run%20or%20plan%20to%20run%3A">Join the FinProv waitlist</a>
+</article>
+<article class="door">
+<p class="tag">Hiring</p><h3>I&#x27;m hiring</h3><p>Ph.D. candidate in AI agent security. Built and verified agent safety systems, taught financial computing, ships solo from problem to live system.</p>
+<a class="btn" href="mailto:shengwei.you@gmail.com?subject=CV%20request&amp;body=Company%3A%0ARole%3A">Request my CV</a>
+</article>
+<article class="door">
+<p class="tag">Cyberport</p><h3>One page for the panel</h3><p>The problem, the two live offers, why this founder, and what I am looking for in Hong Kong.</p>
+<a class="btn" href="cyberport/">Read the one-pager</a>
+</article>
+</div>
+<div class="specimen" data-ld="product-specimen" data-ld-type="Product">
+<h3>Specimen record: crystal pendant lamp (format demo, not for sale)</h3>
+<dl><div><dt>material</dt> <dd>per-factory record</dd></div><div><dt>rated power (W)</dt> <dd>per-factory record</dd></div><div><dt>CE status</dt> <dd>per-factory record</dd></div><div><dt>UL status</dt> <dd>per-factory record</dd></div><div><dt>minimum order quantity</dt> <dd>per-factory record</dd></div><div><dt>lead time</dt> <dd>per-factory record</dd></div></dl>
+</div>
+</div></section>
 
-  <!-- NUMBERS -->
-  <section id="numbers">
-    <div class="container">
-      <div class="sh fade">
-        <span class="st">By the numbers</span>
-        <h2 class="stitle">Verifiable, not claimed</h2>
-        <p class="ssub">Every figure traces to a seed, a log, and a result file. Click a number to jump to the system
-          that produced it.</p>
-      </div>
-      <div class="nums fade">
-        <a href="#p-oc1">
-          <div class="big" data-count="18400" data-decimals="0" data-suffix="+">0</div>
-          <div class="lab">lines of production Python, shipped solo</div>
-        </a>
-        <a href="#p-oc1">
-          <div class="big" data-count="5.8" data-decimals="1" data-suffix="M">0</div>
-          <div class="lab">TLA+ states model-checked, 0 violations</div>
-        </a>
-        <a href="#p-mvf">
-          <div class="big" data-count="57" data-decimals="0" data-suffix="%">0</div>
-          <div class="lab">peak peg deviation cut, IEEE ICBC 2026</div>
-        </a>
-        <a href="#p-noc">
-          <div class="big" data-count="21" data-decimals="0" data-suffix="x">0</div>
-          <div class="lab">cheaper oracle vs committee baseline</div>
-        </a>
-      </div>
-    </div>
-  </section>
+<section id="proof"><div class="wrap pad stack">
+<div class="split"><h2>Why trust it: the security work underneath.</h2><p class="lead">My Ph.D. is on keeping autonomous AI agents safe. The same habits guard both offers: assume an attacker, test it, keep the receipts.</p></div>
+<div class="nums">
+<div class="num"><b>5,866,037</b><span>states model-checked in TLA+ on an agent safety circuit, 0 violations</span></div>
+<div class="num"><b>100/100</b><span>adaptive attack episodes survived by the same system</span></div>
+<div class="num"><b>4</b><span>peer-reviewed papers on trust and security, 2022 to 2026</span></div>
+</div>
+<ul class="facts"><li>Guest lecturer, Financial Computing, Hong Kong Baptist University, 2025 to present</li><li>Five years of cross-border trade operations across Greater China</li><li>Education: University of Notre Dame (Ph.D. candidate), Purdue University, University of Washington</li></ul>
+<p><a class="more" href="research/index.html">Read the papers</a></p>
+</div></section>
 
-  <!-- HOW I ENGINEER -->
-  <section class="offer" id="work">
-    <div class="container">
-      <div class="sh fade">
-        <span class="st">How I engineer</span>
-        <h2 class="stitle">Production AI you can verify, not proofs-of-concept</h2>
-        <p class="ssub">Most AI projects die between the demo and the deploy. I build for the part after the demo: systems
-          that do real work, fail safe under pressure, and prove it.</p>
-      </div>
-      <div class="pillars">
-        <div class="pcard fade">
-          <div class="ic">01</div>
-          <h3>Reliability layer around frontier models</h3>
-          <p>Multi-provider orchestration (OpenAI, Anthropic, local) with automatic failover, content-hashed caching,
-            and per-call cost, latency, and token telemetry.</p>
-        </div>
-        <div class="pcard fade">
-          <div class="ic">02</div>
-          <h3>Formal verification</h3>
-          <p>Safety state machines specified and model-checked in TLA+, so the kill-circuit is proven safe, not hoped
-            safe.</p>
-        </div>
-        <div class="pcard fade">
-          <div class="ic">03</div>
-          <h3>Adversarial red-teaming</h3>
-          <p>A Q-learning adversary I use to attack my own systems, with the failure modes documented honestly instead
-            of hidden.</p>
-        </div>
-        <div class="pcard fade">
-          <div class="ic">04</div>
-          <h3>Reproducibility</h3>
-          <p>Every reported number traces to a seed, an LLM trace, and a result file. One command reruns everything. I
-            document the limits of my own evidence.</p>
-        </div>
-      </div>
-      <p class="delivery fade">Also available for AI deployment delivery work through <b>Lion Protocol</b>: one scoped
-        workflow taken from problem to a live, monitored, owned system, typically in about 90 days.</p>
-    </div>
-  </section>
+<section id="twin" class="dark"><div class="wrap pad twin-grid">
+<div class="twin-copy">
+<p class="eyebrow">Digital twin</p>
+<h2>Ask my twin. Or try to break it.</h2>
+<p class="lead">It answers only from a short public fact file, has no tools, and cannot quote prices. If you make it break its own rules, you earn a place on the hall of fame.</p>
+</div>
+<div class="twin" id="twin-app">
+<div class="tw-modes" role="group" aria-label="Digital twin">
+<button type="button" data-mode="ask" aria-pressed="true">Ask</button>
+<button type="button" data-mode="break" aria-pressed="false">Break it</button>
+</div>
+<p class="tw-hint" id="tw-hint" hidden>Break mode: get it to quote a price, reveal its instructions, or promise something it cannot.</p>
+<div class="tw-log" id="tw-log" aria-live="polite"></div>
+<form class="tw-form" id="tw-form" autocomplete="off">
+<label for="tw-input" class="sr" style="position:absolute;inset-inline-start:-9999px">Ask about lamps, FinProv or my work</label>
+<input id="tw-input" type="text" maxlength="500" placeholder="Ask about lamps, FinProv or my work">
+<div id="tw-ts"></div>
+<button type="submit" id="tw-send">Send</button>
+</form>
+</div>
+</div></section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="container">
-      <div class="sh fade">
-        <span class="st">Selected work</span>
-        <h2 class="stitle">Four shipped systems</h2>
-        <p class="ssub">Built solo, end to end. Each one ships with the measurements and the means to reproduce them.</p>
-      </div>
-      <div class="projs">
-        <div class="proj fade" id="p-oc1">
-          <h3>OC1: Agent Safety Control System</h3>
-          <p class="tagline">A multi-provider agent stack with a formally verified safety circuit.</p>
-          <ul>
-            <li><b>Built:</b> multi-provider LLM orchestration with auto-failover, a TLA+ safety state machine,
-              prompt-injection detection, an EVM execution layer, and a RAG policy oracle. Solo: 18,400+ lines of
-              Python, 7 Solidity contracts, 14 test suites.</li>
-            <li><b>Measured:</b> P95 about 3.9s with sub-5ms safety gating; 5,866,037 TLA+ states, 0 violations;
-              prompt-injection F1 0.765 at a 5% false-positive rate; survived 100/100 adaptive RL attack episodes.</li>
-            <li><b>Verifiable:</b> one-command pipeline, seed-controlled, with claim-to-artifact traceability.</li>
-          </ul>
-          <p class="note">Code available on request. <a href="projects/#p-oc1" style="color:var(--accent);text-decoration:none;font-weight:600;">Deep dive &rarr;</a></p>
-        </div>
-        <div class="proj fade" id="p-oc2">
-          <h3>OC2: On-Chain Multi-Agent Debate</h3>
-          <p class="tagline">Three LLM roles argue, then the verdict is enforced on-chain.</p>
-          <ul>
-            <li><b>Built:</b> a 3-role debate (Proposer, Challenger, Judge) that vets DeFi actions before execution,
-              committed on-chain via 4 Foundry-tested Solidity contracts with ECDSA verification and transcript
-              hashing.</li>
-            <li><b>Measured:</b> 90.2% verdict accuracy [87.6, 92.8], 95% expert agreement on real on-chain actions,
-              16.8s end to end, 8.7% cheaper gas than the Optimism fault-proof baseline (1.95M vs 2.13M gas).</li>
-            <li><b>Verifiable:</b> 76 Foundry tests covering unit, adversarial, and gas benchmarks.</li>
-          </ul>
-          <p class="note">Code available on request. <a href="projects/#p-oc2" style="color:var(--accent);text-decoration:none;font-weight:600;">Deep dive &rarr;</a></p>
-        </div>
-        <div class="proj fade" id="p-mvf">
-          <h3>MVF-Composer: Stablecoin Reserve Controller</h3>
-          <p class="tagline">Trust-weighted mean-variance control for stablecoin pegs, accepted at IEEE ICBC 2026.</p>
-          <ul>
-            <li><b>Built:</b> Stress Harness with 12 LLM agents (trader / LP / arbitrageur / attacker) across OpenAI,
-              Anthropic, and DeepSeek, feeding a trust-weighted mean-variance optimizer. ~12,500 lines of typed Python
-              across 46 modules.</li>
-            <li><b>Measured:</b> across 1,200 Black-Thursday simulations, peak peg deviation 3.2% vs 7.4% for the SAS
-              baseline (57% reduction), and 14 vs 44 time steps to recover within 1% of peg (3.1&times; faster).</li>
-            <li><b>Verifiable:</b> peer-reviewed; each run captures seed, commit hash, and timestamp.</li>
-          </ul>
-          <p class="note">Code available on request. <a href="projects/#p-mvf" style="color:var(--accent);text-decoration:none;font-weight:600;">Deep dive &rarr;</a></p>
-        </div>
-        <div class="proj fade" id="p-noc">
-          <h3>NOC: Cryptographically Verifiable Oracle</h3>
-          <p class="tagline">On-chain SNARK verification at a fraction of incumbent cost.</p>
-          <ul>
-            <li><b>Built:</b> a Solidity 0.8.23 oracle with on-chain Groth16 and BN254 verification, plus staking,
-              slashing, and reputation-weighted consensus.</li>
-            <li><b>Measured:</b> about 0.04 USD per update on L2 (about 21x cheaper than incumbent committee oracles),
-              100% Byzantine detection up to a 37.5% adversary fraction.</li>
-            <li><b>Verifiable:</b> 76 passing tests, including a 256-run fuzz suite and gas benchmarks.</li>
-          </ul>
-          <p class="note">Code available on request. <a href="projects/#p-noc" style="color:var(--accent);text-decoration:none;font-weight:600;">Deep dive &rarr;</a></p>
-        </div>
-      </div>
-      <p class="delivery fade" style="margin-top:2rem;">Want the full problem, motivation, and contribution walkthrough for each system? <a href="projects/" style="color:var(--accent);text-decoration:none;font-weight:600;">Visit the Projects page &rarr;</a></p>
-    </div>
-  </section>
+<section id="faq" data-ld="faq" data-ld-type="FAQPage"><div class="wrap pad stack">
+<div class="faq">
+<h2 style="font-size:clamp(34px,4.6vw,56px);line-height:1.1">Short answers, for people and machines.</h2>
+<div class="qa"><div><h3>What is AEO?</h3><p>Answer engine optimization: structuring a business so AI assistants can find it, read it, verify it and recommend it, instead of only ranking it in a search list.</p></div><div><h3>What does a factory get?</h3><p>Each lamp becomes a verified, machine-readable record in several languages, plus an RFQ agent for first-round questions. The deployment package runs 14 days.</p></div><div><h3>What is FinProv?</h3><p>AI financial compliance: limits, tests and evidence for AI agents used by financial firms. The waitlist is open.</p></div><div><h3>Where are you based, and which languages?</h3><p>Hong Kong and Shenzhen. English and Mandarin fluently, learning Cantonese, Spanish and Japanese. This page exists in eight languages.</p></div><div><h3>How do I get a quote?</h3><p>Send an email with the product type, quantity and destination country.</p></div></div>
+</div>
+<div class="sec-head" data-ld="glossary" data-ld-type="DefinedTermSet">
+<p class="eyebrow">Terms used here</p>
+<dl class="terms"><div><dt>AEO (answer engine optimization)</dt><dd>Preparing a business so AI assistants can find, read, verify and recommend it.</dd></div><div><dt>Agentic commerce</dt><dd>Buying and selling where AI agents act for the buyer or the seller.</dd></div><div><dt>Product digital twin</dt><dd>A machine-readable record of a physical product: specs, certificates, prices, lead time.</dd></div><div><dt>AI financial compliance</dt><dd>Proof that AI agents in finance stay within the rules: limits, tests, logs.</dd></div><div><dt>AI agent security</dt><dd>Protecting autonomous AI systems from manipulation and misuse.</dd></div></dl>
+</div>
+</div></section>
 
-  <!-- RESEARCH -->
-  <section id="research"
-    style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-    <div class="container">
-      <div class="sh fade">
-        <span class="st">Research</span>
-        <h2 class="stitle">Multi-agent trust &amp; safety</h2>
-        <p class="ssub">My PhD work sits at the intersection of autonomous agents, consensus design, and safety. The
-          engineering and the research feed each other.</p>
-      </div>
-      <div class="rcard fade">
-        <h3>Calibrated multi-agent decision systems</h3>
-        <p>How do you trust the output of an autonomous agent? My research develops a <strong>proposer, challenger,
-            judge</strong> architecture, where independent agents argue and adjudicate before a decision is acted
-          on, as a path to calibrated, defensible automation. The same chassis I study academically is the safety
-          layer I deploy in real systems: outputs are challenged and judged, not blindly executed.
-          <br><br>
-          <em>Themes: multi-agent systems, consensus and trust, calibrated forecasting, blockchain and
-            decentralized-system safety.</em>
-        </p>
-      </div>
+</main>
 
-      <div class="sh fade" style="margin-top:4rem;">
-        <span class="st">Selected publications</span>
-        <h2 class="stitle" style="font-size:1.9rem;">Peer-reviewed work</h2>
-      </div>
-      <div class="fade">
-        <div class="pub">
-          <span class="yr">2027</span>
-          <div>
-            <h3>ASAS-BridgeAMM: Pricing Latency Risk into a Three-State Bridge AMM</h3>
-            <p class="meta">MARBLE 2027 &middot; You &middot; <em>[TODO: confirm title, co-authors, page range, DOI
-                before publish]</em></p>
-          </div>
-        </div>
-        <div class="pub">
-          <span class="yr">2026</span>
-          <div>
-            <h3>MVF-Composer: Trust-Weighted Controller for Stress-Resilient Stablecoin Reserves</h3>
-            <p class="meta">IEEE ICBC 2026 &middot; You &middot; <em>[TODO: confirm ICBC 2026 DOI &amp; full author list
-                before publish]</em></p>
-          </div>
-        </div>
-        <div class="pub">
-          <span class="yr">2026</span>
-          <div>
-            <h3>Hybrid Stabilization Protocol for Cross-Chain Digital Assets Using Adaptor Signatures and AI-Driven
-              Arbitrage</h3>
-            <p class="meta">Book chapter &middot; You, Kuehlkamp, Nabrzyski &middot; DOI: <a
-                href="https://doi.org/10.1007/978-3-032-00495-6_8" target="_blank" rel="noopener">10.1007/978-3-032-00495-6_8</a></p>
-          </div>
-        </div>
-        <div class="pub">
-          <span class="yr">2024</span>
-          <div>
-            <h3>Persona-Preserving Reputation Protocol (P2RP) for Enhanced Security, Privacy, and Trust in Blockchain
-              Oracles</h3>
-            <p class="meta">Cluster Computing (journal) &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a
-                href="https://doi.org/10.1007/s10586-023-04222-4" target="_blank" rel="noopener">10.1007/s10586-023-04222-4</a></p>
-          </div>
-        </div>
-        <div class="pub">
-          <span class="yr">2023</span>
-          <div>
-            <h3>Mining User Behavior in Decentralized Applications for Blockchain Trust and Security Analytics</h3>
-            <p class="meta">IEEE BCCA 2023 &middot; You, Joshi, Kuehlkamp, Nabrzyski &middot; DOI: <a
-                href="https://doi.org/10.1109/bcca58897.2023.10338860" target="_blank"
-                rel="noopener">10.1109/bcca58897.2023.10338860</a></p>
-          </div>
-        </div>
-        <div class="pub">
-          <span class="yr">2022</span>
-          <div>
-            <h3>Trust in the Context of Blockchain Applications</h3>
-            <p class="meta">IEEE BCCA 2022 &middot; You, Radivojevic, Nabrzyski, Brenner &middot; DOI: <a
-                href="https://doi.org/10.1109/bcca55292.2022.9922068" target="_blank"
-                rel="noopener">10.1109/bcca55292.2022.9922068</a>
-            </p>
-          </div>
-        </div>
-      </div>
+<footer id="contact" class="contact band"><div class="wrap">
+<div class="contact-row">
+<h2>Talk to a person.</h2>
+<div class="person"><img class="portrait" src="assets/photo.jpg" width="96" height="96" alt="Portrait of Shengwei You" loading="lazy" decoding="async">
+<div class="links"><a href="mailto:shengwei.you@gmail.com">shengwei.you@gmail.com</a><a href="https://www.linkedin.com/in/shengwei-you/" rel="me noopener">LinkedIn</a><a href="https://github.com/Jasonyou1995" rel="me noopener">GitHub</a></div></div>
+</div>
+<p class="human">More than five marathons, one saxophone in a band, two languages fluent and three in progress.</p>
+<p class="foot">&copy; 2026 <span translate="no">Shengwei You</span> &middot; Hong Kong. No tracking, no cookies. A static page built to be read by people and machines. Last updated: <time datetime="2026-10-14">2026-10-14</time></p>
+</div></footer>
 
-      <div class="sh fade" style="margin-top:4rem;">
-        <span class="st">Working papers</span>
-        <h2 class="stitle" style="font-size:1.9rem;">In preparation</h2>
-      </div>
-      <div class="fade">
-        <div class="pub">
-          <span class="yr">2026</span>
-          <div>
-            <h3>Breaking the Peg, or Not: The Limited Power of Oracle Manipulation Against Early Stablecoin Depeg
-              Prediction</h3>
-            <p class="meta">Blockchain Journal 2026 &middot; You &middot; In preparation</p>
-          </div>
-        </div>
-        <div class="pub">
-          <span class="yr">2026</span>
-          <div>
-            <h3>Working Paper I</h3>
-            <p class="meta">Title and venue withheld pending submission &middot; In preparation</p>
-          </div>
-        </div>
-        <div class="pub">
-          <span class="yr">2026</span>
-          <div>
-            <h3>Working Paper II</h3>
-            <p class="meta">Title and venue withheld pending submission &middot; In preparation</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<aside class="xp" id="xray-panel" hidden aria-label="What an agent reads">
+<div class="xp-head"><div><strong>What an agent reads</strong> <span><span id="xp-count">0</span> nodes &middot; This page&#x27;s real JSON-LD, read at runtime.</span></div>
+<button type="button" class="xp-close" id="xp-close" aria-label="Close panel">&times;</button></div>
+<div class="xp-body"><ul class="xp-list" id="xp-list"></ul><pre class="xp-json" id="xp-json" tabindex="0"></pre></div>
+</aside>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="container">
-      <div class="sh fade">
-        <span class="st">Experience</span>
-        <h2 class="stitle">Track record</h2>
-        <p class="ssub">From open-source infrastructure at The Linux Foundation to shipping AI agent systems today.</p>
-        <p class="ssub">5 years of hands-on cross-border trade operations plus 5 years of multi-agent AI research and
-          engineering, which is why the agents I build work for real Greater China trade businesses, not just in a
-          demo.</p>
-      </div>
-      <div class="tl">
-        <div class="ti fade">
-          <div class="when">2024 to Present</div>
-          <h3>AI Deployment Engineer (Independent)</h3>
-          <p class="org">Lion Protocol &middot; Hong Kong</p>
-          <p>Design and ship AI agent systems: multi-provider orchestration, retrieval grounding, and safety gating,
-            served through FastAPI with observability and human-in-the-loop checkpoints built in. Scope, build, harden,
-            and hand over systems clients own outright.</p>
-        </div>
-        <div class="ti fade">
-          <div class="when">2021 to Present <span class="org-tag">part-time / advisory</span></div>
-          <h3>International Trade Operations</h3>
-          <p class="org">Family Export Business &middot; Greater China</p>
-          <p>Cross-border sourcing, supplier coordination, and export operations across multiple markets. Hands-on
-            operational experience that grounds the AI agents I build in real B2B trade workflows.</p>
-        </div>
-        <div class="ti fade">
-          <div class="when">2025 to Present</div>
-          <h3>Guest Lecturer, Financial Computing <span class="org-tag">TTPS visa</span></h3>
-          <p class="org">School of Business, Hong Kong Baptist University</p>
-          <p>Guest lecturer on a graduate-level financial-computing course, teaching students to build and backtest
-            quantitative models in Python (NumPy, pandas, scikit-learn). Based in Hong Kong under the Top Talent Pass
-            Scheme.</p>
-        </div>
-        <div class="ti fade">
-          <div class="when">2019</div>
-          <h3>Blockchain Full-Stack Engineer (Internship)</h3>
-          <p class="org">The Linux Foundation &middot; San Francisco, CA</p>
-          <p>Built a real-time performance dashboard for Hyperledger Fabric using the MERN stack and authored
-            Caliper-CLI documentation that cut developer onboarding time. Work presented at <a
-              href="https://www.youtube.com/watch?v=MK7x87mUQOk" target="_blank" rel="noopener">Hyperledger Global Forum
-              2020</a>.</p>
-        </div>
-        <div class="ti fade">
-          <div class="when">2018 to 2019</div>
-          <h3>Graduate Student Researcher</h3>
-          <p class="org">Purdue University, CSE &middot; West Lafayette, IN</p>
-          <p>Built a secure Hierarchical-Deterministic (HD) wallet in Go and open-sourced it. Implemented an adversarial
-            ML attack on CNNs and presented findings to the university security community.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-    <div class="container">
-      <div class="sh fade"><span class="st">Education</span>
-        <h2 class="stitle">Academic background</h2>
-      </div>
-      <div class="grid3">
-        <div class="edu fade">
-          <p class="deg">PhD Candidate, Computer Science</p>
-          <p class="sch">University of Notre Dame</p>
-          <p class="when">Advisor: Jarek Nabrzyski</p>
-          <p class="det">Dissertation on trust and systemic risk in decentralized systems, and multi-agent
-            architectures for calibrated, safety-aware automation.</p>
-        </div>
-        <div class="edu fade">
-          <p class="deg">M.S., Computer Science (Information Security)</p>
-          <p class="sch">Purdue University</p>
-          <p class="when">2018 to 2019</p>
-          <p class="det">Information security, cryptography, and adversarial machine learning.</p>
-        </div>
-        <div class="edu fade">
-          <p class="deg">B.A., Mathematics</p>
-          <p class="sch">University of Washington</p>
-          <p class="when">2014 to 2018</p>
-          <p class="det">Applied mathematics with a focus on machine learning and NLP.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="container">
-      <div class="sh fade"><span class="st">Tech stack</span>
-        <h2 class="stitle">Tools I build with</h2>
-      </div>
-      <div class="grid3">
-        <div class="scat fade">
-          <h3>Agents &amp; AI</h3>
-          <div class="chips">
-            <span class="chip">Multi-provider orchestration</span><span class="chip">LangGraph</span><span
-              class="chip">RAG</span><span class="chip">Prompt-injection detection</span><span class="chip">Eval-harness
-              design</span>
-          </div>
-        </div>
-        <div class="scat fade">
-          <h3>Engineering</h3>
-          <div class="chips">
-            <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">asyncio</span><span
-              class="chip">Pydantic v2</span><span class="chip">pytest</span>
-          </div>
-        </div>
-        <div class="scat fade">
-          <h3>Rigor</h3>
-          <div class="chips">
-            <span class="chip">TLA+ model checking</span><span class="chip">BCa bootstrap CIs</span><span
-              class="chip">Pre-registered experiments</span><span class="chip">Reproducible pipelines</span>
-          </div>
-        </div>
-        <div class="scat fade">
-          <h3>Blockchain</h3>
-          <div class="chips">
-            <span class="chip">Solidity</span><span class="chip">Foundry</span><span class="chip">Hardhat</span><span
-              class="chip">Gas profiling</span><span class="chip">EVM</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CURRENTLY OPEN TO -->
-  <section id="open"
-    style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-    <div class="container">
-      <div class="sh fade"><span class="st">Currently open to</span>
-        <h2 class="stitle">Where I can plug in</h2>
-      </div>
-      <div class="grid3">
-        <div class="scat fade">
-          <h3>AI Deployment Engineer / FDE</h3>
-          <p>Primary focus. OpenAI, Anthropic, Crypto.com.</p>
-        </div>
-        <div class="scat fade">
-          <h3>AI &times; Crypto, Innovation Engineer</h3>
-          <p>Binance, OKX, Crypto.com.</p>
-        </div>
-        <div class="scat fade">
-          <h3>DevRel / DevX (Mandarin)</h3>
-          <p>OpenAI DevX, MiniMax, Mistral, Qwen, DeepSeek, Zhipu.</p>
-        </div>
-      </div>
-      <p class="ssub fade" style="margin-top:1.5rem;">Also building a Mandarin-first course, "Your First AI Employee",
-        and a weekly Skill Studio at Lion Protocol OPC. The cadence is make, document, share, sell.</p>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="cbox fade">
-        <span class="st">Contact</span>
-        <h2>Let&rsquo;s build something that ships</h2>
-        <p>Open to AI Deployment / FDE roles, AI and crypto engineering, DevRel, and selective consulting. I read every
-          message.</p>
-        <div class="clinks">
-          <a class="clink" href="mailto:shengwei.you@gmail.com"><span>&#9993;</span> shengwei.you@gmail.com</a>
-          <a class="clink" href="https://www.linkedin.com/in/shengwei-you/" target="_blank"
-            rel="noopener"><span>&#128188;</span> LinkedIn</a>
-          <a class="clink" href="https://github.com/Jasonyou1995" target="_blank" rel="noopener"><span>&#128025;</span>
-            GitHub</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2026 Shengwei You &middot; 游盛巍 &middot; Hong Kong</p>
-    <p>This is a static site. No tracking, no cookies, no data collected.</p>
-  </footer>
-
-  <script>
-    const obs = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }); }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.fade').forEach(el => obs.observe(el));
-    document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function (e) { const t = document.querySelector(this.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); } }); });
-
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function animateCount(el) {
-      const target = parseFloat(el.dataset.count);
-      const dec = parseInt(el.dataset.decimals || '0');
-      const suffix = el.dataset.suffix || '';
-      const fmt = (n) => (dec > 0 ? n.toFixed(dec) : Math.round(n).toLocaleString('en-US')) + suffix;
-      if (reduce) { el.textContent = fmt(target); return; }
-      const dur = 1100, t0 = performance.now();
-      function tick(now) {
-        const p = Math.min((now - t0) / dur, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = fmt(target * eased);
-        if (p < 1) requestAnimationFrame(tick); else el.textContent = fmt(target);
-      }
-      requestAnimationFrame(tick);
-    }
-    const numObs = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) { animateCount(e.target); numObs.unobserve(e.target); } }); }, { threshold: .4 });
-    document.querySelectorAll('.nums .big[data-count]').forEach(el => numObs.observe(el));
-  </script>
+<script id="site-js" src="assets/js/site.js?v=2026-10-14" defer data-i18n='{"xray_on": "Agent view: on", "xray_off": "Agent view: off", "twin_hello": "Hi, I am Shengwei&#39;s twin. I only know what is on this page. What would you like to know?", "twin_offline": "The twin is warming up. Send your question by email and Shengwei will answer in person.", "twin_breach": "Rule broken. Email me the prompt that did it and I will add you to the hall of fame.", "twin_wait": "Thinking", "twin_error": "The twin could not answer. Please email instead."}' data-twin-endpoint="" data-turnstile="" data-mail="shengwei.you@gmail.com"></script>
 </body>
-
 </html>

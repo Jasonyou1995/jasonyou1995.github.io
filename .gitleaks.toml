@@ -1,0 +1,7 @@
+title = "site secrets guard"
+[extend]
+useDefault = true
+[[rules]]
+id = "llm-api-key"
+description = "LLM provider API key"
+regex = '''(?i)(sk-[a-z0-9]{20,}|deepseek[_-]?api[_-]?key\s*[:=]\s*['"]?[a-z0-9\-_]{16,})'''
